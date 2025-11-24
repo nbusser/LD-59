@@ -33,6 +33,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 audio_listener_enable_2d = true
+physics_object_picking = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
