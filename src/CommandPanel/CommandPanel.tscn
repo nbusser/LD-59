@@ -33,3 +33,23 @@ offset_bottom = -553.0
 [node name="ImageInputs" type="Node" parent="." unique_id=1566043442]
 
 [node name="AudioInputs" type="Node" parent="." unique_id=2069117480]
+
+[node name="Buttons" type="Control" parent="." unique_id=2045215917]
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 163.0
+offset_right = 17.0
+offset_bottom = 163.0
+
+[node name="PositiveButton" type="Button" parent="Buttons" unique_id=1492979389]
+layout_mode = 0
+offset_left = 111.0
+offset_right = 161.0
+offset_bottom = 31.0
+text = "Disco"
+
+[node name="NegativeButton" type="Button" parent="Buttons" unique_id=364704524]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Pas Disco"

@@ -64,6 +64,7 @@ script = ExtResource("5_iw8kk")
 [node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585]
 script = ExtResource("6_rrnxv")
 
+[connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="UI/CommandPanel"]

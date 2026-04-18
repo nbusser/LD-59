@@ -9,3 +9,4 @@ enum LevelType { CIPHERED_SIGNAL }
 @export var name := "Level"
 @export var timer_duration := 100
 @export var type := LevelType.CIPHERED_SIGNAL
+@export var ciphers: Array[CipherData] = []

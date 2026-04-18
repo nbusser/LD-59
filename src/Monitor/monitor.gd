@@ -10,27 +10,21 @@ class_name Monitor
 @onready var _rendered_image = $Signal/RenderedImage
 @onready var _rendered_audio = $Signal/RenderedAudio
 
-enum CipherMode {
-	TEXT = 0,
-	IMAGE = 1,
-	AUDIO = 2
-}
-
 func _ready() -> void:
-	select(CipherMode.TEXT)
+	_display_cipher(CipherData.CipherType.TEXT)
 	ciphered_text.on_render.connect(_on_text_render)
 
-func select(select: CipherMode):
-	match select:
-		CipherMode.TEXT:
+func _display_cipher(selection: CipherData.CipherType):
+	match selection:
+		CipherData.CipherType.TEXT:
 			_rendered_text.visible = true
 			_rendered_image.visible = false
 			_rendered_audio.visible = false
-		CipherMode.IMAGE:
+		CipherData.CipherType.IMAGE:
 			_rendered_text.visible = false
 			_rendered_image.visible = true
 			_rendered_audio.visible = false
-		CipherMode.AUDIO:
+		CipherData.CipherType.AUDIO:
 			_rendered_text.visible = false
 			_rendered_image.visible = false
 			_rendered_audio.visible = true
@@ -44,3 +38,7 @@ func _on_image_render() -> void:
 
 func _on_audio_render() -> void:
 	print("Audio render: TODO")
+
+
+func _on_level_new_cipher_loaded(cipher_data: CipherData) -> void:
+	_display_cipher(cipher_data.cipher_type)

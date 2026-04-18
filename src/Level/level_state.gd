@@ -7,8 +7,7 @@ extends Resource
 
 var level_data: LevelData  # Config of the level
 
-var nb_coins := GameState.nb_coins
-
+var next_cipher_index: int = 0
 
 func _init(level_data_p: LevelData):
 	self.level_data = level_data_p
