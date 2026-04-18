@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvbxvt0sijetw"]
+
+[ext_resource type="Script" uid="uid://c7fb7c5fgkm23" path="res://src/Monitor/monitor.gd" id="1_ufvya"]
+
+[node name="Monitor" type="Control" unique_id=534154928]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ufvya")
+
+[node name="RenderedText" type="Label" parent="." unique_id=1597906908]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RenderedImage" type="TextureRect" parent="." unique_id=233291366]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RenderedAudio" type="Line2D" parent="." unique_id=975949720]
+visible = false

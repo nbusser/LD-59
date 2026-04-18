@@ -3,5 +3,9 @@
     "godotTools.editorPath.godot4": "godot",
     "search.exclude": {
         "addons": true
-    }
+    },
+    "cSpell.words": [
+        "elif",
+        "onready"
+    ]
 }

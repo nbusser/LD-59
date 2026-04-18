@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://drh117nvpnukt" path="res://src/Level/level.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dwiu4cm7rlq0p" path="res://src/HUD/hud.tscn" id="3_p81om"]
+[ext_resource type="Script" uid="uid://bhij2me44kycw" path="res://src/CipheredSignal/ciphered_text.gd" id="4_6gnxn"]
 [ext_resource type="PackedScene" uid="uid://dbqai3mwspxsp" path="res://src/HUD/fadeout.tscn" id="4_fre1t"]
 [ext_resource type="PackedScene" uid="uid://cusfjc6jcovp4" path="res://src/CommandPanel/CommandPanel.tscn" id="4_grxid"]
+[ext_resource type="PackedScene" uid="uid://bvbxvt0sijetw" path="res://src/Monitor/Monitor.tscn" id="5_grxid"]
+[ext_resource type="Script" uid="uid://bc1ao2wkul7g3" path="res://src/CipheredSignal/ciphered_image.gd" id="5_iw8kk"]
+[ext_resource type="Script" uid="uid://cvqx4flccg1oq" path="res://src/CipheredSignal/ciphered_audio.gd" id="6_rrnxv"]
 
 [node name="Level" type="Node" unique_id=2122492324]
 script = ExtResource("1")
@@ -23,6 +27,25 @@ duration = 0.7
 wait_time = 10.0
 one_shot = true
 
+[node name="CipheredSignals" type="Node" parent="." unique_id=2050324022]
+
+[node name="CipheredText" type="Node" parent="CipheredSignals" unique_id=556885336 node_paths=PackedStringArray("rot_input")]
+script = ExtResource("4_6gnxn")
+rot_input = NodePath("../../CommandPanel/TextInputs/RotSignalInput")
+
+[node name="CipheredImage" type="Node" parent="CipheredSignals" unique_id=1989305894]
+script = ExtResource("5_iw8kk")
+
+[node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585]
+script = ExtResource("6_rrnxv")
+
+[node name="Monitor" parent="." unique_id=534154928 node_paths=PackedStringArray("ciphered_text", "ciphered_image", "ciphered_audio") instance=ExtResource("5_grxid")]
+ciphered_text = NodePath("../CipheredSignals/CipheredText")
+ciphered_image = NodePath("../CipheredSignals/CipheredImage")
+ciphered_audio = NodePath("../CipheredSignals/CipheredAudio")
+
 [node name="CommandPanel" parent="." unique_id=1884603933 instance=ExtResource("4_grxid")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="CommandPanel"]
