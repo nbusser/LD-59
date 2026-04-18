@@ -1,6 +1,4 @@
-extends Control
-
-class_name Monitor
+class_name Monitor extends Control
 
 @export var ciphered_text: CipheredText
 @export var ciphered_image: CipheredImage
@@ -10,9 +8,11 @@ class_name Monitor
 @onready var _rendered_image = $Signal/RenderedImage
 @onready var _rendered_audio = $Signal/RenderedAudio
 
+
 func _ready() -> void:
 	_display_cipher(CipherData.CipherType.TEXT)
 	ciphered_text.on_render.connect(_on_text_render)
+
 
 func _display_cipher(selection: CipherData.CipherType):
 	match selection:
@@ -29,12 +29,15 @@ func _display_cipher(selection: CipherData.CipherType):
 			_rendered_image.visible = false
 			_rendered_audio.visible = true
 
+
 func _on_text_render() -> void:
 	_rendered_text.text = ciphered_text.get_transformed_text()
+
 
 func _on_image_render() -> void:
 	# TODO
 	print("Image render: TODO")
+
 
 func _on_audio_render() -> void:
 	print("Audio render: TODO")

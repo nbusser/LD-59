@@ -2,9 +2,11 @@ class_name MainMenu
 
 extends Control
 
+
 func _ready() -> void:
 	# TODO: change that when polishing
 	Globals.end_scene(Globals.EndSceneStatus.MAIN_MENU_CLICK_START)
+
 
 func _on_Start_pressed() -> void:
 	Globals.end_scene(Globals.EndSceneStatus.MAIN_MENU_CLICK_START)

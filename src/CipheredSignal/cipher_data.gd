@@ -1,9 +1,9 @@
 @tool
-extends Resource
 class_name CipherData
+extends Resource
 
 enum CipherType {
-	TEXT  = 0,
+	TEXT = 0,
 	IMAGE = 1,
 	AUDIO = 2,
 }
@@ -11,15 +11,16 @@ enum CipherType {
 @export var cipher_type: CipherType = CipherType.TEXT:
 	set(v):
 		cipher_type = v
-		text_content  = ""
+		text_content = ""
 		image_texture = null
-		audio_stream  = null
+		audio_stream = null
 		notify_property_list_changed()
 
 # Only the relevant property is shown
-@export var text_content:  String      = ""
-@export var image_texture: Texture2D   = null
-@export var audio_stream:  AudioStream = null
+@export var text_content: String = ""
+@export var image_texture: Texture2D = null
+@export var audio_stream: AudioStream = null
+
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "text_content":

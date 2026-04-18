@@ -14,6 +14,7 @@ var level_state: LevelState
 @onready var ciphered_image: CipheredImage = $CipheredSignals/CipheredImage
 @onready var ciphered_audio: CipheredAudio = $CipheredSignals/CipheredAudio
 
+
 func _ready():
 	assert(level_state, "init must be called before creating Level scene")
 
@@ -27,6 +28,7 @@ func _ready():
 
 func init(level_data_p: LevelData):
 	level_state = LevelState.new(level_data_p)
+
 
 func _load_next_cipher():
 	if level_state.next_cipher_index >= level_state.level_data.ciphers.size():
@@ -44,6 +46,7 @@ func _load_next_cipher():
 			ciphered_audio.source = cipher_data.audio_stream
 
 	emit_signal("new_cipher_loaded", cipher_data)
+
 
 func _on_Timer_timeout():
 	await $UI/Fadeout.fade()
