@@ -23,6 +23,18 @@ duration = 0.7
 [node name="Fadeout" parent="UI" unique_id=926207526 instance=ExtResource("4_fre1t")]
 duration = 0.7
 
+[node name="Monitor" parent="UI" unique_id=534154928 node_paths=PackedStringArray("ciphered_text", "ciphered_image", "ciphered_audio") instance=ExtResource("5_grxid")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+ciphered_text = NodePath("../../CipheredSignals/CipheredText")
+ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
+ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
+
+[node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
+
 [node name="Timer" type="Timer" parent="." unique_id=299543541]
 wait_time = 10.0
 one_shot = true
@@ -31,7 +43,7 @@ one_shot = true
 
 [node name="CipheredText" type="Node" parent="CipheredSignals" unique_id=556885336 node_paths=PackedStringArray("rot_input")]
 script = ExtResource("4_6gnxn")
-rot_input = NodePath("../../CommandPanel/TextInputs/RotSignalInput")
+rot_input = NodePath("../../UI/CommandPanel/TextInputs/RotSignalInput")
 
 [node name="CipheredImage" type="Node" parent="CipheredSignals" unique_id=1989305894]
 script = ExtResource("5_iw8kk")
@@ -39,13 +51,6 @@ script = ExtResource("5_iw8kk")
 [node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585]
 script = ExtResource("6_rrnxv")
 
-[node name="Monitor" parent="." unique_id=534154928 node_paths=PackedStringArray("ciphered_text", "ciphered_image", "ciphered_audio") instance=ExtResource("5_grxid")]
-ciphered_text = NodePath("../CipheredSignals/CipheredText")
-ciphered_image = NodePath("../CipheredSignals/CipheredImage")
-ciphered_audio = NodePath("../CipheredSignals/CipheredAudio")
-
-[node name="CommandPanel" parent="." unique_id=1884603933 instance=ExtResource("4_grxid")]
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
-[editable path="CommandPanel"]
+[editable path="UI/CommandPanel"]
