@@ -55,8 +55,10 @@ func _display_cipher():
 
 
 func _draw():
-	# draw spectrum visualizer
-	draw_polyline(spectrum_points, Color.GREEN, 2.0, true)
+	match _current_selection:
+		CipherData.CipherType.AUDIO:
+			# draw spectrum visualizer
+			draw_polyline(spectrum_points, Color.GREEN, 2.0, true)
 
 
 func _process(_delta: float) -> void:
