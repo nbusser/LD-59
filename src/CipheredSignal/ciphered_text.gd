@@ -2,7 +2,7 @@ extends CipheredSignal
 
 class_name CipheredText
 
-var source: String = "Salut les amis ! Ca farte ?":
+var source: String = "Placeholder":
 	set(new_source):
 		source = new_source
 		_reset()
@@ -27,26 +27,32 @@ func _reset() -> void:
 	_word_shuffle_n_splits.clear()
 	var source_n_words: int = source.split(" ").size()
 	var max_splits: int = int(log(source_n_words) / log(2))
-	var zero_value_count: int = 0
-	for i in range(SignalInput.N_VALUES):
-		# Target count of zero values matched
-		var min_split = 0 if zero_value_count >= ZERO_VALUE_TARGET_COUNT else 1
-		var i_split = prng.randi_range(min_split, max_splits)
-		if i_split == 0:
-			zero_value_count += 1
 
+	# Fill zero values
+	for i in range(ZERO_VALUE_TARGET_COUNT):
+		_word_shuffle_n_splits.append(0)
+	while _word_shuffle_n_splits.size() < SignalInput.N_VALUES:
+		# All the zero values are pre-filled
+		var min_split = 1
+		var i_split = prng.randi_range(min_split, max_splits)
 		_word_shuffle_n_splits.append(i_split)
+	
+	# Shuffle the splits because of the pre inserted zeroes
+	Utils.shuffle_with_prng(_word_shuffle_n_splits, prng)
 
 	# Regenerate the space shuffle possibilities
 	_space_shuffle_values.clear()
-	zero_value_count = 0
-	for i in range(SignalInput.N_VALUES):
-		var min_split = 0 if zero_value_count >= ZERO_VALUE_TARGET_COUNT else 1
 
-		var i_split = prng.randi_range(min_split, max_splits)
-		_space_shuffle_values.append(i_split)
-		if i_split == 0:
-			zero_value_count += 1
+	# Fill zero values
+	for i in range(ZERO_VALUE_TARGET_COUNT):
+		_space_shuffle_values.append(0)
+	while _space_shuffle_values.size() < SignalInput.N_VALUES:
+		# All the zero values are pre-filled
+		var frequency = prng.randf_range(0 + SignalInput.STEP, 1.0)
+		_space_shuffle_values.append(frequency)
+		
+	# Shuffle the splits because of the pre inserted zeroes
+	Utils.shuffle_with_prng(_space_shuffle_values, prng)
 
 # MARK: ROT
 
