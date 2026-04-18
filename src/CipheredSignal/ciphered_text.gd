@@ -14,13 +14,17 @@ func _reset() -> void:
 	var prng = RandomNumberGenerator.new()
 	prng.seed = source.hash()
 
-	# "Zero values" means that the text is unfiltered. We want to ensure to have strictly 10% of slider value as zero values.
+	# "Zero values" means that the text is unfiltered.
+	# We want to ensure to have strictly 10% of slider value as zero values.
 	const ZERO_VALUE_TARGET_COUNT: int = int(SignalInput.N_VALUES / 10.0)
 
 	# Regenerate the rot possibilities
 	_rot_values.clear()
+	# Fill zero values
+	for i in range(ZERO_VALUE_TARGET_COUNT):
+		_rot_values.append(0)
 	for i in range(SignalInput.N_VALUES):
-		_rot_values.append(i % 26)
+		_rot_values.append(i % 25 + 1)
 	Utils.shuffle_with_prng(_rot_values, prng)
 
 	# Regenerate the splits possibilities
@@ -41,22 +45,26 @@ func _reset() -> void:
 	Utils.shuffle_with_prng(_word_shuffle_n_splits, prng)
 
 	# Regenerate the space shuffle possibilities
-	_space_shuffle_values.clear()
+	_space_shuffle_frequencies.clear()
 
 	# Fill zero values
 	for i in range(ZERO_VALUE_TARGET_COUNT):
-		_space_shuffle_values.append(0)
-	while _space_shuffle_values.size() < SignalInput.N_VALUES:
+		_space_shuffle_frequencies.append(0)
+	while _space_shuffle_frequencies.size() < SignalInput.N_VALUES:
 		# All the zero values are pre-filled
 		var frequency = prng.randf_range(0 + SignalInput.STEP, 1.0)
-		_space_shuffle_values.append(frequency)
+		_space_shuffle_frequencies.append(frequency)
 		
 	# Shuffle the splits because of the pre inserted zeroes
-	Utils.shuffle_with_prng(_space_shuffle_values, prng)
+	Utils.shuffle_with_prng(_space_shuffle_frequencies, prng)
 
 # MARK: ROT
 
 @export var rot_input: SignalInput
+
+# Big randomized array of all possible slider values.
+# Contains the value of the rot shift to apply.
+# Guaranteed to contain strictly 10% of 0s (no transformation).
 var _rot_values: Array[int] = []
 
 # Index of the rotation in _rot_values
@@ -98,6 +106,9 @@ var words_shuffle_index = 0:
 		words_shuffle_index = words_shuffle_index_value
 		_render()
 
+# Big randomized array of all possible slider values.
+# Contains the number of segments shuffle.
+# Guaranteed to contain strictly 10% of 0s (no transformation).
 var _word_shuffle_n_splits: Array[int] = []
 
 func _word_shuffle_input_changed(value: float) -> void:
@@ -142,9 +153,12 @@ func _shuffle_words(text: String, slider_index: int) -> String:
 
 @export var space_shuffle_input: SignalInput
 
-var _space_shuffle_values: Array[int] = []
+# Big randomized array of all possible slider values.
+# Contains the frequency of shuffling spaces.
+# Guaranteed to contain strictly 10% of 0s (no transformation).
+var _space_shuffle_frequencies: Array[float] = []
 
-# Index of the shuffle in _space_shuffle_values
+# Index of the shuffle in _space_shuffle_frequencies
 var space_shuffle_index = 0: 
 	get(): return space_shuffle_index
 	set(space_shuffle_index_value):
@@ -152,12 +166,12 @@ var space_shuffle_index = 0:
 		_render()
 
 func _space_shuffle_input_changed(value: float) -> void:
-	var idx = int(value * _space_shuffle_values.size()) % _space_shuffle_values.size()
+	var idx = int(value * _space_shuffle_frequencies.size()) % _space_shuffle_frequencies.size()
 	space_shuffle_index = idx
 
 func _shuffle_spaces(text: String, slider_index: int) -> String:
-	assert(_space_shuffle_values.size() > 0)
-	var shuffle_frequency = _space_shuffle_values[slider_index % _space_shuffle_values.size()]
+	assert(_space_shuffle_frequencies.size() > 0)
+	var shuffle_frequency = _space_shuffle_frequencies[slider_index % _space_shuffle_frequencies.size()]
 
 	var prng = RandomNumberGenerator.new()
 	prng.seed = source.hash() + slider_index
