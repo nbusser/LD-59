@@ -14,6 +14,9 @@ func _reset() -> void:
 	var prng = RandomNumberGenerator.new()
 	prng.seed = source.hash()
 
+	# "Zero values" means that the text is unfiltered. We want to ensure to have strictly 10% of slider value as zero values.
+	const ZERO_VALUE_TARGET_COUNT: int = int(SignalInput.N_VALUES / 10.0)
+
 	# Regenerate the rot possibilities
 	_rot_values.clear()
 	for i in range(SignalInput.N_VALUES):
@@ -24,17 +27,26 @@ func _reset() -> void:
 	_word_shuffle_n_splits.clear()
 	var source_n_words: int = source.split(" ").size()
 	var max_splits: int = int(log(source_n_words) / log(2))
+	var zero_value_count: int = 0
 	for i in range(SignalInput.N_VALUES):
-		var i_split = prng.randi_range(0, max_splits)
+		# Target count of zero values matched
+		var min_split = 0 if zero_value_count >= ZERO_VALUE_TARGET_COUNT else 1
+		var i_split = prng.randi_range(min_split, max_splits)
+		if i_split == 0:
+			zero_value_count += 1
+
 		_word_shuffle_n_splits.append(i_split)
-		# TODO: ensure a minimum of 0 values
 
 	# Regenerate the space shuffle possibilities
 	_space_shuffle_values.clear()
+	zero_value_count = 0
 	for i in range(SignalInput.N_VALUES):
-		var i_split = prng.randi_range(0, max_splits)
+		var min_split = 0 if zero_value_count >= ZERO_VALUE_TARGET_COUNT else 1
+
+		var i_split = prng.randi_range(min_split, max_splits)
 		_space_shuffle_values.append(i_split)
-		# TODO: ensure a minimum of 0 values
+		if i_split == 0:
+			zero_value_count += 1
 
 # MARK: ROT
 
