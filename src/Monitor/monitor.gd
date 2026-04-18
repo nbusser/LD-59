@@ -1,7 +1,7 @@
 class_name Monitor extends Control
 
 # audio spectrum visualizer constants
-const VU_COUNT = 16
+const VU_COUNT = 32
 const FREQ_MAX = 11050.0
 
 const WIDTH = 300
@@ -87,8 +87,7 @@ func _update_audio_data() -> void:
 		var x = float(i) / SAMPLE_COUNT  # 0-1
 		var y = 0
 		for j in range(VU_COUNT):
-			var hz = (j + 1) * FREQ_MAX / VU_COUNT
-			y += sin(x * hz / FREQ_MAX * 100) * data[j]
+			y += sin(x * (j + 1) * PI * 4) * data[j]
 		y /= VU_COUNT
 		y *= HEIGHT * 5
 		spectrum_points.set(i, Vector2(x * WIDTH - WIDTH / 2.0, y))
