@@ -1,14 +1,8 @@
 class_name CipheredText
+
 extends CipheredSignal
 
-# MARK: ROT
-@export var rot_input: SignalInput
-
-# MARK: Words shuffle
-@export var word_shuffle_input: SignalInput
-
-# MARK: Space shuffle
-@export var space_shuffle_input: SignalInput
+# gdlint: disable=class-definitions-order
 
 var source: String = "Placeholder":
 	set(new_source):
@@ -16,45 +10,7 @@ var source: String = "Placeholder":
 		_reset()
 		_render()
 
-# Index of the rotation in _rot_values
-var letter_rot_index: int = 0:
-	get():
-		return letter_rot_index
-	set(rot_index):
-		letter_rot_index = rot_index
-		_render()
-
-var words_shuffle_index = 0:
-	get():
-		return words_shuffle_index
-	set(words_shuffle_index_value):
-		words_shuffle_index = words_shuffle_index_value
-		_render()
-
-# Index of the shuffle in _space_shuffle_frequencies
-var space_shuffle_index = 0:
-	get():
-		return space_shuffle_index
-	set(space_shuffle_index_value):
-		space_shuffle_index = space_shuffle_index_value
-		_render()
-
 var _transformed_text: String = ""
-
-# Big randomized array of all possible slider values.
-# Contains the value of the rot shift to apply.
-# Guaranteed to contain strictly 10% of 0s (no transformation).
-var _rot_values: Array[int] = []
-
-# Big randomized array of all possible slider values.
-# Contains the number of segments shuffle.
-# Guaranteed to contain strictly 10% of 0s (no transformation).
-var _word_shuffle_n_splits: Array[int] = []
-
-# Big randomized array of all possible slider values.
-# Contains the frequency of shuffling spaces.
-# Guaranteed to contain strictly 10% of 0s (no transformation).
-var _space_shuffle_frequencies: Array[float] = []
 
 
 func _reset() -> void:
@@ -106,6 +62,24 @@ func _reset() -> void:
 	Utils.shuffle_with_prng(_space_shuffle_frequencies, prng)
 
 
+# MARK: ROT
+
+@export var rot_input: SignalInput
+
+# Big randomized array of all possible slider values.
+# Contains the value of the rot shift to apply.
+# Guaranteed to contain strictly 10% of 0s (no transformation).
+var _rot_values: Array[int] = []
+
+# Index of the rotation in _rot_values
+var letter_rot_index: int = 0:
+	get():
+		return letter_rot_index
+	set(rot_index):
+		letter_rot_index = rot_index
+		_render()
+
+
 func _rot_input_changed(value: float) -> void:
 	var idx = int(value * _rot_values.size()) % _rot_values.size()
 	letter_rot_index = idx
@@ -127,6 +101,24 @@ func _rot_n(text: String, slider_index: int) -> String:
 		else:
 			result += ch
 	return result
+
+
+# MARK: Words shuffle
+
+@export var word_shuffle_input: SignalInput
+
+# Index of the shuffle in _word_shuffle_n_splits
+var words_shuffle_index = 0:
+	get():
+		return words_shuffle_index
+	set(words_shuffle_index_value):
+		words_shuffle_index = words_shuffle_index_value
+		_render()
+
+# Big randomized array of all possible slider values.
+# Contains the number of segments shuffle.
+# Guaranteed to contain strictly 10% of 0s (no transformation).
+var _word_shuffle_n_splits: Array[int] = []
 
 
 func _word_shuffle_input_changed(value: float) -> void:
@@ -169,6 +161,24 @@ func _shuffle_words(text: String, slider_index: int) -> String:
 	return " ".join(segments)
 
 
+# MARK: Space shuffle
+
+@export var space_shuffle_input: SignalInput
+
+# Big randomized array of all possible slider values.
+# Contains the frequency of shuffling spaces.
+# Guaranteed to contain strictly 10% of 0s (no transformation).
+var _space_shuffle_frequencies: Array[float] = []
+
+# Index of the shuffle in _space_shuffle_frequencies
+var space_shuffle_index = 0:
+	get():
+		return space_shuffle_index
+	set(space_shuffle_index_value):
+		space_shuffle_index = space_shuffle_index_value
+		_render()
+
+
 func _space_shuffle_input_changed(value: float) -> void:
 	var idx = int(value * _space_shuffle_frequencies.size()) % _space_shuffle_frequencies.size()
 	space_shuffle_index = idx
@@ -195,6 +205,9 @@ func _shuffle_spaces(text: String, slider_index: int) -> String:
 		var insert_pos = prng.randi_range(0, chars.size())
 		chars.insert(insert_pos, " ")
 	return "".join(chars)
+
+
+# MARK: Common
 
 
 func _ready() -> void:
