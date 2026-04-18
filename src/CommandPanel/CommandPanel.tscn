@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cusfjc6jcovp4"]
+
+[ext_resource type="Script" uid="uid://b6cqmd38p82xh" path="res://src/CipheredSignal/ciphered_signal.gd" id="1_q7s76"]
+[ext_resource type="PackedScene" uid="uid://be8pcl6n30lrl" path="res://src/CipheredSignal/SignalInput.tscn" id="2_hbc2p"]
+
+[node name="CommandPanel" type="Control" unique_id=1884603933]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CipheredSignal" type="Node" parent="." unique_id=705068236 node_paths=PackedStringArray("rot_input")]
+script = ExtResource("1_q7s76")
+rot_input = NodePath("../RotSignalInput")
+
+[node name="RotSignalInput" parent="." unique_id=1402289427 instance=ExtResource("2_hbc2p")]
+layout_mode = 1
+offset_left = 15.0
+offset_top = 12.0
+offset_right = -965.0
+offset_bottom = -550.0

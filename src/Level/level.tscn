@@ -1,25 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://fkx747pj67wj"]
+[gd_scene format=3 uid="uid://fkx747pj67wj"]
 
 [ext_resource type="Script" uid="uid://drh117nvpnukt" path="res://src/Level/level.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dwiu4cm7rlq0p" path="res://src/HUD/hud.tscn" id="3_p81om"]
 [ext_resource type="PackedScene" uid="uid://dbqai3mwspxsp" path="res://src/HUD/fadeout.tscn" id="4_fre1t"]
+[ext_resource type="PackedScene" uid="uid://cusfjc6jcovp4" path="res://src/CommandPanel/CommandPanel.tscn" id="4_grxid"]
 
-[node name="Level" type="Node"]
+[node name="Level" type="Node" unique_id=2122492324]
 script = ExtResource("1")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=88874090]
 
-[node name="HUD" parent="UI" instance=ExtResource("3_p81om")]
+[node name="HUD" parent="UI" unique_id=898401498 instance=ExtResource("3_p81om")]
 
-[node name="Fadein" parent="UI" instance=ExtResource("4_fre1t")]
+[node name="Fadein" parent="UI" unique_id=508041488 instance=ExtResource("4_fre1t")]
 mode = 1
 duration = 0.7
 
-[node name="Fadeout" parent="UI" instance=ExtResource("4_fre1t")]
+[node name="Fadeout" parent="UI" unique_id=926207526 instance=ExtResource("4_fre1t")]
 duration = 0.7
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=299543541]
 wait_time = 10.0
 one_shot = true
+
+[node name="CommandPanel" parent="." unique_id=1884603933 instance=ExtResource("4_grxid")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

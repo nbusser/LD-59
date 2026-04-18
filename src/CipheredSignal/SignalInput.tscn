@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://be8pcl6n30lrl"]
+
+[ext_resource type="Script" uid="uid://c7balx0vdfbbl" path="res://src/CipheredSignal/signal_input.gd" id="1_w7eef"]
+
+[node name="SignalInput" type="Control" unique_id=1402289427]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w7eef")
+
+[node name="VSlider" type="VSlider" parent="." unique_id=743983279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.1
+
+[connection signal="value_changed" from="VSlider" to="." method="_on_v_slider_value_changed"]
