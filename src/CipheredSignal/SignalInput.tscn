@@ -13,10 +13,9 @@ script = ExtResource("1_w7eef")
 
 [node name="VSlider" type="VSlider" parent="." unique_id=743983279]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 16.0
 grow_vertical = 2
 max_value = 1.0
 step = 0.1
