@@ -2,8 +2,30 @@ extends CipheredSignal
 
 class_name CipheredText
 
-var source: String = "Salut les amis ! Ca farte ?"
+var source: String = "Salut les amis ! Ca farte ?":
+	set(new_source):
+		source = new_source
+		_reset()
+		_render()
+
 var _transformed_text: String = ""
+
+func _reset() -> void:
+	var prng = RandomNumberGenerator.new()
+	prng.seed = source.hash()
+
+	# Regenerate the rot possibilities
+	_rot_values.clear()
+	_rot_values.assign(range(26))
+	Utils.shuffle_with_prng(_rot_values, prng)
+
+	# Regenerate the splits possibilities
+	_words_shuffle_n_splits.clear()
+	var source_n_words: int = source.split(" ").size()
+	var max_splits: int = int(log(source_n_words) / log(2))
+	for i in range(50):
+		var i_split = prng.randi_range(0, max_splits)
+		_words_shuffle_n_splits.append(i_split)
 
 # MARK: ROT
 
@@ -17,14 +39,7 @@ var letter_rot: int = 0:
 		_render()
 
 func _rot_input_changed(value: float) -> void:
-	if _rot_values.size() == 0:
-		# Regenerate the rot possibilities
-		# TODO: reset when source changes
-		var prng = RandomNumberGenerator.new()
-		prng.seed = source.hash()
-		_rot_values.assign(range(26))
-		Utils.shuffle_with_prng(_rot_values, prng)
-
+	assert(_rot_values.size() > 0)
 	var rot_value = _rot_values[int(value * _rot_values.size()) % _rot_values.size()]
 	letter_rot = rot_value
 
@@ -55,16 +70,7 @@ var words_shuffle = 0:
 var _words_shuffle_n_splits: Array[int] = []
 
 func _words_shuffle_input_changed(value: float) -> void:
-	var source_n_words: int = source.split(" ").size()
-	var max_splits: int = int(log(source_n_words) / log(2))
-
-	if _words_shuffle_n_splits.size() == 0:
-		# Regenerate the splits possibilities
-		var prng = RandomNumberGenerator.new()
-		prng.seed = source.hash()
-		for i in range(50):
-			var i_split = prng.randi_range(0, max_splits)
-			_words_shuffle_n_splits.append(i_split)
+	assert(_words_shuffle_n_splits.size() > 0)
 
 	var idx = int(value * _words_shuffle_n_splits.size()) % _words_shuffle_n_splits.size()
 	var words_shuffle_value = _words_shuffle_n_splits[idx]
@@ -106,6 +112,7 @@ func _shuffle_words(text: String, n_splits: int) -> String:
 func _ready() -> void:
 	rot_input.signal_input_changed.connect(_rot_input_changed)
 	words_shuffle_input.signal_input_changed.connect(_words_shuffle_input_changed)
+	_reset()
 	_render()
 
 func _render():
