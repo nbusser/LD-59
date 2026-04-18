@@ -16,16 +16,25 @@ func _reset() -> void:
 
 	# Regenerate the rot possibilities
 	_rot_values.clear()
-	_rot_values.assign(range(26))
+	for i in range(SignalInput.N_VALUES):
+		_rot_values.append(i % 26)
 	Utils.shuffle_with_prng(_rot_values, prng)
 
 	# Regenerate the splits possibilities
-	_words_shuffle_n_splits.clear()
+	_word_shuffle_n_splits.clear()
 	var source_n_words: int = source.split(" ").size()
 	var max_splits: int = int(log(source_n_words) / log(2))
-	for i in range(50):
+	for i in range(SignalInput.N_VALUES):
 		var i_split = prng.randi_range(0, max_splits)
-		_words_shuffle_n_splits.append(i_split)
+		_word_shuffle_n_splits.append(i_split)
+		# TODO: ensure a minimum of 0 values
+
+	# Regenerate the space shuffle possibilities
+	_space_shuffle_values.clear()
+	for i in range(SignalInput.N_VALUES):
+		var i_split = prng.randi_range(0, max_splits)
+		_space_shuffle_values.append(i_split)
+		# TODO: ensure a minimum of 0 values
 
 # MARK: ROT
 
@@ -59,7 +68,7 @@ func _rot_n(text: String, shift: int) -> String:
 
 # MARK: Words shuffle
 
-@export var words_shuffle_input: SignalInput
+@export var word_shuffle_input: SignalInput
 
 var words_shuffle = 0: 
 	get(): return words_shuffle
@@ -67,13 +76,13 @@ var words_shuffle = 0:
 		words_shuffle = words_shuffle_value
 		_render()
 
-var _words_shuffle_n_splits: Array[int] = []
+var _word_shuffle_n_splits: Array[int] = []
 
-func _words_shuffle_input_changed(value: float) -> void:
-	assert(_words_shuffle_n_splits.size() > 0)
+func _word_shuffle_input_changed(value: float) -> void:
+	assert(_word_shuffle_n_splits.size() > 0)
 
-	var idx = int(value * _words_shuffle_n_splits.size()) % _words_shuffle_n_splits.size()
-	var words_shuffle_value = _words_shuffle_n_splits[idx]
+	var idx = int(value * _word_shuffle_n_splits.size()) % _word_shuffle_n_splits.size()
+	var words_shuffle_value = _word_shuffle_n_splits[idx]
 	words_shuffle = words_shuffle_value
 
 func _shuffle_words(text: String, n_splits: int) -> String:
@@ -107,11 +116,48 @@ func _shuffle_words(text: String, n_splits: int) -> String:
 
 	return " ".join(segments)
 
+# MARK: Space shuffle
+
+@export var space_shuffle_input: SignalInput
+
+var _space_shuffle_values: Array[int] = []
+
+var space_shuffle = 0: 
+	get(): return space_shuffle
+	set(space_shuffle_value):
+		space_shuffle = space_shuffle_value
+		_render()
+
+func _space_shuffle_input_changed(value: float) -> void:
+	assert(_space_shuffle_values.size() > 0)
+
+	var idx = int(value * _space_shuffle_values.size()) % _space_shuffle_values.size()
+	var space_shuffle_value = _space_shuffle_values[idx]
+	space_shuffle = space_shuffle_value
+
+func _shuffle_spaces(text: String, shuffle_frequency: float) -> String:
+	var prng = RandomNumberGenerator.new()
+	prng.seed = source.hash() + shuffle_frequency
+
+	var spaces_to_move: int = 0
+
+	var chars = text.split("")
+	for i in range(chars.size()):
+		if chars[i] == " " and prng.randf() < shuffle_frequency:
+			chars[i] = ""
+			spaces_to_move += 1
+	
+	for i in range(spaces_to_move):
+		var insert_pos = prng.randi_range(0, chars.size())
+		chars.insert(insert_pos, " ")
+	return "".join(chars)
+
 # MARK: Common
 
 func _ready() -> void:
 	rot_input.signal_input_changed.connect(_rot_input_changed)
-	words_shuffle_input.signal_input_changed.connect(_words_shuffle_input_changed)
+	word_shuffle_input.signal_input_changed.connect(_word_shuffle_input_changed)
+	space_shuffle_input.signal_input_changed.connect(_space_shuffle_input_changed)
 	_reset()
 	_render()
 
@@ -119,8 +165,11 @@ func _render():
 	# Apply rot25
 	_transformed_text = _rot_n(source, letter_rot)
 	
-	# Apply words shuffle
+	# Apply word shuffle
 	_transformed_text = _shuffle_words(_transformed_text, words_shuffle)
+
+	# Apply space shuffle
+	_transformed_text = _shuffle_spaces(_transformed_text, space_shuffle)
 
 	super()
 

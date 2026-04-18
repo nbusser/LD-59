@@ -18,11 +18,17 @@ offset_top = 12.0
 offset_right = -965.0
 offset_bottom = -550.0
 
-[node name="WordsShuffleSignalInput" parent="TextInputs" unique_id=1555452025 instance=ExtResource("2_hbc2p")]
+[node name="WordShuffleSignalInput" parent="TextInputs" unique_id=1555452025 instance=ExtResource("2_hbc2p")]
 offset_left = 68.0
 offset_top = 12.0
 offset_right = -912.0
 offset_bottom = -550.0
+
+[node name="SpaceShuffleSignalInput" parent="TextInputs" unique_id=310417279 instance=ExtResource("2_hbc2p")]
+offset_left = 107.0
+offset_top = 14.0
+offset_right = 120.0
+offset_bottom = -553.0
 
 [node name="ImageInputs" type="Node" parent="." unique_id=1566043442]
 

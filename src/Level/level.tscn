@@ -52,10 +52,11 @@ one_shot = true
 
 [node name="CipheredSignals" type="Node" parent="." unique_id=2050324022]
 
-[node name="CipheredText" type="Node" parent="CipheredSignals" unique_id=556885336 node_paths=PackedStringArray("rot_input", "words_shuffle_input")]
+[node name="CipheredText" type="Node" parent="CipheredSignals" unique_id=556885336 node_paths=PackedStringArray("rot_input", "word_shuffle_input", "space_shuffle_input")]
 script = ExtResource("4_6gnxn")
 rot_input = NodePath("../../UI/CommandPanel/TextInputs/RotSignalInput")
-words_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/WordsShuffleSignalInput")
+word_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/WordShuffleSignalInput")
+space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSignalInput")
 
 [node name="CipheredImage" type="Node" parent="CipheredSignals" unique_id=1989305894]
 script = ExtResource("5_iw8kk")
