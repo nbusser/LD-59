@@ -34,6 +34,12 @@ offset_bottom = -553.0
 
 [node name="AudioInputs" type="Node" parent="." unique_id=2069117480]
 
+[node name="SpeedSignalInput" parent="AudioInputs" unique_id=325510213 instance=ExtResource("2_hbc2p")]
+offset_left = 293.0
+offset_top = 11.0
+offset_right = 293.0
+offset_bottom = -551.0
+
 [node name="Buttons" type="Control" parent="." unique_id=2045215917]
 anchors_preset = 0
 offset_left = 17.0

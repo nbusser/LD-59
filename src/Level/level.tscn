@@ -61,8 +61,9 @@ space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSig
 [node name="CipheredImage" type="Node" parent="CipheredSignals" unique_id=1989305894]
 script = ExtResource("5_iw8kk")
 
-[node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585]
+[node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585 node_paths=PackedStringArray("speed_input")]
 script = ExtResource("6_rrnxv")
+speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 
 [connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
