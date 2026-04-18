@@ -24,7 +24,7 @@ var source: String = "Salut les amis !"
 
 var _transformed_text: String = ""
 
-var letter_rot: 
+var letter_rot = 0: 
 	get(): return letter_rot
 	set(rot):
 		letter_rot = rot
@@ -32,6 +32,7 @@ var letter_rot:
 
 func _ready() -> void:
 	rot_input.signal_input_changed.connect(_rot_input_changed)
+	_render()
 
 func _rot_input_changed(value: float) -> void:
 	var rot_value = int(value * _rot_scale + _rot_random_offset)

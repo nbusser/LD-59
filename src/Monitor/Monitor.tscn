@@ -7,21 +7,54 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -916.0
+offset_bottom = -483.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ufvya")
 
-[node name="RenderedText" type="Label" parent="." unique_id=1597906908]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Panel" type="ColorRect" parent="." unique_id=517606528]
+custom_minimum_size = Vector2(250, 165)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18538326, 0.18538326, 0.18538326, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="RenderedImage" type="TextureRect" parent="." unique_id=233291366]
+[node name="Signal" type="Control" parent="." unique_id=51256789]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RenderedText" type="Label" parent="Signal" unique_id=1597906908]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Placeholder"
+
+[node name="RenderedImage" type="TextureRect" parent="Signal" unique_id=233291366]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RenderedAudio" type="Line2D" parent="." unique_id=975949720]
+[node name="RenderedAudio" type="Line2D" parent="Signal" unique_id=975949720]
 visible = false

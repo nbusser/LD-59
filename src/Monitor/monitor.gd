@@ -6,9 +6,9 @@ class_name Monitor
 @export var ciphered_image: CipheredImage
 @export var ciphered_audio: CipheredAudio
 
-@onready var _rendered_text = $RenderedText
-@onready var _rendered_image = $RenderedImage
-@onready var _rendered_audio = $RenderedAudio
+@onready var _rendered_text = $Signal/RenderedText
+@onready var _rendered_image = $Signal/RenderedImage
+@onready var _rendered_audio = $Signal/RenderedAudio
 
 enum CipherMode {
 	TEXT = 0,
