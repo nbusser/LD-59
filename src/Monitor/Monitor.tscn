@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://c7fb7c5fgkm23" path="res://src/Monitor/monitor.gd" id="1_ufvya"]
 [ext_resource type="Shader" uid="uid://cmq2qmn5v5swi" path="res://src/Monitor/ImageMonitor.gdshader" id="2_to57f"]
 [ext_resource type="Script" uid="uid://uvsk1teh2r7f" path="res://src/Monitor/rendered_audio.gd" id="4_1sxi0"]
+[ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="4_lpyn7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
 shader_parameter/resolution = Vector2(256, 256)
 shader_parameter/convol = -0.01899995340250004
+
+[sub_resource type="LabelSettings" id="LabelSettings_061ay"]
+font_size = 64
 
 [node name="Monitor" type="Control" unique_id=534154928]
 layout_mode = 3
@@ -50,45 +54,51 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Signal" type="Control" parent="SubViewport" unique_id=51256789]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -173.5
-offset_right = -138.0
-offset_bottom = -173.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RenderedText" type="Label" parent="SubViewport/Signal" unique_id=1597906908]
-visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lpyn7")
+text = "Placeholder"
+autowrap_mode = 1
+
+[node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=1033305472]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -11.5
-offset_right = 46.0
-offset_bottom = 11.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Placeholder"
-
-[node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=1033305472]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="RenderedAudio" type="Control" parent="SubViewport/Signal" unique_id=157771078]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_1sxi0")
 
 [node name="NoSignal" type="Label" parent="SubViewport" unique_id=886678415]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("4_lpyn7")
 text = "NO SIGNAL"
+label_settings = SubResource("LabelSettings_061ay")
