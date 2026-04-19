@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drh8266ba5ia5"]
+
+[ext_resource type="Script" uid="uid://b8qr3cj3q0j3y" path="res://src/SteganoTools/draggable.gd" id="1_nactl"]
+
+[node name="Draggable" type="Node" unique_id=721624145]
+script = ExtResource("1_nactl")

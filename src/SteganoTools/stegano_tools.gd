@@ -39,20 +39,20 @@ func _on_level_phase_changed(phase: LevelState.Phase) -> void:
 
 
 func _process(_delta: float):
-	_green_filter.position = get_viewport().get_mouse_position() + Vector2(10, 10)
-
 	if _is_stegano_image():
-		_rendered_image.material.set_shader_parameter(
-			"filter_green_position",
-			(
-				(_green_filter.global_position - _sub_viewport_display.global_position)
-				/ _sub_viewport_display.get_size()
-			)
+		return
+
+	_rendered_image.material.set_shader_parameter(
+		"filter_green_position",
+		(
+			(_green_filter.global_position - _sub_viewport_display.global_position)
+			/ _sub_viewport_display.get_size()
 		)
-		_rendered_image.material.set_shader_parameter(
-			"filter_red_position",
-			(
-				(_red_filter.global_position - _sub_viewport_display.global_position)
-				/ _sub_viewport_display.get_size()
-			)
+	)
+	_rendered_image.material.set_shader_parameter(
+		"filter_red_position",
+		(
+			(_red_filter.global_position - _sub_viewport_display.global_position)
+			/ _sub_viewport_display.get_size()
 		)
+	)
