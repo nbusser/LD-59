@@ -30,6 +30,7 @@ func _reset() -> void:
 		max(1.0, _pitch_scale_lower_bound + PITCH_SCALE_MIN_AMPLITUDE),
 		PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 	)
+	_speed_offset = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE)
 
 	# Reset random noise scale
 	_noise_scale_lower_bound = prng.randf_range(NOISE_SCALE_ABSOLUTE_LOWER_BOUND, 0.0)
@@ -37,6 +38,7 @@ func _reset() -> void:
 		max(0.0, _noise_scale_lower_bound + NOISE_SCALE_MIN_AMPLITUDE),
 		NOISE_SCALE_ABSOLUTE_UPPER_BOUND
 	)
+	_noise_offset = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE)
 
 	if source is AudioStreamMP3:
 		source.loop = true
@@ -63,10 +65,12 @@ const PITCH_SCALE_MIN_AMPLITUDE = 1.0
 
 var _pitch_scale_lower_bound = PITCH_SCALE_ABSOLUTE_LOWER_BOUND
 var _pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
+var _speed_offset: float
 
 
 func _speed_input_changed(value: float) -> void:
-	_cipher_player.pitch_scale = lerp(_pitch_scale_lower_bound, _pitch_scale_upper_bound, value)
+	var wrapped: float = fmod(value + _speed_offset, SignalInput.MAX_VALUE)
+	_cipher_player.pitch_scale = lerp(_pitch_scale_lower_bound, _pitch_scale_upper_bound, wrapped)
 
 
 # MARK: Noise
@@ -79,10 +83,12 @@ const NOISE_SCALE_MIN_AMPLITUDE = 8.0
 
 var _noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
 var _noise_scale_upper_bound = NOISE_SCALE_ABSOLUTE_UPPER_BOUND
+var _noise_offset: float
 
 
 func _noise_input_changed(value: float) -> void:
-	_noise_player.volume_db = lerp(_noise_scale_lower_bound, _noise_scale_upper_bound, value)
+	var wrapped: float = fmod(value + _noise_offset, SignalInput.MAX_VALUE)
+	_noise_player.volume_db = lerp(_noise_scale_lower_bound, _noise_scale_upper_bound, wrapped)
 
 
 # MARK: Common
