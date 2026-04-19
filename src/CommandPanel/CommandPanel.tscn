@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cusfjc6jcovp4"]
 
+[ext_resource type="Script" uid="uid://c7aicl5vp6bbu" path="res://src/CommandPanel/command_panel.gd" id="1_q7s76"]
 [ext_resource type="PackedScene" uid="uid://be8pcl6n30lrl" path="res://src/CipheredSignal/SignalInput.tscn" id="2_hbc2p"]
 
 [node name="CommandPanel" type="Control" unique_id=1884603933]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q7s76")
 
 [node name="TextInputs" type="Node" parent="." unique_id=1363822340]
 
@@ -45,3 +47,36 @@ offset_left = 322.0
 offset_top = 16.0
 offset_right = 322.0
 offset_bottom = -553.0
+
+[node name="SignalTypeButtons" type="Control" parent="." unique_id=473338519]
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 119.0
+offset_right = 9.0
+offset_bottom = 119.0
+
+[node name="Text" type="Button" parent="SignalTypeButtons" unique_id=1634172436]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Text"
+
+[node name="Image" type="Button" parent="SignalTypeButtons" unique_id=829200983]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 1.0
+offset_right = 124.0
+offset_bottom = 32.0
+text = "Image"
+
+[node name="Audio" type="Button" parent="SignalTypeButtons" unique_id=517493929]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 1.0
+offset_right = 200.0
+offset_bottom = 32.0
+text = "Audio"
+
+[connection signal="pressed" from="SignalTypeButtons/Text" to="." method="_on_text_pressed"]
+[connection signal="pressed" from="SignalTypeButtons/Image" to="." method="_on_image_pressed"]
+[connection signal="pressed" from="SignalTypeButtons/Audio" to="." method="_on_audio_pressed"]

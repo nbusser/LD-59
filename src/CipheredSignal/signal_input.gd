@@ -40,3 +40,7 @@ func _ready() -> void:
 	assert(Globals.current_level != null)
 	# Gets notified when the level is fully loaded
 	Globals.current_level.new_cipher_loaded.connect(_on_level_new_cipher_loaded)
+
+
+func set_enable(enabled: bool) -> void:
+	_slider.editable = enabled
