@@ -2,15 +2,32 @@ class_name CipheredAudio extends CipheredSignal
 
 # gdlint: disable=class-definitions-order
 
+@onready var _noise_sound_fake_source: AudioStream = preload("res://assets/sounds/noise.ogg")
+
+
+func _get_fake_source() -> AudioStream:
+	return _noise_sound_fake_source
+
+
+var is_wrong_cipher_type: bool:
+	get():
+		return (
+			Globals.current_level.level_state.current_cipher.cipher_type
+			!= CipherData.CipherType.AUDIO
+		)
+
+# Ciphered audio
+# Assign null if the current cipher is NOT an audio cipher.
+# In that case, it will use a fake audio stream instead.
 var source: AudioStream:
 	set(new_source):
+		if is_wrong_cipher_type:
+			# Expect level.gd to give a null audio stream
+			assert(new_source == null)
+			new_source = _get_fake_source()
+
 		source = new_source
-		if source == null:
-			_cipher_player.stop()
-			_noise_player.stop()
-		else:
-			_reset()
-			_render()
+		_reset()
 
 @onready var _cipher_player: AudioStreamPlayer = $CipherPlayer
 @onready var _noise_player: AudioStreamPlayer = $NoisePlayer
@@ -50,9 +67,6 @@ func _reset() -> void:
 		push_error("Unsupported audio stream type: %s" % source)
 
 	_cipher_player.stream = source
-
-	_cipher_player.play()
-	_noise_player.play()
 
 
 # Allows sliders to be 0 -> 1 -> 0
@@ -108,9 +122,6 @@ func _ready() -> void:
 	speed_input.signal_input_changed.connect(_speed_input_changed)
 	noise_input.signal_input_changed.connect(_noise_input_changed)
 
-	_cipher_player.stream = source
-	_cipher_player.call_deferred("play")
-
 
 func _render() -> void:
 	_transformed_audio = source
@@ -119,3 +130,17 @@ func _render() -> void:
 
 func get_transformed_audio() -> AudioStream:
 	return _transformed_audio
+
+
+func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
+	if !is_node_ready():
+		return
+
+	if cipher_type == CipherData.CipherType.AUDIO:
+		if !_cipher_player.playing:
+			_cipher_player.play()
+		if !_noise_player.playing:
+			_noise_player.play()
+	else:
+		_cipher_player.stop()
+		_noise_player.stop()

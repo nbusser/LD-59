@@ -74,6 +74,8 @@ speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 noise_input = NodePath("../../UI/CommandPanel/AudioInputs/NoiseSignalInput")
 
 [connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
+[connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/Monitor" method="_on_command_panel_cipher_type_selected"]
+[connection signal="cipher_type_selected" from="UI/CommandPanel" to="CipheredSignals/CipheredAudio" method="_on_command_panel_cipher_type_selected"]
 [connection signal="disco_button_pressed" from="UI/DiscoButtons" to="." method="_on_disco_buttons_disco_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

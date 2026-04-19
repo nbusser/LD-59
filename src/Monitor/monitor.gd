@@ -59,5 +59,9 @@ func _on_audio_render() -> void:
 	pass
 
 
-func _on_level_new_cipher_loaded(cipher_data: CipherData) -> void:
-	_current_selection = cipher_data.cipher_type
+func _on_level_new_cipher_loaded(_cipher_data: CipherData) -> void:
+	pass
+
+
+func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
+	_current_selection = cipher_type

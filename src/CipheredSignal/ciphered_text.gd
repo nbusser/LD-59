@@ -4,8 +4,41 @@ extends CipheredSignal
 
 # gdlint: disable=class-definitions-order
 
-var source: String = "Placeholder":
+
+func _get_fake_source() -> String:
+	var prng = RandomNumberGenerator.new()
+	prng.seed = (
+		Globals.current_level.name.hash() + Globals.current_level.level_state.next_cipher_index
+	)
+
+	var nb_words = prng.randi_range(5, 15)
+
+	const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	var result = ""
+	for i in range(nb_words):
+		var word_length = prng.randi_range(3, 10)
+		for j in range(word_length):
+			var char_index = prng.randi_range(0, CHARS.length() - 1)
+			result += CHARS[char_index]
+		if i < nb_words - 1:
+			result += " "
+	return result
+
+
+var is_wrong_cipher_type: bool:
+	get():
+		return (
+			Globals.current_level.level_state.current_cipher.cipher_type
+			!= CipherData.CipherType.TEXT
+		)
+
+var source: String = "":
 	set(new_source):
+		if is_wrong_cipher_type:
+			# Expect level.gd to give an empty string
+			assert(new_source == "")
+			new_source = _get_fake_source()
+
 		source = new_source
 		_reset()
 		_render()
