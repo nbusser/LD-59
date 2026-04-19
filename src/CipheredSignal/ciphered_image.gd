@@ -1,16 +1,20 @@
 class_name CipheredImage
 extends CipheredSignal
 
-var source: Image
-var _transformed_image: ImageTexture
+var source: Texture2D:
+	set(new_source):
+		source = new_source
+		_render()
+var _transformed_image: Texture2D
 
 
 func _ready() -> void:
-	pass
+	_transformed_image = source
+	_render()
 
 
 func _render() -> void:
-	_transformed_image = ImageTexture.create_from_image(source)
+	_transformed_image = source
 	super()
 
 

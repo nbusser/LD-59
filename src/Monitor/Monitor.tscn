@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://bvbxvt0sijetw"]
 
 [ext_resource type="Script" uid="uid://c7fb7c5fgkm23" path="res://src/Monitor/monitor.gd" id="1_ufvya"]
+[ext_resource type="Shader" uid="uid://cmq2qmn5v5swi" path="res://src/Monitor/ImageMonitor.gdshader" id="2_to57f"]
+[ext_resource type="Texture2D" uid="uid://b7r28ieiumbnh" path="res://assets/backgrounds/stage1.png" id="3_r6u5n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
+shader = ExtResource("2_to57f")
+shader_parameter/resolution = Vector2(256, 256)
+shader_parameter/convol = -0.018999953402500047
+shader_parameter/texture_sampler = ExtResource("3_r6u5n")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_to57f"]
 
 [node name="Monitor" type="Control" unique_id=534154928]
 layout_mode = 3
@@ -13,8 +23,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ufvya")
 
-[node name="Panel" type="ColorRect" parent="." unique_id=517606528]
+[node name="Display" type="ColorRect" parent="." unique_id=2086475445]
 z_index = -1
+material = SubResource("ShaderMaterial_to57f")
 custom_minimum_size = Vector2(250, 165)
 layout_mode = 1
 anchors_preset = 15
@@ -26,17 +37,36 @@ grow_vertical = 2
 color = Color(0.18538326, 0.18538326, 0.18538326, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Signal" type="Control" parent="." unique_id=51256789]
-layout_mode = 1
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1351264772]
+
+[node name="Panel" type="ColorRect" parent="SubViewport" unique_id=517606528]
+z_index = -1
+custom_minimum_size = Vector2(250, 165)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18538326, 0.18538326, 0.18538326, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Signal" type="Control" parent="SubViewport" unique_id=51256789]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -173.5
+offset_right = -138.0
+offset_bottom = -173.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RenderedText" type="Label" parent="Signal" unique_id=1597906908]
+[node name="RenderedText" type="Label" parent="SubViewport/Signal" unique_id=1597906908]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,13 +81,16 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Placeholder"
 
-[node name="RenderedImage" type="TextureRect" parent="Signal" unique_id=233291366]
-visible = false
+[node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=233291366]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -116.0
+offset_top = -81.5
+offset_right = 127.0
+offset_bottom = 77.5
+texture = SubResource("NoiseTexture2D_to57f")
+expand_mode = 1
 
-[node name="RenderedAudio" type="Control" parent="Signal" unique_id=1968805295]
+[node name="RenderedAudio" type="Control" parent="SubViewport/Signal" unique_id=1968805295]
 visible = false
 anchors_preset = 0
 offset_right = 40.0

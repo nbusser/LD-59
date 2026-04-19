@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bnvpmcg0m835h" path="res://src/CipheredSignal/cipher_data.gd" id="3_38vrh"]
 [ext_resource type="AudioStream" uid="uid://ba7shxyukh22w" path="res://assets/musics/example.ogg" id="3_knii6"]
 [ext_resource type="AudioStream" uid="uid://c8hkt50a1hi0t" path="res://assets/musics/example2.ogg" id="4_bb0s7"]
+[ext_resource type="Texture2D" uid="uid://b7r28ieiumbnh" path="res://assets/backgrounds/stage1.png" id="4_knii6"]
 
 [sub_resource type="Resource" id="Resource_38vrh"]
 script = ExtResource("3_38vrh")
@@ -13,8 +14,8 @@ metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_bb0s7"]
 script = ExtResource("3_38vrh")
-cipher_type = 2
-audio_stream = ExtResource("4_bb0s7")
+cipher_type = 1
+image_texture = ExtResource("4_knii6")
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_r4gm4"]

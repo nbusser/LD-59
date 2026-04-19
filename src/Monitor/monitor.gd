@@ -23,14 +23,17 @@ var _current_selection: CipherData.CipherType = CipherData.CipherType.TEXT:
 		_current_selection = value
 		_display_cipher()
 
-@onready var _rendered_text = $Signal/RenderedText
-@onready var _rendered_image = $Signal/RenderedImage
-@onready var _rendered_audio = $Signal/RenderedAudio
+@onready var _rendered_text = $SubViewport/Signal/RenderedText
+@onready var _rendered_image = $SubViewport/Signal/RenderedImage
+@onready var _rendered_audio = $SubViewport/Signal/RenderedAudio
+@onready var _panel = $SubViewport/Panel
+@onready var _display = $Display
 
 
 func _ready() -> void:
 	_display_cipher()
 	ciphered_text.on_render.connect(_on_text_render)
+	ciphered_image.on_render.connect(_on_image_render)
 
 	# setup spectrum visualizer
 	spectrum = AudioServer.get_bus_effect_instance(AudioServer.get_bus_index("CipheredSignal"), 0)
@@ -60,8 +63,14 @@ func _draw():
 			# draw spectrum visualizer
 			draw_polyline(spectrum_points, Color.GREEN, 2.0, true)
 
+	# TODO décaler le sujbviewport au dessus de ce node pour que le
+	# draw_polyline se fasse dedans
+	_display.material.set_shader_parameter("texture_sampler", $SubViewport.get_texture())
+	_display.material.set_shader_parameter("convol", -1.)
+
 
 func _process(_delta: float) -> void:
+	_rendered_image.texture = ciphered_image.get_transformed_image()
 	match _current_selection:
 		CipherData.CipherType.AUDIO:
 			_update_audio_data()
@@ -98,8 +107,7 @@ func _on_text_render() -> void:
 
 
 func _on_image_render() -> void:
-	# TODO
-	print("Image render: TODO")
+	pass
 
 
 func _on_audio_render() -> void:
