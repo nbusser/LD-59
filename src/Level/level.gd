@@ -52,6 +52,8 @@ func _load_next_cipher():
 			ciphered_image.source = null
 			ciphered_audio.source = level_state.current_cipher.audio_stream
 
+	await _play_insert_k7_animation()
+
 	emit_signal("new_cipher_loaded", level_state.current_cipher)
 
 
@@ -62,10 +64,32 @@ func _on_Timer_timeout():
 
 func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
 	if level_state.current_cipher.is_disco != is_disco:
-		$Audio/Failure.play()
-		await $Audio/Failure.finished
+		await _play_failure_animation()
 		Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)
 	else:
-		$Audio/Success.play()
-		await $Audio/Success.finished
+		await _play_success_animation()
 		_load_next_cipher()
+
+
+func _play_insert_k7_animation():
+	$AnimationPlayer.play("insert_k7", -1.0, 1.0)
+	await $AnimationPlayer.animation_finished
+
+
+func _play_remove_k7_animation():
+	$AnimationPlayer.play("insert_k7", -1.0, -1.0, true)
+	await $AnimationPlayer.animation_finished
+
+
+func _play_failure_animation():
+	$Audio/Failure.play()
+	await get_tree().create_timer(1.0).timeout
+	await _play_remove_k7_animation()
+	await get_tree().create_timer(0.5).timeout
+
+
+func _play_success_animation():
+	$Audio/Success.play()
+	await get_tree().create_timer(1.0).timeout
+	await _play_remove_k7_animation()
+	await get_tree().create_timer(0.5).timeout
