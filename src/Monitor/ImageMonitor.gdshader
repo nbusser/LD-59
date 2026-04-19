@@ -1,5 +1,6 @@
 shader_type canvas_item;
 
+// This shader is only for cosmetic VHS style
 
 uniform vec2 resolution = vec2(256, 256);
 uniform float convol: hint_range(-1., 1.) = 0.5;
