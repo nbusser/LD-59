@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://uvsk1teh2r7f" path="res://src/Monitor/rendered_audio.gd" id="4_1sxi0"]
 [ext_resource type="Shader" uid="uid://dbg0beqcwoalc" path="res://src/Monitor/RenderedImage.gdshader" id="4_061ay"]
 [ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="4_lpyn7"]
+[ext_resource type="Texture2D" uid="uid://bprdj2krbpywu" path="res://assets/sprites/player.png" id="5_061ay"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
@@ -13,6 +14,7 @@ shader_parameter/convol = -0.01899995340250004
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jalq"]
 shader = ExtResource("4_061ay")
+shader_parameter/blur_strength = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_061ay"]
 font_size = 64
@@ -89,6 +91,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_061ay")
 
 [node name="RenderedAudio" type="Control" parent="SubViewport/Signal" unique_id=157771078]
 layout_mode = 1

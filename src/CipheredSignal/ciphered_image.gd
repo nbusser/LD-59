@@ -19,7 +19,7 @@ var source: Texture2D:
 		source = new_source
 		_render()
 
-var _transformed_image: Dictionary = {"base_image": null}
+var _transformed_image: Dictionary = {"base_image": null, "blur_strength": 0.0}
 
 @onready var _noise_image_fake_source: Texture2D = preload("res://assets/sprites/player.png")
 
@@ -40,10 +40,9 @@ var _blur_offset: float
 
 
 func _blur_input_changed(_value: float) -> void:
-	pass
-	#_cipher_player.pitch_scale = lerp(
-	#_BLUR_SCALE_LOWER_BOUND, _BLUR_SCALE_UPPER_BOUND, Utils.wrap_triangle(value, _blur_offset)
-	#)
+	_transformed_image["blur_strength"] = lerp(
+		_BLUR_SCALE_LOWER_BOUND, _BLUR_SCALE_UPPER_BOUND, Utils.wrap_triangle(_value, _blur_offset)
+	)
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -51,12 +50,11 @@ func _blur_input_changed(_value: float) -> void:
 
 
 func _ready() -> void:
-	_transformed_image = {"base_image": source}
 	_render()
 
 
 func _render() -> void:
-	_transformed_image = {"base_image": source}
+	_transformed_image["base_image"] = source
 	super()
 
 
