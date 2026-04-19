@@ -111,6 +111,17 @@ correct_value_threshold = 0.1
 [node name="SpaceShuffleSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="2" unique_id=310417279]
 correct_value_threshold = 0.1
 
+[node name="SteganoTools" parent="UI" unique_id=1033651520 node_paths=PackedStringArray("_sub_viewport_display", "_rendered_image") instance=ExtResource("6_mqshx")]
+offset_top = 165.0
+offset_bottom = 165.0
+mouse_filter = 1
+_sub_viewport_display = NodePath("../Monitor/Display")
+_rendered_image = NodePath("../Monitor/SubViewport/Signal/RenderedImage")
+
+[node name="FilterGreen" parent="UI/SteganoTools/ImageFilters" parent_id_path=PackedInt32Array(1033651520, 824484933) index="1" unique_id=866931896]
+offset_right = 64.0
+offset_bottom = 64.0
+
 [node name="Fadein" parent="UI" unique_id=508041488 instance=ExtResource("4_fre1t")]
 mouse_filter = 2
 mode = 1
@@ -121,17 +132,6 @@ metadata/_edit_lock_ = true
 mouse_filter = 2
 duration = 0.7
 metadata/_edit_lock_ = true
-
-[node name="SteganoTools" parent="." unique_id=1033651520 node_paths=PackedStringArray("_sub_viewport_display", "_rendered_image") instance=ExtResource("6_mqshx")]
-offset_top = 165.0
-offset_bottom = 165.0
-mouse_filter = 1
-_sub_viewport_display = NodePath("../UI/Monitor/Display")
-_rendered_image = NodePath("../UI/Monitor/SubViewport/Signal/RenderedImage")
-
-[node name="FilterGreen" parent="SteganoTools/ImageFilters" parent_id_path=PackedInt32Array(1033651520, 824484933) index="1" unique_id=866931896]
-offset_right = 64.0
-offset_bottom = 64.0
 
 [node name="Timer" type="Timer" parent="." unique_id=299543541]
 wait_time = 10.0
@@ -174,13 +174,14 @@ texture = ExtResource("10_rrnxv")
 
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel" method="_on_level_deciphering_started_stopped"]
-[connection signal="phase_changed" from="." to="SteganoTools" method="_on_level_phase_changed"]
+[connection signal="phase_changed" from="." to="UI/SteganoTools" method="_on_level_phase_changed"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/Monitor" method="_on_command_panel_cipher_type_selected"]
+[connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/SteganoTools" method="_on_command_panel_cipher_type_selected"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="CipheredSignals/CipheredAudio" method="_on_command_panel_cipher_type_selected"]
 [connection signal="disco_button_pressed" from="UI/CommandPanel/DiscoButtons" to="." method="_on_disco_buttons_disco_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="UI/Monitor"]
 [editable path="UI/CommandPanel"]
-[editable path="SteganoTools"]
+[editable path="UI/SteganoTools"]
 [editable path="CipheredSignals"]

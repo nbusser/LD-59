@@ -3,6 +3,8 @@ class_name SteganoTools extends Control
 @export var _sub_viewport_display: ColorRect
 @export var _rendered_image: TextureRect
 
+var _display_mode: CipherData.CipherType = CipherData.CipherType.TEXT
+
 @onready var _green_filter = $ImageFilters/FilterGreen
 @onready var _red_filter = $ImageFilters/FilterRed
 
@@ -34,8 +36,24 @@ func _on_level_phase_changed(phase: LevelState.Phase) -> void:
 				_rendered_image.material.set_shader_parameter(
 					"filter_red_size", _red_filter.get_size() / _sub_viewport_display.get_size()
 				)
+
+				for f in [_green_filter, _red_filter]:
+					f.material.set_shader_parameter(
+						"enable_filter", _display_mode == CipherData.CipherType.IMAGE
+					)
+					f.material.set_shader_parameter(
+						"screen_size", _sub_viewport_display.get_size() / f.get_size()
+					)
 		_:
 			visible = false
+
+
+func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
+	_display_mode = cipher_type
+	var is_image := cipher_type == CipherData.CipherType.IMAGE
+	for f in [_green_filter, _red_filter]:
+		if f:
+			f.material.set_shader_parameter("enable_filter", is_image)
 
 
 func _process(_delta: float):
@@ -61,7 +79,4 @@ func _process(_delta: float):
 		f.material.set_shader_parameter(
 			"screen_position",
 			(_sub_viewport_display.global_position - f.global_position) / f.get_size()
-		)
-		f.material.set_shader_parameter(
-			"screen_size", _sub_viewport_display.get_size() / f.get_size()
 		)
