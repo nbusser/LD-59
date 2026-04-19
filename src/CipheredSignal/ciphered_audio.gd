@@ -50,6 +50,7 @@ func _reset() -> void:
 	speed_input.correct_value = inverse_lerp(
 		_pitch_scale_lower_bound, _pitch_scale_upper_bound, 1.0
 	)
+	_speed_input_changed(speed_input.amount)
 
 	# Reset random noise scale
 	_noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
@@ -58,6 +59,7 @@ func _reset() -> void:
 		NOISE_SCALE_ABSOLUTE_UPPER_BOUND
 	)
 	noise_input.correct_value = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE)
+	_noise_input_changed(noise_input.amount)
 
 	if source is AudioStreamMP3:
 		source.loop = true

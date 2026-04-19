@@ -60,7 +60,7 @@ const _V_DESYNC_SCALE = 1.0
 var _v_desync_offset: float
 
 
-func v_desync_input_changed(_value: float) -> void:
+func _v_desync_input_changed(_value: float) -> void:
 	_transformed_image["v_desync_strength"] = (
 		Utils.map_triangle_ascending(_value, _v_desync_offset, 0.023) * _V_DESYNC_SCALE
 	)
@@ -78,15 +78,17 @@ func _reset() -> void:
 	# init shuffle rows bounds
 	_shuffle_rows_offset = prng.randf()
 	shuffle_rows_input.correct_value = _shuffle_rows_offset
+	_shuffle_rows_input_changed(shuffle_rows_input.amount)
 
 	# init v-desync bounds
 	_v_desync_offset = prng.randf()
 	v_desync_input.correct_value = _v_desync_offset
+	_v_desync_input_changed(v_desync_input.amount)
 
 
 func _ready() -> void:
 	shuffle_rows_input.signal_input_changed.connect(_shuffle_rows_input_changed)
-	v_desync_input.signal_input_changed.connect(v_desync_input_changed)
+	v_desync_input.signal_input_changed.connect(_v_desync_input_changed)
 	_render()
 
 
