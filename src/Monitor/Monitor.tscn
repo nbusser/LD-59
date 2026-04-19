@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://bvbxvt0sijetw"]
 
 [ext_resource type="Script" uid="uid://c7fb7c5fgkm23" path="res://src/Monitor/monitor.gd" id="1_ufvya"]
-[ext_resource type="Shader" path="res://src/Monitor/ImageMonitor.gdshader" id="2_to57f"]
-[ext_resource type="Texture2D" uid="uid://b7r28ieiumbnh" path="res://assets/backgrounds/stage1.png" id="3_r6u5n"]
+[ext_resource type="Shader" uid="uid://cmq2qmn5v5swi" path="res://src/Monitor/ImageMonitor.gdshader" id="2_to57f"]
 [ext_resource type="Script" uid="uid://uvsk1teh2r7f" path="res://src/Monitor/rendered_audio.gd" id="4_1sxi0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
 shader_parameter/resolution = Vector2(256, 256)
 shader_parameter/convol = -0.01899995340250004
-shader_parameter/texture_sampler = ExtResource("3_r6u5n")
 
 [node name="Monitor" type="Control" unique_id=534154928]
 layout_mode = 3
@@ -88,3 +86,9 @@ offset_bottom = 40.0
 [node name="RenderedAudio" type="Control" parent="SubViewport/Signal" unique_id=157771078]
 anchors_preset = 0
 script = ExtResource("4_1sxi0")
+
+[node name="NoSignal" type="Label" parent="SubViewport" unique_id=886678415]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+text = "NO SIGNAL"

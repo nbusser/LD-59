@@ -2,7 +2,7 @@ class_name Level
 
 extends Node
 
-signal new_cipher_loaded(cipher_data: CipherData)
+signal deciphering_started_stopped(started: bool)
 
 var level_state: LevelState
 
@@ -22,6 +22,8 @@ func _ready():
 
 	hud.init(level_state)
 	timer.start(level_state.level_data.timer_duration)
+
+	deciphering_started_stopped.emit(false)
 
 	$UI/Fadein.fade()
 
@@ -54,7 +56,7 @@ func _load_next_cipher():
 
 	await _play_insert_k7_animation()
 
-	emit_signal("new_cipher_loaded", level_state.current_cipher)
+	deciphering_started_stopped.emit(true)
 
 
 func _on_Timer_timeout():
@@ -63,6 +65,8 @@ func _on_Timer_timeout():
 
 
 func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
+	deciphering_started_stopped.emit(false)
+
 	if level_state.current_cipher.is_disco != is_disco:
 		await _play_failure_animation()
 		Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)

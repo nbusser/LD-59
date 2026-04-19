@@ -132,11 +132,11 @@ func get_transformed_audio() -> AudioStream:
 	return _transformed_audio
 
 
-func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
+func set_focused(focused: bool) -> void:
 	if !is_node_ready():
 		return
 
-	if cipher_type == CipherData.CipherType.AUDIO:
+	if focused:
 		if !_cipher_player.playing:
 			_cipher_player.play()
 		if !_noise_player.playing:
@@ -144,3 +144,17 @@ func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) 
 	else:
 		_cipher_player.stop()
 		_noise_player.stop()
+	super(focused)
+
+# func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
+#     if !is_node_ready():
+#         return
+
+#     if cipher_type == CipherData.CipherType.AUDIO:
+#         if !_cipher_player.playing:
+#             _cipher_player.play()
+#         if !_noise_player.playing:
+#             _noise_player.play()
+#     else:
+#         _cipher_player.stop()
+#         _noise_player.stop()
