@@ -32,7 +32,10 @@ func _ready() -> void:
 	_slider.min_value = MIN_VALUE
 	_slider.max_value = MAX_VALUE
 	_slider.step = STEP
-	_slider.value = randf() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE
+
+	var prng = RandomNumberGenerator.new()
+	prng.seed = name.hash()
+	_slider.value = prng.randf() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE
 
 	assert(Globals.current_level != null)
 	# Gets notified when the level is fully loaded

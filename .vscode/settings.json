@@ -9,6 +9,7 @@
         "fmod",
         "gdlint",
         "onready",
-        "prng"
+        "prng",
+        "randf"
     ]
 }
