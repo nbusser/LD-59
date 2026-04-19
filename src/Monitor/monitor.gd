@@ -22,7 +22,7 @@ func _ready() -> void:
 	_display_cipher()
 	ciphered_text.on_render.connect(_on_text_render)
 	ciphered_image.on_render.connect(_on_image_render)
-	# Nothing to do on audio render -> done in real time
+	ciphered_audio.on_render.connect(_on_audio_render)
 
 
 func _display_cipher():
@@ -55,7 +55,8 @@ func _on_image_render() -> void:
 
 
 func _on_audio_render() -> void:
-	print("Audio render: TODO")
+	# Nothing to do on audio render -> done in real time
+	pass
 
 
 func _on_level_new_cipher_loaded(cipher_data: CipherData) -> void:

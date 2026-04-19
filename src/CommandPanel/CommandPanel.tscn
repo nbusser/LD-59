@@ -39,3 +39,5 @@ offset_left = 293.0
 offset_top = 11.0
 offset_right = 293.0
 offset_bottom = -551.0
+
+[node name="NoiseSignalInput" parent="AudioInputs" unique_id=1803397393 instance=ExtResource("2_hbc2p")]

@@ -1,14 +1,6 @@
-class_name CipheredAudio
-extends CipheredSignal
+class_name CipheredAudio extends CipheredSignal
 
-const PITCH_SCALE_ABSOLUTE_LOWER_BOUND = 0.25
-const PITCH_SCALE_ABSOLUTE_UPPER_BOUND = 3.0
-const PITCH_SCALE_MIN_AMPLITUDE = 1.0
-
-@export var speed_input: SignalInput
-
-var pitch_scale_lower_bound = PITCH_SCALE_ABSOLUTE_LOWER_BOUND
-var pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
+# gdlint: disable=class-definitions-order
 
 var source: AudioStream:
 	set(new_source):
@@ -22,14 +14,14 @@ var _transformed_audio: AudioStream
 
 
 func _reset() -> void:
-	if source == null:
-		return
+	assert(source != null)
 
 	var prng = RandomNumberGenerator.new()
 	prng.seed = source.resource_scene_unique_id.hash()
 
-	pitch_scale_lower_bound = randf_range(PITCH_SCALE_ABSOLUTE_LOWER_BOUND, 1.0)
-	pitch_scale_upper_bound = randf_range(
+	# Reset random pitch scale
+	pitch_scale_lower_bound = prng.randf_range(PITCH_SCALE_ABSOLUTE_LOWER_BOUND, 1.0)
+	pitch_scale_upper_bound = prng.randf_range(
 		max(1.0, pitch_scale_lower_bound + PITCH_SCALE_MIN_AMPLITUDE),
 		PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 	)
@@ -46,22 +38,35 @@ func _reset() -> void:
 	player.stream = source
 
 
-func _ready() -> void:
-	speed_input.signal_input_changed.connect(_speed_input_changed)
+# MARK: Pitch
 
-	_reset()
+const PITCH_SCALE_ABSOLUTE_LOWER_BOUND = 0.25
+const PITCH_SCALE_ABSOLUTE_UPPER_BOUND = 3.0
+const PITCH_SCALE_MIN_AMPLITUDE = 1.0
 
-	player = AudioStreamPlayer.new()
-	add_child(player)
-	player.stream = source
-	player.bus = "CipheredSignal"
-	player.call_deferred("play")
+@export var speed_input: SignalInput
+
+var pitch_scale_lower_bound = PITCH_SCALE_ABSOLUTE_LOWER_BOUND
+var pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 
 
 func _speed_input_changed(value: float) -> void:
 	player.pitch_scale = (
 		pitch_scale_lower_bound + (pitch_scale_upper_bound - pitch_scale_lower_bound) * value
 	)
+
+
+# MARK: Common
+
+
+func _ready() -> void:
+	speed_input.signal_input_changed.connect(_speed_input_changed)
+
+	player = AudioStreamPlayer.new()
+	add_child(player)
+	player.stream = source
+	player.bus = "CipheredSignal"
+	player.call_deferred("play")
 
 
 func _render() -> void:
