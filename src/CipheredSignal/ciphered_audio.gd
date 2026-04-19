@@ -85,8 +85,8 @@ var _speed_offset: float
 
 func _speed_input_changed(value: float) -> void:
 	_cipher_player.pitch_scale = lerp(
-		_pitch_scale_lower_bound,
 		_pitch_scale_upper_bound,
+		_pitch_scale_lower_bound,
 		Utils.wrap_triangle(value, _speed_offset)
 	)
 
