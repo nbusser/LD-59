@@ -77,6 +77,14 @@ color = Color(0.18538326, 0.18538326, 0.18538326, 1)
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1351264772]
 
+[node name="Background" type="ColorRect" parent="SubViewport" unique_id=1967950318]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10389001, 0.18, 0.1026, 1)
+
 [node name="Signal" type="Control" parent="SubViewport" unique_id=51256789]
 unique_name_in_owner = true
 layout_mode = 3
@@ -95,6 +103,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_lpyn7")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_061ay")
 bbcode_enabled = true
@@ -128,8 +137,17 @@ script = ExtResource("4_1sxi0")
 
 [node name="NoSignal" type="Label" parent="SubViewport" unique_id=886678415]
 unique_name_in_owner = true
+modulate = Color(0, 1, 0, 1)
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("4_lpyn7")
 text = "NO SIGNAL"
 label_settings = SubResource("LabelSettings_061ay")
+
+[node name="Filter" type="ColorRect" parent="SubViewport" unique_id=1894552632]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4336358, 0.6455332, 0.43243363, 0.25490198)
