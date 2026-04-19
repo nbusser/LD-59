@@ -145,16 +145,3 @@ func set_focused(focused: bool) -> void:
 		_cipher_player.stop()
 		_noise_player.stop()
 	super(focused)
-
-# func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
-#     if !is_node_ready():
-#         return
-
-#     if cipher_type == CipherData.CipherType.AUDIO:
-#         if !_cipher_player.playing:
-#             _cipher_player.play()
-#         if !_noise_player.playing:
-#             _noise_player.play()
-#     else:
-#         _cipher_player.stop()
-#         _noise_player.stop()

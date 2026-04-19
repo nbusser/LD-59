@@ -38,6 +38,9 @@ func _on_audio_pressed() -> void:
 
 
 func _on_level_deciphering_started_stopped(started: bool) -> void:
+	for button in $SignalTypeButtons.get_children() as Array[Button]:
+		button.disabled = not started
+
 	if started:
 		_on_text_pressed()
 	else:
