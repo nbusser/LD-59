@@ -26,3 +26,18 @@ func map_triangle(x: float, offset: float) -> float:
 	if x <= offset:
 		return x / offset
 	return 1 - (x - offset) / (1 - offset)
+
+
+# map 0 -> 1 to -1 -> 0 -> 1, 0 being at the offset.
+# f(0) = -1
+# f(offset - margin_around_zero) = 0
+# f(offset + margin_around_zero) = 0
+# f(1) = 1
+func map_triangle_ascending(x: float, offset: float, margin_around_zero: float = 0.0) -> float:
+	var low = offset - margin_around_zero
+	var high = offset + margin_around_zero
+	if x <= low:
+		return (x / low) - 1.0
+	if x <= high:
+		return 0.0
+	return (x - high) / (1.0 - high)

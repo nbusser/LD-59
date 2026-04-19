@@ -42,38 +42,46 @@ const _SHUFFLE_ROWS_SCALE_UPPER_BOUND = 1.0
 var _shuffle_rows_offset: float
 
 
-func _reset() -> void:
-	var prng = RandomNumberGenerator.new()
-	prng.seed = source.resource_path.hash()
-
-
 func _shuffle_rows_input_changed(_value: float) -> void:
-	_transformed_image["shuffle_rows_strength"] = lerp(
-		_SHUFFLE_ROWS_SCALE_LOWER_BOUND,
-		_SHUFFLE_ROWS_SCALE_UPPER_BOUND,
-		Utils.wrap_triangle(_value, _shuffle_rows_offset)
+	_transformed_image["shuffle_rows_strength"] = (
+		1.0
+		- lerp(
+			_SHUFFLE_ROWS_SCALE_LOWER_BOUND,
+			_SHUFFLE_ROWS_SCALE_UPPER_BOUND,
+			Utils.map_triangle(_value, _shuffle_rows_offset)
+		)
 	)
 	_render()
 
 
 @export var v_desync_input: SignalInput
 
-const _V_DESYNC_SCALE_LOWER_BOUND = -1.0
-const _V_DESYNC_SCALE_UPPER_BOUND = 1.0
+const _V_DESYNC_SCALE = 1.0
 var _v_desync_offset: float
 
 
 func v_desync_input_changed(_value: float) -> void:
-	_transformed_image["v_desync_strength"] = lerp(
-		_V_DESYNC_SCALE_LOWER_BOUND,
-		_V_DESYNC_SCALE_UPPER_BOUND,
-		Utils.wrap_triangle(_value, _v_desync_offset)
+	_transformed_image["v_desync_strength"] = (
+		Utils.map_triangle_ascending(_value, _v_desync_offset, 0.023) * _V_DESYNC_SCALE
 	)
 	_render()
 
 
 # ----------------------------------------------------------------------------------------------------
 # MARK: Common
+
+
+func _reset() -> void:
+	var prng = RandomNumberGenerator.new()
+	prng.seed = source.resource_path.hash()
+
+	# init shuffle rows bounds
+	_shuffle_rows_offset = prng.randf()
+	shuffle_rows_input.correct_value = _shuffle_rows_offset
+
+	# init v-desync bounds
+	_v_desync_offset = prng.randf()
+	v_desync_input.correct_value = _v_desync_offset
 
 
 func _ready() -> void:
