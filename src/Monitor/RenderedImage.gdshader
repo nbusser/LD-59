@@ -27,7 +27,35 @@ float deadzone(float val, float threshold, float max_) {
     return sign(val) * smoothstep(threshold, max_, val) * max_;
 }
 
-bool is_in_filter(vec2 coord, vec2 filter_position, vec2 filter_size) {
+vec2 crt_curve_inverse(vec2 uv, float k) {
+    vec2 p = uv * 2.0 - 1.0;
+
+    float rd = length(p);              // r_dst
+    if (rd < 1e-6 || abs(k) < 1e-6) return uv; // guard degenerate
+
+    // Depressed cubic: k·t³ + t - rd = 0  =>  t³ + (1/k)·t - (rd/k) = 0
+    // Cardano: t³ + pt + q = 0
+    float inv_k = 1.0 / k;
+    float cp    =  inv_k;              // p coefficient
+    float cq    = -rd * inv_k;        // q coefficient
+
+    float disc  = 0.25 * cq * cq + (cp * cp * cp) / 27.0;
+    float sq    = sqrt(max(disc, 0.0));
+
+    float u3    = -0.5 * cq + sq;
+    float v3    = -0.5 * cq - sq;
+
+    float rs    = sign(u3) * pow(abs(u3), 1.0 / 3.0)
+                + sign(v3) * pow(abs(v3), 1.0 / 3.0); // r_src
+
+    // Reconstruct direction, scale back
+    vec2 result = p * (rs / rd);
+    return result * 0.5 + 0.5;
+}
+
+bool is_in_filter(vec2 raw_coords, vec2 filter_position, vec2 filter_size) {
+    vec2 coord = crt_curve_inverse(raw_coords, .065);
+
 	return coord.x >= filter_position.x &&
 	coord.y >= filter_position.y &&
 	coord.x <= filter_position.x + filter_size.x &&

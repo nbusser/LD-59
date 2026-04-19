@@ -49,11 +49,10 @@ float hash12(vec2 p) {
 }
 
 vec2 crt_curve(vec2 uv, float k) {
-	// Barrel distortion style curve.
-	vec2 cc = uv * 2.0 - 1.0;
-	vec2 d  = cc * cc;
-	cc *= 1.0 + k * vec2(d.y, d.x);
-	return cc * 0.5 + 0.5;
+    vec2 p = uv * 2.0 - 1.0;
+    float r2 = dot(p, p);
+    vec2 warped = p * (1.0 + k * r2);
+    return warped * 0.5 + 0.5;
 }
 
 float inside01(vec2 uv) {
@@ -113,11 +112,11 @@ void fragment() {
 	float in_bounds = inside01(cuv);
 
 	// Rounded corners (soft clip)
-vec2 d = abs(cuv - 0.5) * 2.0;      // 0 at center, ~1 at edges
-float edge = max(d.x, d.y);
+    vec2 d = abs(cuv - 0.5) * 2.0;      // 0 at center, ~1 at edges
+    float edge = max(d.x, d.y);
 
-// 1 in center, fades to 0 near edges
-float corner_mask = 1.0 - smoothstep(1.0 - corner_soften, 1.0, edge);
+    // 1 in center, fades to 0 near edges
+    float corner_mask = 1.0 - smoothstep(1.0 - corner_soften, 1.0, edge);
 
 
 	// --- Chromatic aberration / VHS chroma shift ---

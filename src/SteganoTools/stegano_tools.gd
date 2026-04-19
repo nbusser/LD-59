@@ -56,3 +56,12 @@ func _process(_delta: float):
 			/ _sub_viewport_display.get_size()
 		)
 	)
+
+	for f in [_green_filter, _red_filter]:
+		f.material.set_shader_parameter(
+			"screen_position",
+			(_sub_viewport_display.global_position - f.global_position) / f.get_size()
+		)
+		f.material.set_shader_parameter(
+			"screen_size", _sub_viewport_display.get_size() / f.get_size()
+		)
