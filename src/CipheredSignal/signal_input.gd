@@ -40,3 +40,7 @@ func _ready() -> void:
 
 func set_enable(enabled: bool) -> void:
 	_slider.editable = enabled
+
+
+func trigger_update() -> void:
+	emit_signal("signal_input_changed", amount)

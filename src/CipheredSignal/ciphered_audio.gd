@@ -119,7 +119,9 @@ func _noise_input_changed(value: float) -> void:
 
 func _ready() -> void:
 	speed_input.signal_input_changed.connect(_speed_input_changed)
+	speed_input.trigger_update.call_deferred()
 	noise_input.signal_input_changed.connect(_noise_input_changed)
+	noise_input.trigger_update.call_deferred()
 
 
 func _render() -> void:

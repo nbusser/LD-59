@@ -280,8 +280,11 @@ func _shuffle_spaces(text: String, slider_index: int) -> String:
 
 func _ready() -> void:
 	rot_input.signal_input_changed.connect(_rot_input_changed)
+	rot_input.trigger_update.call_deferred()
 	word_shuffle_input.signal_input_changed.connect(_word_shuffle_input_changed)
+	word_shuffle_input.trigger_update.call_deferred()
 	space_shuffle_input.signal_input_changed.connect(_space_shuffle_input_changed)
+	space_shuffle_input.trigger_update.call_deferred()
 	_reset()
 	_render()
 
