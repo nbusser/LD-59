@@ -20,6 +20,10 @@ run/main_scene="res://src/SceneManager/scene_manager.tscn"
 config/features=PackedStringArray("4.6")
 config/icon="res://assets/sprites/player.png"
 
+[audio]
+
+buses/default_bus_layout="uid://cb26frntdt4kj"
+
 [autoload]
 
 Utils="*uid://dtkgqtar4w665"

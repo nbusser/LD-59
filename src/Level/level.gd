@@ -3,6 +3,7 @@ class_name Level
 extends Node
 
 signal deciphering_started_stopped(started: bool)
+signal phase_changed(phase: LevelState.Phase)
 
 var level_state: LevelState
 
@@ -33,6 +34,8 @@ func init(level_data_p: LevelData):
 
 
 func _load_next_cipher():
+	_switch_phase(LevelState.Phase.DESCRAMBLE)
+
 	if level_state.next_cipher_index == level_state.level_data.ciphers.size():
 		Globals.end_scene(Globals.EndSceneStatus.LEVEL_END, {"new_nb_coins": 0})
 		return
@@ -57,6 +60,11 @@ func _load_next_cipher():
 	await _play_insert_k7_animation()
 
 	deciphering_started_stopped.emit(true)
+
+
+func _switch_phase(phase: LevelState.Phase):
+	level_state.phase = phase
+	phase_changed.emit(phase)
 
 
 func _on_Timer_timeout():

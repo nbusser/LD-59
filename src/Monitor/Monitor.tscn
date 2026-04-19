@@ -17,6 +17,11 @@ shader = ExtResource("4_061ay")
 shader_parameter/resolution = Vector2(256, 256)
 shader_parameter/shuffle_rows_strength = 0.5
 shader_parameter/v_desync_strength = 0.5
+shader_parameter/enable_filter = false
+shader_parameter/filter_green_position = Vector2(0, 0)
+shader_parameter/filter_green_size = Vector2(0, 0)
+shader_parameter/filter_red_position = Vector2(0, 0)
+shader_parameter/filter_red_size = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_061ay"]
 font_size = 64

@@ -30,6 +30,10 @@ const SAMPLE_GLOBAL_VARIABLE: int = 1
 var current_level: Level
 
 
+func get_current_cipher() -> CipherData:
+	return current_level.level_state.current_cipher
+
+
 func end_scene(status: EndSceneStatus, params: Dictionary = {}) -> void:
 	scene_ended.emit(status, params)
 

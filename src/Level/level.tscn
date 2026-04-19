@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cusfjc6jcovp4" path="res://src/CommandPanel/CommandPanel.tscn" id="4_grxid"]
 [ext_resource type="PackedScene" uid="uid://bvbxvt0sijetw" path="res://src/Monitor/Monitor.tscn" id="5_grxid"]
 [ext_resource type="PackedScene" uid="uid://bcm8d6bnledk6" path="res://src/CommandPanel/DiscoButtons.tscn" id="6_iw8kk"]
+[ext_resource type="PackedScene" uid="uid://b3bgc575mmka7" path="res://src/SteganoTools/SteganoTools.tscn" id="6_mqshx"]
 [ext_resource type="PackedScene" uid="uid://im4hyd35kt80" path="res://src/CipheredSignal/CipheredSignals.tscn" id="7_gp2up"]
 [ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
@@ -114,6 +115,9 @@ offset_top = 543.0
 offset_right = 529.0
 offset_bottom = 543.0
 
+[node name="SteganoTools" parent="UI" unique_id=1033651520 node_paths=PackedStringArray("_rendered_image") instance=ExtResource("6_mqshx")]
+_rendered_image = NodePath("../Monitor/SubViewport/Signal/RenderedImage")
+
 [node name="Fadein" parent="UI" unique_id=508041488 instance=ExtResource("4_fre1t")]
 mouse_filter = 2
 mode = 1
@@ -165,10 +169,13 @@ texture = ExtResource("10_rrnxv")
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/DiscoButtons" method="_on_level_deciphering_started_stopped"]
+[connection signal="phase_changed" from="." to="UI/SteganoTools" method="_on_level_phase_changed"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/Monitor" method="_on_command_panel_cipher_type_selected"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="CipheredSignals/CipheredAudio" method="_on_command_panel_cipher_type_selected"]
 [connection signal="disco_button_pressed" from="UI/DiscoButtons" to="." method="_on_disco_buttons_disco_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
+[editable path="UI/Monitor"]
 [editable path="UI/CommandPanel"]
+[editable path="UI/SteganoTools"]
 [editable path="CipheredSignals"]

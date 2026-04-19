@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cusfjc6jcovp4"]
 
-[ext_resource type="Script" path="res://src/CommandPanel/command_panel.gd" id="1_q7s76"]
+[ext_resource type="Script" uid="uid://c7aicl5vp6bbu" path="res://src/CommandPanel/command_panel.gd" id="1_q7s76"]
 [ext_resource type="PackedScene" uid="uid://be8pcl6n30lrl" path="res://src/CipheredSignal/SignalInput.tscn" id="2_hbc2p"]
 
 [node name="CommandPanel" type="Control" unique_id=1884603933]
