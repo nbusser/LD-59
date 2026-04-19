@@ -9,7 +9,7 @@ var level_state: LevelState
 
 @onready var hud: HUD = $UI/HUD
 @onready var timer: Timer = $Timer
-@onready var monitor: Monitor = $Monitor
+@onready var command_panel: CommandPanel = $UI/CommandPanel
 
 @onready var ciphered_text: CipheredText = $CipheredSignals/CipheredText
 @onready var ciphered_image: CipheredImage = $CipheredSignals/CipheredImage
@@ -23,6 +23,8 @@ func _ready():
 
 	hud.init(level_state)
 	timer.start(level_state.level_data.timer_duration)
+
+	command_panel.init(level_state)
 
 	deciphering_started_stopped.emit(false)
 

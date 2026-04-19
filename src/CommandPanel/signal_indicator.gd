@@ -1,3 +1,4 @@
+class_name SignalIndicator
 extends Control
 
 @export var is_searching: bool = false
@@ -35,3 +36,8 @@ func _process(_delta: float) -> void:
 		)
 		progress_bar.value = clampi(value + jitter, 0, max_value)
 		progress_bar_mask.value = 0
+
+
+func set_value_f(value_f: float) -> int:
+	value = int(value_f * progress_bar.max_value)
+	return value

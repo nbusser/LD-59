@@ -58,5 +58,9 @@ func is_value_correct() -> bool:
 	)
 
 
+func get_quality() -> float:
+	return Utils.map_triangle(amount, correct_value)
+
+
 func _process(_delta: float) -> void:
 	ok_label.visible = is_value_correct()
