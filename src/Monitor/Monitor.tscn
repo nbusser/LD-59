@@ -80,6 +80,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Placeholder"
 
+[node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=1033305472]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="RenderedAudio" type="Control" parent="SubViewport/Signal" unique_id=157771078]
 anchors_preset = 0
 script = ExtResource("4_1sxi0")

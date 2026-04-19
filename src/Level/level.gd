@@ -31,8 +31,9 @@ func init(level_data_p: LevelData):
 
 
 func _load_next_cipher():
-	if level_state.next_cipher_index >= level_state.level_data.ciphers.size():
+	if level_state.next_cipher_index == level_state.level_data.ciphers.size():
 		Globals.end_scene(Globals.EndSceneStatus.LEVEL_END, {"new_nb_coins": 0})
+		return
 
 	level_state.current_cipher = level_state.level_data.ciphers[level_state.next_cipher_index]
 	level_state.next_cipher_index += 1
