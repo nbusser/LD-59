@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bcm8d6bnledk6"]
+
+[ext_resource type="Script" uid="uid://blhjbokaf40mt" path="res://src/CommandPanel/disco_buttons.gd" id="1_825q7"]
+
+[node name="DiscoButtons" type="Control" unique_id=163675673]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_825q7")
+
+[node name="PositiveButton" type="Button" parent="." unique_id=1118855579]
+layout_mode = 1
+offset_left = 91.0
+offset_right = 141.0
+offset_bottom = 31.0
+text = "Disco"
+
+[node name="NegativeButton" type="Button" parent="." unique_id=2135015560]
+layout_mode = 1
+offset_right = 81.0
+offset_bottom = 31.0
+text = "Pas Disco"
+
+[connection signal="pressed" from="PositiveButton" to="." method="_on_positive_button_pressed"]
+[connection signal="pressed" from="NegativeButton" to="." method="_on_negative_button_pressed"]

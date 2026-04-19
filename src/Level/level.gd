@@ -34,20 +34,27 @@ func _load_next_cipher():
 	if level_state.next_cipher_index >= level_state.level_data.ciphers.size():
 		Globals.end_scene(Globals.EndSceneStatus.LEVEL_END, {"new_nb_coins": 0})
 
-	var cipher_data = level_state.level_data.ciphers[level_state.next_cipher_index]
+	level_state.current_cipher = level_state.level_data.ciphers[level_state.next_cipher_index]
 	level_state.next_cipher_index += 1
 
-	match cipher_data.cipher_type:
+	match level_state.current_cipher.cipher_type:
 		CipherData.CipherType.TEXT:
-			ciphered_text.source = cipher_data.text_content
+			ciphered_text.source = level_state.current_cipher.text_content
 		CipherData.CipherType.IMAGE:
-			ciphered_image.source = cipher_data.image_texture
+			ciphered_image.source = level_state.current_cipher.image_texture
 		CipherData.CipherType.AUDIO:
-			ciphered_audio.source = cipher_data.audio_stream
+			ciphered_audio.source = level_state.current_cipher.audio_stream
 
-	emit_signal("new_cipher_loaded", cipher_data)
+	emit_signal("new_cipher_loaded", level_state.current_cipher)
 
 
 func _on_Timer_timeout():
 	await $UI/Fadeout.fade()
 	Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)
+
+
+func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
+	if level_state.current_cipher.is_disco != is_disco:
+		Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)
+	else:
+		_load_next_cipher()

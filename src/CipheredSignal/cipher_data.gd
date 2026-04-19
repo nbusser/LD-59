@@ -21,6 +21,8 @@ enum CipherType {
 @export var image_texture: Texture2D = null
 @export var audio_stream: AudioStream = null
 
+@export var is_disco: bool = false
+
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "text_content":

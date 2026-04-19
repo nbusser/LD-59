@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cusfjc6jcovp4" path="res://src/CommandPanel/CommandPanel.tscn" id="4_grxid"]
 [ext_resource type="PackedScene" uid="uid://bvbxvt0sijetw" path="res://src/Monitor/Monitor.tscn" id="5_grxid"]
 [ext_resource type="Script" uid="uid://bc1ao2wkul7g3" path="res://src/CipheredSignal/ciphered_image.gd" id="5_iw8kk"]
+[ext_resource type="PackedScene" uid="uid://bcm8d6bnledk6" path="res://src/CommandPanel/DiscoButtons.tscn" id="6_iw8kk"]
 [ext_resource type="Script" uid="uid://cvqx4flccg1oq" path="res://src/CipheredSignal/ciphered_audio.gd" id="6_rrnxv"]
 
 [node name="Level" type="Node" unique_id=2122492324]
@@ -46,6 +47,12 @@ duration = 0.7
 mouse_filter = 2
 duration = 0.7
 
+[node name="DiscoButtons" parent="UI" unique_id=163675673 instance=ExtResource("6_iw8kk")]
+offset_left = 529.0
+offset_top = 543.0
+offset_right = 529.0
+offset_bottom = 543.0
+
 [node name="Timer" type="Timer" parent="." unique_id=299543541]
 wait_time = 10.0
 one_shot = true
@@ -66,6 +73,7 @@ script = ExtResource("6_rrnxv")
 speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 
 [connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
+[connection signal="disco_button_pressed" from="UI/DiscoButtons" to="." method="_on_disco_buttons_disco_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="UI/CommandPanel"]
