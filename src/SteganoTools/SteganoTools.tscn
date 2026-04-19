@@ -7,6 +7,8 @@ colors = PackedColorArray(0.8666667, 0, 0, 1, 1, 0.7254902, 0.3372549, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4q2fo"]
 gradient = SubResource("Gradient_niwiv")
+width = 84
+height = 84
 
 [sub_resource type="Gradient" id="Gradient_4q2fo"]
 offsets = PackedFloat32Array(0.011940299, 1)
@@ -14,6 +16,8 @@ colors = PackedColorArray(0.31764707, 0.41960785, 1, 1, 0.16078432, 0.47843137, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n0i3x"]
 gradient = SubResource("Gradient_4q2fo")
+width = 84
+height = 84
 
 [node name="SteganoTools" type="Control" unique_id=1033651520]
 layout_mode = 3
