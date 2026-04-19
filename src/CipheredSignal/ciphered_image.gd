@@ -4,7 +4,8 @@ extends CipheredSignal
 var source: Texture2D:
 	set(new_source):
 		source = new_source
-		_render()
+		if source != null:
+			_render()
 var _transformed_image: Texture2D
 
 

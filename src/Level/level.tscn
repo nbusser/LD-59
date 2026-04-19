@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bc1ao2wkul7g3" path="res://src/CipheredSignal/ciphered_image.gd" id="5_iw8kk"]
 [ext_resource type="PackedScene" uid="uid://bcm8d6bnledk6" path="res://src/CommandPanel/DiscoButtons.tscn" id="6_iw8kk"]
 [ext_resource type="Script" uid="uid://cvqx4flccg1oq" path="res://src/CipheredSignal/ciphered_audio.gd" id="6_rrnxv"]
+[ext_resource type="AudioStream" uid="uid://kqeyple4wpuc" path="res://assets/sounds/noise.ogg" id="10_rrnxv"]
 
 [node name="Level" type="Node" unique_id=2122492324]
 script = ExtResource("1")
@@ -37,6 +38,13 @@ ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
 ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
+
+[node name="NoiseSignalInput" parent="UI/CommandPanel/AudioInputs" parent_id_path=PackedInt32Array(1884603933, 2069117480) index="1" unique_id=1803397393]
+offset_left = 329.0
+offset_top = 15.0
+offset_right = 329.0
+offset_bottom = -549.2419
+rotation = -1.8677347e-05
 
 [node name="DiscoButtons" parent="UI" unique_id=163675673 instance=ExtResource("6_iw8kk")]
 offset_left = 529.0
@@ -68,9 +76,18 @@ space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSig
 [node name="CipheredImage" type="Node" parent="CipheredSignals" unique_id=1989305894]
 script = ExtResource("5_iw8kk")
 
-[node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585 node_paths=PackedStringArray("speed_input")]
+[node name="CipheredAudio" type="Node" parent="CipheredSignals" unique_id=346535585 node_paths=PackedStringArray("speed_input", "noise_input")]
 script = ExtResource("6_rrnxv")
 speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
+noise_input = NodePath("../../UI/CommandPanel/AudioInputs/NoiseSignalInput")
+
+[node name="CipherPlayer" type="AudioStreamPlayer" parent="CipheredSignals/CipheredAudio" unique_id=895498588]
+bus = &"Cipher"
+
+[node name="NoisePlayer" type="AudioStreamPlayer" parent="CipheredSignals/CipheredAudio" unique_id=1032776634]
+stream = ExtResource("10_rrnxv")
+bus = &"Cipher"
+parameters/looping = false
 
 [connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
 [connection signal="disco_button_pressed" from="UI/DiscoButtons" to="." method="_on_disco_buttons_disco_button_pressed"]

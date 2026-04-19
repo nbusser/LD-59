@@ -41,9 +41,15 @@ func _load_next_cipher():
 	match level_state.current_cipher.cipher_type:
 		CipherData.CipherType.TEXT:
 			ciphered_text.source = level_state.current_cipher.text_content
+			ciphered_image.source = null
+			ciphered_audio.source = null
 		CipherData.CipherType.IMAGE:
+			ciphered_text.source = ""
 			ciphered_image.source = level_state.current_cipher.image_texture
+			ciphered_audio.source = null
 		CipherData.CipherType.AUDIO:
+			ciphered_text.source = ""
+			ciphered_image.source = null
 			ciphered_audio.source = level_state.current_cipher.audio_stream
 
 	emit_signal("new_cipher_loaded", level_state.current_cipher)

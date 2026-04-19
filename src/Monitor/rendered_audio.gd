@@ -14,7 +14,7 @@ const SAMPLE_COUNT = 100
 var _spectrum_points = PackedVector2Array()
 
 @onready var _spectrum: AudioEffectSpectrumAnalyzerInstance = AudioServer.get_bus_effect_instance(
-	AudioServer.get_bus_index("CipheredSignal"), 0
+	AudioServer.get_bus_index("Cipher"), 0
 )
 
 
