@@ -39,6 +39,7 @@ void fragment() {
     vec2 p = resolution * shuffle_rows_strength * 2.0;
 
     vec2 coords = UV;
+    vec2 og_coords = coords;
 
     coords.y += TIME * deadzone(v_desync_strength * v_desync_factor, .25, v_desync_factor);
     coords.y = mod(coords.y, 1.0);
@@ -62,10 +63,10 @@ void fragment() {
         else if (rand < .8) {    col = col.brg; }
         else {    col = col.bgr; }
     }
-	
+
 	if (enable_filter) {
-		bool is_in_green_filter = is_in_filter(coords, filter_green_position, filter_green_size);
-		bool is_in_red_filter = is_in_filter(coords, filter_red_position, filter_red_size);
+		bool is_in_green_filter = is_in_filter(og_coords, filter_green_position, filter_green_size);
+		bool is_in_red_filter = is_in_filter(og_coords, filter_red_position, filter_red_size);
 		if (is_in_green_filter && is_in_red_filter) {
 			col = vec3(0.0, 0.0, 0.0);
 		} else if (is_in_green_filter) {
@@ -74,6 +75,6 @@ void fragment() {
 			col = texture(stegano_texture_sampler_red, coords).rgb;
 		}
 	}
-	
+
     COLOR = vec4(col, 1.);
 }
