@@ -9,59 +9,62 @@
 [ext_resource type="PackedScene" uid="uid://im4hyd35kt80" path="res://src/CipheredSignal/CipheredSignals.tscn" id="7_gp2up"]
 [ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
-[ext_resource type="AudioStream" uid="uid://cwsq4cltasc64" path="res://assets/sounds/k7.ogg" id="10_4bydg"]
-[ext_resource type="Texture2D" uid="uid://bepww1kht85if" path="res://assets/sprites/k7.png" id="10_rrnxv"]
+[ext_resource type="AudioStream" uid="uid://dtmn07mdwbxpv" path="res://assets/sounds/freesound_community-radio-noise-11-59824.mp3" id="10_rrnxv"]
 
 [sub_resource type="Animation" id="Animation_mqshx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/K7:offset")
+tracks/0/path = NodePath("UI/CommandPanel/SignalIndicator:is_searching")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_djut7"]
 resource_name = "insert_k7"
 length = 1.5
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/K7:offset")
+tracks/0/path = NodePath("Audio/SearchingSignal")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -150)]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio/K7")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "clips": [{
-"end_offset": 0.0,
+"end_offset": 143.53247,
 "start_offset": 0.0,
-"stream": ExtResource("10_4bydg")
+"stream": ExtResource("10_rrnxv")
 }],
 "times": PackedFloat32Array(0)
 }
-tracks/1/use_blend = true
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/CommandPanel/SignalIndicator:is_searching")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rrnxv"]
+resource_name = "signal_found"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v3q8p"]
 _data = {
 &"RESET": SubResource("Animation_mqshx"),
-&"insert_k7": SubResource("Animation_djut7")
+&"searching_signal": SubResource("Animation_djut7"),
+&"signal_found": SubResource("Animation_rrnxv")
 }
 
 [node name="Level" type="Node" unique_id=2122492324]
@@ -162,15 +165,11 @@ volume_db = 4.0
 stream = ExtResource("9_iw8kk")
 volume_db = 4.0
 
-[node name="K7" type="AudioStreamPlayer" parent="Audio" unique_id=289986880]
-volume_db = 10.0
+[node name="SearchingSignal" type="AudioStreamPlayer" parent="Audio" unique_id=289986880]
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=748152437]
 libraries/ = SubResource("AnimationLibrary_v3q8p")
-
-[node name="K7" type="Sprite2D" parent="AnimationPlayer" unique_id=2081540627]
-position = Vector2(960, 848)
-texture = ExtResource("10_rrnxv")
 
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel" method="_on_level_deciphering_started_stopped"]

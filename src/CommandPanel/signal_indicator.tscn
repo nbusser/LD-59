@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cp6u0cjad5i7h"]
+
+[ext_resource type="Texture2D" uid="uid://pyvphvy80ii6" path="res://assets/ui/progress_bar_empty.png" id="1_4j4v8"]
+[ext_resource type="Script" uid="uid://c4gibk1j0loqm" path="res://src/CommandPanel/signal_indicator.gd" id="1_vtf60"]
+[ext_resource type="Texture2D" uid="uid://dxsis3jopdhj0" path="res://assets/ui/progress_bar_filled.png" id="2_dismj"]
+
+[node name="Control" type="Control" unique_id=1357495915]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 448.0
+offset_bottom = 64.0
+script = ExtResource("1_vtf60")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1723310328]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 16.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_4j4v8")
+texture_progress = ExtResource("2_dismj")
+
+[node name="ProgressBarMask" type="TextureProgressBar" parent="." unique_id=1782948066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 16.0
+value = 3.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_4j4v8")
