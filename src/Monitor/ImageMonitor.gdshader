@@ -43,5 +43,6 @@ void fragment() {
 	vec4 final_color = vec4(0.0);
 	final_color.rgb = vec3(0.0);
 
-     COLOR.rgb = convolve(uv, convol);
+     // COLOR.rgb = convolve(uv, convol);
+     COLOR.rgb = convolve(uv, 0.0);
 }

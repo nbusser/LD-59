@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cusfjc6jcovp4"]
 
-[ext_resource type="Script" uid="uid://c7aicl5vp6bbu" path="res://src/CommandPanel/command_panel.gd" id="1_q7s76"]
+[ext_resource type="Script" path="res://src/CommandPanel/command_panel.gd" id="1_q7s76"]
 [ext_resource type="PackedScene" uid="uid://be8pcl6n30lrl" path="res://src/CipheredSignal/SignalInput.tscn" id="2_hbc2p"]
 
 [node name="CommandPanel" type="Control" unique_id=1884603933]
@@ -34,11 +34,17 @@ offset_bottom = -553.0
 
 [node name="ImageInputs" type="Node" parent="." unique_id=1566043442]
 
-[node name="BlurSignalInput" parent="ImageInputs" unique_id=2027053063 instance=ExtResource("2_hbc2p")]
-offset_left = 206.0
-offset_top = 17.0
-offset_right = 206.0
-offset_bottom = -547.0
+[node name="VsyncSignalInput" parent="ImageInputs" unique_id=1443587128 instance=ExtResource("2_hbc2p")]
+offset_left = 216.0
+offset_top = 18.0
+offset_right = 216.0
+offset_bottom = -546.0
+
+[node name="ShuffleRowsSignalInput" parent="ImageInputs" unique_id=2027053063 instance=ExtResource("2_hbc2p")]
+offset_left = 190.0
+offset_top = 18.0
+offset_right = 190.0
+offset_bottom = -546.0
 
 [node name="AudioInputs" type="Node" parent="." unique_id=2069117480]
 

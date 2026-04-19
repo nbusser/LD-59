@@ -14,7 +14,8 @@ shader_parameter/convol = -0.01899995340250004
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jalq"]
 shader = ExtResource("4_061ay")
-shader_parameter/blur_strength = 0.5
+shader_parameter/shuffle_rows_strength = 0.5
+shader_parameter/v_desync_strength = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_061ay"]
 font_size = 64

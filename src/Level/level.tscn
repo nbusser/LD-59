@@ -125,6 +125,10 @@ rot_input = NodePath("../../UI/CommandPanel/TextInputs/RotSignalInput")
 word_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/WordShuffleSignalInput")
 space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSignalInput")
 
+[node name="CipheredImage" parent="CipheredSignals" index="1" unique_id=2002877011 node_paths=PackedStringArray("shuffle_rows_input", "v_desync_input")]
+shuffle_rows_input = NodePath("../../UI/CommandPanel/ImageInputs/ShuffleRowsSignalInput")
+v_desync_input = NodePath("../../UI/CommandPanel/ImageInputs/VsyncSignalInput")
+
 [node name="CipheredAudio" parent="CipheredSignals" index="2" unique_id=1586566932 node_paths=PackedStringArray("speed_input", "noise_input")]
 speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 noise_input = NodePath("../../UI/CommandPanel/AudioInputs/NoiseSignalInput")
