@@ -2,6 +2,8 @@ class_name CommandPanel extends Control
 
 signal cipher_type_selected(cipher_type: CipherData.CipherType)
 
+const MAX_QUALITY_WHEN_INCORRECT = 0.9
+
 var level_state: LevelState
 var _smoothed_signal_quality: float = 0.0
 var _current_cipher_type: CipherData.CipherType:
@@ -92,9 +94,26 @@ func get_signal_quality() -> float:
 	if _current_cipher_type != level_state.current_cipher.cipher_type:
 		return 0.0
 
-	return _get_active_inputs().reduce(
-		func(quality: float, input: SignalInput): return quality * input.get_quality(), 1.0
+	var quality = sqrt(
+		clampf(
+			lerp(
+				0.1,
+				1.2,
+				_get_active_inputs().reduce(
+					func(acc: float, input: SignalInput): return acc * input.get_quality(), 1.0
+				)
+			),
+			0.0,
+			1.0
+		)
 	)
+
+	if _get_active_inputs().any(func(input: SignalInput): return !input.is_value_correct()):
+		if quality > MAX_QUALITY_WHEN_INCORRECT:
+			return MAX_QUALITY_WHEN_INCORRECT
+		return quality
+
+	return 1.0
 
 
 func _process(delta: float) -> void:
