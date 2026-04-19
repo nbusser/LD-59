@@ -39,7 +39,7 @@ func _on_level_phase_changed(phase: LevelState.Phase) -> void:
 
 
 func _process(_delta: float):
-	if _is_stegano_image():
+	if not _is_stegano_image():
 		return
 
 	_rendered_image.material.set_shader_parameter(
