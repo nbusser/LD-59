@@ -92,6 +92,15 @@ _ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
 
+[node name="RotSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="0" unique_id=1402289427]
+correct_value_threshold = 0.1
+
+[node name="WordShuffleSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="1" unique_id=1555452025]
+correct_value_threshold = 0.1
+
+[node name="SpaceShuffleSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="2" unique_id=310417279]
+correct_value_threshold = 0.1
+
 [node name="NoiseSignalInput" parent="UI/CommandPanel/AudioInputs" parent_id_path=PackedInt32Array(1884603933, 2069117480) index="1" unique_id=1803397393]
 offset_left = 329.0
 offset_top = 15.0

@@ -52,48 +52,60 @@ func _reset() -> void:
 
 	# "Zero values" means that the text is unfiltered.
 	# We want to ensure to have strictly 10% of slider value as zero values.
-	const ZERO_VALUE_TARGET_COUNT: int = int(SignalInput.N_VALUES / 10.0)
+	const ZERO_VALUE_TARGET_COUNT: int = int(SignalInput.N_VALUES * 0.1)
 
 	# Regenerate the rot possibilities
 	_rot_frequencies.clear()
-	# Fill zero values
-	for i in range(ZERO_VALUE_TARGET_COUNT):
-		_rot_frequencies.append(0)
-	for i in range(SignalInput.N_VALUES):
-		var frequency = clamp(prng.randfn(0.35, 0.2), SignalInput.STEP, 1.0)
+	# Fill values
+	for i in range(SignalInput.N_VALUES - ZERO_VALUE_TARGET_COUNT):
+		var frequency = clamp(prng.randfn(0.5, 0.3), SignalInput.STEP, 1.0)
 		_rot_frequencies.append(frequency)
 	Utils.shuffle_with_prng(_rot_frequencies, prng)
+	# Fill zero values
+	var rot_zero_position = randi_range(0, SignalInput.N_VALUES - ZERO_VALUE_TARGET_COUNT)
+	for i in range(ZERO_VALUE_TARGET_COUNT):
+		_rot_frequencies.insert(rot_zero_position, 0)
 
 	# Regenerate the splits possibilities
 	_word_shuffle_n_splits.clear()
 	var source_n_words: int = source.split(" ").size()
 	var max_splits: int = int(log(source_n_words) / log(2))
-
-	# Fill zero values
-	for i in range(ZERO_VALUE_TARGET_COUNT):
-		_word_shuffle_n_splits.append(0)
-	while _word_shuffle_n_splits.size() < SignalInput.N_VALUES:
+	# Fill values
+	while _word_shuffle_n_splits.size() < SignalInput.N_VALUES - ZERO_VALUE_TARGET_COUNT:
 		# All the zero values are pre-filled
 		var min_split = 1
 		var i_split = prng.randi_range(min_split, max_splits)
 		_word_shuffle_n_splits.append(i_split)
-
-	# Shuffle the splits because of the pre inserted zeroes
 	Utils.shuffle_with_prng(_word_shuffle_n_splits, prng)
+	# Fill zero values
+	var word_shuffle_zero_position = randi_range(0, SignalInput.N_VALUES - ZERO_VALUE_TARGET_COUNT)
+	for i in range(ZERO_VALUE_TARGET_COUNT):
+		_word_shuffle_n_splits.insert(word_shuffle_zero_position, 0)
 
 	# Regenerate the space shuffle possibilities
 	_space_shuffle_frequencies.clear()
-
-	# Fill zero values
+	# Fill values
 	for i in range(ZERO_VALUE_TARGET_COUNT):
 		_space_shuffle_frequencies.append(0)
-	while _space_shuffle_frequencies.size() < SignalInput.N_VALUES:
+	while _space_shuffle_frequencies.size() < SignalInput.N_VALUES - ZERO_VALUE_TARGET_COUNT:
 		# All the zero values are pre-filled
 		var frequency = prng.randf_range(0 + SignalInput.STEP, 1.0)
 		_space_shuffle_frequencies.append(frequency)
-
-	# Shuffle the splits because of the pre inserted zeroes
 	Utils.shuffle_with_prng(_space_shuffle_frequencies, prng)
+	# Fill zero values
+	var space_shuffle_zero_position = randi_range(0, SignalInput.N_VALUES - ZERO_VALUE_TARGET_COUNT)
+	for i in range(ZERO_VALUE_TARGET_COUNT):
+		_space_shuffle_frequencies.insert(space_shuffle_zero_position, 0)
+
+	rot_input.correct_value = (
+		(rot_zero_position + ZERO_VALUE_TARGET_COUNT / 2.0) / _rot_frequencies.size()
+	)
+	word_shuffle_input.correct_value = (
+		(word_shuffle_zero_position + ZERO_VALUE_TARGET_COUNT / 2.0) / _word_shuffle_n_splits.size()
+	)
+	space_shuffle_input.correct_value = (
+		(space_shuffle_zero_position + ZERO_VALUE_TARGET_COUNT / 2.0) / _rot_frequencies.size()
+	)
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -162,14 +174,22 @@ func _rot_n(text: String, slider_index: int) -> String:
 		return text
 
 	# Segmenting the text
-	var max_segments = max(1, int(log(words.size()) / log(2)))
+	var max_segments = max(2, int(log(words.size()) / log(2)))
 	var n_segments = prng.randi_range(1, max_segments)
 
 	var segments = _segment_text(text, n_segments, prng)
 
 	# Apply ROT13 on certain segments according to the frequency
+	var has_rotted = false
 	for i in range(segments.size()):
 		if prng.randf() < frequency:
+			segments[i] = _apply_rot13(segments[i])
+			has_rotted = true
+
+	if !has_rotted:
+		# force at least 3 word rots
+		for _a in range(3):
+			var i = prng.randi_range(0, segments.size() - 1)
 			segments[i] = _apply_rot13(segments[i])
 
 	return " ".join(segments)

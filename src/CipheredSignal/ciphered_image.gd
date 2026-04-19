@@ -17,6 +17,7 @@ var source: Texture2D:
 			new_source = _get_fake_source()
 
 		source = new_source
+		_reset()
 		_render()
 
 var _transformed_image: Dictionary = {
@@ -39,6 +40,11 @@ const _SHUFFLE_ROWS_SCALE_LOWER_BOUND = 0.0
 const _SHUFFLE_ROWS_SCALE_UPPER_BOUND = 1.0
 
 var _shuffle_rows_offset: float
+
+
+func _reset() -> void:
+	var prng = RandomNumberGenerator.new()
+	prng.seed = source.resource_path.hash()
 
 
 func _shuffle_rows_input_changed(_value: float) -> void:

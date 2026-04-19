@@ -41,13 +41,15 @@ func _reset() -> void:
 	var prng = RandomNumberGenerator.new()
 	prng.seed = source.resource_path.hash()
 
-	# Reset random pitch scale
+	# Reset random pitch scale. 1.0 (correct pitch scale) is always within bounds
 	_pitch_scale_lower_bound = prng.randf_range(PITCH_SCALE_ABSOLUTE_LOWER_BOUND, 1.0)
 	_pitch_scale_upper_bound = prng.randf_range(
 		max(1.0, _pitch_scale_lower_bound + PITCH_SCALE_MIN_AMPLITUDE),
 		PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 	)
-	_speed_offset = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE * 2)
+	speed_input.correct_value = inverse_lerp(
+		_pitch_scale_lower_bound, _pitch_scale_upper_bound, 1.0
+	)
 
 	# Reset random noise scale
 	_noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
@@ -55,7 +57,7 @@ func _reset() -> void:
 		max(0.0, _noise_scale_lower_bound + NOISE_SCALE_MIN_AMPLITUDE),
 		NOISE_SCALE_ABSOLUTE_UPPER_BOUND
 	)
-	_noise_offset = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE * 2)
+	noise_input.correct_value = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE)
 
 	if source is AudioStreamMP3:
 		source.loop = true
@@ -80,14 +82,11 @@ const PITCH_SCALE_MIN_AMPLITUDE = 1.0
 
 var _pitch_scale_lower_bound = PITCH_SCALE_ABSOLUTE_LOWER_BOUND
 var _pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
-var _speed_offset: float
 
 
 func _speed_input_changed(value: float) -> void:
 	_cipher_player.pitch_scale = lerp(
-		_pitch_scale_upper_bound,
-		_pitch_scale_lower_bound,
-		Utils.wrap_triangle(value, _speed_offset)
+		_pitch_scale_upper_bound, _pitch_scale_lower_bound, 1.0 - value
 	)
 
 
@@ -102,14 +101,13 @@ const NOISE_SCALE_MIN_AMPLITUDE = 0.6
 
 var _noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
 var _noise_scale_upper_bound = NOISE_SCALE_ABSOLUTE_UPPER_BOUND
-var _noise_offset: float
 
 
 func _noise_input_changed(value: float) -> void:
 	_noise_player.volume_linear = lerp(
 		_noise_scale_lower_bound,
 		_noise_scale_upper_bound,
-		1.0 - Utils.wrap_triangle(value, _noise_offset)
+		1.0 - Utils.map_triangle(value, noise_input.correct_value)
 	)
 
 

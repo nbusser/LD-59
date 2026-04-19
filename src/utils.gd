@@ -16,3 +16,13 @@ func wrap_triangle(value: float, offset: float) -> float:
 	if shifted <= SignalInput.MAX_VALUE:
 		return shifted
 	return (SignalInput.MAX_VALUE * 2) - shifted
+
+
+# map 0 -> 1 to 0 -> 1 -> 0, 1 being at the offset.
+# f(0) = 0
+# f(offset) = 1
+# f(1) = 0
+func map_triangle(x: float, offset: float) -> float:
+	if x <= offset:
+		return x / offset
+	return 1 - (x - offset) / (1 - offset)

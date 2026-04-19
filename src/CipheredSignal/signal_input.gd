@@ -8,6 +8,10 @@ const MAX_VALUE: float = 1.0
 const STEP: float = 0.01
 const N_VALUES: int = int((MAX_VALUE - MIN_VALUE) / STEP) + 1
 
+@export var correct_value_threshold: float = 0.05
+
+var correct_value = lerp(MIN_VALUE, MAX_VALUE, 0.5)
+
 # 0.0 -> 1.0
 var amount: float = 0.5:
 	get():
@@ -16,6 +20,7 @@ var amount: float = 0.5:
 		amount = new_amount
 		emit_signal("signal_input_changed", amount)
 
+@onready var ok_label = $OkLabel
 @onready var _slider = $VSlider
 
 
@@ -44,3 +49,14 @@ func set_enable(enabled: bool) -> void:
 
 func trigger_update() -> void:
 	emit_signal("signal_input_changed", amount)
+
+
+func is_value_correct() -> bool:
+	return (
+		absf(correct_value - inverse_lerp(MIN_VALUE, MAX_VALUE, amount))
+		< correct_value_threshold / 2.0
+	)
+
+
+func _process(_delta: float) -> void:
+	ok_label.visible = is_value_correct()
