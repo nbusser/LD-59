@@ -60,8 +60,7 @@ func _wrap_triangle(value: float, offset: float) -> float:
 	var shifted: float = fmod(value + offset, SignalInput.MAX_VALUE * 2)
 	if shifted <= SignalInput.MAX_VALUE:
 		return shifted
-	else:
-		return (SignalInput.MAX_VALUE * 2) - shifted
+	return (SignalInput.MAX_VALUE * 2) - shifted
 
 
 # MARK: Pitch
