@@ -32,6 +32,12 @@ shader_parameter/roll_strength = 0.15
 shader_parameter/glow_strength = 0.25
 shader_parameter/glow_threshold = 0.65
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_061ay"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jalq"]
 shader = ExtResource("4_061ay")
 shader_parameter/resolution = Vector2(256, 256)
@@ -72,6 +78,7 @@ color = Color(0.18538326, 0.18538326, 0.18538326, 1)
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1351264772]
 
 [node name="Signal" type="Control" parent="SubViewport" unique_id=51256789]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +86,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RenderedText" type="Label" parent="SubViewport/Signal" unique_id=1597906908]
+[node name="RenderedText" type="RichTextLabel" parent="SubViewport/Signal" unique_id=1318926652]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,10 +95,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_lpyn7")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_061ay")
+bbcode_enabled = true
 text = "Placeholder"
-autowrap_mode = 1
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=1033305472]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_2jalq")
 layout_mode = 1
 anchors_preset = 15
@@ -101,6 +115,7 @@ grow_vertical = 2
 texture = ExtResource("5_061ay")
 
 [node name="RenderedAudio" type="Control" parent="SubViewport/Signal" unique_id=157771078]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,6 +127,7 @@ grow_vertical = 2
 script = ExtResource("4_1sxi0")
 
 [node name="NoSignal" type="Label" parent="SubViewport" unique_id=886678415]
+unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("4_lpyn7")

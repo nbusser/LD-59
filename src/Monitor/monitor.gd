@@ -11,14 +11,14 @@ var _current_selection: CipherData.CipherType = CipherData.CipherType.TEXT:
 		_current_selection = value
 		_display_cipher()
 
-@onready var _rendered_text = $SubViewport/Signal/RenderedText
-@onready var _rendered_image = $SubViewport/Signal/RenderedImage
-@onready var _rendered_audio = $SubViewport/Signal/RenderedAudio
+@onready var _rendered_text = %RenderedText
+@onready var _rendered_image = %RenderedImage
+@onready var _rendered_audio = %RenderedAudio
 
 @onready var _display = $Display
 
-@onready var _signal = $SubViewport/Signal
-@onready var _no_signal = $SubViewport/NoSignal
+@onready var _signal = %Signal
+@onready var _no_signal = %NoSignal
 
 
 func enable_display():
