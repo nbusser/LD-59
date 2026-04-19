@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://im4hyd35kt80"]
+
+[ext_resource type="Script" uid="uid://bhij2me44kycw" path="res://src/CipheredSignal/ciphered_text.gd" id="1_pg3d1"]
+[ext_resource type="Script" uid="uid://bc1ao2wkul7g3" path="res://src/CipheredSignal/ciphered_image.gd" id="2_opokx"]
+[ext_resource type="Script" uid="uid://cvqx4flccg1oq" path="res://src/CipheredSignal/ciphered_audio.gd" id="3_5bxfp"]
+[ext_resource type="AudioStream" uid="uid://kqeyple4wpuc" path="res://assets/sounds/noise.ogg" id="4_6vw3b"]
+
+[node name="CipheredSignals" type="Node" unique_id=1937326861]
+
+[node name="CipheredText" type="Node" parent="." unique_id=2097007222]
+script = ExtResource("1_pg3d1")
+
+[node name="CipheredImage" type="Node" parent="." unique_id=2002877011]
+script = ExtResource("2_opokx")
+
+[node name="CipheredAudio" type="Node" parent="." unique_id=1586566932]
+script = ExtResource("3_5bxfp")
+
+[node name="CipherPlayer" type="AudioStreamPlayer" parent="CipheredAudio" unique_id=529585398]
+bus = &"Cipher"
+
+[node name="NoisePlayer" type="AudioStreamPlayer" parent="CipheredAudio" unique_id=1982884526]
+stream = ExtResource("4_6vw3b")
+bus = &"Cipher"
+parameters/looping = true
