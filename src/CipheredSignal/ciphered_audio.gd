@@ -50,7 +50,7 @@ func _reset() -> void:
 	_speed_offset = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE * 2)
 
 	# Reset random noise scale
-	_noise_scale_lower_bound = prng.randf_range(NOISE_SCALE_ABSOLUTE_LOWER_BOUND, 0.0)
+	_noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
 	_noise_scale_upper_bound = prng.randf_range(
 		max(0.0, _noise_scale_lower_bound + NOISE_SCALE_MIN_AMPLITUDE),
 		NOISE_SCALE_ABSOLUTE_UPPER_BOUND
@@ -96,9 +96,9 @@ func _speed_input_changed(value: float) -> void:
 
 @export var noise_input: SignalInput
 
-const NOISE_SCALE_ABSOLUTE_LOWER_BOUND = -25.0
-const NOISE_SCALE_ABSOLUTE_UPPER_BOUND = 10.0
-const NOISE_SCALE_MIN_AMPLITUDE = 8.0
+const NOISE_SCALE_ABSOLUTE_LOWER_BOUND = 0.0
+const NOISE_SCALE_ABSOLUTE_UPPER_BOUND = 0.8
+const NOISE_SCALE_MIN_AMPLITUDE = 0.6
 
 var _noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
 var _noise_scale_upper_bound = NOISE_SCALE_ABSOLUTE_UPPER_BOUND
@@ -106,10 +106,10 @@ var _noise_offset: float
 
 
 func _noise_input_changed(value: float) -> void:
-	_noise_player.volume_db = lerp(
+	_noise_player.volume_linear = lerp(
 		_noise_scale_lower_bound,
 		_noise_scale_upper_bound,
-		Utils.wrap_triangle(value, _noise_offset)
+		1.0 - Utils.wrap_triangle(value, _noise_offset)
 	)
 
 
