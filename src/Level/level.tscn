@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bvbxvt0sijetw" path="res://src/Monitor/Monitor.tscn" id="5_grxid"]
 [ext_resource type="PackedScene" uid="uid://bcm8d6bnledk6" path="res://src/CommandPanel/DiscoButtons.tscn" id="6_iw8kk"]
 [ext_resource type="PackedScene" uid="uid://im4hyd35kt80" path="res://src/CipheredSignal/CipheredSignals.tscn" id="7_gp2up"]
+[ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
+[ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
 
 [node name="Level" type="Node" unique_id=2122492324]
 script = ExtResource("1")
@@ -72,6 +74,16 @@ space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSig
 [node name="CipheredAudio" parent="CipheredSignals" index="2" unique_id=1586566932 node_paths=PackedStringArray("speed_input", "noise_input")]
 speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 noise_input = NodePath("../../UI/CommandPanel/AudioInputs/NoiseSignalInput")
+
+[node name="Audio" type="Node" parent="." unique_id=823239827]
+
+[node name="Success" type="AudioStreamPlayer" parent="Audio" unique_id=1767482725]
+stream = ExtResource("8_iw8kk")
+volume_db = 4.0
+
+[node name="Failure" type="AudioStreamPlayer" parent="Audio" unique_id=67732024]
+stream = ExtResource("9_iw8kk")
+volume_db = 4.0
 
 [connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/Monitor" method="_on_command_panel_cipher_type_selected"]

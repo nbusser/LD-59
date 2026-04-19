@@ -62,6 +62,10 @@ func _on_Timer_timeout():
 
 func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
 	if level_state.current_cipher.is_disco != is_disco:
+		$Audio/Failure.play()
+		await $Audio/Failure.finished
 		Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)
 	else:
+		$Audio/Success.play()
+		await $Audio/Success.finished
 		_load_next_cipher()
