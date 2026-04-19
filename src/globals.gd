@@ -27,6 +27,8 @@ enum EndSceneStatus {
 
 const SAMPLE_GLOBAL_VARIABLE: int = 1
 
+var current_level: Level
+
 
 func end_scene(status: EndSceneStatus, params: Dictionary = {}) -> void:
 	scene_ended.emit(status, params)

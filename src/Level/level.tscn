@@ -87,7 +87,7 @@ bus = &"Cipher"
 [node name="NoisePlayer" type="AudioStreamPlayer" parent="CipheredSignals/CipheredAudio" unique_id=1032776634]
 stream = ExtResource("10_rrnxv")
 bus = &"Cipher"
-parameters/looping = false
+parameters/looping = true
 
 [connection signal="new_cipher_loaded" from="." to="UI/Monitor" method="_on_level_new_cipher_loaded"]
 [connection signal="disco_button_pressed" from="UI/DiscoButtons" to="." method="_on_disco_buttons_disco_button_pressed"]

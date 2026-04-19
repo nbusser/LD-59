@@ -23,8 +23,17 @@ func _on_v_slider_value_changed(value: float) -> void:
 	amount = value
 
 
+# When the level is loaded, we want to notify the cipher about the default slider value
+func _on_level_new_cipher_loaded(_cipher_data: CipherData):
+	_on_v_slider_value_changed(_slider.value)
+
+
 func _ready() -> void:
 	_slider.min_value = MIN_VALUE
 	_slider.max_value = MAX_VALUE
 	_slider.step = STEP
 	_slider.value = randf() * (MAX_VALUE - MIN_VALUE) + MIN_VALUE
+
+	assert(Globals.current_level != null)
+	# Gets notified when the level is fully loaded
+	Globals.current_level.new_cipher_loaded.connect(_on_level_new_cipher_loaded)

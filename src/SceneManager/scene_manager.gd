@@ -61,6 +61,7 @@ func _start_game() -> void:
 # Load current level
 func _run_level() -> void:
 	var scene: Level = level.instantiate()
+	Globals.current_level = scene
 	# Provies its settings to the level
 	scene.init(levels[GameState.current_level_number])
 	# Play level music

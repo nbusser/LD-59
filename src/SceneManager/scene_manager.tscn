@@ -25,11 +25,17 @@ cipher_type = 1
 image_texture = ExtResource("4_knii6")
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_7qhxv"]
+script = ExtResource("3_38vrh")
+cipher_type = 2
+audio_stream = ExtResource("3_knii6")
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "J'aime pu ma mère !"
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_lcxac"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_lcxac"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_7qhxv")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
