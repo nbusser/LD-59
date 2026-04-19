@@ -11,7 +11,24 @@ const MIN_DB = 60
 
 const SAMPLE_COUNT = 100
 
+const HEART = [
+	Vector2(-0.0, 1.0),
+	Vector2(-0.5, 1.4),
+	Vector2(-1.0, 1.3),
+	Vector2(-1.3, 0.9),
+	Vector2(-1.3, 0.5),
+	Vector2(-0.7, -0.2),
+	Vector2(-0.0, -0.8),
+	Vector2(0.7, -0.2),
+	Vector2(1.3, 0.5),
+	Vector2(1.3, 0.9),
+	Vector2(1.0, 1.3),
+	Vector2(0.5, 1.4),
+	Vector2(0.0, 1.0),
+]
+
 var _spectrum_points = PackedVector2Array()
+var _shape_points = PackedVector2Array()
 
 @onready var _spectrum: AudioEffectSpectrumAnalyzerInstance = AudioServer.get_bus_effect_instance(
 	AudioServer.get_bus_index("Cipher"), 0
@@ -22,6 +39,10 @@ func _ready():
 	_spectrum_points.resize(SAMPLE_COUNT)
 	_spectrum_points.fill(Vector2.ZERO)
 
+	_shape_points.resize(HEART.size())
+	for i in range(HEART.size()):
+		_shape_points.set(i, HEART[i] * WIDTH / 2. * Vector2(1., -1.))
+
 
 func _process(_delta: float) -> void:
 	if visible:
@@ -31,7 +52,29 @@ func _process(_delta: float) -> void:
 
 func _draw():
 	# draw spectrum visualizer
-	draw_polyline(_spectrum_points, Color.GREEN, 2.0, true)
+
+	# Merge
+	# TODO faire mieux comme interpolation, préservation des basses fréquences
+	var v = 0.0
+	var p = PackedVector2Array()
+	p.resize(SAMPLE_COUNT)
+
+	for i in range(SAMPLE_COUNT):
+		var a: Vector2 = _spectrum_points.get(i)
+		var i2: float = float(i) * float(_shape_points.size()) / SAMPLE_COUNT
+		var i2_fract = fmod(i2, 1.0)
+		var i2_int = floor(i2)
+		var b = Vector2.ZERO
+		if i2_int >= _shape_points.size() - 1:
+			b = _shape_points[i2_int]
+		elif i2_int == 0:
+			b = _shape_points[0]
+		else:
+			b = (_shape_points[i2_int] * (1 - i2_fract) + _shape_points[i2_int + 1] * i2_fract)
+
+		p.set(i, a.lerp(b, v))
+
+	draw_polyline(p, Color.GREEN, 2.0, true)
 
 
 func _update_audio_data() -> void:
