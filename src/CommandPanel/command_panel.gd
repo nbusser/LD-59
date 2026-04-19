@@ -3,6 +3,7 @@ class_name CommandPanel extends Control
 signal cipher_type_selected(cipher_type: CipherData.CipherType)
 
 var level_state: LevelState
+var _smoothed_signal_quality: float = 0.0
 var _current_cipher_type: CipherData.CipherType:
 	set(value):
 		_current_cipher_type = value
@@ -89,5 +90,6 @@ func get_signal_quality() -> float:
 	)
 
 
-func _process(_delta: float) -> void:
-	signal_indicator.set_value_f(pow(get_signal_quality(), 3.0))
+func _process(delta: float) -> void:
+	_smoothed_signal_quality += (get_signal_quality() - _smoothed_signal_quality) * delta
+	signal_indicator.set_value_f(pow(_smoothed_signal_quality, 3.0))
