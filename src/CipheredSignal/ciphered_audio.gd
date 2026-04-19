@@ -69,14 +69,7 @@ func _reset() -> void:
 	_cipher_player.stream = source
 
 
-# Allows sliders to be 0 -> 1 -> 0
-func _wrap_triangle(value: float, offset: float) -> float:
-	var shifted: float = fmod(value + offset, SignalInput.MAX_VALUE * 2)
-	if shifted <= SignalInput.MAX_VALUE:
-		return shifted
-	return (SignalInput.MAX_VALUE * 2) - shifted
-
-
+# ----------------------------------------------------------------------------------------------------
 # MARK: Pitch
 
 @export var speed_input: SignalInput
@@ -92,10 +85,13 @@ var _speed_offset: float
 
 func _speed_input_changed(value: float) -> void:
 	_cipher_player.pitch_scale = lerp(
-		_pitch_scale_lower_bound, _pitch_scale_upper_bound, _wrap_triangle(value, _speed_offset)
+		_pitch_scale_lower_bound,
+		_pitch_scale_upper_bound,
+		Utils.wrap_triangle(value, _speed_offset)
 	)
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: Noise
 
 @export var noise_input: SignalInput
@@ -111,10 +107,13 @@ var _noise_offset: float
 
 func _noise_input_changed(value: float) -> void:
 	_noise_player.volume_db = lerp(
-		_noise_scale_lower_bound, _noise_scale_upper_bound, _wrap_triangle(value, _noise_offset)
+		_noise_scale_lower_bound,
+		_noise_scale_upper_bound,
+		Utils.wrap_triangle(value, _noise_offset)
 	)
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: Common
 
 

@@ -78,7 +78,10 @@ func _on_text_render() -> void:
 
 
 func _on_image_render() -> void:
-	_rendered_image.texture = _ciphered_image.get_transformed_image()
+	var transformed_image_dict = _ciphered_image.get_transformed_image()
+	_rendered_image.texture = transformed_image_dict["base_image"]
+	# TODO: forward shader parameters to the shader
+	# _rendered_image.material.set_shader_parameter("noise_amount", transformed_image_dict.get("noise_amount", 0.0))
 
 
 func _on_audio_render() -> void:

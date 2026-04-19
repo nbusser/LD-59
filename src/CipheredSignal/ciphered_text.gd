@@ -96,6 +96,7 @@ func _reset() -> void:
 	Utils.shuffle_with_prng(_space_shuffle_frequencies, prng)
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: Helper
 
 
@@ -122,6 +123,7 @@ func _segment_text(text: String, n_segments: int, prng: RandomNumberGenerator) -
 	return segments
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: ROT
 
 @export var rot_input: SignalInput
@@ -186,6 +188,7 @@ func _apply_rot13(text: String) -> String:
 	return result
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: Words shuffle
 
 @export var word_shuffle_input: SignalInput
@@ -224,6 +227,7 @@ func _shuffle_words(text: String, slider_index: int) -> String:
 	return " ".join(segments)
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: Space shuffle
 
 @export var space_shuffle_input: SignalInput
@@ -270,6 +274,7 @@ func _shuffle_spaces(text: String, slider_index: int) -> String:
 	return "".join(chars)
 
 
+# ----------------------------------------------------------------------------------------------------
 # MARK: Common
 
 

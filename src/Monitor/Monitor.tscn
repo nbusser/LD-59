@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://c7fb7c5fgkm23" path="res://src/Monitor/monitor.gd" id="1_ufvya"]
 [ext_resource type="Shader" uid="uid://cmq2qmn5v5swi" path="res://src/Monitor/ImageMonitor.gdshader" id="2_to57f"]
 [ext_resource type="Script" uid="uid://uvsk1teh2r7f" path="res://src/Monitor/rendered_audio.gd" id="4_1sxi0"]
+[ext_resource type="Shader" uid="uid://dbg0beqcwoalc" path="res://src/Monitor/RenderedImage.gdshader" id="4_061ay"]
 [ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="4_lpyn7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
 shader_parameter/resolution = Vector2(256, 256)
 shader_parameter/convol = -0.01899995340250004
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jalq"]
+shader = ExtResource("4_061ay")
 
 [sub_resource type="LabelSettings" id="LabelSettings_061ay"]
 font_size = 64
@@ -72,6 +76,7 @@ text = "Placeholder"
 autowrap_mode = 1
 
 [node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=1033305472]
+material = SubResource("ShaderMaterial_2jalq")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
