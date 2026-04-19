@@ -22,7 +22,7 @@ offset_right = 697.0
 offset_bottom = 237.0
 text = "(Ceci est un ecran cathodique)"
 
-[node name="Monitor" parent="UI" unique_id=534154928 instance=ExtResource("5_grxid")]
+[node name="Monitor" parent="UI" unique_id=534154928 node_paths=PackedStringArray("ciphered_text", "ciphered_image", "ciphered_audio") instance=ExtResource("5_grxid")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -30,6 +30,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_right = 0.0
 offset_bottom = 0.0
+ciphered_text = NodePath("../../CipheredSignals/CipheredText")
+ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
+ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
 
