@@ -49,21 +49,8 @@ offset_right = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18538326, 0.18538326, 0.18538326, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1351264772]
-
-[node name="Panel" type="ColorRect" parent="SubViewport" unique_id=517606528]
-z_index = -1
-custom_minimum_size = Vector2(250, 165)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.18538326, 0.18538326, 0.18538326, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="Signal" type="Control" parent="SubViewport" unique_id=51256789]
 layout_mode = 3
@@ -87,15 +74,9 @@ autowrap_mode = 1
 [node name="RenderedImage" type="TextureRect" parent="SubViewport/Signal" unique_id=1033305472]
 material = SubResource("ShaderMaterial_2jalq")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_061ay")

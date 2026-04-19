@@ -61,6 +61,8 @@ func _load_next_cipher():
 
 	deciphering_started_stopped.emit(true)
 
+	_switch_phase(LevelState.Phase.STEGANO)
+
 
 func _switch_phase(phase: LevelState.Phase):
 	level_state.phase = phase

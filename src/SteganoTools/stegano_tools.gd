@@ -1,5 +1,6 @@
 class_name SteganoTools extends Control
 
+@export var _sub_viewport_display: ColorRect
 @export var _rendered_image: TextureRect
 
 @onready var _green_filter = $ImageFilters/FilterGreen
@@ -24,16 +25,14 @@ func _on_level_phase_changed(phase: LevelState.Phase) -> void:
 					Globals.get_current_cipher().image_texture_filter_green
 				)
 				_rendered_image.material.set_shader_parameter(
-					"filter_green_size",
-					Globals.get_current_cipher().image_texture_filter_green.get_size()
+					"filter_green_size", _green_filter.get_size() / _sub_viewport_display.get_size()
 				)
 				_rendered_image.material.set_shader_parameter(
 					"stegano_texture_sampler_red",
 					Globals.get_current_cipher().image_texture_filter_red
 				)
 				_rendered_image.material.set_shader_parameter(
-					"filter_red_size",
-					Globals.get_current_cipher().image_texture_filter_red.get_size()
+					"filter_red_size", _red_filter.get_size() / _sub_viewport_display.get_size()
 				)
 		_:
 			visible = false
@@ -44,8 +43,16 @@ func _process(_delta: float):
 
 	if _is_stegano_image():
 		_rendered_image.material.set_shader_parameter(
-			"filter_green_position", _green_filter.global_position
+			"filter_green_position",
+			(
+				(_green_filter.global_position - _sub_viewport_display.global_position)
+				/ _sub_viewport_display.get_size()
+			)
 		)
 		_rendered_image.material.set_shader_parameter(
-			"filter_red_position", _red_filter.global_position
+			"filter_red_position",
+			(
+				(_red_filter.global_position - _sub_viewport_display.global_position)
+				/ _sub_viewport_display.get_size()
+			)
 		)

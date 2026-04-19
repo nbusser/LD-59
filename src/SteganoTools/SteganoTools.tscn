@@ -2,7 +2,18 @@
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q7s76"]
+[sub_resource type="Gradient" id="Gradient_niwiv"]
+colors = PackedColorArray(0.8666667, 0, 0, 1, 1, 0.7254902, 0.3372549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4q2fo"]
+gradient = SubResource("Gradient_niwiv")
+
+[sub_resource type="Gradient" id="Gradient_4q2fo"]
+offsets = PackedFloat32Array(0.011940299, 1)
+colors = PackedColorArray(0.31764707, 0.41960785, 1, 1, 0.16078432, 0.47843137, 0.14117648, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n0i3x"]
+gradient = SubResource("Gradient_4q2fo")
 
 [node name="SteganoTools" type="Control" unique_id=1033651520]
 layout_mode = 3
@@ -18,10 +29,10 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("PlaceholderTexture2D_q7s76")
+texture = SubResource("GradientTexture2D_4q2fo")
 
 [node name="FilterGreen" type="TextureRect" parent="ImageFilters" unique_id=866931896]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("PlaceholderTexture2D_q7s76")
+texture = SubResource("GradientTexture2D_n0i3x")
