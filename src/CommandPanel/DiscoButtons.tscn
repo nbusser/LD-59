@@ -1,24 +1,33 @@
 [gd_scene format=3 uid="uid://bcm8d6bnledk6"]
 
-[ext_resource type="Script" uid="uid://blhjbokaf40mt" path="res://src/CommandPanel/disco_buttons.gd" id="1_825q7"]
+[ext_resource type="Script" path="res://src/CommandPanel/disco_buttons.gd" id="1_825q7"]
 
 [node name="DiscoButtons" type="Control" unique_id=163675673]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_825q7")
 
-[node name="PositiveButton" type="Button" parent="." unique_id=1118855579]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1262915861]
 layout_mode = 1
-offset_left = 91.0
-offset_right = 141.0
-offset_bottom = 31.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PositiveButton" type="Button" parent="HBoxContainer" unique_id=1118855579]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Disco"
 
-[node name="NegativeButton" type="Button" parent="." unique_id=2135015560]
-layout_mode = 1
-offset_right = 81.0
-offset_bottom = 31.0
+[node name="NegativeButton" type="Button" parent="HBoxContainer" unique_id=2135015560]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Pas Disco"
 
-[connection signal="pressed" from="PositiveButton" to="." method="_on_positive_button_pressed"]
-[connection signal="pressed" from="NegativeButton" to="." method="_on_negative_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PositiveButton" to="." method="_on_positive_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NegativeButton" to="." method="_on_negative_button_pressed"]

@@ -21,7 +21,7 @@ var amount: float = 0.5:
 		emit_signal("signal_input_changed", amount)
 
 @onready var ok_label = $OkLabel
-@onready var _slider = $VSlider
+@onready var _slider = $HSlider
 
 
 func _on_v_slider_value_changed(value: float) -> void:
