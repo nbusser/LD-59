@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b3bgc575mmka7"]
+
+[ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q7s76"]
+
+[node name="SteganoTools" type="Control" unique_id=1033651520]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_niwiv")
+
+[node name="ImageFilters" type="Control" parent="." unique_id=824484933]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FilterRed" type="TextureRect" parent="ImageFilters" unique_id=1383833397]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("PlaceholderTexture2D_q7s76")
+
+[node name="FilterGreen" type="TextureRect" parent="ImageFilters" unique_id=866931896]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("PlaceholderTexture2D_q7s76")
