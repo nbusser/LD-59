@@ -38,6 +38,12 @@ ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
 
+[node name="DiscoButtons" parent="UI" unique_id=163675673 instance=ExtResource("6_iw8kk")]
+offset_left = 529.0
+offset_top = 543.0
+offset_right = 529.0
+offset_bottom = 543.0
+
 [node name="Fadein" parent="UI" unique_id=508041488 instance=ExtResource("4_fre1t")]
 mouse_filter = 2
 mode = 1
@@ -46,12 +52,6 @@ duration = 0.7
 [node name="Fadeout" parent="UI" unique_id=926207526 instance=ExtResource("4_fre1t")]
 mouse_filter = 2
 duration = 0.7
-
-[node name="DiscoButtons" parent="UI" unique_id=163675673 instance=ExtResource("6_iw8kk")]
-offset_left = 529.0
-offset_top = 543.0
-offset_right = 529.0
-offset_bottom = 543.0
 
 [node name="Timer" type="Timer" parent="." unique_id=299543541]
 wait_time = 10.0
