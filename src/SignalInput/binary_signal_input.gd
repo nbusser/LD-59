@@ -1,5 +1,5 @@
 class_name BinarySignalInput
-extends Node
+extends Control
 
 signal signal_input_changed(value: bool)
 

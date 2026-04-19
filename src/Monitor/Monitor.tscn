@@ -60,7 +60,7 @@ script = ExtResource("1_ufvya")
 [node name="Display" type="ColorRect" parent="." unique_id=2086475445]
 z_index = -1
 material = SubResource("ShaderMaterial_to57f")
-custom_minimum_size = Vector2(250, 165)
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

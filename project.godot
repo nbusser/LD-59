@@ -14,8 +14,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="LD-Base"
-config/description="Ludum Dare 51"
+config/name="DISCO"
+config/description="Ludum Dare 59"
 run/main_scene="res://src/SceneManager/scene_manager.tscn"
 config/features=PackedStringArray("4.6")
 config/icon="res://assets/sprites/player.png"
@@ -29,6 +29,12 @@ buses/default_bus_layout="uid://cb26frntdt4kj"
 Utils="*uid://dtkgqtar4w665"
 Globals="*res://src/globals.gd"
 GameState="*res://src/SceneManager/game_state.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

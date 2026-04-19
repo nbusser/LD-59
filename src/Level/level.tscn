@@ -76,13 +76,6 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Label" type="Label" parent="UI" unique_id=1057364244]
-offset_left = 463.0
-offset_top = 214.0
-offset_right = 697.0
-offset_bottom = 237.0
-text = "(Ceci est un ecran cathodique)"
-
 [node name="Monitor" parent="UI" unique_id=534154928 node_paths=PackedStringArray("_ciphered_text", "_ciphered_image", "_ciphered_audio") instance=ExtResource("5_grxid")]
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,6 +88,12 @@ mouse_filter = 1
 _ciphered_text = NodePath("../../CipheredSignals/CipheredText")
 _ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
 _ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
+
+[node name="Display" parent="UI/Monitor" index="0" unique_id=2086475445]
+offset_left = -400.0
+offset_top = -468.0
+offset_right = 400.0
+offset_bottom = 132.0
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
 anchors_preset = 0
@@ -170,7 +169,7 @@ volume_db = 10.0
 libraries/ = SubResource("AnimationLibrary_v3q8p")
 
 [node name="K7" type="Sprite2D" parent="AnimationPlayer" unique_id=2081540627]
-position = Vector2(601, 468)
+position = Vector2(960, 848)
 texture = ExtResource("10_rrnxv")
 
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
