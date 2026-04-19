@@ -12,19 +12,26 @@ var _current_cipher_type: CipherData.CipherType:
 				_make_inputs_enabled(text_signal_inputs, true)
 				_make_inputs_enabled(image_signal_inputs, false)
 				_make_inputs_enabled(audio_signal_inputs, false)
+				text_mode_button.button_pressed = true
 			CipherData.CipherType.IMAGE:
 				_make_inputs_enabled(text_signal_inputs, false)
 				_make_inputs_enabled(image_signal_inputs, true)
 				_make_inputs_enabled(audio_signal_inputs, false)
+				image_mode_button.button_pressed = true
 			CipherData.CipherType.AUDIO:
 				_make_inputs_enabled(text_signal_inputs, false)
 				_make_inputs_enabled(image_signal_inputs, false)
 				_make_inputs_enabled(audio_signal_inputs, true)
+				audio_mode_button.button_pressed = true
 		emit_signal("cipher_type_selected", value)
 
 @onready var text_signal_inputs: Node = $TextInputs
 @onready var image_signal_inputs: Node = $ImageInputs
 @onready var audio_signal_inputs: Node = $AudioInputs
+
+@onready var text_mode_button: TextureButton = %TextModeButton
+@onready var image_mode_button: TextureButton = %ImageModeButton
+@onready var audio_mode_button: TextureButton = %AudioModeButton
 
 @onready var signal_indicator: SignalIndicator = $SignalIndicator
 
