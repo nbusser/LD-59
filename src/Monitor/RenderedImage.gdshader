@@ -24,7 +24,7 @@ vec2 sample_resolution(vec2 pos, vec2 res) {
 }
 
 float deadzone(float val, float threshold, float max_) {
-    return sign(val) * smoothstep(threshold, max_, val) * max_;
+    return sign(val) * smoothstep(threshold, max_, abs(val)) * max_;
 }
 
 vec2 crt_curve_inverse(vec2 uv, float k) {
