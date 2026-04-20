@@ -102,28 +102,24 @@ void fragment() {
         coords = vec2(coords.x, 1.-coords.y);
     }
 
-    bool black = false;
     int texture_index = 0;
+    vec3 col = texture(texture_samplers[0], coords).rgb;
 	if (enable_filter) {
 		bool is_in_green_filter = is_in_filter(og_coords, filter_green_position, filter_green_size);
 		bool is_in_red_filter = is_in_filter(og_coords, filter_red_position, filter_red_size);
 		if (is_in_green_filter && is_in_red_filter) {
-			black = true;
-		} else if (is_in_green_filter) {
-			texture_index = 1;
-		} else if (is_in_red_filter) {
-			texture_index = 2;
+			col = vec3(0.);
+		} else if (is_in_green_filter && magnified) {
+		    col = texture(magnified_texture_samplers[1], coords).rgb;
+		} else if (is_in_green_filter && !magnified) {
+            col = texture(texture_samplers[1], coords).rgb;
+		} else if (is_in_red_filter && magnified) {
+            col = texture(magnified_texture_samplers[2], coords).rgb;
+		} else if (is_in_red_filter && !magnified) {
+            col = texture(texture_samplers[2], coords).rgb;
+		} else if (magnified) {
+		    col = texture(magnified_texture_samplers[0], coords).rgb;
 		}
-	}
-
-
-	vec3 col = vec3(0.);
-	if (!black) {
-    	if (magnified) {
-            col = texture(magnified_texture_samplers[texture_index], coords).rgb;
-    	} else {
-            col = texture(texture_samplers[texture_index], coords).rgb;
-        }
 	}
 
     if (random_row_factor < abs(shuffle_rows_strength)) {
