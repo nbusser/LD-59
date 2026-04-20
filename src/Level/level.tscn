@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fkx747pj67wj"]
 
 [ext_resource type="Script" uid="uid://drh117nvpnukt" path="res://src/Level/level.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b6xsop50sg882" path="res://assets/sprites/ui_bg.png" id="2_u72di"]
 [ext_resource type="PackedScene" uid="uid://dwiu4cm7rlq0p" path="res://src/HUD/hud.tscn" id="3_p81om"]
 [ext_resource type="PackedScene" uid="uid://dbqai3mwspxsp" path="res://src/HUD/fadeout.tscn" id="4_fre1t"]
 [ext_resource type="PackedScene" uid="uid://cusfjc6jcovp4" path="res://src/CommandPanel/CommandPanel.tscn" id="4_grxid"]
@@ -17,18 +18,7 @@
 [ext_resource type="Environment" uid="uid://dtq8sggtgo7jd" path="res://default_env.tres" id="11_4bydg"]
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
 
-[sub_resource type="Gradient" id="Gradient_05e80"]
-colors = PackedColorArray(0.38904887, 0.3316231, 0.28300625, 1, 0.22588438, 0.19630748, 0.14235038, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_nuskc"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rrnxv"]
-width = 1920
-height = 1080
-noise = SubResource("FastNoiseLite_nuskc")
-color_ramp = SubResource("Gradient_05e80")
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_hivg7"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6s7yf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_djut7"]
 font = ExtResource("7_mqshx")
@@ -102,7 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("NoiseTexture2D_rrnxv")
+texture = ExtResource("2_u72di")
 
 [node name="HUD" parent="UI" unique_id=898401498 instance=ExtResource("3_p81om")]
 anchors_preset = 0
@@ -117,18 +107,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 mouse_filter = 1
 _ciphered_text = NodePath("../../CipheredSignals/CipheredText")
 _ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
 _ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
 
 [node name="Display" parent="UI/Monitor" index="0" unique_id=2086475445]
-offset_left = -368.0
-offset_top = -188.0
-offset_right = 432.0
-offset_bottom = 412.0
+offset_left = 567.0
+offset_top = 340.0
+offset_right = 1331.0
+offset_bottom = 890.0
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
 anchors_preset = 0
@@ -138,22 +130,201 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="RotSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="0" unique_id=1402289427]
+offset_left = 105.0
+offset_top = 423.0
+offset_right = -1383.0
+offset_bottom = -593.0
 correct_value_threshold = 0.1
 
 [node name="WordShuffleSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="1" unique_id=1555452025]
+offset_left = 105.0
+offset_top = 484.0
+offset_right = -1383.0
+offset_bottom = -532.0
 correct_value_threshold = 0.1
 
 [node name="SpaceShuffleSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="2" unique_id=310417279]
+offset_left = 105.0
+offset_top = 545.0
+offset_right = -1383.0
+offset_bottom = -471.0
 correct_value_threshold = 0.1
 
+[node name="VsyncSignalInput" parent="UI/CommandPanel/ImageInputs" parent_id_path=PackedInt32Array(1884603933, 1566043442) index="0" unique_id=1443587128]
+offset_left = 105.0
+offset_top = 668.0
+offset_right = -1383.0
+offset_bottom = -348.0
+
+[node name="ShuffleRowsSignalInput" parent="UI/CommandPanel/ImageInputs" parent_id_path=PackedInt32Array(1884603933, 1566043442) index="1" unique_id=2027053063]
+offset_left = 105.0
+offset_top = 728.0
+offset_right = -1383.0
+offset_bottom = -288.0
+
+[node name="SpeedSignalInput" parent="UI/CommandPanel/AudioInputs" parent_id_path=PackedInt32Array(1884603933, 2069117480) index="0" unique_id=325510213]
+offset_left = 105.0
+offset_top = 852.0
+offset_right = -1383.0
+offset_bottom = -164.0
+
+[node name="NoiseSignalInput" parent="UI/CommandPanel/AudioInputs" parent_id_path=PackedInt32Array(1884603933, 2069117480) index="1" unique_id=1803397393]
+offset_left = 105.0
+offset_top = 909.0
+offset_right = -1383.0
+offset_bottom = -107.0
+
+[node name="AudioTrack1VolumeInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="0" unique_id=1494532812]
+offset_left = 1354.0
+offset_top = 692.0
+offset_right = -310.0
+offset_bottom = -334.0
+
+[node name="HSlider" parent="UI/CommandPanel/AudioTracksInputs/AudioTrack1VolumeInput" index="0" unique_id=657275224]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 13.0
+offset_bottom = 51.0
+
+[node name="GreenLed" parent="UI/CommandPanel/AudioTracksInputs/AudioTrack1VolumeInput" index="1" unique_id=1347280444]
+visible = false
+
+[node name="AudioTrack2VolumeInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="1" unique_id=884417185]
+offset_left = 1424.0
+offset_top = 692.0
+offset_right = -240.0
+offset_bottom = -320.8999
+
+[node name="HSlider" parent="UI/CommandPanel/AudioTracksInputs/AudioTrack2VolumeInput" index="0" unique_id=657275224]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 13.0
+offset_bottom = 51.0
+
+[node name="GreenLed" parent="UI/CommandPanel/AudioTracksInputs/AudioTrack2VolumeInput" index="1" unique_id=1347280444]
+visible = false
+
+[node name="AudioTrack3VolumeInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="2" unique_id=1671550714]
+offset_left = 1493.0
+offset_top = 692.0
+offset_right = -171.0
+offset_bottom = -314.9895
+
+[node name="HSlider" parent="UI/CommandPanel/AudioTracksInputs/AudioTrack3VolumeInput" index="0" unique_id=657275224]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 13.0
+offset_bottom = 51.0
+
+[node name="GreenLed" parent="UI/CommandPanel/AudioTracksInputs/AudioTrack3VolumeInput" index="1" unique_id=1347280444]
+visible = false
+
+[node name="AudioTrack1ReverseInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="3" unique_id=1176217677]
+offset_left = 1354.0
+offset_top = 692.00006
+offset_right = -502.0
+offset_bottom = -323.99994
+
+[node name="AudioTrack2ReverseInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="4" unique_id=893427455]
+offset_left = 1418.0
+offset_top = 692.00006
+offset_right = -438.0
+offset_bottom = -323.99994
+
+[node name="AudioTrack3ReverseInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="5" unique_id=1471597885]
+offset_left = 1482.0
+offset_top = 692.00006
+offset_right = -374.0
+offset_bottom = -323.99994
+
+[node name="AudioSignalVisualFrequencyInput" parent="UI/CommandPanel/AudioSignalVisualFrequency" parent_id_path=PackedInt32Array(1884603933, 999800982) index="0" unique_id=930788457]
+offset_bottom = -303.79456
+
+[node name="HSlider" parent="UI/CommandPanel/AudioSignalVisualFrequency/AudioSignalVisualFrequencyInput" index="0" unique_id=657275224]
+offset_left = 231.00002
+offset_top = -302.0
+offset_right = 167.0
+offset_bottom = -238.0
+
+[node name="GreenLed" parent="UI/CommandPanel/AudioSignalVisualFrequency/AudioSignalVisualFrequencyInput" index="1" unique_id=1347280444]
+visible = false
+
 [node name="TextModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="0" unique_id=1443325002]
-button_group = SubResource("ButtonGroup_hivg7")
+offset_left = 629.0
+offset_top = 904.0
+offset_right = 834.0
+offset_bottom = 974.0
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
-button_group = SubResource("ButtonGroup_hivg7")
+offset_left = 841.0
+offset_top = 904.0
+offset_right = 1046.0
+offset_bottom = 974.0
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
-button_group = SubResource("ButtonGroup_hivg7")
+offset_left = 1052.0
+offset_top = 904.0
+offset_right = 1257.0
+offset_bottom = 974.0
+button_group = SubResource("ButtonGroup_6s7yf")
+
+[node name="DiscoButtons" parent="UI/CommandPanel" index="6" unique_id=163675673]
+offset_left = 1354.0
+offset_top = 824.0
+offset_right = 1802.0
+offset_bottom = 1016.0
+
+[node name="PositiveButton" parent="UI/CommandPanel/DiscoButtons" index="0" unique_id=449348408]
+offset_left = 295.0
+offset_right = 295.0
+
+[node name="NegativeButton" parent="UI/CommandPanel/DiscoButtons" index="1" unique_id=1631071546]
+offset_left = -13.0
+offset_right = -13.0
+
+[node name="SignalIndicator" parent="UI/CommandPanel" index="7" unique_id=39410655]
+offset_left = 95.0
+offset_top = 296.0
+offset_right = 543.0
+offset_bottom = 336.0
+
+[node name="Background" parent="UI/CommandPanel/NoiseSignalInputDisplay" parent_id_path=PackedInt32Array(1884603933, 880532572) index="0" unique_id=781440124]
+offset_left = 83.0
+offset_top = 973.0
+offset_right = 550.0
+offset_bottom = 1020.0
+
+[node name="Control" parent="UI/CommandPanel/NoiseSignalInputDisplay" parent_id_path=PackedInt32Array(1884603933, 880532572) index="1" unique_id=1616856748]
+offset_left = 107.0
+offset_top = 973.0
+offset_right = 523.0
+offset_bottom = 1021.0
+
+[node name="Foreground" parent="UI/CommandPanel/NoiseSignalInputDisplay" parent_id_path=PackedInt32Array(1884603933, 880532572) index="2" unique_id=2036544987]
+offset_left = 83.0
+offset_top = 973.0
+offset_right = 550.0
+offset_bottom = 1020.0
+
+[node name="Background" parent="UI/CommandPanel/TextSignalInputDisplay" parent_id_path=PackedInt32Array(1884603933, 963730664) index="0" unique_id=13743039]
+offset_left = 192.0
+offset_top = 363.0
+offset_right = 429.0
+offset_bottom = 404.0
+
+[node name="Control" parent="UI/CommandPanel/TextSignalInputDisplay" parent_id_path=PackedInt32Array(1884603933, 963730664) index="1" unique_id=198267733]
+offset_left = 200.0
+offset_top = 371.0
+offset_right = 424.0
+offset_bottom = 395.0
+
+[node name="Foreground" parent="UI/CommandPanel/TextSignalInputDisplay" parent_id_path=PackedInt32Array(1884603933, 963730664) index="2" unique_id=1207224956]
+offset_left = 192.0
+offset_top = 363.0
+offset_right = 429.0
+offset_bottom = 404.0
 
 [node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
 offset_left = 648.0
@@ -302,5 +473,10 @@ metadata/_edit_lock_ = true
 
 [editable path="UI/Monitor"]
 [editable path="UI/CommandPanel"]
+[editable path="UI/CommandPanel/AudioTracksInputs/AudioTrack1VolumeInput"]
+[editable path="UI/CommandPanel/AudioTracksInputs/AudioTrack2VolumeInput"]
+[editable path="UI/CommandPanel/AudioTracksInputs/AudioTrack3VolumeInput"]
+[editable path="UI/CommandPanel/AudioSignalVisualFrequency/AudioSignalVisualFrequencyInput"]
+[editable path="UI/CommandPanel/DiscoButtons"]
 [editable path="UI/SteganoTools"]
 [editable path="CipheredSignals"]
