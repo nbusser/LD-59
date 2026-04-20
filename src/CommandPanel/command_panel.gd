@@ -40,6 +40,9 @@ var _current_cipher_type: CipherData.CipherType:
 
 @onready var signal_indicator: SignalIndicator = $SignalIndicator
 
+@onready var noise_signal_input: SignalInput = %NoiseSignalInput
+@onready var noise_signal_input_display_knob: Control = %NoiseSignalInputDisplayKnob
+
 
 func init(_level_state: LevelState) -> void:
 	level_state = _level_state
@@ -125,3 +128,5 @@ func get_signal_quality() -> float:
 func _process(delta: float) -> void:
 	_smoothed_signal_quality += (get_signal_quality() - _smoothed_signal_quality) * delta
 	signal_indicator.set_value_f(pow(_smoothed_signal_quality, 3.0))
+
+	noise_signal_input_display_knob.position.x = noise_signal_input.amount * 416.0

@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bcvflerlqb2r1" path="res://assets/ui/Mediabutton-image.png" id="7_3sw21"]
 [ext_resource type="Texture2D" uid="uid://clpq0rjd7bplo" path="res://assets/ui/Mediabutton-audio.png" id="8_2ye66"]
 [ext_resource type="AudioStream" uid="uid://ct3m2hi0vn8b4" path="res://assets/sounds/button.ogg" id="11_2tjow"]
+[ext_resource type="Texture2D" uid="uid://dgmod0mgmirfm" path="res://assets/ui/Audio_freq_-_background.png" id="12_3sw21"]
+[ext_resource type="Texture2D" uid="uid://c686wcjdenhl8" path="res://assets/ui/Audio_freq_-_needle.png" id="14_aftnx"]
+[ext_resource type="Texture2D" uid="uid://bepfrpyo6d3y1" path="res://assets/ui/Audio_freq_-_foreground.png" id="14_vbb54"]
 
 [node name="CommandPanel" type="Control" unique_id=1884603933]
 layout_mode = 3
@@ -65,6 +68,7 @@ offset_right = -1408.0
 offset_bottom = -376.0
 
 [node name="NoiseSignalInput" parent="AudioInputs" unique_id=1803397393 instance=ExtResource("2_hbc2p")]
+unique_name_in_owner = true
 offset_left = 64.0
 offset_top = 704.0
 offset_right = -1408.0
@@ -166,6 +170,39 @@ offset_bottom = 256.0
 [node name="ButtonPush" type="AudioStreamPlayer" parent="SFX" unique_id=1766829333]
 stream = ExtResource("11_2tjow")
 volume_db = 2.0
+
+[node name="NoiseSignalInputDisplay" type="Node" parent="." unique_id=880532572]
+
+[node name="Background" type="TextureRect" parent="NoiseSignalInputDisplay" unique_id=781440124]
+offset_left = 48.0
+offset_top = 784.0
+offset_right = 515.0
+offset_bottom = 831.0
+texture = ExtResource("12_3sw21")
+
+[node name="Control" type="Control" parent="NoiseSignalInputDisplay" unique_id=1616856748]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 784.0
+offset_right = 488.0
+offset_bottom = 832.0
+
+[node name="NoiseSignalInputDisplayKnob" type="TextureRect" parent="NoiseSignalInputDisplay/Control" unique_id=33074932]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_right = 22.0
+offset_bottom = 41.0
+texture = ExtResource("14_aftnx")
+stretch_mode = 3
+
+[node name="Foreground" type="TextureRect" parent="NoiseSignalInputDisplay" unique_id=2036544987]
+offset_left = 48.0
+offset_top = 784.0
+offset_right = 515.0
+offset_bottom = 831.0
+texture = ExtResource("14_vbb54")
 
 [connection signal="pressed" from="SignalTypeButtons/TextModeButton" to="." method="_on_text_pressed"]
 [connection signal="pressed" from="SignalTypeButtons/ImageModeButton" to="." method="_on_image_pressed"]
