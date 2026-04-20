@@ -87,20 +87,21 @@ offset_bottom = -312.0
 [node name="AudioTrack1VolumeInput" parent="AudioTracksInputs" unique_id=1494532812 instance=ExtResource("2_hbc2p")]
 offset_left = 1408.0
 offset_top = 512.0
-offset_right = -128.0
+offset_right = -256.0
 offset_bottom = 576.0
 rotation = -1.5707964
 
 [node name="AudioTrack2VolumeInput" parent="AudioTracksInputs" unique_id=884417185 instance=ExtResource("2_hbc2p")]
 offset_left = 1472.0
 offset_top = 512.0
-offset_right = -64.0
+offset_right = -192.0
 offset_bottom = 576.0
 rotation = -1.5707964
 
 [node name="AudioTrack3VolumeInput" parent="AudioTracksInputs" unique_id=1671550714 instance=ExtResource("2_hbc2p")]
 offset_left = 1536.0
 offset_top = 512.0
+offset_right = -128.0
 offset_bottom = 576.0
 rotation = -1.5707964
 
