@@ -14,15 +14,13 @@ var controllable := true:
 var _dragging := false
 var _hovered := false
 
-var tween: Tween
-
 @onready var parent: Control = get_parent()
 
 
 func _release():
 	Globals.dragged_object = null
 	_dragging = false
-	tween = get_tree().create_tween()
+	var tween = get_tree().create_tween()
 	tween.parallel().tween_property(
 		parent, "scale", Vector2.ONE * SCALE_DROPPED, ANIMATION_DURATION
 	)
@@ -41,9 +39,8 @@ func _release():
 func _catch():
 	Globals.dragged_object = parent
 	_dragging = true
-	tween = get_tree().create_tween()
+	var tween = get_tree().create_tween()
 	tween.parallel().tween_property(parent, "scale", Vector2.ONE, ANIMATION_DURATION)
-	# tween.tween_property(parent, "global_position", parent.global_position +parent.get_size() * SCALE_DROPPED / 4, ANIMATION_DURATION)
 	tween.parallel().tween_property(parent, "rotation_degrees", 0, ANIMATION_DURATION)
 	parent.z_index = 100
 
@@ -68,7 +65,13 @@ func _input(event):
 
 func _process(_delta: float):
 	if _dragging:
-		parent.global_position = get_viewport().get_mouse_position() - (parent.get_size() / 2)
+		var tween = get_tree().create_tween()
+		tween.parallel().tween_property(
+			parent,
+			"global_position",
+			get_viewport().get_mouse_position() - (parent.get_size() / 2),
+			ANIMATION_DURATION
+		)
 
 
 func _on_mouse_entered():
