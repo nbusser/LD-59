@@ -2,16 +2,40 @@ class_name ScoreScreen
 
 extends Control
 
-@onready
-var level_label: Label = $CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/LevelNumber
-@onready
-var coin_label: Label = $CenterContainer/VBoxContainer/CenterContainer2/HBoxContainer2/CoinsNumber
+var nb_successes: int = -1
+var total: int = -1
+
+@onready var good_ending: Control = $GoodEnding
+@onready var mixed_ending: Control = $MixedEnding
+@onready var bad_ending: Control = $BadEnding
+
+
+func _display_ending():
+	good_ending.visible = false
+	mixed_ending.visible = false
+	bad_ending.visible = false
+
+	if nb_successes == total:
+		good_ending.visible = true
+	elif nb_successes > int(total / 2.0):
+		mixed_ending.visible = true
+	else:
+		bad_ending.visible = true
 
 
 func _ready() -> void:
-	level_label.text = str(GameState.current_level_number + 1)
-	coin_label.text = str(GameState.nb_coins)
+	assert(nb_successes >= 0 and total > 0)
+	_display_ending()
 
 
-func _on_NextLevelButton_pressed() -> void:
+func init(nb_successes_p: int, total_p: int) -> void:
+	self.nb_successes = nb_successes_p
+	self.total = total_p
+
+
+func _on_retry_pressed() -> void:
+	Globals.end_scene(Globals.EndSceneStatus.GAME_OVER_RESTART)
+
+
+func _on_credits_pressed() -> void:
 	Globals.end_scene(Globals.EndSceneStatus.SCORE_SCREEN_NEXT)

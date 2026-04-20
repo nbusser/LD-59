@@ -40,7 +40,13 @@ func _load_next_cipher():
 	# _switch_phase(LevelState.Phase.DESCRAMBLE)
 
 	if level_state.next_cipher_index == level_state.level_data.ciphers.size():
-		Globals.end_scene(Globals.EndSceneStatus.LEVEL_END, {"new_nb_coins": 0})
+		Globals.end_scene(
+			Globals.EndSceneStatus.LEVEL_END,
+			{
+				"successes": level_state.successes_counter,
+				"total": len(level_state.level_data.ciphers)
+			}
+		)
 		return
 
 	level_state.current_cipher = level_state.level_data.ciphers[level_state.next_cipher_index]

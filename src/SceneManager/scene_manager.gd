@@ -80,13 +80,11 @@ func _run_level_selector() -> void:
 	self.current_scene = scene
 
 
-func _on_end_of_level(new_nb_coins: int) -> void:
-	# Update game state depending on level result
-	GameState.nb_coins = new_nb_coins
-	_load_score_screen()
+func _on_end_of_level(successes: int, total: int) -> void:
+	_load_score_screen(successes, total)
 
 
-func _on_game_over(successes, total) -> void:
+func _on_game_over(successes: int, total: int) -> void:
 	var scene: GameOver = game_over.instantiate()
 	scene.init(successes, total)
 	self.current_scene = scene
@@ -96,8 +94,9 @@ func _restart_level() -> void:
 	_run_level()
 
 
-func _load_score_screen() -> void:
+func _load_score_screen(successes: int, total: int) -> void:
 	var scene: ScoreScreen = score_screen.instantiate()
+	scene.init(successes, total)
 	self.current_scene = scene
 
 
@@ -140,8 +139,9 @@ func _on_end_scene(status: Globals.EndSceneStatus, params: Dictionary = {}) -> v
 		Globals.EndSceneStatus.MAIN_MENU_CLICK_QUIT:
 			_quit_game()
 		Globals.EndSceneStatus.LEVEL_END:
-			var new_nb_coins: int = params["new_nb_coins"]
-			_on_end_of_level(new_nb_coins)
+			var successes: int = params["successes"]
+			var total: int = params["total"]
+			_on_end_of_level(successes, total)
 		Globals.EndSceneStatus.LEVEL_GAME_OVER:
 			var successes: int = params["successes"]
 			var total: int = params["total"]
