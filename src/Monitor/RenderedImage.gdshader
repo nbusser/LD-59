@@ -1,19 +1,28 @@
 shader_type canvas_item;
 
-uniform sampler2D texture_sampler;
-
 uniform vec2 resolution = vec2(256, 256);
 
 uniform float shuffle_rows_strength : hint_range(0.0, 1.0) = 0.0;
 uniform float v_desync_strength : hint_range(-1.0, 1.0) = 0.0;
 
 uniform bool enable_filter;
-uniform sampler2D stegano_texture_sampler_green;
+uniform bool enable_magnifier = false;
+uniform vec2 magnifier_center = vec2(0.5, 0.5);
+uniform vec2 magnifier_radius = vec2(0.1, 0.1);
+uniform float magnifier_zoom = 2.5;
 uniform vec2 filter_green_position;
 uniform vec2 filter_green_size;
-uniform sampler2D stegano_texture_sampler_red;
 uniform vec2 filter_red_position;
 uniform vec2 filter_red_size;
+uniform sampler2D texture_samplers[3];// normal, green, red
+uniform sampler2D magnified_texture_samplers[3];// normal, green, red
+
+vec2 crt_curve(vec2 uv, float k) {
+	vec2 p = uv * 2.0 - 1.0;
+	float r2 = dot(p, p);
+	vec2 warped = p * (1.0 + k * r2);
+	return warped * 0.5 + 0.5;
+}
 
 float random(vec2 st) {
     return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
@@ -67,6 +76,18 @@ void fragment() {
     vec2 p = resolution * shuffle_rows_strength * 2.0;
 
     vec2 coords = UV;
+
+
+    bool magnified = false;
+    if (enable_magnifier) {
+        vec2 display_coord = crt_curve_inverse(coords, .065);
+        vec2 norm_delta = (display_coord - magnifier_center) / magnifier_radius;
+        if (dot(norm_delta, norm_delta) < 1.0) {
+            vec2 zoomed_display = magnifier_center + (display_coord - magnifier_center) / magnifier_zoom;
+            coords = crt_curve(zoomed_display, .065);
+            magnified = true;
+        }
+    }
     vec2 og_coords = coords;
 
     coords.y += TIME * deadzone(v_desync_strength * v_desync_factor, .25, v_desync_factor);
@@ -81,7 +102,29 @@ void fragment() {
         coords = vec2(coords.x, 1.-coords.y);
     }
 
-    vec3 col = texture(texture_sampler, coords).rgb;
+    bool black = false;
+    int texture_index = 0;
+	if (enable_filter) {
+		bool is_in_green_filter = is_in_filter(og_coords, filter_green_position, filter_green_size);
+		bool is_in_red_filter = is_in_filter(og_coords, filter_red_position, filter_red_size);
+		if (is_in_green_filter && is_in_red_filter) {
+			black = true;
+		} else if (is_in_green_filter) {
+			texture_index = 1;
+		} else if (is_in_red_filter) {
+			texture_index = 2;
+		}
+	}
+
+
+	vec3 col = vec3(0.);
+	if (!black) {
+    	if (magnified) {
+            col = texture(magnified_texture_samplers[texture_index], coords).rgb;
+    	} else {
+            col = texture(texture_samplers[texture_index], coords).rgb;
+        }
+	}
 
     if (random_row_factor < abs(shuffle_rows_strength)) {
         float rand = random(vec2(sampled.y, 5.));
@@ -92,17 +135,6 @@ void fragment() {
         else {    col = col.bgr; }
     }
 
-	if (enable_filter) {
-		bool is_in_green_filter = is_in_filter(og_coords, filter_green_position, filter_green_size);
-		bool is_in_red_filter = is_in_filter(og_coords, filter_red_position, filter_red_size);
-		if (is_in_green_filter && is_in_red_filter) {
-			col = vec3(0.0, 0.0, 0.0);
-		} else if (is_in_green_filter) {
-			col = texture(stegano_texture_sampler_green, coords).rgb;
-		} else if (is_in_red_filter) {
-			col = texture(stegano_texture_sampler_red, coords).rgb;
-		}
-	}
 
     COLOR = vec4(col, 1.);
 }

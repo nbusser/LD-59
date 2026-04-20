@@ -79,10 +79,6 @@ func _on_text_render() -> void:
 
 func _on_image_render() -> void:
 	var transformed_image_dict = _ciphered_image.get_transformed_image()
-	# _rendered_image.texture = transformed_image_dict["base_image"]
-	_rendered_image.material.set_shader_parameter(
-		"texture_sampler", transformed_image_dict["base_image"]
-	)
 	_rendered_image.material.set_shader_parameter(
 		"shuffle_rows_strength", transformed_image_dict.get("shuffle_rows_strength", 0.0)
 	)

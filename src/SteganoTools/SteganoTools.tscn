@@ -6,6 +6,18 @@
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
 [ext_resource type="Texture2D" uid="uid://bprdj2krbpywu" path="res://assets/sprites/player.png" id="4_55esx"]
 [ext_resource type="Script" uid="uid://bd6is7cj6abri" path="res://src/SteganoTools/stegano_image_tools.gd" id="4_ms2d3"]
+[ext_resource type="Shader" uid="uid://bjupoau8bkr32" path="res://src/SteganoTools/MagnifyingGlass.gdshader" id="5_magnify"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_magnify"]
+shader = ExtResource("5_magnify")
+
+[sub_resource type="Gradient" id="Gradient_magnify"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_magnify"]
+gradient = SubResource("Gradient_magnify")
+width = 256
+height = 256
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_55esx"]
 shader = ExtResource("2_n0i3x")
@@ -79,3 +91,14 @@ offset_bottom = 100.0
 texture = SubResource("GradientTexture2D_n0i3x")
 
 [node name="Draggable" parent="ImageFilters/FilterGreen" unique_id=1011977757 instance=ExtResource("2_4q2fo")]
+
+[node name="MagnifyingGlass" type="TextureRect" parent="ImageFilters" unique_id=1122334455]
+material = SubResource("ShaderMaterial_magnify")
+layout_mode = 0
+offset_left = 240.0
+offset_right = 320.0
+offset_top = 10.0
+offset_bottom = 90.0
+texture = SubResource("GradientTexture2D_magnify")
+
+[node name="Draggable" parent="ImageFilters/MagnifyingGlass" unique_id=1122334456 instance=ExtResource("2_4q2fo")]
