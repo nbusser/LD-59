@@ -12,6 +12,9 @@ class_name SteganoImageTools extends Control
 @onready var _magnifier = $MagnifyingGlass
 @onready var _start_position_magnifier: Vector2 = _magnifier.position
 
+# TODO: this is an ugly duplicate of ciphered_image.gd's fake_texture, but no time
+@onready var _fake_texture: Texture2D = preload("res://assets/sprites/noise_image.tres")
+
 
 func _is_stegano_image() -> bool:
 	return (
@@ -21,33 +24,32 @@ func _is_stegano_image() -> bool:
 
 
 func init():
-	if _is_stegano_image():
-		var cipher = Globals.get_current_cipher()
-		(
-			_rendered_image
-			. material
-			. set_shader_parameter(
-				"texture_samplers",
-				[
-					cipher.image_texture,
-					cipher.image_texture_filter_green,
-					cipher.image_texture_filter_red,
-				]
-			)
+	var cipher = Globals.get_current_cipher()
+
+	var textures := []
+	if cipher.image_texture != null:
+		assert(cipher.image_texture_filter_green != null)
+		assert(cipher.image_texture_filter_red != null)
+		textures.append(cipher.image_texture)
+		textures.append(cipher.image_texture_filter_green)
+		textures.append(cipher.image_texture_filter_red)
+	else:
+		assert(cipher.image_texture_filter_green == null)
+		assert(cipher.image_texture_filter_red == null)
+		textures.append(_fake_texture)
+		textures.append(_fake_texture)
+		textures.append(_fake_texture)
+
+	_rendered_image.material.set_shader_parameter("texture_samplers", textures)
+	(
+		_rendered_image
+		. material
+		. set_shader_parameter(
+			"magnified_texture_samplers",
+			# TODO place real upscaled textures there
+			textures
 		)
-		(
-			_rendered_image
-			. material
-			. set_shader_parameter(
-				"magnified_texture_samplers",
-				# TODO place real upscaled textures there
-				[
-					cipher.image_texture,
-					cipher.image_texture_filter_green,
-					cipher.image_texture_filter_red,
-				]
-			)
-		)
+	)
 
 	_rendered_image.material.set_shader_parameter("enable_filter", true)
 	_rendered_image.material.set_shader_parameter(

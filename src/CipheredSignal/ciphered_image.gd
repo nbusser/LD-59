@@ -24,6 +24,7 @@ var _transformed_image: Dictionary = {
 	"base_image": null, "shuffle_rows_strength": 0.0, "v_desync_strength": 0.0
 }
 
+# @onready var _noise_image_fake_source: Texture2D = preload("res://assets/sprites/noise_image.tres")
 @onready var _noise_image_fake_source: Texture2D = preload("res://assets/sprites/player.png")
 
 
