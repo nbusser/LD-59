@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://dt0jmyylgoord" path="res://assets/sprites/ciphers/kid/kid.jpg" id="20_dgn88"]
 [ext_resource type="Texture2D" uid="uid://cl4wcfak0gchh" path="res://assets/sprites/ciphers/kid/kid_green.jpg" id="21_y4y0x"]
 [ext_resource type="Texture2D" uid="uid://cwg1cikbmcl8w" path="res://assets/sprites/ciphers/kid/kid_red.jpg" id="22_d7upb"]
+[ext_resource type="Texture2D" uid="uid://mwa66lnjsgsw" path="res://assets/sprites/ciphers/couple/couple.png" id="23_yqhvp"]
+[ext_resource type="Texture2D" uid="uid://teh03k8c0cry" path="res://assets/sprites/ciphers/couple/couple_green.png" id="24_1nv7c"]
+[ext_resource type="Texture2D" uid="uid://cmg7mhvcsb4i" path="res://assets/sprites/ciphers/couple/couple_red.png" id="25_kkfqw"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -106,12 +109,22 @@ success_message = "T tro for"
 fail_message = "T nul mdr"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_xmlw0"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("23_yqhvp")
+image_texture_filter_green = ExtResource("24_1nv7c")
+image_texture_filter_red = ExtResource("25_kkfqw")
+success_message = "Model citizens for sure"
+fail_message = "\"New Wave Boys\" are our allies you fool!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
