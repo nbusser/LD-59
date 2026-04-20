@@ -8,6 +8,16 @@ extends Control
 		color = value
 		_update_color.call_deferred()
 
+var _min_value = 0:
+	set(value):
+		_min_value = value
+		_update_lights.call_deferred()
+
+var _max_value = 0:
+	set(value):
+		_max_value = value
+		_update_lights.call_deferred()
+
 @onready var progress_bar: TextureProgressBar = $ProgressBar
 @onready var progress_bar_mask: TextureProgressBar = $ProgressBarMask
 
@@ -20,8 +30,8 @@ func _process(_delta: float) -> void:
 			int(Utils.map_triangle(fmod(time / 800.0, 1.0), 0.5) * max_value) + 1, 1, max_value
 		)
 		var index_mask: int = (max_value + index - 1) % max_value
-		progress_bar.value = index
-		progress_bar_mask.value = index_mask
+		_min_value = index_mask
+		_max_value = index
 	else:
 		var jitter = round(
 			(
@@ -50,6 +60,11 @@ func set_value_f(value_f: float) -> int:
 func _update_color():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", color, 0.1)
+
+
+func _update_lights():
+	progress_bar_mask.value = _min_value
+	progress_bar.value = _max_value
 
 
 func _ready() -> void:
