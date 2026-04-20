@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
 [ext_resource type="PackedScene" uid="uid://drh8266ba5ia5" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
-[ext_resource type="Script" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
+[ext_resource type="Script" uid="uid://bxavdwwi5acid" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
 [ext_resource type="Texture2D" uid="uid://cfc8he6p7ihtc" path="res://assets/ui/holey_sheets/82.png" id="4_ewdv1"]
 [ext_resource type="Script" uid="uid://bd6is7cj6abri" path="res://src/SteganoTools/stegano_image_tools.gd" id="4_ms2d3"]
@@ -22,8 +22,8 @@ colors = PackedColorArray(0.8666667, 0, 0, 1, 1, 0.7254902, 0.3372549, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4q2fo"]
 gradient = SubResource("Gradient_niwiv")
-width = 100
-height = 100
+width = 250
+height = 250
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0i3x"]
 shader = ExtResource("2_n0i3x")
@@ -37,8 +37,8 @@ colors = PackedColorArray(0.31764707, 0.41960785, 1, 1, 0.16078432, 0.47843137, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n0i3x"]
 gradient = SubResource("Gradient_4q2fo")
-width = 100
-height = 100
+width = 250
+height = 250
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_magnify"]
 shader = ExtResource("5_magnify")
@@ -99,9 +99,10 @@ disable_animation = true
 [node name="FilterGreen" type="TextureRect" parent="ImageFilters" unique_id=866931896]
 material = SubResource("ShaderMaterial_n0i3x")
 layout_mode = 0
-offset_left = 118.0
-offset_right = 218.0
-offset_bottom = 100.0
+offset_left = 287.0
+offset_top = 2.0
+offset_right = 537.0
+offset_bottom = 252.0
 texture = SubResource("GradientTexture2D_n0i3x")
 
 [node name="Draggable" parent="ImageFilters/FilterGreen" unique_id=1011977757 instance=ExtResource("2_4q2fo")]
