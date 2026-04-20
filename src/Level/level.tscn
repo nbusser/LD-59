@@ -337,6 +337,18 @@ mouse_filter = 1
 _sub_viewport_display = NodePath("../../Monitor/Display")
 _rendered_image = NodePath("../../Monitor/SubViewport/Signal/RenderedImage")
 
+[node name="FilterRed" parent="UI/SteganoTools/ImageFilters" index="0" unique_id=1521085869]
+offset_left = -713.0
+offset_top = -259.0
+offset_right = -31.0
+offset_bottom = 256.0
+
+[node name="FilterGreen" parent="UI/SteganoTools/ImageFilters" index="1" unique_id=1594528860]
+offset_left = -529.0
+offset_top = -260.0
+offset_right = 153.0
+offset_bottom = 255.0
+
 [node name="MagnifyingGlass" parent="UI/SteganoTools/ImageFilters" index="2" unique_id=16760351]
 offset_left = 632.0
 offset_top = 56.0
