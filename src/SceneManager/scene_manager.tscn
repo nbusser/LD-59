@@ -3,15 +3,13 @@
 [ext_resource type="Script" uid="uid://bupdnxdyw4e13" path="res://src/SceneManager/scene_manager.gd" id="1_qc8yu"]
 [ext_resource type="Script" uid="uid://dtbff18d2g0t7" path="res://src/Level/level_data.gd" id="2_38vrh"]
 [ext_resource type="Script" uid="uid://bnvpmcg0m835h" path="res://src/CipheredSignal/cipher_data.gd" id="3_38vrh"]
-[ext_resource type="AudioStream" uid="uid://ba7shxyukh22w" path="res://assets/musics/example.ogg" id="3_knii6"]
-[ext_resource type="AudioStream" uid="uid://c8hkt50a1hi0t" path="res://assets/musics/example2.ogg" id="4_bb0s7"]
 [ext_resource type="Texture2D" uid="uid://dyphsolo0vfro" path="res://assets/sprites/ciphers/star_wars/star_wars.png" id="4_hyeaj"]
 [ext_resource type="Texture2D" uid="uid://b3ecnmvxdff3" path="res://assets/sprites/ciphers/tank_man/tank_man.png" id="5_7qhxv"]
 [ext_resource type="Texture2D" uid="uid://b5d4rluscttif" path="res://assets/sprites/ciphers/star_wars/star_wars_green.png" id="5_l4fgv"]
 [ext_resource type="Texture2D" uid="uid://csb52q0lubd25" path="res://assets/sprites/ciphers/tank_man/tank_man_red.png" id="6_6vsvc"]
 [ext_resource type="Texture2D" uid="uid://dfbcll8fh1186" path="res://assets/sprites/ciphers/star_wars/star_wars_red.png" id="6_okykg"]
 [ext_resource type="Texture2D" uid="uid://virk1a5lc7t0" path="res://assets/sprites/ciphers/tank_man/tank_man_green.png" id="7_4d07j"]
-[ext_resource type="Script" uid="uid://bokrkyxmuteu5" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
+[ext_resource type="Script" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
 [ext_resource type="AudioStream" uid="uid://cp8lj1cfpvpbo" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1_reversed.ogg" id="7_nb34f"]
 [ext_resource type="AudioStream" uid="uid://dasru4dewv4kg" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1.ogg" id="7_tlrc4"]
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
@@ -45,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://wk2b8luvsamp" path="res://assets/sprites/ciphers/traffic/traffic.png" id="41_th76n"]
 [ext_resource type="Texture2D" uid="uid://dik23ceyedt1e" path="res://assets/sprites/ciphers/traffic/traffic_green.png" id="42_kfgd5"]
 [ext_resource type="Texture2D" uid="uid://deq3lpgbmk1xa" path="res://assets/sprites/ciphers/traffic/traffic_red.png" id="43_6f50n"]
+[ext_resource type="AudioStream" uid="uid://d1t1vixj3ykw8" path="res://assets/musics/global_discorveillance.ogg" id="44_kkfqw"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -234,11 +233,6 @@ render_target_update_mode = 4
 [node name="Musics" type="Node" parent="." unique_id=395666341]
 
 [node name="Music1" type="AudioStreamPlayer" parent="Musics" unique_id=1789580716]
-stream = ExtResource("3_knii6")
-volume_db = -80.0
-bus = &"Music"
-
-[node name="Music2" type="AudioStreamPlayer" parent="Musics" unique_id=92976531]
-stream = ExtResource("4_bb0s7")
-volume_db = -80.0
+stream = ExtResource("44_kkfqw")
+volume_db = 8.0
 bus = &"Music"
