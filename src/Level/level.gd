@@ -88,18 +88,12 @@ func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
 	deciphering_started_stopped.emit(false)
 
 	if level_state.current_cipher.is_disco != is_disco:
-		await _play_failure_animation()
-		Globals.end_scene(
-			Globals.EndSceneStatus.LEVEL_GAME_OVER,
-			{
-				"successes": level_state.successes_counter,
-				"total": len(level_state.level_data.ciphers)
-			}
-		)
+		await _play_cipher_decoded_animation(false)
 	else:
 		level_state.successes_counter += 1
-		await _play_success_animation()
-		_load_next_cipher()
+		await _play_cipher_decoded_animation(true)
+
+	_load_next_cipher()
 
 
 func _play_searching_signal_animation():
@@ -112,15 +106,18 @@ func _play_signal_found_animation():
 	# await $AnimationPlayer.animation_finished
 
 
-func _play_failure_animation():
-	$Audio/Failure.play()
-	await get_tree().create_timer(1.0).timeout
-	await _play_signal_found_animation()
-	await get_tree().create_timer(0.5).timeout
+func _play_cipher_decoded_animation(success: bool):
+	$UI/Carton.visible = true
+	if success:
+		$Audio/Success.play()
+		$UI/Carton/Label.text = level_state.current_cipher.success_message
+		await get_tree().create_timer(1.5).timeout
+	else:
+		$Audio/Failure.play()
+		$UI/Carton/Label.text = level_state.current_cipher.fail_message
+		await get_tree().create_timer(2.5).timeout
 
+	$UI/Carton.visible = false
 
-func _play_success_animation():
-	$Audio/Success.play()
-	await get_tree().create_timer(1.0).timeout
 	await _play_signal_found_animation()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.8).timeout

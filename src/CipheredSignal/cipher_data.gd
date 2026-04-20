@@ -20,6 +20,8 @@ enum CipherType {
 		audio_stream_1 = null
 		audio_stream_2 = null
 		audio_stream_3 = null
+		success_message = ""
+		fail_message = ""
 		notify_property_list_changed()
 
 # Only the relevant property is shown
@@ -36,6 +38,9 @@ enum CipherType {
 @export var audio_stream_3: AudioTrack = null
 
 @export var is_disco: bool = false
+
+@export var success_message: String = ""
+@export var fail_message: String = ""
 
 
 func _validate_property(property: Dictionary) -> void:

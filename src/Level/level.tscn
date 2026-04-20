@@ -5,13 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://dbqai3mwspxsp" path="res://src/HUD/fadeout.tscn" id="4_fre1t"]
 [ext_resource type="PackedScene" uid="uid://cusfjc6jcovp4" path="res://src/CommandPanel/CommandPanel.tscn" id="4_grxid"]
 [ext_resource type="PackedScene" uid="uid://bvbxvt0sijetw" path="res://src/Monitor/Monitor.tscn" id="5_grxid"]
+[ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="6_4bydg"]
 [ext_resource type="PackedScene" uid="uid://b3bgc575mmka7" path="res://src/SteganoTools/SteganoTools.tscn" id="6_mqshx"]
 [ext_resource type="PackedScene" uid="uid://im4hyd35kt80" path="res://src/CipheredSignal/CipheredSignals.tscn" id="7_gp2up"]
+[ext_resource type="FontFile" uid="uid://ov4pgbpxisrm" path="res://assets/fonts/vhs-vcr-osd.ttf" id="7_mqshx"]
 [ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
 [ext_resource type="AudioStream" uid="uid://dtmn07mdwbxpv" path="res://assets/sounds/freesound_community-radio-noise-11-59824.mp3" id="10_rrnxv"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_rrnxv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_djut7"]
+font = ExtResource("7_mqshx")
+font_size = 64
 
 [sub_resource type="Animation" id="Animation_mqshx"]
 length = 0.001
@@ -136,9 +142,41 @@ mouse_filter = 1
 _sub_viewport_display = NodePath("../../Monitor/Display")
 _rendered_image = NodePath("../../Monitor/SubViewport/Signal/RenderedImage")
 
+[node name="Draggable" parent="UI/SteganoTools/ImageFilters/FilterRed" parent_id_path=PackedInt32Array(1033651520, 1383833397) index="0" unique_id=292395700]
+disable_animation = false
+
 [node name="FilterGreen" parent="UI/SteganoTools/ImageFilters" index="1" unique_id=866931896]
 offset_right = 64.0
 offset_bottom = 64.0
+
+[node name="Draggable" parent="UI/SteganoTools/ImageFilters/FilterGreen" index="0" unique_id=1011977757]
+disable_animation = false
+
+[node name="Draggable" parent="UI/SteganoTools/ImageFilters/MagnifyingGlass" parent_id_path=PackedInt32Array(1033651520, 1122334455) index="0" unique_id=1122334456]
+disable_animation = false
+
+[node name="Carton" type="PanelContainer" parent="UI" unique_id=1076396280]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -45.0
+offset_right = 77.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_4bydg")
+
+[node name="Label" type="Label" parent="UI/Carton" unique_id=471463300]
+layout_mode = 2
+theme = ExtResource("6_4bydg")
+text = "Carton"
+label_settings = SubResource("LabelSettings_djut7")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Fadein" parent="UI" unique_id=508041488 instance=ExtResource("4_fre1t")]
 mouse_filter = 2
@@ -194,6 +232,7 @@ libraries/ = SubResource("AnimationLibrary_v3q8p")
 
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel" method="_on_level_deciphering_started_stopped"]
+[connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel/DiscoButtons" method="_on_level_deciphering_started_stopped"]
 [connection signal="phase_changed" from="." to="UI/SteganoTools" method="_on_level_phase_changed"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/Monitor" method="_on_command_panel_cipher_type_selected"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/SteganoTools" method="_on_command_panel_cipher_type_selected"]
