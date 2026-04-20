@@ -3,6 +3,8 @@ class_name Draggable extends Node
 const SCALE_DROPPED = 0.6
 const ANIMATION_DURATION = 0.1
 
+@export var disable_animation := false
+
 var controllable := true:
 	get:
 		return controllable
@@ -13,8 +15,6 @@ var controllable := true:
 
 var _dragging := false
 var _hovered := false
-
-@export var disable_animation := false
 
 @onready var parent: Control = get_parent()
 
