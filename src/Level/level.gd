@@ -22,7 +22,8 @@ func _ready():
 	_load_next_cipher()
 
 	hud.init(level_state)
-	timer.start(level_state.level_data.timer_duration)
+	if level_state.level_data.timer_duration > 0:
+		timer.start(level_state.level_data.timer_duration)
 
 	command_panel.init(level_state)
 
