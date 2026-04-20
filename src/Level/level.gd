@@ -15,6 +15,8 @@ var level_state: LevelState
 @onready var ciphered_image: CipheredImage = $CipheredSignals/CipheredImage
 @onready var ciphered_audio: CipheredAudio = $CipheredSignals/CipheredAudio
 
+@onready var glasses_overlay: Control = %GlassesOverlay
+
 
 func _ready():
 	assert(level_state, "init must be called before creating Level scene")
@@ -30,6 +32,7 @@ func _ready():
 	deciphering_started_stopped.emit(false)
 
 	$UI/Fadein.fade()
+	Globals.glasses_state_changed.connect(_on_glasses_state_changed)
 
 
 func init(level_data_p: LevelData):
@@ -37,7 +40,7 @@ func init(level_data_p: LevelData):
 
 
 func _load_next_cipher():
-	# _switch_phase(LevelState.Phase.DESCRAMBLE)
+	switch_phase(LevelState.Phase.DESCRAMBLE)
 
 	if level_state.next_cipher_index == level_state.level_data.ciphers.size():
 		Globals.end_scene(
@@ -74,10 +77,10 @@ func _load_next_cipher():
 
 	deciphering_started_stopped.emit(true)
 
-	_switch_phase(LevelState.Phase.STEGANO)
+	switch_phase(LevelState.Phase.STEGANO)
 
 
-func _switch_phase(phase: LevelState.Phase):
+func switch_phase(phase: LevelState.Phase):
 	level_state.phase = phase
 	phase_changed.emit(phase)
 
@@ -127,3 +130,7 @@ func _play_cipher_decoded_animation(success: bool):
 
 	await _play_signal_found_animation()
 	await get_tree().create_timer(0.8).timeout
+
+
+func _on_glasses_state_changed(active: bool):
+	glasses_overlay.visible = active

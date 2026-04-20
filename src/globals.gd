@@ -1,6 +1,8 @@
 extends Node
 
 signal scene_ended(status: EndSceneStatus, params: Dictionary)
+signal glasses_state_changed(active: bool)
+
 # Status sent along with signal end_scene()
 enum EndSceneStatus {
 	# Main meu
@@ -33,6 +35,11 @@ var dragged_object: Control
 
 var display_mode: CipherData.CipherType = CipherData.CipherType.TEXT
 
+var glasses_active = false:
+	set(value):
+		glasses_active = value
+		glasses_state_changed.emit(value)
+
 
 func get_current_cipher() -> CipherData:
 	return current_level.level_state.current_cipher
@@ -44,3 +51,8 @@ func end_scene(status: EndSceneStatus, params: Dictionary = {}) -> void:
 
 func coin_flip() -> bool:
 	return randi() % 2
+
+
+func toggle_glasses() -> bool:
+	glasses_active = !glasses_active
+	return glasses_active

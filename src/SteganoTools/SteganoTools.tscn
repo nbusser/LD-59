@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
 [ext_resource type="PackedScene" uid="uid://drh8266ba5ia5" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
-[ext_resource type="Script" uid="uid://bxavdwwi5acid" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
+[ext_resource type="Script" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
 [ext_resource type="Script" uid="uid://bnvpmcg0m835h" path="res://src/CipheredSignal/cipher_data.gd" id="4_bwi1n"]
 [ext_resource type="Texture2D" uid="uid://cfc8he6p7ihtc" path="res://assets/ui/holey_sheets/82.png" id="4_ewdv1"]
@@ -11,6 +11,8 @@
 [ext_resource type="Shader" uid="uid://bjupoau8bkr32" path="res://src/SteganoTools/MagnifyingGlass.gdshader" id="5_magnify"]
 [ext_resource type="Texture2D" uid="uid://c3v5l0qfqq3n6" path="res://assets/ui/holey_sheets/77.png" id="6_tvenm"]
 [ext_resource type="Texture2D" uid="uid://kkxk8ft1f6fs" path="res://assets/ui/holey_sheets/19.png" id="7_bwi1n"]
+[ext_resource type="Texture2D" uid="uid://cj2hxlcudbrq0" path="res://assets/ui/glasses/Text-disco_glasses_survol.png" id="12_e8hoa"]
+[ext_resource type="Texture2D" uid="uid://b5rd4ivlqp3y0" path="res://assets/ui/glasses/Text-disco_glasses.png" id="13_mrsy4"]
 
 [sub_resource type="Resource" id="Resource_kfgd5"]
 script = ExtResource("4_bwi1n")
@@ -131,3 +133,46 @@ texture = SubResource("GradientTexture2D_magnify")
 
 [node name="Draggable" parent="ImageFilters/MagnifyingGlass" unique_id=1122334456 instance=ExtResource("2_4q2fo")]
 disable_animation = true
+
+[node name="GlassesButton" type="TextureButton" parent="." unique_id=1493206345]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 304.0
+
+[node name="GlassesPlaceholder" type="TextureRect" parent="GlassesButton" unique_id=2108212437]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.1)
+layout_mode = 0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 529.0
+offset_bottom = 523.0
+mouse_filter = 2
+texture = ExtResource("13_mrsy4")
+metadata/_edit_lock_ = true
+
+[node name="GlassesHover" type="TextureRect" parent="GlassesButton" unique_id=459233681]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 529.0
+offset_bottom = 523.0
+mouse_filter = 2
+texture = ExtResource("12_e8hoa")
+metadata/_edit_lock_ = true
+
+[node name="Glasses" type="TextureRect" parent="GlassesButton" unique_id=957318997]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 529.0
+offset_bottom = 523.0
+mouse_filter = 2
+texture = ExtResource("13_mrsy4")
+metadata/_edit_lock_ = true
+
+[connection signal="button_down" from="GlassesButton" to="." method="_on_glasses_button_button_down"]
+[connection signal="mouse_entered" from="GlassesButton" to="." method="_on_glasses_button_mouse_entered"]
+[connection signal="mouse_exited" from="GlassesButton" to="." method="_on_glasses_button_mouse_exited"]

@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://im4hyd35kt80" path="res://src/CipheredSignal/CipheredSignals.tscn" id="7_gp2up"]
 [ext_resource type="FontFile" uid="uid://ov4pgbpxisrm" path="res://assets/fonts/vhs-vcr-osd.ttf" id="7_mqshx"]
 [ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
+[ext_resource type="Texture2D" uid="uid://bfug2fui4w7oy" path="res://assets/ui/glasses/lunettes.png" id="9_hivg7"]
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
 [ext_resource type="AudioStream" uid="uid://dtmn07mdwbxpv" path="res://assets/sounds/freesound_community-radio-noise-11-59824.mp3" id="10_rrnxv"]
+[ext_resource type="Texture2D" uid="uid://d22l3h2xe512c" path="res://assets/ui/glasses/filtre-lunettes.png" id="10_u72di"]
 [ext_resource type="Environment" uid="uid://dtq8sggtgo7jd" path="res://default_env.tres" id="11_4bydg"]
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
 
@@ -26,7 +28,7 @@ height = 1080
 noise = SubResource("FastNoiseLite_nuskc")
 color_ramp = SubResource("Gradient_05e80")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_v3q8p"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6s7yf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_djut7"]
 font = ExtResource("7_mqshx")
@@ -145,13 +147,13 @@ correct_value_threshold = 0.1
 correct_value_threshold = 0.1
 
 [node name="TextModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="0" unique_id=1443325002]
-button_group = SubResource("ButtonGroup_v3q8p")
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
-button_group = SubResource("ButtonGroup_v3q8p")
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
-button_group = SubResource("ButtonGroup_v3q8p")
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
 offset_left = 648.0
@@ -176,6 +178,12 @@ disable_animation = false
 
 [node name="Draggable" parent="UI/SteganoTools/ImageFilters/MagnifyingGlass" parent_id_path=PackedInt32Array(1033651520, 1122334455) index="0" unique_id=1122334456]
 disable_animation = false
+
+[node name="GlassesButton" parent="UI/SteganoTools" index="2" unique_id=1493206345]
+offset_left = 952.0
+offset_top = 88.0
+offset_right = 1232.0
+offset_bottom = 392.0
 
 [node name="Carton" type="PanelContainer" parent="UI" unique_id=1076396280]
 visible = false
@@ -213,6 +221,21 @@ metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI" unique_id=1593123046]
 color = Color(0.7708398, 0.7708394, 0.77083945, 1)
+
+[node name="GlassesOverlay" type="TextureRect" parent="UI" unique_id=1645887035]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("9_hivg7")
+
+[node name="TextureRect" type="TextureRect" parent="UI/GlassesOverlay" unique_id=2019028257]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("10_u72di")
 
 [node name="Timer" type="Timer" parent="." unique_id=299543541]
 wait_time = 10.0

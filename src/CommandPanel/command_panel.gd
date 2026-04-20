@@ -143,6 +143,12 @@ func get_signal_quality() -> float:
 func _process(delta: float) -> void:
 	_smoothed_signal_quality += (get_signal_quality() - _smoothed_signal_quality) * delta
 	signal_indicator.set_value_f(pow(_smoothed_signal_quality, 3.0))
+
+	if _smoothed_signal_quality > 0.99:
+		Globals.current_level.switch_phase(LevelState.Phase.STEGANO)
+	else:
+		Globals.current_level.switch_phase(LevelState.Phase.DESCRAMBLE)
+
 	if signal_indicator.is_searching:
 		signal_indicator.color = Color.RED
 	elif _smoothed_signal_quality > MAX_QUALITY_WHEN_INCORRECT:

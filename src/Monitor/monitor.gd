@@ -40,6 +40,7 @@ func _ready() -> void:
 	_ciphered_text.on_render.connect(_on_text_render)
 	_ciphered_image.on_render.connect(_on_image_render)
 	_ciphered_audio.on_render.connect(_on_audio_render)
+	Globals.glasses_state_changed.connect(_on_glasses_state_changed)
 
 
 func _display_cipher():
@@ -76,7 +77,13 @@ func _draw():
 
 
 func _on_text_render() -> void:
-	_rendered_text.text = _ciphered_text.get_transformed_text()
+	if (
+		Globals.glasses_active
+		and Globals.current_level.level_state.phase == LevelState.Phase.STEGANO
+	):
+		_rendered_text.text = _ciphered_text.get_alternative_text()
+	else:
+		_rendered_text.text = _ciphered_text.get_transformed_text()
 
 
 func _on_image_render() -> void:
@@ -111,3 +118,7 @@ func _on_level_deciphering_started_stopped(started: bool) -> void:
 		enable_display()
 	else:
 		disable_display()
+
+
+func _on_glasses_state_changed(active: bool):
+	_on_text_render()

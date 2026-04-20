@@ -324,3 +324,10 @@ func _render():
 
 func get_transformed_text() -> String:
 	return _transformed_text
+
+
+func get_alternative_text() -> String:
+	var alternative_text = Globals.current_level.level_state.current_cipher.alternative_content
+	if alternative_text != null and alternative_text.length() > 0:
+		return alternative_text
+	return _transformed_text
