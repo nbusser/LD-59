@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wk2b8luvsamp"
-path="res://.godot/imported/traffic.png-b45f366235825dc267d38e576a55f744.ctex"
+uid="uid://dka8ueqd3tgi6"
+path="res://.godot/imported/kid_green.webp-768c8e3106c5cd4b73891e98203ac53e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ciphers/traffic/traffic.png"
-dest_files=["res://.godot/imported/traffic.png-b45f366235825dc267d38e576a55f744.ctex"]
+source_file="res://assets/sprites/ciphers/kid/kid_green.webp"
+dest_files=["res://.godot/imported/kid_green.webp-768c8e3106c5cd4b73891e98203ac53e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt0jmyylgoord"
-path="res://.godot/imported/kid.jpg-5e63ebe4d5569791ab67cfefb52231ad.ctex"
+uid="uid://b8a35dbrcbn7i"
+path="res://.godot/imported/freddy_green.webp-e64af482a393c03ec0f92c956659afcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ciphers/kid/kid.jpg"
-dest_files=["res://.godot/imported/kid.jpg-5e63ebe4d5569791ab67cfefb52231ad.ctex"]
+source_file="res://assets/sprites/ciphers/freddy/freddy_green.webp"
+dest_files=["res://.godot/imported/freddy_green.webp-e64af482a393c03ec0f92c956659afcd.ctex"]
 
 [params]
 

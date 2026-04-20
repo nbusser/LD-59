@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbsdto101b8ey"
-path="res://.godot/imported/freddy.png-75c97cf948c6a6770b8a4f95572d6e8e.ctex"
+uid="uid://dd5mrpx2hx366"
+path="res://.godot/imported/traffic_green.webp-bb3bc6fcafade0eb7c6bda1c87a42940.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ciphers/freddy/freddy.png"
-dest_files=["res://.godot/imported/freddy.png-75c97cf948c6a6770b8a4f95572d6e8e.ctex"]
+source_file="res://assets/sprites/ciphers/traffic/traffic_green.webp"
+dest_files=["res://.godot/imported/traffic_green.webp-bb3bc6fcafade0eb7c6bda1c87a42940.ctex"]
 
 [params]
 

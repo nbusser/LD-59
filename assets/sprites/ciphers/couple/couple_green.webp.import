@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mwa66lnjsgsw"
-path="res://.godot/imported/couple.png-68e0e68e5b63f111fd8adc73af3a1203.ctex"
+uid="uid://qeo2r504t2lf"
+path="res://.godot/imported/couple_green.webp-2651f3ba40b47352adc93c99cd87e190.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ciphers/couple/couple.png"
-dest_files=["res://.godot/imported/couple.png-68e0e68e5b63f111fd8adc73af3a1203.ctex"]
+source_file="res://assets/sprites/ciphers/couple/couple_green.webp"
+dest_files=["res://.godot/imported/couple_green.webp-2651f3ba40b47352adc93c99cd87e190.ctex"]
 
 [params]
 
