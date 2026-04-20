@@ -67,6 +67,9 @@
 [ext_resource type="AudioStream" uid="uid://bedrydevw47ah" path="res://assets/sounds/ciphers/staying_alive/staying_alive_track_2.ogg" id="64_ixkii"]
 [ext_resource type="AudioStream" uid="uid://blmewy7sm530j" path="res://assets/sounds/ciphers/staying_alive/stayin_alive_track_3_reversed.ogg" id="65_hegg6"]
 [ext_resource type="AudioStream" uid="uid://c7b5piqmjg3ve" path="res://assets/sounds/ciphers/staying_alive/stayin_alive_track_3.ogg" id="66_0sind"]
+[ext_resource type="Texture2D" uid="uid://dbwit1n5w6i62" path="res://assets/sprites/ciphers/acdc/acdc.webp" id="67_ixkii"]
+[ext_resource type="Texture2D" uid="uid://beu7kfwhcmg8d" path="res://assets/sprites/ciphers/acdc/acdc_green.webp" id="68_hegg6"]
+[ext_resource type="Texture2D" uid="uid://co6varj12pyei" path="res://assets/sprites/ciphers/acdc/acdc_red.webp" id="69_0sind"]
 
 [sub_resource type="Resource" id="Resource_qc8yu"]
 script = ExtResource("3_38vrh")
@@ -85,17 +88,6 @@ Kiss the dog for me
 Pat"
 success_message = "Awww"
 fail_message = "What's wrong with that?"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_knii6"]
-script = ExtResource("3_38vrh")
-cipher_type = 1
-image_texture = ExtResource("4_4n71b")
-image_texture_filter_green = ExtResource("6_tuqtv")
-image_texture_filter_red = ExtResource("5_has0b")
-is_disco = true
-success_message = "One more proof of them being in the dark side"
-fail_message = "Seems like you forgot to use the filter"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_i08jk"]
@@ -125,6 +117,17 @@ audio_stream_3 = SubResource("Resource_jt0jt")
 is_disco = true
 success_message = "Obvious"
 fail_message = "Come on..."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_knii6"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("4_4n71b")
+image_texture_filter_green = ExtResource("6_tuqtv")
+image_texture_filter_red = ExtResource("5_has0b")
+is_disco = true
+success_message = "One more proof of them being in the dark side"
+fail_message = "Seems like you forgot to use the filter"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_bb0s7"]
@@ -237,6 +240,17 @@ image_texture_filter_red = ExtResource("40_tuqtv")
 is_disco = true
 success_message = "We got the disco king!"
 fail_message = "Use your damned filters!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_ilhjc"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("67_ixkii")
+image_texture_filter_green = ExtResource("68_hegg6")
+image_texture_filter_red = ExtResource("69_0sind")
+is_disco = true
+success_message = "Trying to smuggle disco vinyl?"
+fail_message = "This disk was definitely not ACDC"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_jd8f8"]
@@ -375,7 +389,7 @@ script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_knii6"), SubResource("Resource_kaq6d"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x"), SubResource("Resource_8peto")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_kaq6d"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x"), SubResource("Resource_8peto")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
