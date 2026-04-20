@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://b3bgc575mmka7"]
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
-[ext_resource type="PackedScene" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
+[ext_resource type="PackedScene" uid="uid://drh8266ba5ia5" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
+[ext_resource type="Texture2D" uid="uid://bprdj2krbpywu" path="res://assets/sprites/player.png" id="4_55esx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_55esx"]
 shader = ExtResource("2_n0i3x")
 shader_parameter/screen_position = Vector2(0, 0)
 shader_parameter/screen_size = Vector2(0, 0)
+shader_parameter/enable_filter = false
 
 [sub_resource type="Gradient" id="Gradient_niwiv"]
 colors = PackedColorArray(0.8666667, 0, 0, 1, 1, 0.7254902, 0.3372549, 1)
@@ -21,6 +23,7 @@ height = 84
 shader = ExtResource("2_n0i3x")
 shader_parameter/screen_position = Vector2(0, 0)
 shader_parameter/screen_size = Vector2(0, 0)
+shader_parameter/enable_filter = false
 
 [sub_resource type="Gradient" id="Gradient_4q2fo"]
 offsets = PackedFloat32Array(0.011940299, 1)
@@ -59,3 +62,11 @@ offset_bottom = 84.0
 texture = SubResource("GradientTexture2D_n0i3x")
 
 [node name="Draggable" parent="ImageFilters/FilterGreen" unique_id=1011977757 instance=ExtResource("2_4q2fo")]
+
+[node name="HoleySheet" type="TextureRect" parent="." unique_id=482924583]
+layout_mode = 0
+offset_right = 377.0
+offset_bottom = 377.0
+texture = ExtResource("4_55esx")
+
+[node name="Draggable" parent="HoleySheet" unique_id=1010119147 instance=ExtResource("2_4q2fo")]
