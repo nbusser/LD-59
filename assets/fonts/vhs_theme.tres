@@ -1,7 +1,50 @@
 [gd_resource type="Theme" format=3 uid="uid://br6cw0ql61cg8"]
 
+[ext_resource type="Texture2D" uid="uid://6fidtms3ibo1" path="res://assets/ui/slider_knob.png" id="1_nv503"]
 [ext_resource type="FontFile" uid="uid://ov4pgbpxisrm" path="res://assets/fonts/vhs-vcr-osd.ttf" id="1_rm434"]
+[ext_resource type="Texture2D" uid="uid://clxra8p5ou1mu" path="res://assets/ui/slider_knob_disabled.png" id="2_eem5w"]
+[ext_resource type="Texture2D" uid="uid://ciw4o3caqmh5i" path="res://assets/ui/slider_knob_highlighted.png" id="3_s2xby"]
+[ext_resource type="Texture2D" uid="uid://436o4mulm50" path="res://assets/ui/slider-bar.png" id="4_rn6od"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv503"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eem5w"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nv503"]
+texture = ExtResource("4_rn6od")
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
 
 [resource]
 default_font = ExtResource("1_rm434")
 default_font_size = 32
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/constants/tick_offset = 0
+HSlider/icons/grabber = ExtResource("1_nv503")
+HSlider/icons/grabber_disabled = ExtResource("2_eem5w")
+HSlider/icons/grabber_highlight = ExtResource("3_s2xby")
+HSlider/icons/tick = ExtResource("4_rn6od")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_nv503")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_eem5w")
+HSlider/styles/slider = SubResource("StyleBoxTexture_nv503")

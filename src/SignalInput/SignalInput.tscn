@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://be8pcl6n30lrl"]
 
 [ext_resource type="Script" uid="uid://c7balx0vdfbbl" path="res://src/SignalInput/signal_input.gd" id="1_w7eef"]
+[ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="2_8bv2n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w7eef"]
 font_size = 20
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_8bv2n")
 max_value = 1.0
 step = 0.05
 
