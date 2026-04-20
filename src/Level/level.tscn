@@ -13,10 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
 [ext_resource type="Texture2D" uid="uid://bfug2fui4w7oy" path="res://assets/ui/glasses/lunettes.png" id="9_hivg7"]
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
-[ext_resource type="AudioStream" uid="uid://dtmn07mdwbxpv" path="res://assets/sounds/freesound_community-radio-noise-11-59824.mp3" id="10_rrnxv"]
 [ext_resource type="Texture2D" uid="uid://d22l3h2xe512c" path="res://assets/ui/glasses/filtre-lunettes.png" id="10_u72di"]
 [ext_resource type="Environment" uid="uid://dtq8sggtgo7jd" path="res://default_env.tres" id="11_4bydg"]
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
+[ext_resource type="AudioStream" uid="uid://blxwbx5u3ga1e" path="res://assets/sounds/searching.ogg" id="15_u72di"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_u72di"]
 
@@ -52,7 +52,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 143.53247,
 "start_offset": 0.0,
-"stream": ExtResource("10_rrnxv")
+"stream": ExtResource("15_u72di")
 }],
 "times": PackedFloat32Array(0)
 }
