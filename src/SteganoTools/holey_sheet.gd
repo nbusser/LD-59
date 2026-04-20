@@ -1,4 +1,5 @@
 @tool
+class_name HoleySheet
 extends Control
 
 @export var cipher_data: CipherData = null:

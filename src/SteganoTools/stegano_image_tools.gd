@@ -60,7 +60,7 @@ func init():
 		"filter_red_size", _red_filter.get_size() / _sub_viewport_display.get_size()
 	)
 
-	_rendered_image.material.set_shader_parameter("enable_magnifier", true)
+	# _rendered_image.material.set_shader_parameter("enable_magnifier", false)
 	_rendered_image.material.set_shader_parameter("magnifier_zoom", 2.5)
 
 	for f in [_green_filter, _red_filter]:
@@ -80,8 +80,8 @@ func toggle_tools(enabled: bool) -> void:
 		f.get_node("Draggable").controllable = enabled
 	_magnifier.visible = enabled
 	_magnifier.get_node("Draggable").controllable = enabled
-	if _rendered_image.material:
-		_rendered_image.material.set_shader_parameter("enable_magnifier", enabled)
+	# if _rendered_image.material:
+	# 	_rendered_image.material.set_shader_parameter("enable_magnifier", enabled)
 	if not enabled and is_node_ready():
 		_green_filter.position = _start_position_green
 		_red_filter.position = _start_position_red

@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://bjupoau8bkr32" path="res://src/SteganoTools/MagnifyingGlass.gdshader" id="5_magnify"]
 [ext_resource type="Texture2D" uid="uid://c3v5l0qfqq3n6" path="res://assets/ui/holey_sheets/77.png" id="6_tvenm"]
 [ext_resource type="Texture2D" uid="uid://kkxk8ft1f6fs" path="res://assets/ui/holey_sheets/19.png" id="7_bwi1n"]
+[ext_resource type="Texture2D" uid="uid://dohys76gnpgq1" path="res://assets/ui/holey_sheets/03.png" id="9_vod54"]
 [ext_resource type="Texture2D" uid="uid://cj2hxlcudbrq0" path="res://assets/ui/glasses/Text-disco_glasses_survol.png" id="12_e8hoa"]
 [ext_resource type="Texture2D" uid="uid://b5rd4ivlqp3y0" path="res://assets/ui/glasses/Text-disco_glasses.png" id="13_mrsy4"]
 [ext_resource type="Texture2D" uid="uid://d0mli43yn5fbb" path="res://assets/ui/magnifying_glass/loupe_suvol.png" id="14_caa2n"]
@@ -96,6 +97,12 @@ layout_mode = 0
 overlay_texture = ExtResource("7_bwi1n")
 
 [node name="Draggable" parent="TextFilters/HoleySheet3" unique_id=1699836832 instance=ExtResource("2_4q2fo")]
+
+[node name="HoleySheet4" parent="TextFilters" unique_id=423867034 instance=ExtResource("5_ewdv1")]
+layout_mode = 0
+overlay_texture = ExtResource("9_vod54")
+
+[node name="Draggable" parent="TextFilters/HoleySheet4" unique_id=952626156 instance=ExtResource("2_4q2fo")]
 
 [node name="ImageFilters" type="Control" parent="." unique_id=824484933]
 anchors_preset = 0
