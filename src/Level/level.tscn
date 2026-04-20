@@ -126,8 +126,10 @@ button_group = SubResource("ButtonGroup_rrnxv")
 button_group = SubResource("ButtonGroup_rrnxv")
 
 [node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
-offset_top = 165.0
-offset_bottom = 165.0
+offset_left = 887.0
+offset_top = 852.0
+offset_right = 887.0
+offset_bottom = 852.0
 mouse_filter = 1
 
 [node name="ImageFilters" parent="UI/SteganoTools" index="1" unique_id=824484933 node_paths=PackedStringArray("_sub_viewport_display", "_rendered_image")]
