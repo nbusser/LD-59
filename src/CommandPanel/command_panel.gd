@@ -43,6 +43,13 @@ var _current_cipher_type: CipherData.CipherType:
 @onready var noise_signal_input: SignalInput = %NoiseSignalInput
 @onready var noise_signal_input_display_knob: Control = %NoiseSignalInputDisplayKnob
 
+@onready var rot_signal_input: SignalInput = %RotSignalInput
+@onready var word_shuffle_signal_input: SignalInput = %WordShuffleSignalInput
+@onready var space_shuffle_signal_input: SignalInput = %SpaceShuffleSignalInput
+@onready var text_signal_input_display_red: NinePatchRect = %TextSignalInputDisplayRed
+@onready var text_signal_input_display_green: NinePatchRect = %TextSignalInputDisplayGreen
+@onready var text_signal_input_display_blue: NinePatchRect = %TextSignalInputDisplayBlue
+
 
 func init(_level_state: LevelState) -> void:
 	level_state = _level_state
@@ -130,3 +137,13 @@ func _process(delta: float) -> void:
 	signal_indicator.set_value_f(pow(_smoothed_signal_quality, 3.0))
 
 	noise_signal_input_display_knob.position.x = noise_signal_input.amount * 416.0
+
+	text_signal_input_display_red.region_rect.position.x = (
+		(-110 + rot_signal_input.amount * 250) * 1
+	)
+	text_signal_input_display_blue.region_rect.position.x = (
+		(112.0 - word_shuffle_signal_input.amount * 224.0) * 1
+	)
+	text_signal_input_display_green.region_rect.position.x = (
+		(-150 + space_shuffle_signal_input.amount * 260) * 1
+	)

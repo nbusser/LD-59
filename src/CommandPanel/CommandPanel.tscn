@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://dgmod0mgmirfm" path="res://assets/ui/Audio_freq_-_background.png" id="12_3sw21"]
 [ext_resource type="Texture2D" uid="uid://c686wcjdenhl8" path="res://assets/ui/Audio_freq_-_needle.png" id="14_aftnx"]
 [ext_resource type="Texture2D" uid="uid://bepfrpyo6d3y1" path="res://assets/ui/Audio_freq_-_foreground.png" id="14_vbb54"]
+[ext_resource type="Texture2D" uid="uid://cbhoqkv8nqvxp" path="res://assets/ui/descrambler_-_background.png" id="15_3pln7"]
+[ext_resource type="Texture2D" uid="uid://cqcgley868vyc" path="res://assets/ui/descrambler_-_foreground.png" id="16_0gx32"]
+[ext_resource type="Texture2D" uid="uid://sc3qxidyjp0w" path="res://assets/ui/descrambler_-_red_text.png" id="16_rqxoa"]
+[ext_resource type="Texture2D" uid="uid://c5fskj80beu0o" path="res://assets/ui/descrambler_-_green_text.png" id="17_05e80"]
+[ext_resource type="Texture2D" uid="uid://bubnv8s7n5bg4" path="res://assets/ui/descrambler_-_blue_text.png" id="18_nuskc"]
 
 [node name="CommandPanel" type="Control" unique_id=1884603933]
 layout_mode = 3
@@ -28,18 +33,21 @@ metadata/_edit_lock_ = true
 [node name="TextInputs" type="Node" parent="." unique_id=1363822340]
 
 [node name="RotSignalInput" parent="TextInputs" unique_id=1402289427 instance=ExtResource("2_hbc2p")]
+unique_name_in_owner = true
 offset_left = 64.0
 offset_top = 192.0
 offset_right = -1408.0
 offset_bottom = -824.0
 
 [node name="WordShuffleSignalInput" parent="TextInputs" unique_id=1555452025 instance=ExtResource("2_hbc2p")]
+unique_name_in_owner = true
 offset_left = 64.0
 offset_top = 256.0
 offset_right = -1408.0
 offset_bottom = -760.0
 
 [node name="SpaceShuffleSignalInput" parent="TextInputs" unique_id=310417279 instance=ExtResource("2_hbc2p")]
+unique_name_in_owner = true
 offset_left = 64.0
 offset_top = 320.0
 offset_right = -1408.0
@@ -203,6 +211,63 @@ offset_top = 784.0
 offset_right = 515.0
 offset_bottom = 831.0
 texture = ExtResource("14_vbb54")
+
+[node name="TextSignalInputDisplay" type="Node" parent="." unique_id=963730664]
+
+[node name="Background" type="TextureRect" parent="TextSignalInputDisplay" unique_id=13743039]
+offset_left = 168.0
+offset_top = 144.0
+offset_right = 405.0
+offset_bottom = 185.0
+texture = ExtResource("15_3pln7")
+
+[node name="Control" type="Control" parent="TextSignalInputDisplay" unique_id=198267733]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 152.0
+offset_right = 400.0
+offset_bottom = 176.0
+
+[node name="TextSignalInputDisplayRed" type="NinePatchRect" parent="TextSignalInputDisplay/Control" unique_id=887247111]
+unique_name_in_owner = true
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = -1
+offset_top = 6.0
+offset_right = 224.0
+offset_bottom = 14.0
+texture = ExtResource("16_rqxoa")
+region_rect = Rect2(0, 0, 224, 8)
+
+[node name="TextSignalInputDisplayGreen" type="NinePatchRect" parent="TextSignalInputDisplay/Control" unique_id=172378389]
+unique_name_in_owner = true
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = -1
+offset_top = 14.0
+offset_right = 224.0
+offset_bottom = 22.0
+texture = ExtResource("17_05e80")
+region_rect = Rect2(20, 0, 224, 8)
+
+[node name="TextSignalInputDisplayBlue" type="NinePatchRect" parent="TextSignalInputDisplay/Control" unique_id=1988522929]
+unique_name_in_owner = true
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = -1
+offset_top = 10.0
+offset_right = 224.0
+offset_bottom = 18.0
+texture = ExtResource("18_nuskc")
+region_rect = Rect2(0, 0, 224, 8)
+
+[node name="Foreground" type="TextureRect" parent="TextSignalInputDisplay" unique_id=1207224956]
+offset_left = 168.0
+offset_top = 144.0
+offset_right = 405.0
+offset_bottom = 185.0
+texture = ExtResource("16_0gx32")
 
 [connection signal="pressed" from="SignalTypeButtons/TextModeButton" to="." method="_on_text_pressed"]
 [connection signal="pressed" from="SignalTypeButtons/ImageModeButton" to="." method="_on_image_pressed"]
