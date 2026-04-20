@@ -122,14 +122,57 @@ func _noise_input_changed(value: float) -> void:
 
 
 # ----------------------------------------------------------------------------------------------------
+# MARK: Tracks mixing
+
+@export var track_1_mixer: SignalInput
+@export var track_2_mixer: SignalInput
+@export var track_3_mixer: SignalInput
+
+@onready var _track_mixers: Array[SignalInput] = [track_1_mixer, track_2_mixer, track_3_mixer]
+
+const TRACK_MIXERS_LOWER_BOUND = 0.0
+const TRACK_MIXERS_UPPER_BOUND = 1.0
+const TRACK_MIXERS_MIN_AMPLITUDE = 0.6
+
+# TODO: randomize
+var _tracks_mixer_lower_bounds: Array[float] = [
+	TRACK_MIXERS_LOWER_BOUND,
+	TRACK_MIXERS_LOWER_BOUND,
+	TRACK_MIXERS_LOWER_BOUND,
+]
+
+# TODO: randomize
+var _tracks_mixer_upper_bounds: Array[float] = [
+	TRACK_MIXERS_UPPER_BOUND,
+	TRACK_MIXERS_UPPER_BOUND,
+	TRACK_MIXERS_UPPER_BOUND,
+]
+
+
+func _track_mixer_input_changed(index: int, value: float) -> void:
+	_cipher_tracks[index].volume_linear = lerp(
+		_tracks_mixer_lower_bounds[index],
+		_tracks_mixer_upper_bounds[index],
+		1.0 - Utils.map_triangle(value, 0.0)  # TODO: randomize offset
+	)
+
+
+# ----------------------------------------------------------------------------------------------------
 # MARK: Common
 
 
 func _ready() -> void:
 	speed_input.signal_input_changed.connect(_speed_input_changed)
 	speed_input.trigger_update.call_deferred()
+
 	noise_input.signal_input_changed.connect(_noise_input_changed)
 	noise_input.trigger_update.call_deferred()
+
+	assert(_track_mixers.size() == _cipher_tracks.size())
+	for i in range(_track_mixers.size()):
+		var mixer_callback = func(value: float): _track_mixer_input_changed(i, value)
+		_track_mixers[i].signal_input_changed.connect(mixer_callback)
+		_track_mixers[i].trigger_update.call_deferred()
 
 
 func _render() -> void:
