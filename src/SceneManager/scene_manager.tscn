@@ -58,6 +58,9 @@
 [ext_resource type="Texture2D" uid="uid://dd6f5hke1g8ol" path="res://assets/sprites/ciphers/traffic/traffic_red.webp" id="55_tuqtv"]
 [ext_resource type="AudioStream" uid="uid://clcg80phak3ca" path="res://assets/sounds/ciphers/freak/freak_track_3_reversed.ogg" id="56_8pygd"]
 [ext_resource type="AudioStream" uid="uid://cuejpijpvd7wy" path="res://assets/sounds/ciphers/freak/freak_track_3.ogg" id="57_0ejsf"]
+[ext_resource type="Texture2D" uid="uid://bopxqhn8oekpm" path="res://assets/sprites/ciphers/skater/skater.webp" id="58_chmse"]
+[ext_resource type="Texture2D" uid="uid://bk35yr6uvo4em" path="res://assets/sprites/ciphers/skater/skater_green.webp" id="59_8pygd"]
+[ext_resource type="Texture2D" uid="uid://dxv4uur312hby" path="res://assets/sprites/ciphers/skater/skater_red.webp" id="60_0ejsf"]
 
 [sub_resource type="Resource" id="Resource_qc8yu"]
 script = ExtResource("3_38vrh")
@@ -322,12 +325,22 @@ success_message = "Le freak c'est chic"
 fail_message = "Do not trust appearances. "
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_8peto"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("58_chmse")
+image_texture_filter_green = ExtResource("59_8pygd")
+image_texture_filter_red = ExtResource("60_0ejsf")
+success_message = "All clear"
+fail_message = "Ghettoblaster is not disco"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x"), SubResource("Resource_8peto")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
