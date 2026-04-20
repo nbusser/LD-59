@@ -165,20 +165,36 @@ func _update_audio_data() -> void:
 		return
 
 	var v = _frequency_shape
-
 	var data = []
-	var prev_hz = 0
 
-	for i in range(1, VU_COUNT + 1):
-		var hz = i * (FREQ_MAX * (1 + v)) / VU_COUNT
-		var magnitude = _spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
-		var energy = clampf((MIN_DB + linear_to_db(magnitude)) / MIN_DB, 0, 1)
-		data.append(energy)
-		prev_hz = hz
+	if _spectrum.get_magnitude_for_frequency_range(100, 4000).length() == 0.0:
+		var t = Time.get_ticks_msec() / 1000.0
+		for j in range(VU_COUNT):
+			var freq_norm = float(j) / VU_COUNT
+			var falloff = 1.0 / (1.0 + freq_norm * 6.0)
+
+			var breath = 0.5 + 0.5 * sin(t * 0.8 * 4. + j * 0.3)
+
+			var peak1 = exp(-pow((freq_norm - (0.15 + 0.08 * sin(t * 0.3))) * 12.0, 2.0))
+			var peak2 = exp(-pow((freq_norm - (0.45 + 0.10 * sin(t * 0.17))) * 10.0, 2.0)) * 0.5
+			var shimmer = 0.5 + 0.5 * sin(t * (3.0 + j * 0.4) + j * 1.3)
+
+			var shape = (
+				(falloff * 0.6 + peak1 * 0.9 + peak2 * 0.5) * breath * (0.75 + 0.25 * shimmer)
+			)
+			data.append(clampf(shape, 0.0, 1.0))
+	else:
+		var prev_hz = 0
+		for i in range(1, VU_COUNT + 1):
+			var hz = i * (FREQ_MAX * (1 + v)) / VU_COUNT
+			var magnitude = _spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
+			var energy = clampf((MIN_DB + linear_to_db(magnitude)) / MIN_DB, 0, 1)
+			data.append(energy)
+			prev_hz = hz
 
 	for i in range(SAMPLE_COUNT):
-		var x = float(i) / SAMPLE_COUNT  # 0-1
-		var y = 0
+		var x = float(i) / SAMPLE_COUNT
+		var y = 0.0
 		for j in range(VU_COUNT):
 			y += sin(x * (j + 1) * PI * 4) * data[j]
 		y /= VU_COUNT
