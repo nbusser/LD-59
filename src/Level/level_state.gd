@@ -16,7 +16,7 @@ var next_cipher_index: int = 0
 
 var current_cipher: CipherData
 
-var phase: Phase = Phase.DESCRAMBLE
+var phase: Phase = Phase.STEGANO
 
 
 func _init(level_data_p: LevelData):
