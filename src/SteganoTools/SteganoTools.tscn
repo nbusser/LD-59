@@ -2,22 +2,14 @@
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
 [ext_resource type="PackedScene" uid="uid://drh8266ba5ia5" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
-[ext_resource type="Script" uid="uid://bxavdwwi5acid" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
+[ext_resource type="Script" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
-[ext_resource type="Texture2D" uid="uid://bprdj2krbpywu" path="res://assets/sprites/player.png" id="4_55esx"]
+[ext_resource type="Texture2D" uid="uid://cfc8he6p7ihtc" path="res://assets/ui/holey_sheets/82.png" id="4_ewdv1"]
 [ext_resource type="Script" uid="uid://bd6is7cj6abri" path="res://src/SteganoTools/stegano_image_tools.gd" id="4_ms2d3"]
+[ext_resource type="PackedScene" uid="uid://b76cux606us0g" path="res://src/SteganoTools/holey_sheet.tscn" id="5_ewdv1"]
 [ext_resource type="Shader" uid="uid://bjupoau8bkr32" path="res://src/SteganoTools/MagnifyingGlass.gdshader" id="5_magnify"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_magnify"]
-shader = ExtResource("5_magnify")
-
-[sub_resource type="Gradient" id="Gradient_magnify"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_magnify"]
-gradient = SubResource("Gradient_magnify")
-width = 256
-height = 256
+[ext_resource type="Texture2D" uid="uid://c3v5l0qfqq3n6" path="res://assets/ui/holey_sheets/77.png" id="6_tvenm"]
+[ext_resource type="Texture2D" uid="uid://kkxk8ft1f6fs" path="res://assets/ui/holey_sheets/19.png" id="7_bwi1n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_55esx"]
 shader = ExtResource("2_n0i3x")
@@ -48,6 +40,17 @@ gradient = SubResource("Gradient_4q2fo")
 width = 100
 height = 100
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_magnify"]
+shader = ExtResource("5_magnify")
+
+[sub_resource type="Gradient" id="Gradient_magnify"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_magnify"]
+gradient = SubResource("Gradient_magnify")
+width = 256
+height = 256
+
 [node name="SteganoTools" type="Control" unique_id=1033651520]
 layout_mode = 3
 anchors_preset = 0
@@ -59,13 +62,23 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_gumde")
 
-[node name="HoleySheet" type="TextureRect" parent="TextFilters" unique_id=482924583]
+[node name="HoleySheet" parent="TextFilters" unique_id=2070726997 instance=ExtResource("5_ewdv1")]
 layout_mode = 0
-offset_right = 377.0
-offset_bottom = 377.0
-texture = ExtResource("4_55esx")
+overlay_texture = ExtResource("4_ewdv1")
 
 [node name="Draggable" parent="TextFilters/HoleySheet" unique_id=1010119147 instance=ExtResource("2_4q2fo")]
+
+[node name="HoleySheet2" parent="TextFilters" unique_id=1915730032 instance=ExtResource("5_ewdv1")]
+layout_mode = 0
+overlay_texture = ExtResource("6_tvenm")
+
+[node name="Draggable" parent="TextFilters/HoleySheet2" unique_id=721624145 instance=ExtResource("2_4q2fo")]
+
+[node name="HoleySheet3" parent="TextFilters" unique_id=1662907682 instance=ExtResource("5_ewdv1")]
+layout_mode = 0
+overlay_texture = ExtResource("7_bwi1n")
+
+[node name="Draggable" parent="TextFilters/HoleySheet3" unique_id=1699836832 instance=ExtResource("2_4q2fo")]
 
 [node name="ImageFilters" type="Control" parent="." unique_id=824484933]
 anchors_preset = 0
@@ -80,7 +93,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_4q2fo")
 
-[node name="Draggable" parent="ImageFilters/FilterRed" unique_id=721624145 instance=ExtResource("2_4q2fo")]
+[node name="Draggable" parent="ImageFilters/FilterRed" unique_id=292395700 instance=ExtResource("2_4q2fo")]
 
 [node name="FilterGreen" type="TextureRect" parent="ImageFilters" unique_id=866931896]
 material = SubResource("ShaderMaterial_n0i3x")
@@ -96,8 +109,8 @@ texture = SubResource("GradientTexture2D_n0i3x")
 material = SubResource("ShaderMaterial_magnify")
 layout_mode = 0
 offset_left = 240.0
-offset_right = 320.0
 offset_top = 10.0
+offset_right = 320.0
 offset_bottom = 90.0
 texture = SubResource("GradientTexture2D_magnify")
 

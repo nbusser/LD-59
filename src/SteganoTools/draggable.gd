@@ -11,7 +11,7 @@ var controllable := true:
 var _dragging := false
 var _hovered := false
 
-@onready var parent: TextureRect = get_parent()
+@onready var parent: Control = get_parent()
 
 
 func _release():

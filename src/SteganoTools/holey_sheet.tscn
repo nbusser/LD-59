@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b76cux606us0g"]
+
+[ext_resource type="Script" uid="uid://b08p0b4i14iuu" path="res://src/SteganoTools/holey_sheet.gd" id="1_0yg7k"]
+[ext_resource type="Script" uid="uid://bnvpmcg0m835h" path="res://src/CipheredSignal/cipher_data.gd" id="2_0yg7k"]
+[ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="3_0yg7k"]
+[ext_resource type="Shader" uid="uid://jrx6w4ktyix0" path="res://src/SteganoTools/holey_sheet.gdshader" id="3_27aci"]
+[ext_resource type="Texture2D" uid="uid://dvrfhenu8cq01" path="res://assets/ui/holey_sheets/card.png" id="4_0yg7k"]
+
+[sub_resource type="Resource" id="Resource_38vrh"]
+script = ExtResource("2_0yg7k")
+text_content = "The cool cats -
+They know we may chillax
+But if I stoke the vibes
+They’ll fight the man."
+hidden_text_content = "That's the way I like it"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0yg7k"]
+viewport_path = NodePath("TextureRect/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yg7k"]
+resource_local_to_scene = true
+shader = ExtResource("3_27aci")
+shader_parameter/mask_texture = SubResource("ViewportTexture_0yg7k")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp07s"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+
+[node name="HoleySheet" type="Control" unique_id=1915730032]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 656.0
+offset_bottom = 432.0
+script = ExtResource("1_0yg7k")
+cipher_data = SubResource("Resource_38vrh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1624341172]
+material = SubResource("ShaderMaterial_0yg7k")
+layout_mode = 0
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 680.0
+offset_bottom = 448.0
+mouse_filter = 2
+texture = ExtResource("4_0yg7k")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect" unique_id=1001306741]
+transparent_bg = true
+
+[node name="RenderedText" type="RichTextLabel" parent="TextureRect/SubViewport" unique_id=1315235245]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_0yg7k")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_constants/line_separation = 10
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dp07s")
+bbcode_enabled = true
+text = "██        ███  
+███     █     ██   ██   
+    █       ██      █   
+█                     "
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OverlayTextureRect" type="TextureRect" parent="TextureRect" unique_id=703548542]
+unique_name_in_owner = true
+self_modulate = Color(0.5697535, 0.19139704, 0.17035624, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
