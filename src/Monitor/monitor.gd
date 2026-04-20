@@ -41,6 +41,7 @@ func _ready() -> void:
 	_ciphered_image.on_render.connect(_on_image_render)
 	_ciphered_audio.on_render.connect(_on_audio_render)
 	Globals.glasses_state_changed.connect(_on_glasses_state_changed)
+	Globals.mg_state_changed.connect(_on_mg_state_changed)
 
 
 func _display_cipher():
@@ -122,3 +123,7 @@ func _on_level_deciphering_started_stopped(started: bool) -> void:
 
 func _on_glasses_state_changed(_active: bool):
 	_on_text_render()
+
+
+func _on_mg_state_changed(active: bool):
+	_rendered_image.material.set_shader_parameter("enable_magnifier", active)

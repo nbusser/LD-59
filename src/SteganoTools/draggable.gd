@@ -1,5 +1,7 @@
 class_name Draggable extends Node
 
+signal dragging_state_changed(dragging: bool)
+
 const SCALE_DROPPED = 0.6
 const ANIMATION_DURATION = 0.1
 
@@ -13,7 +15,11 @@ var controllable := true:
 		if value == false and _dragging:
 			_release()
 
-var _dragging := false
+var _dragging := false:
+	set(value):
+		_dragging = value
+		dragging_state_changed.emit(value)
+
 var _hovered := false
 
 @onready var parent: Control = get_parent()

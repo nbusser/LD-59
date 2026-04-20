@@ -2,6 +2,7 @@ extends Node
 
 signal scene_ended(status: EndSceneStatus, params: Dictionary)
 signal glasses_state_changed(active: bool)
+signal mg_state_changed(active: bool)
 
 # Status sent along with signal end_scene()
 enum EndSceneStatus {
@@ -39,6 +40,11 @@ var glasses_active = false:
 	set(value):
 		glasses_active = value
 		glasses_state_changed.emit(value)
+
+var mg_active = false:
+	set(value):
+		mg_active = value
+		mg_state_changed.emit(value)
 
 
 func get_current_cipher() -> CipherData:

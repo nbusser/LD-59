@@ -67,3 +67,7 @@ func _on_glasses_button_mouse_exited() -> void:
 func _on_glasses_button_mouse_entered() -> void:
 	if !Globals.glasses_active:
 		_glasses_hover.show()
+
+
+func _on_mg_draggable_dragging_state_changed(dragging: bool) -> void:
+	Globals.mg_active = dragging
