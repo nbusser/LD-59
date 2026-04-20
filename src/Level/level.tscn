@@ -337,10 +337,6 @@ mouse_filter = 1
 _sub_viewport_display = NodePath("../../Monitor/Display")
 _rendered_image = NodePath("../../Monitor/SubViewport/Signal/RenderedImage")
 
-[node name="FilterGreen" parent="UI/SteganoTools/ImageFilters" index="1" unique_id=866931896]
-offset_right = 64.0
-offset_bottom = 64.0
-
 [node name="MagnifyingGlass" parent="UI/SteganoTools/ImageFilters" index="2" unique_id=16760351]
 offset_left = 632.0
 offset_top = 56.0
@@ -349,6 +345,11 @@ offset_bottom = 312.0
 
 [node name="Draggable" parent="UI/SteganoTools/ImageFilters/MagnifyingGlass" index="0" unique_id=1122334456]
 disable_animation = false
+
+[node name="Control" type="Control" parent="UI/SteganoTools/ImageFilters" index="3" unique_id=1749345335]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="GlassesButton" parent="UI/SteganoTools" index="2" unique_id=1493206345]
 offset_left = 952.0

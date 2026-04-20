@@ -1,20 +1,24 @@
 [gd_scene format=3 uid="uid://b3bgc575mmka7"]
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
-[ext_resource type="PackedScene" uid="uid://drh8266ba5ia5" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
+[ext_resource type="PackedScene" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
 [ext_resource type="Script" uid="uid://bxavdwwi5acid" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
 [ext_resource type="Script" uid="uid://bnvpmcg0m835h" path="res://src/CipheredSignal/cipher_data.gd" id="4_bwi1n"]
 [ext_resource type="Texture2D" uid="uid://cfc8he6p7ihtc" path="res://assets/ui/holey_sheets/82.png" id="4_ewdv1"]
 [ext_resource type="Script" uid="uid://bd6is7cj6abri" path="res://src/SteganoTools/stegano_image_tools.gd" id="4_ms2d3"]
-[ext_resource type="PackedScene" uid="uid://b76cux606us0g" path="res://src/SteganoTools/holey_sheet.tscn" id="5_ewdv1"]
+[ext_resource type="PackedScene" path="res://src/SteganoTools/holey_sheet.tscn" id="5_ewdv1"]
 [ext_resource type="Shader" uid="uid://bjupoau8bkr32" path="res://src/SteganoTools/MagnifyingGlass.gdshader" id="5_magnify"]
 [ext_resource type="Texture2D" uid="uid://c3v5l0qfqq3n6" path="res://assets/ui/holey_sheets/77.png" id="6_tvenm"]
 [ext_resource type="Texture2D" uid="uid://kkxk8ft1f6fs" path="res://assets/ui/holey_sheets/19.png" id="7_bwi1n"]
 [ext_resource type="Texture2D" uid="uid://dohys76gnpgq1" path="res://assets/ui/holey_sheets/03.png" id="9_vod54"]
+[ext_resource type="Texture2D" uid="uid://bfq1dp3go0yoe" path="res://assets/sprites/filters/filtre_1.png" id="12_3ctg4"]
 [ext_resource type="Texture2D" uid="uid://cj2hxlcudbrq0" path="res://assets/ui/glasses/Text-disco_glasses_survol.png" id="12_e8hoa"]
 [ext_resource type="Texture2D" uid="uid://b5rd4ivlqp3y0" path="res://assets/ui/glasses/Text-disco_glasses.png" id="13_mrsy4"]
+[ext_resource type="Texture2D" uid="uid://b3qjgf3qcyl0c" path="res://assets/sprites/filters/filtre_1_pochoir.png" id="13_r4vio"]
+[ext_resource type="Texture2D" uid="uid://mh2rbaivavyh" path="res://assets/sprites/filters/filtre_2.png" id="14_3wfcd"]
 [ext_resource type="Texture2D" uid="uid://d0mli43yn5fbb" path="res://assets/ui/magnifying_glass/loupe_suvol.png" id="14_caa2n"]
+[ext_resource type="Texture2D" uid="uid://cwnvldfpye8p6" path="res://assets/sprites/filters/filtre_2_pochoir.png" id="15_a3had"]
 [ext_resource type="Texture2D" uid="uid://betfsfga2e0pl" path="res://assets/ui/magnifying_glass/loupe_manche.png" id="15_vod54"]
 [ext_resource type="Texture2D" uid="uid://c4q7du4bnju07" path="res://assets/ui/magnifying_glass/loupe-verre.png" id="16_l42u2"]
 
@@ -34,28 +38,11 @@ shader_parameter/screen_position = Vector2(0, 0)
 shader_parameter/screen_size = Vector2(0, 0)
 shader_parameter/enable_filter = false
 
-[sub_resource type="Gradient" id="Gradient_niwiv"]
-colors = PackedColorArray(0.8666667, 0, 0, 1, 1, 0.7254902, 0.3372549, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4q2fo"]
-gradient = SubResource("Gradient_niwiv")
-width = 250
-height = 250
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0i3x"]
 shader = ExtResource("2_n0i3x")
 shader_parameter/screen_position = Vector2(0, 0)
 shader_parameter/screen_size = Vector2(0, 0)
 shader_parameter/enable_filter = false
-
-[sub_resource type="Gradient" id="Gradient_4q2fo"]
-offsets = PackedFloat32Array(0.011940299, 1)
-colors = PackedColorArray(0.31764707, 0.41960785, 1, 1, 0.16078432, 0.47843137, 0.14117648, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n0i3x"]
-gradient = SubResource("Gradient_4q2fo")
-width = 250
-height = 250
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_magnify"]
 shader = ExtResource("5_magnify")
@@ -110,27 +97,47 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_ms2d3")
 
-[node name="FilterRed" type="TextureRect" parent="ImageFilters" unique_id=1383833397]
-material = SubResource("ShaderMaterial_55esx")
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("GradientTexture2D_4q2fo")
+[node name="FilterRed" type="Control" parent="ImageFilters" unique_id=1521085869]
+anchors_preset = 0
+offset_right = 682.0
+offset_bottom = 515.0
 
 [node name="Draggable" parent="ImageFilters/FilterRed" unique_id=292395700 instance=ExtResource("2_4q2fo")]
 disable_animation = true
 
-[node name="FilterGreen" type="TextureRect" parent="ImageFilters" unique_id=866931896]
-material = SubResource("ShaderMaterial_n0i3x")
+[node name="Filter" type="TextureRect" parent="ImageFilters/FilterRed" unique_id=1383833397]
+material = SubResource("ShaderMaterial_55esx")
 layout_mode = 0
-offset_left = 287.0
-offset_top = 2.0
-offset_right = 537.0
-offset_bottom = 252.0
-texture = SubResource("GradientTexture2D_n0i3x")
+offset_right = 250.0
+offset_bottom = 250.0
+texture = ExtResource("12_3ctg4")
+
+[node name="Mask" type="TextureRect" parent="ImageFilters/FilterRed" unique_id=271560004]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("13_r4vio")
+
+[node name="FilterGreen" type="Control" parent="ImageFilters" unique_id=1594528860]
+anchors_preset = 0
+offset_right = 682.0
+offset_bottom = 515.0
 
 [node name="Draggable" parent="ImageFilters/FilterGreen" unique_id=1011977757 instance=ExtResource("2_4q2fo")]
 disable_animation = true
+
+[node name="Filter" type="TextureRect" parent="ImageFilters/FilterGreen" unique_id=866931896]
+material = SubResource("ShaderMaterial_n0i3x")
+layout_mode = 0
+offset_right = 682.0
+offset_bottom = 515.0
+texture = ExtResource("14_3wfcd")
+
+[node name="Mask" type="TextureRect" parent="ImageFilters/FilterGreen" unique_id=1176803191]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("15_a3had")
 
 [node name="MagnifyingGlass" type="Control" parent="ImageFilters" unique_id=16760351]
 unique_name_in_owner = true

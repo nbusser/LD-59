@@ -62,13 +62,12 @@ vec2 crt_curve_inverse(vec2 uv, float k) {
     return result * 0.5 + 0.5;
 }
 
+const float margin = .07;
 bool is_in_filter(vec2 raw_coords, vec2 filter_position, vec2 filter_size) {
     vec2 coord = crt_curve_inverse(raw_coords, .065);
 
-	return coord.x >= filter_position.x &&
-	coord.y >= filter_position.y &&
-	coord.x <= filter_position.x + filter_size.x &&
-	coord.y <= filter_position.y + filter_size.y;
+	return all(greaterThan(coord, filter_position + filter_size * margin))
+	&& all(lessThan(coord, filter_position + filter_size * (1.-margin)));
 }
 
 const float v_desync_factor = 7.0;

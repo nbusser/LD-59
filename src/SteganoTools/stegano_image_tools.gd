@@ -4,9 +4,11 @@ class_name SteganoImageTools extends Control
 @export var _rendered_image: TextureRect
 
 @onready var _green_filter = $FilterGreen
+@onready var _green_filter_shader_text = $FilterGreen/Filter
 @onready var _start_position_green: Vector2 = _green_filter.position
 
 @onready var _red_filter = $FilterRed
+@onready var _red_filter_shader_text = $FilterRed/Filter
 @onready var _start_position_red: Vector2 = _red_filter.position
 
 @onready var _magnifier = $MagnifyingGlass
@@ -63,7 +65,7 @@ func init():
 	# _rendered_image.material.set_shader_parameter("enable_magnifier", false)
 	_rendered_image.material.set_shader_parameter("magnifier_zoom", 2.5)
 
-	for f in [_green_filter, _red_filter]:
+	for f in [_green_filter_shader_text, _red_filter_shader_text]:
 		f.material.set_shader_parameter(
 			"enable_filter", Globals.display_mode == CipherData.CipherType.IMAGE
 		)
@@ -74,7 +76,7 @@ func init():
 
 func toggle_tools(enabled: bool) -> void:
 	visible = enabled
-	for f in [_green_filter, _red_filter] as Array[Control]:
+	for f in [_green_filter_shader_text, _red_filter_shader_text] as Array[Control]:
 		f.material.set_shader_parameter("enable_filter", enabled)
 		f.visible = enabled
 		f.get_node("Draggable").controllable = enabled
@@ -103,7 +105,7 @@ func _refresh_filter_positions():
 			/ _sub_viewport_display.get_size()
 		)
 	)
-	for f in [_green_filter, _red_filter]:
+	for f in [_green_filter_shader_text, _red_filter_shader_text]:
 		f.material.set_shader_parameter(
 			"screen_position",
 			(_sub_viewport_display.global_position - f.global_position) / f.get_size()
@@ -130,6 +132,6 @@ func _process(_delta: float):
 		"magnifier_radius", Vector2(lens_inner_radius, lens_inner_radius) / display_size
 	)
 	if not _is_stegano_image():
-		for f in [_green_filter, _red_filter]:
+		for f in [_green_filter_shader_text, _red_filter_shader_text]:
 			f.material.set_shader_parameter("enable_filter", false)
 		return
