@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://b74cion2spryt" path="res://assets/sprites/ciphers/jfk/jfk.jpg" id="17_wcrco"]
 [ext_resource type="Texture2D" uid="uid://dxxn0r431ucp3" path="res://assets/sprites/ciphers/jfk/jfk_green.jpg" id="18_iqc3l"]
 [ext_resource type="Texture2D" uid="uid://bws38wnem720h" path="res://assets/sprites/ciphers/jfk/jfk_red.jpg" id="19_agyg0"]
+[ext_resource type="Texture2D" uid="uid://dt0jmyylgoord" path="res://assets/sprites/ciphers/kid/kid.jpg" id="20_dgn88"]
+[ext_resource type="Texture2D" uid="uid://cl4wcfak0gchh" path="res://assets/sprites/ciphers/kid/kid_green.jpg" id="21_y4y0x"]
+[ext_resource type="Texture2D" uid="uid://cwg1cikbmcl8w" path="res://assets/sprites/ciphers/kid/kid_red.jpg" id="22_d7upb"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -61,8 +64,19 @@ cipher_type = 1
 image_texture = ExtResource("5_7qhxv")
 image_texture_filter_green = ExtResource("7_4d07j")
 image_texture_filter_red = ExtResource("6_6vsvc")
-success_message = "C'est cool !"
-fail_message = "C'est tres grave"
+success_message = "Nothing wrong here..."
+fail_message = "Nothing disco with E.T..."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_yqhvp"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("20_dgn88")
+image_texture_filter_green = ExtResource("21_y4y0x")
+image_texture_filter_red = ExtResource("22_d7upb")
+is_disco = true
+success_message = "They hire them young..."
+fail_message = "You missed your chance to capture their child soldier..."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_nb34f"]
@@ -97,7 +111,7 @@ script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_lcxac")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
