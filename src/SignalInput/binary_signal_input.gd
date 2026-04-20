@@ -36,7 +36,7 @@ func _ready() -> void:
 
 
 func set_enable(enabled: bool) -> void:
-	_check_button.editable = enabled
+	_check_button.disabled = not enabled
 
 
 func trigger_update() -> void:
