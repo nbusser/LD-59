@@ -476,6 +476,7 @@ metadata/_edit_lock_ = true
 
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel" method="_on_level_deciphering_started_stopped"]
+[connection signal="deciphering_started_stopped" from="." to="UI/SteganoTools/ImageFilters" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel/DiscoButtons" method="_on_level_deciphering_started_stopped"]
 [connection signal="phase_changed" from="." to="UI/SteganoTools" method="_on_level_phase_changed"]
 [connection signal="cipher_type_selected" from="UI/CommandPanel" to="UI/Monitor" method="_on_command_panel_cipher_type_selected"]

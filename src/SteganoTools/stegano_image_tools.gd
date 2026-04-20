@@ -135,3 +135,17 @@ func _process(_delta: float):
 		for f in [_green_filter_shader_text, _red_filter_shader_text]:
 			f.material.set_shader_parameter("enable_filter", false)
 		return
+
+
+func toggle_filters(value: bool):
+	for f in [_green_filter_shader_text, _red_filter_shader_text]:
+		f.material.set_shader_parameter("enable_filter", value)
+	return
+
+
+func _on_level_deciphering_started_stopped(started: bool) -> void:
+	if started:
+		# enable_display()
+		pass
+	else:
+		toggle_filters(false)
