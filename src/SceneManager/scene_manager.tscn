@@ -5,16 +5,30 @@
 [ext_resource type="Script" uid="uid://bnvpmcg0m835h" path="res://src/CipheredSignal/cipher_data.gd" id="3_38vrh"]
 [ext_resource type="AudioStream" uid="uid://ba7shxyukh22w" path="res://assets/musics/example.ogg" id="3_knii6"]
 [ext_resource type="AudioStream" uid="uid://c8hkt50a1hi0t" path="res://assets/musics/example2.ogg" id="4_bb0s7"]
+[ext_resource type="Texture2D" uid="uid://ckpwirftaqxi0" path="res://assets/sprites/ciphers/star_wars/star_wars.png" id="4_hyeaj"]
 [ext_resource type="Texture2D" uid="uid://b3ecnmvxdff3" path="res://assets/sprites/ciphers/tank_man/tank_man.png" id="5_7qhxv"]
+[ext_resource type="Texture2D" uid="uid://b5d4rluscttif" path="res://assets/sprites/ciphers/star_wars/star_wars_green.png" id="5_l4fgv"]
 [ext_resource type="Texture2D" uid="uid://csb52q0lubd25" path="res://assets/sprites/ciphers/tank_man/tank_man_red.png" id="6_6vsvc"]
+[ext_resource type="Texture2D" uid="uid://dfbcll8fh1186" path="res://assets/sprites/ciphers/star_wars/star_wars_red.png" id="6_okykg"]
 [ext_resource type="Texture2D" uid="uid://virk1a5lc7t0" path="res://assets/sprites/ciphers/tank_man/tank_man_green.png" id="7_4d07j"]
-[ext_resource type="Script" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
+[ext_resource type="Script" uid="uid://bokrkyxmuteu5" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
 [ext_resource type="AudioStream" uid="uid://cp8lj1cfpvpbo" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1_reversed.ogg" id="7_nb34f"]
 [ext_resource type="AudioStream" uid="uid://dasru4dewv4kg" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1.ogg" id="7_tlrc4"]
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
 [ext_resource type="AudioStream" uid="uid://ckytpj7elkch2" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_3.ogg" id="9_88lsx"]
 [ext_resource type="AudioStream" uid="uid://b5upf2yoep5e3" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2_reversed.ogg" id="10_cou3s"]
 [ext_resource type="AudioStream" uid="uid://u1sowju7ysql" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_3_reversed.ogg" id="12_cxc1x"]
+
+[sub_resource type="Resource" id="Resource_wcrco"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("4_hyeaj")
+image_texture_filter_green = ExtResource("5_l4fgv")
+image_texture_filter_red = ExtResource("6_okykg")
+is_disco = true
+success_message = "Nice one kid!"
+fail_message = "Open your eyes!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_38vrh"]
 script = ExtResource("3_38vrh")
@@ -66,10 +80,10 @@ metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
-name = "J'aime pu ma mère !"
+name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_lcxac")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_lcxac")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3

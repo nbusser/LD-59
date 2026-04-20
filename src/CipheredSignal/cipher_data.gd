@@ -43,7 +43,6 @@ enum CipheredAudioShape {
 @export var audio_stream_1: AudioTrack = null
 @export var audio_stream_2: AudioTrack = null
 @export var audio_stream_3: AudioTrack = null
-
 @export var secret_shape: CipheredAudioShape = CipheredAudioShape.NOTHING
 
 @export var is_disco: bool = false
@@ -78,5 +77,8 @@ func _validate_property(property: Dictionary) -> void:
 		if cipher_type != CipherType.AUDIO:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	elif property.name == "audio_stream_3":
+		if cipher_type != CipherType.AUDIO:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	elif property.name == "secret_shape":
 		if cipher_type != CipherType.AUDIO:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
