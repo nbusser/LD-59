@@ -3,9 +3,6 @@
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_j3pel"]
 resource_name = "SpectrumAnalyzer"
 
-[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_j3pel"]
-resource_name = "PitchShift"
-
 [resource]
 bus/0/volume_db = -18.9844
 bus/1/name = &"Music"
@@ -34,5 +31,3 @@ bus/4/volume_db = -0.12605286
 bus/4/send = &"Master"
 bus/4/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_j3pel")
 bus/4/effect/0/enabled = true
-bus/4/effect/1/effect = SubResource("AudioEffectPitchShift_j3pel")
-bus/4/effect/1/enabled = true

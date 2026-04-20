@@ -4,10 +4,6 @@ class_name CipheredAudio extends CipheredSignal
 
 @onready var _noise_sound_fake_source: AudioStream = preload("res://assets/sounds/noise.ogg")
 
-@onready var _pitch_bus_effect: AudioEffectPitchShift = AudioServer.get_bus_effect(
-	AudioServer.get_bus_index("Cipher"), 1
-)
-
 
 func _get_fake_source() -> Array[AudioStream]:
 	return [_noise_sound_fake_source, _noise_sound_fake_source, _noise_sound_fake_source]
@@ -99,9 +95,9 @@ var _pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 
 
 func _speed_input_changed(value: float) -> void:
-	_pitch_bus_effect.pitch_scale = lerp(
-		_pitch_scale_upper_bound, _pitch_scale_lower_bound, 1.0 - value
-	)
+	# Note: cannot use pitch effect on the whole bus because it doesn't affect the tempo
+	for track in _cipher_tracks:
+		track.pitch_scale = lerp(_pitch_scale_upper_bound, _pitch_scale_lower_bound, 1.0 - value)
 
 
 # ----------------------------------------------------------------------------------------------------
