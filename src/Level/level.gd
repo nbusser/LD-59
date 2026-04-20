@@ -81,8 +81,8 @@ func _on_Timer_timeout():
 	Globals.end_scene(
 		Globals.EndSceneStatus.LEVEL_GAME_OVER,
 		{
-			"Successes": level_state.succeeded_counter,
-			"Total": level_state.succeeded_counter + level_state.failed_counter
+			"successes": level_state.successes_counter,
+			"total": len(level_state.level_data.ciphers)
 		}
 	)
 
