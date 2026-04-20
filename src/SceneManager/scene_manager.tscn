@@ -39,6 +39,12 @@
 [ext_resource type="Texture2D" uid="uid://bbsdto101b8ey" path="res://assets/sprites/ciphers/freddy/freddy.png" id="35_qynro"]
 [ext_resource type="Texture2D" uid="uid://yv2vg0jgaiky" path="res://assets/sprites/ciphers/freddy/freddy_green.png" id="36_uqelw"]
 [ext_resource type="Texture2D" uid="uid://c1aixnu5snwi" path="res://assets/sprites/ciphers/freddy/freddy_red.png" id="37_i6aiw"]
+[ext_resource type="Texture2D" uid="uid://dchhii5bcd5fd" path="res://assets/sprites/ciphers/aristochats/aristochats.png" id="38_1jhsk"]
+[ext_resource type="Texture2D" uid="uid://bhycc0benpymf" path="res://assets/sprites/ciphers/aristochats/aristochats_green.png" id="39_2xhmg"]
+[ext_resource type="Texture2D" uid="uid://c1xuuk2e6nl5s" path="res://assets/sprites/ciphers/aristochats/aristochats_red.png" id="40_f68xi"]
+[ext_resource type="Texture2D" uid="uid://wk2b8luvsamp" path="res://assets/sprites/ciphers/traffic/traffic.png" id="41_th76n"]
+[ext_resource type="Texture2D" uid="uid://dik23ceyedt1e" path="res://assets/sprites/ciphers/traffic/traffic_green.png" id="42_kfgd5"]
+[ext_resource type="Texture2D" uid="uid://deq3lpgbmk1xa" path="res://assets/sprites/ciphers/traffic/traffic_red.png" id="43_6f50n"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -174,12 +180,33 @@ success_message = "I was sure he was one of them!"
 fail_message = "Watch carefully!"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_th76n"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("38_1jhsk")
+image_texture_filter_green = ExtResource("39_2xhmg")
+image_texture_filter_red = ExtResource("40_f68xi")
+is_disco = true
+success_message = "Disney was one of them?"
+fail_message = "You missed the clue!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_h8n8s"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("41_th76n")
+image_texture_filter_green = ExtResource("42_kfgd5")
+image_texture_filter_red = ExtResource("43_6f50n")
+success_message = "Did you see it?"
+fail_message = "Is Pikmin that disco for you?"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro"), SubResource("Resource_1jhsk")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro"), SubResource("Resource_1jhsk"), SubResource("Resource_th76n"), SubResource("Resource_h8n8s")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
