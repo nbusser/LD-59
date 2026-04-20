@@ -80,10 +80,7 @@ func _on_Timer_timeout():
 	await $UI/Fadeout.fade()
 	Globals.end_scene(
 		Globals.EndSceneStatus.LEVEL_GAME_OVER,
-		{
-			"successes": level_state.successes_counter,
-			"total": len(level_state.level_data.ciphers)
-		}
+		{"successes": level_state.successes_counter, "total": len(level_state.level_data.ciphers)}
 	)
 
 
