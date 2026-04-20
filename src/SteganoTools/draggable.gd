@@ -1,4 +1,4 @@
-extends Node
+class_name Draggable extends Node
 
 var controllable := true:
 	get:

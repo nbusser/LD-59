@@ -31,6 +31,8 @@ var current_level: Level
 
 var dragged_object: Control
 
+var display_mode: CipherData.CipherType = CipherData.CipherType.TEXT
+
 
 func get_current_cipher() -> CipherData:
 	return current_level.level_state.current_cipher

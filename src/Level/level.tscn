@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
 [ext_resource type="AudioStream" uid="uid://dtmn07mdwbxpv" path="res://assets/sounds/freesound_community-radio-noise-11-59824.mp3" id="10_rrnxv"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_rrnxv"]
+
 [sub_resource type="Animation" id="Animation_mqshx"]
 length = 0.001
 tracks/0/type = "value"
@@ -114,14 +116,25 @@ correct_value_threshold = 0.1
 [node name="SpaceShuffleSignalInput" parent="UI/CommandPanel/TextInputs" parent_id_path=PackedInt32Array(1884603933, 1363822340) index="2" unique_id=310417279]
 correct_value_threshold = 0.1
 
-[node name="SteganoTools" parent="UI" unique_id=1033651520 node_paths=PackedStringArray("_sub_viewport_display", "_rendered_image") instance=ExtResource("6_mqshx")]
+[node name="TextModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="0" unique_id=1443325002]
+button_group = SubResource("ButtonGroup_rrnxv")
+
+[node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
+button_group = SubResource("ButtonGroup_rrnxv")
+
+[node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
+button_group = SubResource("ButtonGroup_rrnxv")
+
+[node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
 offset_top = 165.0
 offset_bottom = 165.0
 mouse_filter = 1
-_sub_viewport_display = NodePath("../Monitor/Display")
-_rendered_image = NodePath("../Monitor/SubViewport/Signal/RenderedImage")
 
-[node name="FilterGreen" parent="UI/SteganoTools/ImageFilters" parent_id_path=PackedInt32Array(1033651520, 824484933) index="1" unique_id=866931896]
+[node name="ImageFilters" parent="UI/SteganoTools" index="1" unique_id=824484933 node_paths=PackedStringArray("_sub_viewport_display", "_rendered_image")]
+_sub_viewport_display = NodePath("../../Monitor/Display")
+_rendered_image = NodePath("../../Monitor/SubViewport/Signal/RenderedImage")
+
+[node name="FilterGreen" parent="UI/SteganoTools/ImageFilters" index="1" unique_id=866931896]
 offset_right = 64.0
 offset_bottom = 64.0
 

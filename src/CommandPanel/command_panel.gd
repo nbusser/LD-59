@@ -7,7 +7,10 @@ const MAX_QUALITY_WHEN_INCORRECT = 0.9
 var level_state: LevelState
 var _smoothed_signal_quality: float = 0.0
 var _current_cipher_type: CipherData.CipherType:
+	get():
+		return Globals.display_mode
 	set(value):
+		Globals.display_mode = value
 		_current_cipher_type = value
 		match value:
 			CipherData.CipherType.TEXT:
