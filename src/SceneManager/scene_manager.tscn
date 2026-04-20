@@ -33,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://dr02s8te222iv" path="res://assets/sprites/ciphers/bush/bush.jpg" id="29_eb0a5"]
 [ext_resource type="Texture2D" uid="uid://bwjsgfg6yuham" path="res://assets/sprites/ciphers/bush/bush_green.jpg" id="30_jd8f8"]
 [ext_resource type="Texture2D" uid="uid://bwk1ltmvagdab" path="res://assets/sprites/ciphers/bush/bush_red.jpg" id="31_y3blw"]
+[ext_resource type="Texture2D" uid="uid://df6y81tq4yex6" path="res://assets/sprites/ciphers/claude/claude.jpg" id="32_gaf84"]
+[ext_resource type="Texture2D" uid="uid://b7d5d755vcu2h" path="res://assets/sprites/ciphers/claude/claude_green.jpg" id="33_ve57e"]
+[ext_resource type="Texture2D" uid="uid://bk8reigmpr7jn" path="res://assets/sprites/ciphers/claude/claude_red.jpg" id="34_pjynx"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -146,12 +149,23 @@ success_message = "Blasphemy!"
 fail_message = "How could you miss that?"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_qynro"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("32_gaf84")
+image_texture_filter_green = ExtResource("33_ve57e")
+image_texture_filter_red = ExtResource("34_pjynx")
+is_disco = true
+success_message = "I want this guy captured ASAP!"
+fail_message = "I would also have been intimidated..."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
