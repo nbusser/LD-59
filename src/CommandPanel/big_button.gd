@@ -3,6 +3,8 @@ extends Control
 
 signal pressed
 
+@export var texture: Texture2D
+
 @export var disabled = false:
 	set(value):
 		disabled = value
@@ -40,3 +42,7 @@ func _on_real_button_button_down() -> void:
 
 func _on_cover_button_button_down() -> void:
 	_is_open = true
+
+
+func _ready() -> void:
+	real_button.texture_normal = texture

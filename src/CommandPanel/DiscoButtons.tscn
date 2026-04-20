@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://blhjbokaf40mt" path="res://src/CommandPanel/disco_buttons.gd" id="1_825q7"]
 [ext_resource type="PackedScene" uid="uid://bh7i38i00h4ue" path="res://src/CommandPanel/big_button.tscn" id="2_j211q"]
+[ext_resource type="Texture2D" uid="uid://3dpt0n3s1x64" path="res://assets/ui/big_button/disco_alert-Red_button.png" id="3_rsaef"]
+[ext_resource type="Texture2D" uid="uid://bsdhbspm5px4d" path="res://assets/ui/big_button/disco_alert-Green_button.png" id="3_sqocc"]
 
 [node name="DiscoButtons" type="Control" unique_id=163675673]
 layout_mode = 3
@@ -13,15 +15,17 @@ script = ExtResource("1_825q7")
 [node name="PositiveButton" parent="." unique_id=449348408 instance=ExtResource("2_j211q")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_right = -256.0
+offset_right = 0.0
 offset_bottom = 0.0
+texture = ExtResource("3_rsaef")
 
 [node name="NegativeButton" parent="." unique_id=1631071546 instance=ExtResource("2_j211q")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 256.0
-offset_right = 0.0
+offset_right = 256.0
 offset_bottom = 0.0
+texture = ExtResource("3_sqocc")
 
 [connection signal="pressed" from="PositiveButton" to="." method="_on_positive_button_pressed"]
 [connection signal="pressed" from="NegativeButton" to="." method="_on_negative_button_pressed"]

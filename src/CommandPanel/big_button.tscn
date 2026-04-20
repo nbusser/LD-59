@@ -1,45 +1,43 @@
 [gd_scene format=3 uid="uid://bh7i38i00h4ue"]
 
 [ext_resource type="Script" uid="uid://dmmkl0v80s858" path="res://src/CommandPanel/big_button.gd" id="1_sp4oj"]
-[ext_resource type="Texture2D" uid="uid://dxsis3jopdhj0" path="res://assets/ui/progress_bar_filled.png" id="2_3it2l"]
-[ext_resource type="Texture2D" uid="uid://51pr2epmlqdm" path="res://assets/sprites/icon.png" id="2_yuqky"]
+[ext_resource type="Texture2D" uid="uid://3dpt0n3s1x64" path="res://assets/ui/big_button/disco_alert-Red_button.png" id="2_eg3pm"]
+[ext_resource type="Texture2D" uid="uid://br1uafiheac8o" path="res://assets/ui/big_button/disco_alert-cover_closed.png" id="3_1357i"]
+[ext_resource type="Texture2D" uid="uid://brr7klre7i180" path="res://assets/ui/big_button/disco_alert-cover_open.png" id="4_0tk5m"]
 
 [node name="BigButton" type="Control" unique_id=449348408]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1728.0
-offset_bottom = -888.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
 script = ExtResource("1_sp4oj")
 
 [node name="RealButton" type="TextureButton" parent="." unique_id=111751293]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 192.0
-offset_bottom = 192.0
-texture_normal = ExtResource("2_3it2l")
-ignore_texture_size = true
-stretch_mode = 0
+offset_right = 224.0
+offset_bottom = 224.0
+texture_normal = ExtResource("2_eg3pm")
+stretch_mode = 3
 
 [node name="CoverButton" type="TextureButton" parent="." unique_id=1910048147]
 unique_name_in_owner = true
-modulate = Color(0.51, 0.51, 0.51, 1)
 layout_mode = 0
-offset_right = 192.0
-offset_bottom = 192.0
-texture_normal = ExtResource("2_yuqky")
-stretch_mode = 0
+offset_right = 224.0
+offset_bottom = 224.0
+texture_normal = ExtResource("3_1357i")
+stretch_mode = 3
 
 [node name="CoverUp" type="TextureRect" parent="." unique_id=1890907578]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_top = -64.0
-offset_right = 192.0
-texture = ExtResource("2_yuqky")
+offset_left = -32.0
+offset_top = -136.0
+offset_right = 256.0
+offset_bottom = 16.0
+texture = ExtResource("4_0tk5m")
+stretch_mode = 3
 
 [connection signal="button_down" from="RealButton" to="." method="_on_real_button_button_down"]
 [connection signal="mouse_exited" from="RealButton" to="." method="_on_real_button_mouse_exited"]
