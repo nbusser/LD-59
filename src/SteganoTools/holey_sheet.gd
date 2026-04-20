@@ -26,7 +26,7 @@ func _update_holes() -> void:
 	if cipher_data == null:
 		rendered_text.text = ""
 
-	var text = ""
+	var text: String = ""
 
 	var indexes = Utils.get_hidden_text_indexes(
 		cipher_data.text_content, cipher_data.hidden_text_content
