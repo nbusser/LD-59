@@ -18,7 +18,7 @@
 [ext_resource type="Environment" uid="uid://dtq8sggtgo7jd" path="res://default_env.tres" id="11_4bydg"]
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6s7yf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_u72di"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_djut7"]
 font = ExtResource("7_mqshx")
@@ -220,22 +220,22 @@ offset_bottom = 51.0
 visible = false
 
 [node name="AudioTrack1ReverseInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="3" unique_id=1176217677]
-offset_left = 1354.0
-offset_top = 692.00006
-offset_right = -502.0
-offset_bottom = -323.99994
+offset_left = 1356.0
+offset_top = 708.0
+offset_right = 1356.0
+offset_bottom = 708.0
 
 [node name="AudioTrack2ReverseInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="4" unique_id=893427455]
-offset_left = 1418.0
-offset_top = 692.00006
-offset_right = -438.0
-offset_bottom = -323.99994
+offset_left = 1426.0
+offset_top = 708.0
+offset_right = 1426.0
+offset_bottom = 708.0
 
 [node name="AudioTrack3ReverseInput" parent="UI/CommandPanel/AudioTracksInputs" parent_id_path=PackedInt32Array(1884603933, 1704246191) index="5" unique_id=1471597885]
-offset_left = 1482.0
-offset_top = 692.00006
-offset_right = -374.0
-offset_bottom = -323.99994
+offset_left = 1496.0
+offset_top = 708.0
+offset_right = 1496.0
+offset_bottom = 708.0
 
 [node name="AudioSignalVisualFrequencyInput" parent="UI/CommandPanel/AudioSignalVisualFrequency" parent_id_path=PackedInt32Array(1884603933, 999800982) index="0" unique_id=930788457]
 offset_bottom = -303.79456
@@ -254,21 +254,21 @@ offset_left = 629.0
 offset_top = 904.0
 offset_right = 834.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_6s7yf")
+button_group = SubResource("ButtonGroup_u72di")
 
 [node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
 offset_left = 841.0
 offset_top = 904.0
 offset_right = 1046.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_6s7yf")
+button_group = SubResource("ButtonGroup_u72di")
 
 [node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
 offset_left = 1052.0
 offset_top = 904.0
 offset_right = 1257.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_6s7yf")
+button_group = SubResource("ButtonGroup_u72di")
 
 [node name="DiscoButtons" parent="UI/CommandPanel" index="6" unique_id=163675673]
 offset_left = 1354.0
