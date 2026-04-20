@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckn1vt0n225ea"
-path="res://.godot/imported/regan.png-e9ae9645f96ddc7515e28bf111a34462.ctex"
+uid="uid://d2yd6uksayukv"
+path="res://.godot/imported/reagan.png-7501a54e1a6e93e13d0ac1fae1500b55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ciphers/reagan/regan.png"
-dest_files=["res://.godot/imported/regan.png-e9ae9645f96ddc7515e28bf111a34462.ctex"]
+source_file="res://assets/sprites/ciphers/reagan/reagan.png"
+dest_files=["res://.godot/imported/reagan.png-7501a54e1a6e93e13d0ac1fae1500b55.ctex"]
 
 [params]
 
