@@ -39,9 +39,10 @@ func _update_holes() -> void:
 			text += " "
 		elif indexes.has(i):
 			# print(i, " ", cipher_data.text_content[i])
-			text += "█"
+			# text += "█"
+			text += "0"
 		else:
 			# text += cipher_data.text_content[i]
-			text += " "
+			text += String.chr(0xA0)  # nbsp
 
 	rendered_text.text = text
