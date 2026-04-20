@@ -120,5 +120,5 @@ func _on_level_deciphering_started_stopped(started: bool) -> void:
 		disable_display()
 
 
-func _on_glasses_state_changed(active: bool):
+func _on_glasses_state_changed(_active: bool):
 	_on_text_render()

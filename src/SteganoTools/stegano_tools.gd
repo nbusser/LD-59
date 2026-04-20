@@ -25,11 +25,11 @@ func _ready():
 	Globals.glasses_state_changed.connect(_on_glasses_state_changed)
 
 
-func _on_level_phase_changed(phase: LevelState.Phase) -> void:
+func _on_level_phase_changed(_phase: LevelState.Phase) -> void:
 	pass
 
 
-func _on_command_panel_cipher_type_selected(cipher_type: CipherData.CipherType) -> void:
+func _on_command_panel_cipher_type_selected(_cipher_type: CipherData.CipherType) -> void:
 	if not is_node_ready():
 		return
 	# match cipher_type:
