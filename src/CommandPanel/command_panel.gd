@@ -77,17 +77,20 @@ func _get_active_inputs() -> Array[SignalInput]:
 
 
 func _on_text_pressed() -> void:
-	$SFX/ButtonPush.play()
+	if _current_cipher_type != CipherData.CipherType.TEXT:
+		$SFX/ButtonPush.play()
 	_current_cipher_type = CipherData.CipherType.TEXT
 
 
 func _on_image_pressed() -> void:
-	$SFX/ButtonPush.play()
+	if _current_cipher_type != CipherData.CipherType.IMAGE:
+		$SFX/ButtonPush.play()
 	_current_cipher_type = CipherData.CipherType.IMAGE
 
 
 func _on_audio_pressed() -> void:
-	$SFX/ButtonPush.play()
+	if _current_cipher_type != CipherData.CipherType.AUDIO:
+		$SFX/ButtonPush.play()
 	_current_cipher_type = CipherData.CipherType.AUDIO
 
 
