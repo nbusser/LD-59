@@ -40,6 +40,7 @@ func init():
 			. material
 			. set_shader_parameter(
 				"magnified_texture_samplers",
+				# TODO place real upscaled textures there
 				[
 					cipher.image_texture,
 					cipher.image_texture_filter_green,
