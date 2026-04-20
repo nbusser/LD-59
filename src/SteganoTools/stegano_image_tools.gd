@@ -112,10 +112,6 @@ func _refresh_filter_positions():
 
 func _process(_delta: float):
 	self._refresh_filter_positions()
-	if not _is_stegano_image():
-		for f in [_green_filter, _red_filter]:
-			f.material.set_shader_parameter("enable_filter", false)
-		return
 
 	var display_size = _sub_viewport_display.get_size()
 	var lens_inner_radius = _magnifier.get_size().x * 0.8 / 2.0
@@ -133,3 +129,7 @@ func _process(_delta: float):
 	_rendered_image.material.set_shader_parameter(
 		"magnifier_radius", Vector2(lens_inner_radius, lens_inner_radius) / display_size
 	)
+	if not _is_stegano_image():
+		for f in [_green_filter, _red_filter]:
+			f.material.set_shader_parameter("enable_filter", false)
+		return
