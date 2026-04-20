@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2fxs1mm8axpn" path="res://src/SteganoTools/stegano_tools.gd" id="1_niwiv"]
 [ext_resource type="PackedScene" uid="uid://drh8266ba5ia5" path="res://src/SteganoTools/Draggable.tscn" id="2_4q2fo"]
+[ext_resource type="Script" uid="uid://bxavdwwi5acid" path="res://src/SteganoTools/stegano_text_tools.gd" id="2_gumde"]
 [ext_resource type="Shader" uid="uid://6lxk2x4fphrr" path="res://src/SteganoTools/SteganoTools.gdshader" id="2_n0i3x"]
 [ext_resource type="Texture2D" uid="uid://bprdj2krbpywu" path="res://assets/sprites/player.png" id="4_55esx"]
 [ext_resource type="Script" uid="uid://bd6is7cj6abri" path="res://src/SteganoTools/stegano_image_tools.gd" id="4_ms2d3"]
@@ -44,6 +45,7 @@ script = ExtResource("1_niwiv")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_gumde")
 
 [node name="HoleySheet" type="TextureRect" parent="TextFilters" unique_id=482924583]
 layout_mode = 0
