@@ -143,6 +143,14 @@ func get_signal_quality() -> float:
 func _process(delta: float) -> void:
 	_smoothed_signal_quality += (get_signal_quality() - _smoothed_signal_quality) * delta
 	signal_indicator.set_value_f(pow(_smoothed_signal_quality, 3.0))
+	if signal_indicator.is_searching:
+		signal_indicator.color = Color.RED
+	elif _smoothed_signal_quality > MAX_QUALITY_WHEN_INCORRECT:
+		signal_indicator.color = Color.GREEN
+	elif _get_active_inputs().any(func(input: SignalInput): return input.is_value_correct()):
+		signal_indicator.color = Color.ORANGE
+	else:
+		signal_indicator.color = Color.RED
 
 	noise_signal_input_display_knob.position.x = noise_signal_input.amount * 416.0
 

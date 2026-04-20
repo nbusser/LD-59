@@ -3,6 +3,10 @@ extends Control
 
 @export var is_searching: bool = false
 @export var value: int = 3
+@export var color: Color = Color.RED:
+	set(value):
+		color = value
+		_update_color.call_deferred()
 
 @onready var progress_bar: TextureProgressBar = $ProgressBar
 @onready var progress_bar_mask: TextureProgressBar = $ProgressBarMask
@@ -41,3 +45,12 @@ func _process(_delta: float) -> void:
 func set_value_f(value_f: float) -> int:
 	value = int(value_f * progress_bar.max_value)
 	return value
+
+
+func _update_color():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", color, 0.1)
+
+
+func _ready() -> void:
+	_update_color()
