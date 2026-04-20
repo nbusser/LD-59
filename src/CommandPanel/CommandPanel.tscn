@@ -163,6 +163,19 @@ offset_top = 512.0
 offset_right = -320.0
 offset_bottom = -504.0
 
+[node name="AudioSignalVisualFrequency" type="Node" parent="." unique_id=999800982]
+
+[node name="AudioSignalVisualFrequencyInput" parent="AudioSignalVisualFrequency" unique_id=930788457 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
+offset_left = 1610.0
+offset_top = 512.0
+offset_right = -54.0
+offset_bottom = 576.0
+grow_vertical = 2
+rotation = -1.5707964
+
 [node name="SignalTypeButtons" type="Node" parent="." unique_id=1008339797]
 
 [node name="TextModeButton" type="TextureButton" parent="SignalTypeButtons" unique_id=1443325002]

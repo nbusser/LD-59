@@ -87,6 +87,10 @@ func _on_image_render() -> void:
 	)
 
 
+func _process(_delta):
+	_rendered_audio.set_frequency_shape(_ciphered_audio._frequency_shape_value)
+
+
 func _on_audio_render() -> void:
 	# Nothing to do on audio render -> done in real time
 	pass

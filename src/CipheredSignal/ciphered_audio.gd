@@ -64,6 +64,12 @@ func _reset() -> void:
 	)
 	_speed_input_changed(speed_input.amount)
 
+	# Reset random frequency shape position
+	frequency_shape.correct_value = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE)
+	print("correct", frequency_shape.correct_value)
+	_frequency_shape_changed(frequency_shape.amount)
+	_shape_noise.seed = prng.randi()
+
 	# Reset random noise scale
 	_noise_scale_lower_bound = NOISE_SCALE_ABSOLUTE_LOWER_BOUND
 	_noise_scale_upper_bound = prng.randf_range(
@@ -98,6 +104,26 @@ func _reset() -> void:
 			else:
 				push_error("Unsupported audio stream type: %s" % stream)
 		_cipher_players[i].stream = track.stream
+
+
+# ----------------------------------------------------------------------------------------------------
+# MARK: Shape
+
+@export var frequency_shape: SignalInput
+
+const FREQUENCY_SHAPE_PEAK_HALF_WIDTH = 0.04
+
+var _frequency_shape_peak = 0.0
+var _frequency_shape_value = 0.0
+
+var _shape_noise = FastNoiseLite.new()
+
+
+func _frequency_shape_changed(value: float) -> void:
+	var noise = (_shape_noise.get_noise_1d(value) + 1.0) * 0.25
+	var t = absf(value - frequency_shape.correct_value) / FREQUENCY_SHAPE_PEAK_HALF_WIDTH
+	_frequency_shape_peak = maxf(0.0, 1.0 - t)
+	_frequency_shape_value = _frequency_shape_peak + noise
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -241,6 +267,14 @@ func _ready() -> void:
 		var reverse_callback = func(value: bool): _reverse_button_input_changed(i, value)
 		button.signal_input_changed.connect(reverse_callback)
 		button.trigger_update.call_deferred()
+
+	frequency_shape.signal_input_changed.connect(_frequency_shape_changed)
+	frequency_shape.trigger_update.call_deferred()
+
+	_shape_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
+	_shape_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
+	_shape_noise.fractal_octaves = 4
+	_shape_noise.frequency = 2.
 
 
 func _render() -> void:

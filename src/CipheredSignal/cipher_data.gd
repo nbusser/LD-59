@@ -8,6 +8,13 @@ enum CipherType {
 	AUDIO = 2,
 }
 
+enum CipheredAudioShape {
+	NOTHING = 0,
+	SHADES = 1,
+	BALL = 2,
+	HAIRCUT = 3,
+}
+
 @export var cipher_type: CipherType = CipherType.TEXT:
 	set(v):
 		cipher_type = v
@@ -36,6 +43,8 @@ enum CipherType {
 @export var audio_stream_1: AudioTrack = null
 @export var audio_stream_2: AudioTrack = null
 @export var audio_stream_3: AudioTrack = null
+
+@export var secret_shape: CipheredAudioShape = CipheredAudioShape.NOTHING
 
 @export var is_disco: bool = false
 
