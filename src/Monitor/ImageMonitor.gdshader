@@ -1,5 +1,5 @@
 shader_type canvas_item;
-render_mode unshaded;
+render_mode blend_mix;
 
 uniform sampler2D texture_sampler;
 
@@ -184,5 +184,5 @@ void fragment() {
 	// Color grading last
 	col = apply_color_controls(col);
 
-	COLOR = vec4(col, in_bounds * corner_mask);
+	COLOR = vec4(col, in_bounds * corner_mask) * 2.0;
 }
