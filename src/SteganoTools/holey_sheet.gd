@@ -38,8 +38,10 @@ func _update_holes() -> void:
 		elif cipher_data.text_content[i] == " ":
 			text += " "
 		elif indexes.has(i):
+			# print(i, " ", cipher_data.text_content[i])
 			text += "█"
 		else:
-			text += " "
+			# text += cipher_data.text_content[i]
+			text += " "
 
 	rendered_text.text = text

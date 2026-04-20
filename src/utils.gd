@@ -50,17 +50,21 @@ func get_hidden_text_indexes(original_text: String, hidden_text: String) -> Arra
 	if transformed_hidden_text.length() < 1:
 		return []
 
-	var last_index: int = 0
+	var last_index: int = -1
 	var indexes: Array[int] = []
 
 	for character in transformed_hidden_text.split(""):
 		var regex = RegEx.create_from_string(
 			"[" + character.to_lower() + character.to_upper() + "]"
 		)
-		var regex_match = regex.search(original_text, last_index)
+		var regex_match = regex.search(original_text, last_index if last_index >= 0 else 0)
 		if regex_match == null:
 			return []
-		last_index = regex_match.get_start()
+		var index = regex_match.get_start()
+		if last_index >= 0 and index == last_index:
+			last_index = index + 1
+		else:
+			last_index = index
 		indexes.append(last_index)
 
 	return indexes
