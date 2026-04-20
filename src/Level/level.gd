@@ -49,15 +49,19 @@ func _load_next_cipher():
 		CipherData.CipherType.TEXT:
 			ciphered_text.source = level_state.current_cipher.text_content
 			ciphered_image.source = null
-			ciphered_audio.source = null
+			ciphered_audio.source = []
 		CipherData.CipherType.IMAGE:
 			ciphered_text.source = ""
 			ciphered_image.source = level_state.current_cipher.image_texture
-			ciphered_audio.source = null
+			ciphered_audio.source = []
 		CipherData.CipherType.AUDIO:
 			ciphered_text.source = ""
 			ciphered_image.source = null
-			ciphered_audio.source = level_state.current_cipher.audio_stream
+			ciphered_audio.source = [
+				level_state.current_cipher.audio_stream_1,
+				level_state.current_cipher.audio_stream_2,
+				level_state.current_cipher.audio_stream_3
+			]
 
 	await _play_searching_signal_animation()
 

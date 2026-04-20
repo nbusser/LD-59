@@ -34,75 +34,115 @@ metadata/_edit_lock_ = true
 
 [node name="RotSignalInput" parent="TextInputs" unique_id=1402289427 instance=ExtResource("2_hbc2p")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 192.0
 offset_right = -1408.0
 offset_bottom = -824.0
+grow_vertical = 2
 
 [node name="WordShuffleSignalInput" parent="TextInputs" unique_id=1555452025 instance=ExtResource("2_hbc2p")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 256.0
 offset_right = -1408.0
 offset_bottom = -760.0
+grow_vertical = 2
 
 [node name="SpaceShuffleSignalInput" parent="TextInputs" unique_id=310417279 instance=ExtResource("2_hbc2p")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 320.0
 offset_right = -1408.0
 offset_bottom = -696.0
+grow_vertical = 2
 
 [node name="ImageInputs" type="Node" parent="." unique_id=1566043442]
 
 [node name="VsyncSignalInput" parent="ImageInputs" unique_id=1443587128 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 448.0
 offset_right = -1408.0
 offset_bottom = -568.0
+grow_vertical = 2
 
 [node name="ShuffleRowsSignalInput" parent="ImageInputs" unique_id=2027053063 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 512.0
 offset_right = -1408.0
 offset_bottom = -504.0
+grow_vertical = 2
 
 [node name="AudioInputs" type="Node" parent="." unique_id=2069117480]
 
 [node name="SpeedSignalInput" parent="AudioInputs" unique_id=325510213 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 640.0
 offset_right = -1408.0
 offset_bottom = -376.0
+grow_vertical = 2
 
 [node name="NoiseSignalInput" parent="AudioInputs" unique_id=1803397393 instance=ExtResource("2_hbc2p")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 704.0
 offset_right = -1408.0
 offset_bottom = -312.0
+grow_vertical = 2
 
 [node name="AudioTracksInputs" type="Node" parent="." unique_id=1704246191]
 
 [node name="AudioTrack1VolumeInput" parent="AudioTracksInputs" unique_id=1494532812 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 1408.0
 offset_top = 512.0
 offset_right = -256.0
 offset_bottom = 576.0
+grow_vertical = 2
 rotation = -1.5707964
 
 [node name="AudioTrack2VolumeInput" parent="AudioTracksInputs" unique_id=884417185 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 1472.0
 offset_top = 512.0
 offset_right = -192.0
 offset_bottom = 576.0
+grow_vertical = 2
 rotation = -1.5707964
 
 [node name="AudioTrack3VolumeInput" parent="AudioTracksInputs" unique_id=1671550714 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
 offset_left = 1536.0
 offset_top = 512.0
 offset_right = -128.0
 offset_bottom = 576.0
+grow_vertical = 2
 rotation = -1.5707964
 
 [node name="AudioTrack1ReverseInput" parent="AudioTracksInputs" unique_id=1176217677 instance=ExtResource("3_lgrhe")]

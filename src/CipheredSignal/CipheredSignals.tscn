@@ -16,10 +16,18 @@ script = ExtResource("2_opokx")
 [node name="CipheredAudio" type="Node" parent="." unique_id=1586566932]
 script = ExtResource("3_5bxfp")
 
-[node name="CipherPlayer" type="AudioStreamPlayer" parent="CipheredAudio" unique_id=529585398]
-bus = &"Cipher"
-
 [node name="NoisePlayer" type="AudioStreamPlayer" parent="CipheredAudio" unique_id=1982884526]
 stream = ExtResource("4_6vw3b")
 bus = &"Cipher"
 parameters/looping = true
+
+[node name="CipherTracks" type="Node" parent="CipheredAudio" unique_id=1732868872]
+
+[node name="Track1" type="AudioStreamPlayer" parent="CipheredAudio/CipherTracks" unique_id=529585398]
+bus = &"Cipher"
+
+[node name="Track2" type="AudioStreamPlayer" parent="CipheredAudio/CipherTracks" unique_id=1302049592]
+bus = &"Cipher"
+
+[node name="Track3" type="AudioStreamPlayer" parent="CipheredAudio/CipherTracks" unique_id=52139347]
+bus = &"Cipher"

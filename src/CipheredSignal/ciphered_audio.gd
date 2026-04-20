@@ -4,9 +4,13 @@ class_name CipheredAudio extends CipheredSignal
 
 @onready var _noise_sound_fake_source: AudioStream = preload("res://assets/sounds/noise.ogg")
 
+@onready var _pitch_bus_effect: AudioEffectPitchShift = AudioServer.get_bus_effect(
+	AudioServer.get_bus_index("Cipher"), 1
+)
 
-func _get_fake_source() -> AudioStream:
-	return _noise_sound_fake_source
+
+func _get_fake_source() -> Array[AudioStream]:
+	return [_noise_sound_fake_source, _noise_sound_fake_source, _noise_sound_fake_source]
 
 
 var is_wrong_cipher_type: bool:
@@ -17,29 +21,36 @@ var is_wrong_cipher_type: bool:
 		)
 
 # Ciphered audio
-# Assign null if the current cipher is NOT an audio cipher.
+# Assign [] if the current cipher is NOT an audio cipher.
 # In that case, it will use a fake audio stream instead.
-var source: AudioStream:
+var source: Array[AudioStream]:
 	set(new_source):
 		if is_wrong_cipher_type:
-			# Expect level.gd to give a null audio stream
-			assert(new_source == null)
+			# Expect level.gd to give a [] audio stream
+			assert(new_source.size() == 0)
 			new_source = _get_fake_source()
+
+		assert(new_source.size() == _cipher_tracks.size())
+		for stream in source:
+			assert(stream != null)
 
 		source = new_source
 		_reset()
 
-@onready var _cipher_player: AudioStreamPlayer = $CipherPlayer
+@onready var _cipher_tracks: Array[AudioStreamPlayer] = [
+	$CipherTracks/Track1, $CipherTracks/Track2, $CipherTracks/Track3
+]
 @onready var _noise_player: AudioStreamPlayer = $NoisePlayer
 
 var _transformed_audio: AudioStream
 
 
 func _reset() -> void:
-	assert(source != null)
+	print(source)
+	assert(source.size() == _cipher_tracks.size())
 
 	var prng = RandomNumberGenerator.new()
-	prng.seed = source.resource_path.hash()
+	prng.seed = source[0].resource_path.hash()
 
 	# Reset random pitch scale. 1.0 (correct pitch scale) is always within bounds
 	_pitch_scale_lower_bound = prng.randf_range(PITCH_SCALE_ABSOLUTE_LOWER_BOUND, 1.0)
@@ -61,16 +72,17 @@ func _reset() -> void:
 	noise_input.correct_value = prng.randf_range(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE)
 	_noise_input_changed(noise_input.amount)
 
-	if source is AudioStreamMP3:
-		source.loop = true
-	elif source is AudioStreamOggVorbis:
-		source.loop = true
-	elif source is AudioStreamWAV:
-		source.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	else:
-		push_error("Unsupported audio stream type: %s" % source)
-
-	_cipher_player.stream = source
+	for i in range(source.size()):
+		var stream = source[i]
+		if stream is AudioStreamMP3:
+			stream.loop = true
+		elif stream is AudioStreamOggVorbis:
+			stream.loop = true
+		elif stream is AudioStreamWAV:
+			stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		else:
+			push_error("Unsupported audio stream type: %s" % stream)
+		_cipher_tracks[i].stream = stream
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -87,7 +99,7 @@ var _pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 
 
 func _speed_input_changed(value: float) -> void:
-	_cipher_player.pitch_scale = lerp(
+	_pitch_bus_effect.pitch_scale = lerp(
 		_pitch_scale_upper_bound, _pitch_scale_lower_bound, 1.0 - value
 	)
 
@@ -125,7 +137,8 @@ func _ready() -> void:
 
 
 func _render() -> void:
-	_transformed_audio = source
+	# TODO: blend
+	_transformed_audio = source[0]
 	super()
 
 
@@ -138,11 +151,13 @@ func set_focused(focused: bool) -> void:
 		return
 
 	if focused:
-		if !_cipher_player.playing:
-			_cipher_player.play()
+		for track in _cipher_tracks:
+			if !track.playing:
+				track.play()
 		if !_noise_player.playing:
 			_noise_player.play()
 	else:
-		_cipher_player.stop()
+		for track in _cipher_tracks:
+			track.stop()
 		_noise_player.stop()
 	super(focused)

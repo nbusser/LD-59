@@ -15,7 +15,9 @@ enum CipherType {
 		image_texture = null
 		image_texture_filter_green = null
 		image_texture_filter_red = null
-		audio_stream = null
+		audio_stream_1 = null
+		audio_stream_2 = null
+		audio_stream_3 = null
 		notify_property_list_changed()
 
 # Only the relevant property is shown
@@ -25,7 +27,9 @@ enum CipherType {
 @export var image_texture_filter_green: Texture2D = null
 @export var image_texture_filter_red: Texture2D = null
 
-@export var audio_stream: AudioStream = null
+@export var audio_stream_1: AudioStream = null
+@export var audio_stream_2: AudioStream = null
+@export var audio_stream_3: AudioStream = null
 
 @export var is_disco: bool = false
 
@@ -43,6 +47,12 @@ func _validate_property(property: Dictionary) -> void:
 	elif property.name == "image_texture_filter_red":
 		if cipher_type != CipherType.IMAGE:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
-	elif property.name == "audio_stream":
+	elif property.name == "audio_stream_1":
+		if cipher_type != CipherType.AUDIO:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	elif property.name == "audio_stream_2":
+		if cipher_type != CipherType.AUDIO:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	elif property.name == "audio_stream_3":
 		if cipher_type != CipherType.AUDIO:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
