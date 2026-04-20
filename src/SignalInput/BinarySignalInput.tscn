@@ -1,43 +1,31 @@
 [gd_scene format=3 uid="uid://cxhsjo1c6c8qw"]
 
 [ext_resource type="Script" uid="uid://ds27e3vlp3eqs" path="res://src/SignalInput/binary_signal_input.gd" id="1_lmwl3"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_w7eef"]
-font_size = 20
-font_color = Color(1.2610257e-05, 0.86069655, 7.70092e-07, 1)
+[ext_resource type="Texture2D" uid="uid://d0vv7tk6j7mq5" path="res://assets/ui/mixing-Reverse_knob.png" id="2_4vkaq"]
 
 [node name="BinarySignalInput" type="Control" unique_id=1402289427]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("1_lmwl3")
 
-[node name="CheckButton" type="CheckButton" parent="." unique_id=2064196587]
+[node name="Button" type="Button" parent="." unique_id=1002932601]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+flat = true
 
-[node name="OkLabel" type="Label" parent="." unique_id=1394044231]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = 5.0
-offset_right = -1.0
-offset_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "OK"
-label_settings = SubResource("LabelSettings_w7eef")
-horizontal_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="Button" unique_id=489511886]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_4vkaq")
+stretch_mode = 3
 
-[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

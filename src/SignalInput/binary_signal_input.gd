@@ -3,49 +3,41 @@ extends Control
 
 signal signal_input_changed(value: bool)
 
-const MIN_VALUE: float = 0.0
-const MAX_VALUE: float = 1.0
-const STEP: float = 0.01
-const N_VALUES: int = int((MAX_VALUE - MIN_VALUE) / STEP) + 1
-
-@export var correct_value_threshold: float = 0.05
-
 var correct_value = false
 
 var value: bool = false:
 	set(new_value):
 		value = new_value
+		_update_render()
 		emit_signal("signal_input_changed", value)
 
-@onready var ok_label = $OkLabel
-@onready var _check_button = $CheckButton
-
-
-func _on_check_button_toggled(toggled_on: bool) -> void:
-	value = toggled_on
+@onready var _button = %Button
+@onready var _texture_rect = %TextureRect
 
 
 # When the level is loaded, we want to notify the cipher about the default slider value
 func _on_level_new_cipher_loaded(_cipher_data: CipherData):
-	_on_check_button_toggled(_check_button.toggled)
+	value = false
 
 
 func _ready() -> void:
 	var prng = RandomNumberGenerator.new()
 	prng.seed = name.hash()
 
+	_update_render()
+
 
 func set_enable(enabled: bool) -> void:
-	_check_button.disabled = not enabled
+	_button.disabled = not enabled
 
 
 func trigger_update() -> void:
 	emit_signal("signal_input_changed", value)
 
 
-func is_value_correct() -> bool:
-	return correct_value == value
+func _update_render():
+	_texture_rect.flip_h = value
 
 
-func _process(_delta: float) -> void:
-	ok_label.visible = is_value_correct()
+func _on_button_button_down() -> void:
+	value = !value
