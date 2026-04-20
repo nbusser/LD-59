@@ -86,8 +86,9 @@ func _on_end_of_level(new_nb_coins: int) -> void:
 	_load_score_screen()
 
 
-func _on_game_over() -> void:
+func _on_game_over(successes, total) -> void:
 	var scene: GameOver = game_over.instantiate()
+	scene.init(successes, total)
 	self.current_scene = scene
 
 
@@ -142,7 +143,9 @@ func _on_end_scene(status: Globals.EndSceneStatus, params: Dictionary = {}) -> v
 			var new_nb_coins: int = params["new_nb_coins"]
 			_on_end_of_level(new_nb_coins)
 		Globals.EndSceneStatus.LEVEL_GAME_OVER:
-			_on_game_over()
+			var successes: int = params["successes"]
+			var total: int = params["total"]
+			_on_game_over(successes, total)
 		Globals.EndSceneStatus.LEVEL_RESTART:
 			_restart_level()
 		Globals.EndSceneStatus.GAME_OVER_RESTART:

@@ -73,16 +73,28 @@ func _switch_phase(phase: LevelState.Phase):
 
 func _on_Timer_timeout():
 	await $UI/Fadeout.fade()
-	Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)
-
+	Globals.end_scene(
+		Globals.EndSceneStatus.LEVEL_GAME_OVER,
+		{
+			"Successes": level_state.succeeded_counter,
+			"Total": level_state.succeeded_counter + level_state.failed_counter
+		}
+	)
 
 func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
 	deciphering_started_stopped.emit(false)
 
 	if level_state.current_cipher.is_disco != is_disco:
 		await _play_failure_animation()
-		Globals.end_scene(Globals.EndSceneStatus.LEVEL_GAME_OVER)
+		Globals.end_scene(
+			Globals.EndSceneStatus.LEVEL_GAME_OVER,
+			{
+				"successes": level_state.successes_counter,
+				"total": len(level_state.level_data.ciphers)
+			}
+		)
 	else:
+		level_state.successes_counter += 1
 		await _play_success_animation()
 		_load_next_cipher()
 
