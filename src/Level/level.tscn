@@ -225,6 +225,7 @@ color = Color(0.7708398, 0.7708394, 0.77083945, 1)
 [node name="GlassesOverlay" type="TextureRect" parent="UI" unique_id=1645887035]
 unique_name_in_owner = true
 visible = false
+z_index = 200
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
