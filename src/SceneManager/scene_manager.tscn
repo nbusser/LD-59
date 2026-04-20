@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://csb52q0lubd25" path="res://assets/sprites/ciphers/tank_man/tank_man_red.png" id="6_6vsvc"]
 [ext_resource type="Texture2D" uid="uid://dfbcll8fh1186" path="res://assets/sprites/ciphers/star_wars/star_wars_red.png" id="6_okykg"]
 [ext_resource type="Texture2D" uid="uid://virk1a5lc7t0" path="res://assets/sprites/ciphers/tank_man/tank_man_green.png" id="7_4d07j"]
-[ext_resource type="Script" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
+[ext_resource type="Script" uid="uid://bokrkyxmuteu5" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
 [ext_resource type="AudioStream" uid="uid://cp8lj1cfpvpbo" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1_reversed.ogg" id="7_nb34f"]
 [ext_resource type="AudioStream" uid="uid://dasru4dewv4kg" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1.ogg" id="7_tlrc4"]
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
@@ -44,6 +44,12 @@
 [ext_resource type="Texture2D" uid="uid://dik23ceyedt1e" path="res://assets/sprites/ciphers/traffic/traffic_green.png" id="42_kfgd5"]
 [ext_resource type="Texture2D" uid="uid://deq3lpgbmk1xa" path="res://assets/sprites/ciphers/traffic/traffic_red.png" id="43_6f50n"]
 [ext_resource type="AudioStream" uid="uid://d1t1vixj3ykw8" path="res://assets/musics/global_discorveillance.ogg" id="44_kkfqw"]
+[ext_resource type="AudioStream" uid="uid://db3a45fhm0esg" path="res://assets/sounds/ciphers/anthem/anthem_track 1_reversed.ogg" id="44_wo1q6"]
+[ext_resource type="AudioStream" uid="uid://crfivooidt7tx" path="res://assets/sounds/ciphers/anthem/anthem_track 1.ogg" id="45_a0n6e"]
+[ext_resource type="AudioStream" uid="uid://16vpii1n0chp" path="res://assets/sounds/ciphers/anthem/anthem_track 2_reversed.ogg" id="46_foipn"]
+[ext_resource type="AudioStream" uid="uid://cepoposur7qli" path="res://assets/sounds/ciphers/anthem/anthem_track 2.ogg" id="47_l8al7"]
+[ext_resource type="AudioStream" uid="uid://b0otah7nwiioi" path="res://assets/sounds/ciphers/anthem/anthem_track 3_reversed.ogg" id="48_p4f20"]
+[ext_resource type="AudioStream" uid="uid://cjfte3gbtgfyy" path="res://assets/sounds/ciphers/anthem/anthem_track 3.ogg" id="49_4n71b"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -67,38 +73,6 @@ success_message = "You saw their idol? Impressive!"
 fail_message = "He was right before your eyes..."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
-[sub_resource type="Resource" id="Resource_38vrh"]
-script = ExtResource("3_38vrh")
-text_content = "The cool cats -
-They know we may chillax
-But if I stoke the vibes
-They’ll fight the man."
-hidden_text_content = "That's the way I like it"
-success_message = "La verite"
-fail_message = "Yallah"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_bb0s7"]
-script = ExtResource("3_38vrh")
-cipher_type = 1
-image_texture = ExtResource("5_7qhxv")
-image_texture_filter_green = ExtResource("7_4d07j")
-image_texture_filter_red = ExtResource("6_6vsvc")
-success_message = "Nothing wrong here..."
-fail_message = "Nothing disco with E.T..."
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_yqhvp"]
-script = ExtResource("3_38vrh")
-cipher_type = 1
-image_texture = ExtResource("20_dgn88")
-image_texture_filter_green = ExtResource("21_y4y0x")
-image_texture_filter_red = ExtResource("22_d7upb")
-is_disco = true
-success_message = "They hire them young..."
-fail_message = "You missed your chance to capture their child soldier..."
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
 [sub_resource type="Resource" id="Resource_nb34f"]
 script = ExtResource("7_6vsvc")
 stream = ExtResource("7_tlrc4")
@@ -120,10 +94,80 @@ cipher_type = 2
 audio_stream_1 = SubResource("Resource_nb34f")
 audio_stream_2 = SubResource("Resource_cou3s")
 audio_stream_3 = SubResource("Resource_cxc1x")
-secret_shape = 2
 is_disco = true
-success_message = "T tro for"
-fail_message = "T nul mdr"
+success_message = "Sneaky..."
+fail_message = "You missed something"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_bb0s7"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("5_7qhxv")
+image_texture_filter_green = ExtResource("7_4d07j")
+image_texture_filter_red = ExtResource("6_6vsvc")
+success_message = "Nothing wrong here..."
+fail_message = "Nothing disco with E.T..."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_has0b"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("45_a0n6e")
+reverse_stream = ExtResource("44_wo1q6")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_tuqtv"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("47_l8al7")
+reverse_stream = ExtResource("46_foipn")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_adk8q"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("49_4n71b")
+reverse_stream = ExtResource("48_p4f20")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_uki67"]
+script = ExtResource("3_38vrh")
+cipher_type = 2
+audio_stream_1 = SubResource("Resource_has0b")
+audio_stream_2 = SubResource("Resource_tuqtv")
+audio_stream_3 = SubResource("Resource_adk8q")
+secret_shape = 1
+is_disco = true
+success_message = "Blasphemy!"
+fail_message = "Listen more carefully..."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_kfgd5"]
+script = ExtResource("3_38vrh")
+text_content = "Discontinued for insufficient
+funds. Every future payment
+will be rejected."
+hidden_text_content = "Disco will rule"
+is_disco = true
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_38vrh"]
+script = ExtResource("3_38vrh")
+text_content = "The cool cats -
+They know we may chillax
+But if I stoke the vibes
+They’ll fight the man."
+hidden_text_content = "That's the way I like it"
+success_message = "Keen eye!"
+fail_message = "Use these sheets, son!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_yqhvp"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("20_dgn88")
+image_texture_filter_green = ExtResource("21_y4y0x")
+image_texture_filter_red = ExtResource("22_d7upb")
+is_disco = true
+success_message = "They hire them young..."
+fail_message = "You missed your chance to capture their child soldier..."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_xmlw0"]
@@ -205,7 +249,7 @@ script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro"), SubResource("Resource_1jhsk"), SubResource("Resource_th76n"), SubResource("Resource_h8n8s")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_lcxac"), SubResource("Resource_bb0s7"), SubResource("Resource_uki67"), SubResource("Resource_kfgd5"), SubResource("Resource_38vrh"), SubResource("Resource_yqhvp"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro"), SubResource("Resource_1jhsk"), SubResource("Resource_th76n"), SubResource("Resource_h8n8s")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3

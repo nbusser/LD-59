@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crfivooidt7tx"
+path="res://.godot/imported/anthem_track 1.ogg-e760c5cf0a945a2c584bffc1c2c2ad2e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/ciphers/anthem/anthem_track 1.ogg"
+dest_files=["res://.godot/imported/anthem_track 1.ogg-e760c5cf0a945a2c584bffc1c2c2ad2e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
