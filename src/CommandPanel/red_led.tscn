@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://jp3kwycpstcx"]
+
+[ext_resource type="Script" uid="uid://dvnw2hhbnxxe5" path="res://src/CommandPanel/led.gd" id="1_kymcv"]
+[ext_resource type="Texture2D" uid="uid://bwc4vr0y3xp8" path="res://assets/ui/led/disco_alert-Red_light_OFF.png" id="2_t1aqn"]
+[ext_resource type="Texture2D" uid="uid://cohmt7oxe4buf" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_e5cfe"]
+[ext_resource type="Texture2D" uid="uid://dbi0ls6e3ybhg" path="res://assets/ui/led/disco_alert-Red_light_ON_no_glow.png" id="3_t1aqn"]
+
+[node name="RedLed" type="Control" unique_id=1347280444]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+script = ExtResource("1_kymcv")
+
+[node name="Off" type="TextureRect" parent="." unique_id=2090860379]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -45.0
+offset_top = -47.0
+offset_right = 118.0
+offset_bottom = 104.0
+mouse_filter = 2
+texture = ExtResource("2_t1aqn")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="On" type="TextureRect" parent="." unique_id=755479535]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 72.0
+offset_bottom = 74.0
+mouse_filter = 2
+texture = ExtResource("3_t1aqn")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="On" unique_id=5787689]
+unique_name_in_owner = true
+position = Vector2(40, 38)
+color = Color(0.78216255, 0.23120254, 0.15697369, 1)
+range_layer_max = 1
+texture = ExtResource("3_e5cfe")
+metadata/_edit_lock_ = true

@@ -39,7 +39,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 192.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -824.0
 grow_vertical = 2
 
@@ -50,7 +50,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 256.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -760.0
 grow_vertical = 2
 
@@ -61,7 +61,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 320.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -696.0
 grow_vertical = 2
 
@@ -73,7 +73,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 448.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -568.0
 grow_vertical = 2
 
@@ -83,7 +83,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 512.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -504.0
 grow_vertical = 2
 
@@ -95,7 +95,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 640.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -376.0
 grow_vertical = 2
 
@@ -106,7 +106,7 @@ anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
 offset_top = 704.0
-offset_right = -1408.0
+offset_right = -1344.0
 offset_bottom = -312.0
 grow_vertical = 2
 

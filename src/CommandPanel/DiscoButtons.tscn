@@ -8,22 +8,20 @@
 [node name="DiscoButtons" type="Control" unique_id=163675673]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 448.0
-offset_bottom = 192.0
 script = ExtResource("1_825q7")
 
 [node name="PositiveButton" parent="." unique_id=449348408 instance=ExtResource("2_j211q")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_right = 0.0
+offset_left = 256.0
+offset_right = 256.0
 offset_bottom = 0.0
 texture = ExtResource("3_rsaef")
 
 [node name="NegativeButton" parent="." unique_id=1631071546 instance=ExtResource("2_j211q")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 256.0
-offset_right = 256.0
+offset_right = 0.0
 offset_bottom = 0.0
 texture = ExtResource("3_sqocc")
 

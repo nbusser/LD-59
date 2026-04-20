@@ -20,7 +20,7 @@ var amount: float = 0.5:
 		amount = new_amount
 		emit_signal("signal_input_changed", amount)
 
-@onready var ok_label = $OkLabel
+@onready var green_led = %GreenLed
 @onready var _slider = $HSlider
 
 
@@ -63,4 +63,4 @@ func get_quality() -> float:
 
 
 func _process(_delta: float) -> void:
-	ok_label.visible = is_value_correct()
+	green_led.enabled = is_value_correct()

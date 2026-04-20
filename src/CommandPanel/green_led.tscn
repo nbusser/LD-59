@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ct1wj11y68gx5"]
+
+[ext_resource type="Script" uid="uid://dvnw2hhbnxxe5" path="res://src/CommandPanel/led.gd" id="1_xq374"]
+[ext_resource type="Texture2D" uid="uid://bav1qi06u52ii" path="res://assets/ui/led/disco_alert-Green_light_OFF.png" id="2_xq374"]
+[ext_resource type="Texture2D" uid="uid://dbbd24hkxnllw" path="res://assets/ui/led/disco_alert-Green_light_ON_no_glow.png" id="3_uq3sg"]
+[ext_resource type="Texture2D" uid="uid://cohmt7oxe4buf" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_3app7"]
+
+[node name="GreenLed" type="Control" unique_id=1347280444]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+script = ExtResource("1_xq374")
+
+[node name="Off" type="TextureRect" parent="." unique_id=2090860379]
+unique_name_in_owner = true
+self_modulate = Color(0.4966877, 0.4966877, 0.4966877, 1)
+layout_mode = 0
+offset_left = -49.0
+offset_top = -45.0
+offset_right = 114.0
+offset_bottom = 106.0
+mouse_filter = 2
+texture = ExtResource("2_xq374")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="On" type="TextureRect" parent="." unique_id=755479535]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 70.0
+offset_bottom = 72.0
+mouse_filter = 2
+texture = ExtResource("3_uq3sg")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="On" unique_id=5787689]
+unique_name_in_owner = true
+position = Vector2(42, 40)
+color = Color(0.3992049, 0.81360656, 0.34939238, 1)
+range_layer_max = 1
+texture = ExtResource("4_3app7")
+metadata/_edit_lock_ = true
