@@ -2,6 +2,7 @@ class_name GameOver
 
 extends Control
 
+
 func init(successes: int, total: int):
 	$CenterContainer/VBoxContainer/Score.text = str(successes) + "/" + str(total)
 

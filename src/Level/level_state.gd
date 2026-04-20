@@ -20,5 +20,6 @@ var phase: Phase = Phase.STEGANO
 
 var successes_counter: int = 0
 
+
 func _init(level_data_p: LevelData):
 	self.level_data = level_data_p

@@ -81,6 +81,7 @@ func _on_Timer_timeout():
 		}
 	)
 
+
 func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
 	deciphering_started_stopped.emit(false)
 
