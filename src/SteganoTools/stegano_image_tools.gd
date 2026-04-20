@@ -55,23 +55,16 @@ func init():
 	)
 
 	_rendered_image.material.set_shader_parameter("enable_filter", true)
-	_rendered_image.material.set_shader_parameter(
-		"filter_green_size", _green_filter.get_size() / _sub_viewport_display.get_size()
-	)
-	_rendered_image.material.set_shader_parameter(
-		"filter_red_size", _red_filter.get_size() / _sub_viewport_display.get_size()
-	)
+	refresh_filters_size()
 
 	# _rendered_image.material.set_shader_parameter("enable_magnifier", false)
 	_rendered_image.material.set_shader_parameter("magnifier_zoom", 2.5)
 
 	for f in [_green_filter_shader_text, _red_filter_shader_text]:
 		f.material.set_shader_parameter(
-			"enable_filter", Globals.display_mode == CipherData.CipherType.IMAGE
-		)
-		f.material.set_shader_parameter(
 			"screen_size", _sub_viewport_display.get_size() / f.get_size()
 		)
+	refresh_filters_state()
 
 
 func toggle_tools(enabled: bool) -> void:
@@ -91,20 +84,20 @@ func toggle_tools(enabled: bool) -> void:
 
 
 func _refresh_filter_positions():
+	var display_size = _sub_viewport_display.get_size()
+	var green_small = _green_filter.scale.x < 0.9
+	# print(_green_filter.scale)
+	var red_small = _red_filter.scale.x < 0.9
 	_rendered_image.material.set_shader_parameter(
 		"filter_green_position",
-		(
-			(_green_filter.global_position - _sub_viewport_display.global_position)
-			/ _sub_viewport_display.get_size()
-		)
+		(_green_filter.global_position - _sub_viewport_display.global_position) / display_size
 	)
 	_rendered_image.material.set_shader_parameter(
 		"filter_red_position",
-		(
-			(_red_filter.global_position - _sub_viewport_display.global_position)
-			/ _sub_viewport_display.get_size()
-		)
+		(_red_filter.global_position - _sub_viewport_display.global_position) / display_size
 	)
+	refresh_filters_size()
+	refresh_filters_state()
 	for f in [_green_filter_shader_text, _red_filter_shader_text]:
 		f.material.set_shader_parameter(
 			"screen_position",
@@ -135,6 +128,31 @@ func _process(_delta: float):
 		for f in [_green_filter_shader_text, _red_filter_shader_text]:
 			f.material.set_shader_parameter("enable_filter", false)
 		return
+
+
+func refresh_filters_size():
+	var display_size = _sub_viewport_display.get_size()
+	var green_small = _green_filter.scale.x < 0.9
+	var red_small = _red_filter.scale.x < 0.9
+	_rendered_image.material.set_shader_parameter(
+		"filter_green_size",
+		Vector2.ZERO if green_small else _green_filter.get_size() / display_size
+	)
+	_rendered_image.material.set_shader_parameter(
+		"filter_red_size", Vector2.ZERO if red_small else _red_filter.get_size() / display_size
+	)
+
+
+func refresh_filters_state():
+	var display_size = _sub_viewport_display.get_size()
+	var green_small = _green_filter.scale.x < 0.9
+	var red_small = _red_filter.scale.x < 0.9
+	_green_filter_shader_text.material.set_shader_parameter(
+		"enable_filter", not green_small && Globals.display_mode == CipherData.CipherType.IMAGE
+	)
+	_red_filter_shader_text.material.set_shader_parameter(
+		"enable_filter", not red_small && Globals.display_mode == CipherData.CipherType.IMAGE
+	)
 
 
 func toggle_filters(value: bool):

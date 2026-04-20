@@ -25,10 +25,21 @@ var _hovered := false
 @onready var parent: Control = get_parent()
 
 
+func _is_in_edge_zone() -> bool:
+	var vp_size = get_viewport().get_visible_rect().size
+	var center = parent.global_position + parent.get_size() / 2
+	return (
+		center.x < vp_size.x * 0.27
+		or center.x > vp_size.x * 0.73
+		or center.y < vp_size.y * 0.20
+		or center.y > vp_size.y * 0.80
+	)
+
+
 func _release():
 	Globals.dragged_object = null
 	_dragging = false
-	if !disable_animation:
+	if !disable_animation or _is_in_edge_zone():
 		var tween = get_tree().create_tween()
 		tween.parallel().tween_property(
 			parent, "scale", Vector2.ONE * SCALE_DROPPED, ANIMATION_DURATION
@@ -48,7 +59,7 @@ func _release():
 func _catch():
 	Globals.dragged_object = parent
 	_dragging = true
-	if !disable_animation:
+	if !disable_animation or _is_in_edge_zone() or parent.scale != Vector2.ONE:
 		var tween = get_tree().create_tween()
 		tween.parallel().tween_property(parent, "scale", Vector2.ONE, ANIMATION_DURATION)
 		tween.parallel().tween_property(parent, "rotation_degrees", 0, ANIMATION_DURATION)
@@ -79,7 +90,7 @@ func _process(_delta: float):
 		tween.parallel().tween_property(
 			parent,
 			"global_position",
-			get_viewport().get_mouse_position() - (parent.get_size() / 2),
+			get_viewport().get_mouse_position() - (parent.get_size() * parent.scale / 2),
 			ANIMATION_DURATION
 		)
 
