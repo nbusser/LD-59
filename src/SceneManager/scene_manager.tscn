@@ -70,6 +70,19 @@
 [ext_resource type="Texture2D" uid="uid://dbwit1n5w6i62" path="res://assets/sprites/ciphers/acdc/acdc.webp" id="67_ixkii"]
 [ext_resource type="Texture2D" uid="uid://beu7kfwhcmg8d" path="res://assets/sprites/ciphers/acdc/acdc_green.webp" id="68_hegg6"]
 [ext_resource type="Texture2D" uid="uid://co6varj12pyei" path="res://assets/sprites/ciphers/acdc/acdc_red.webp" id="69_0sind"]
+[ext_resource type="Texture2D" uid="uid://fepyt0tgrh7q" path="res://assets/sprites/ciphers/diva/diva.webp" id="70_i08jk"]
+[ext_resource type="Texture2D" uid="uid://41a6budmtonj" path="res://assets/sprites/ciphers/diva/diva_green.webp" id="71_6qfrd"]
+[ext_resource type="Texture2D" uid="uid://bjowkl2hpmcm1" path="res://assets/sprites/ciphers/diva/diva_red.webp" id="72_jt0jt"]
+
+[sub_resource type="Resource" id="Resource_38vrh"]
+script = ExtResource("3_38vrh")
+text_content = "Dear mom,
+I'm having so much fun in Florida!
+Kiss the dog for me
+Pat"
+success_message = "Awww"
+fail_message = "What's wrong with that?"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_qc8yu"]
 script = ExtResource("3_38vrh")
@@ -80,14 +93,15 @@ success_message = "They did not even try"
 fail_message = "How could you miss that?"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
-[sub_resource type="Resource" id="Resource_38vrh"]
+[sub_resource type="Resource" id="Resource_tr5p8"]
 script = ExtResource("3_38vrh")
-text_content = "Dear mom,
-I'm having so much fun in Florida!
-Kiss the dog for me
-Pat"
-success_message = "Awww"
-fail_message = "What's wrong with that?"
+cipher_type = 1
+image_texture = ExtResource("70_i08jk")
+image_texture_filter_green = ExtResource("71_6qfrd")
+image_texture_filter_red = ExtResource("72_jt0jt")
+is_disco = true
+success_message = "No doubt!"
+fail_message = "Can't you recognized a disco diva?"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_i08jk"]
@@ -189,6 +203,16 @@ hidden_text_content = "Disco will rule"
 is_disco = true
 success_message = "Sneaky!"
 fail_message = "Try to use the decoding sheets"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_8peto"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("58_chmse")
+image_texture_filter_green = ExtResource("59_8pygd")
+image_texture_filter_red = ExtResource("60_0ejsf")
+success_message = "All clear"
+fail_message = "Ghettoblaster is not disco"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_agyg0"]
@@ -374,22 +398,12 @@ success_message = "Le freak c'est chic"
 fail_message = "Do not trust appearances. "
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
-[sub_resource type="Resource" id="Resource_8peto"]
-script = ExtResource("3_38vrh")
-cipher_type = 1
-image_texture = ExtResource("58_chmse")
-image_texture_filter_green = ExtResource("59_8pygd")
-image_texture_filter_red = ExtResource("60_0ejsf")
-success_message = "All clear"
-fail_message = "Ghettoblaster is not disco"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_kaq6d"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x"), SubResource("Resource_8peto")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_38vrh"), SubResource("Resource_qc8yu"), SubResource("Resource_tr5p8"), SubResource("Resource_kaq6d"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_8peto"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
