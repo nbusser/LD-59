@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 
@@ -41,3 +42,25 @@ func map_triangle_ascending(x: float, offset: float, margin_around_zero: float =
 	if x <= high:
 		return 0.0
 	return (x - high) / (1.0 - high)
+
+
+func get_hidden_text_indexes(original_text: String, hidden_text: String) -> Array[int]:
+	var transformed_hidden_text_regex = RegEx.create_from_string("[^A-Za-z0-9]")
+	var transformed_hidden_text = transformed_hidden_text_regex.sub(hidden_text, "", true)
+	if transformed_hidden_text.length() < 1:
+		return []
+
+	var last_index: int = 0
+	var indexes: Array[int] = []
+
+	for character in transformed_hidden_text.split(""):
+		var regex = RegEx.create_from_string(
+			"[" + character.to_lower() + character.to_upper() + "]"
+		)
+		var regex_match = regex.search(original_text, last_index)
+		if regex_match == null:
+			return []
+		last_index = regex_match.get_start()
+		indexes.append(last_index)
+
+	return indexes

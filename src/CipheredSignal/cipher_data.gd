@@ -12,6 +12,8 @@ enum CipherType {
 	set(v):
 		cipher_type = v
 		text_content = ""
+		alternative_content = ""
+		hidden_text_content = ""
 		image_texture = null
 		image_texture_filter_green = null
 		image_texture_filter_red = null
@@ -21,7 +23,9 @@ enum CipherType {
 		notify_property_list_changed()
 
 # Only the relevant property is shown
-@export var text_content: String = ""
+@export_multiline var text_content: String = ""
+@export_multiline var alternative_content: String = ""
+@export var hidden_text_content: String = ""
 
 @export var image_texture: Texture2D = null
 @export var image_texture_filter_green: Texture2D = null
@@ -36,6 +40,12 @@ enum CipherType {
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "text_content":
+		if cipher_type != CipherType.TEXT:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "alternative_content":
+		if cipher_type != CipherType.TEXT:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "hidden_text_content":
 		if cipher_type != CipherType.TEXT:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	elif property.name == "image_texture":

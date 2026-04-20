@@ -12,6 +12,15 @@
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
 [ext_resource type="AudioStream" uid="uid://ckytpj7elkch2" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_3.ogg" id="9_88lsx"]
 
+[sub_resource type="Resource" id="Resource_38vrh"]
+script = ExtResource("3_38vrh")
+text_content = "The cool cats -
+They know we may chillax
+But if I stoke the vibes
+They’ll fight the man."
+hidden_text_content = "That's the way I like it"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_bb0s7"]
 script = ExtResource("3_38vrh")
 cipher_type = 1
@@ -29,11 +38,6 @@ audio_stream_3 = ExtResource("9_88lsx")
 is_disco = true
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
-[sub_resource type="Resource" id="Resource_38vrh"]
-script = ExtResource("3_38vrh")
-text_content = "J'adore les pates farcies de la marque Treo !"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
 [sub_resource type="Resource" id="Resource_7qhxv"]
 script = ExtResource("3_38vrh")
 cipher_type = 2
@@ -43,7 +47,7 @@ metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 script = ExtResource("2_38vrh")
 name = "J'aime pu ma mère !"
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_bb0s7"), SubResource("Resource_lcxac"), SubResource("Resource_38vrh"), SubResource("Resource_7qhxv")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_lcxac"), SubResource("Resource_7qhxv")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
