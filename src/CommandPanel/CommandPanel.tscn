@@ -38,36 +38,13 @@ custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = 192.0
+offset_top = 384.0
 offset_right = -1344.0
-offset_bottom = -824.0
+offset_bottom = -632.0
 grow_vertical = 2
 
 [node name="WordShuffleSignalInput" parent="TextInputs" unique_id=1555452025 instance=ExtResource("2_hbc2p")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
-anchors_preset = 15
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 256.0
-offset_right = -1344.0
-offset_bottom = -760.0
-grow_vertical = 2
-
-[node name="SpaceShuffleSignalInput" parent="TextInputs" unique_id=310417279 instance=ExtResource("2_hbc2p")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
-anchors_preset = 15
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 320.0
-offset_right = -1344.0
-offset_bottom = -696.0
-grow_vertical = 2
-
-[node name="ImageInputs" type="Node" parent="." unique_id=1566043442]
-
-[node name="VsyncSignalInput" parent="ImageInputs" unique_id=1443587128 instance=ExtResource("2_hbc2p")]
 custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
@@ -77,7 +54,8 @@ offset_right = -1344.0
 offset_bottom = -568.0
 grow_vertical = 2
 
-[node name="ShuffleRowsSignalInput" parent="ImageInputs" unique_id=2027053063 instance=ExtResource("2_hbc2p")]
+[node name="SpaceShuffleSignalInput" parent="TextInputs" unique_id=310417279 instance=ExtResource("2_hbc2p")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
@@ -87,9 +65,9 @@ offset_right = -1344.0
 offset_bottom = -504.0
 grow_vertical = 2
 
-[node name="AudioInputs" type="Node" parent="." unique_id=2069117480]
+[node name="ImageInputs" type="Node" parent="." unique_id=1566043442]
 
-[node name="SpeedSignalInput" parent="AudioInputs" unique_id=325510213 instance=ExtResource("2_hbc2p")]
+[node name="VsyncSignalInput" parent="ImageInputs" unique_id=1443587128 instance=ExtResource("2_hbc2p")]
 custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
@@ -99,8 +77,7 @@ offset_right = -1344.0
 offset_bottom = -376.0
 grow_vertical = 2
 
-[node name="NoiseSignalInput" parent="AudioInputs" unique_id=1803397393 instance=ExtResource("2_hbc2p")]
-unique_name_in_owner = true
+[node name="ShuffleRowsSignalInput" parent="ImageInputs" unique_id=2027053063 instance=ExtResource("2_hbc2p")]
 custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
@@ -110,6 +87,29 @@ offset_right = -1344.0
 offset_bottom = -312.0
 grow_vertical = 2
 
+[node name="AudioInputs" type="Node" parent="." unique_id=2069117480]
+
+[node name="SpeedSignalInput" parent="AudioInputs" unique_id=325510213 instance=ExtResource("2_hbc2p")]
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 832.0
+offset_right = -1344.0
+offset_bottom = -184.0
+grow_vertical = 2
+
+[node name="NoiseSignalInput" parent="AudioInputs" unique_id=1803397393 instance=ExtResource("2_hbc2p")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+anchors_preset = 15
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 896.0
+offset_right = -1344.0
+offset_bottom = -120.0
+grow_vertical = 2
+
 [node name="AudioTracksInputs" type="Node" parent="." unique_id=1704246191]
 
 [node name="AudioTrack1VolumeInput" parent="AudioTracksInputs" unique_id=1494532812 instance=ExtResource("2_hbc2p")]
@@ -117,9 +117,9 @@ custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 1408.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -256.0
-offset_bottom = 576.0
+offset_bottom = 768.0
 grow_vertical = 2
 rotation = -1.5707964
 
@@ -128,9 +128,9 @@ custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 1472.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -192.0
-offset_bottom = 576.0
+offset_bottom = 768.0
 grow_vertical = 2
 rotation = -1.5707964
 
@@ -139,29 +139,29 @@ custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 1536.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -128.0
-offset_bottom = 576.0
+offset_bottom = 768.0
 grow_vertical = 2
 rotation = -1.5707964
 
 [node name="AudioTrack1ReverseInput" parent="AudioTracksInputs" unique_id=1176217677 instance=ExtResource("3_lgrhe")]
 offset_left = 1408.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -448.0
-offset_bottom = -504.0
+offset_bottom = -312.0
 
 [node name="AudioTrack2ReverseInput" parent="AudioTracksInputs" unique_id=893427455 instance=ExtResource("3_lgrhe")]
 offset_left = 1472.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -384.0
-offset_bottom = -504.0
+offset_bottom = -312.0
 
 [node name="AudioTrack3ReverseInput" parent="AudioTracksInputs" unique_id=1471597885 instance=ExtResource("3_lgrhe")]
 offset_left = 1536.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -320.0
-offset_bottom = -504.0
+offset_bottom = -312.0
 
 [node name="AudioSignalVisualFrequency" type="Node" parent="." unique_id=999800982]
 
@@ -170,9 +170,9 @@ custom_minimum_size = Vector2(0, 0)
 anchors_preset = 15
 anchor_bottom = 1.0
 offset_left = 1610.0
-offset_top = 512.0
+offset_top = 704.0
 offset_right = -54.0
-offset_bottom = 576.0
+offset_bottom = 768.0
 grow_vertical = 2
 rotation = -1.5707964
 
@@ -180,10 +180,10 @@ rotation = -1.5707964
 
 [node name="TextModeButton" type="TextureButton" parent="SignalTypeButtons" unique_id=1443325002]
 unique_name_in_owner = true
-offset_left = 640.0
-offset_top = 704.0
-offset_right = 832.0
-offset_bottom = 768.0
+offset_left = 672.0
+offset_top = 960.0
+offset_right = 877.0
+offset_bottom = 1030.0
 toggle_mode = true
 button_pressed = true
 action_mode = 0
@@ -193,10 +193,10 @@ texture_pressed = ExtResource("6_2tjow")
 
 [node name="ImageModeButton" type="TextureButton" parent="SignalTypeButtons" unique_id=490992217]
 unique_name_in_owner = true
-offset_left = 864.0
-offset_top = 704.0
-offset_right = 1056.0
-offset_bottom = 768.0
+offset_left = 896.0
+offset_top = 960.0
+offset_right = 1101.0
+offset_bottom = 1030.0
 toggle_mode = true
 action_mode = 0
 button_group = ExtResource("4_38y4c")
@@ -205,10 +205,10 @@ texture_pressed = ExtResource("6_2tjow")
 
 [node name="AudioModeButton" type="TextureButton" parent="SignalTypeButtons" unique_id=994936219]
 unique_name_in_owner = true
-offset_left = 1088.0
-offset_top = 704.0
-offset_right = 1280.0
-offset_bottom = 768.0
+offset_left = 1120.0
+offset_top = 960.0
+offset_right = 1325.0
+offset_bottom = 1030.0
 toggle_mode = true
 action_mode = 0
 button_group = ExtResource("4_38y4c")
@@ -218,16 +218,16 @@ texture_pressed = ExtResource("6_2tjow")
 [node name="DiscoButtons" parent="." unique_id=163675673 instance=ExtResource("3_hbc2p")]
 layout_mode = 0
 offset_left = 1408.0
-offset_top = 640.0
+offset_top = 832.0
 offset_right = 1856.0
-offset_bottom = 832.0
+offset_bottom = 1024.0
 
 [node name="SignalIndicator" parent="." unique_id=39410655 instance=ExtResource("5_x1r3g")]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 64.0
+offset_top = 280.0
 offset_right = 512.0
-offset_bottom = 104.0
+offset_bottom = 320.0
 
 [node name="SFX" type="Node" parent="." unique_id=1623730975]
 
@@ -239,18 +239,18 @@ volume_db = 2.0
 
 [node name="Background" type="TextureRect" parent="NoiseSignalInputDisplay" unique_id=781440124]
 offset_left = 48.0
-offset_top = 784.0
+offset_top = 976.0
 offset_right = 515.0
-offset_bottom = 831.0
+offset_bottom = 1023.0
 texture = ExtResource("12_3sw21")
 
 [node name="Control" type="Control" parent="NoiseSignalInputDisplay" unique_id=1616856748]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 72.0
-offset_top = 784.0
+offset_top = 976.0
 offset_right = 488.0
-offset_bottom = 832.0
+offset_bottom = 1024.0
 
 [node name="NoiseSignalInputDisplayKnob" type="TextureRect" parent="NoiseSignalInputDisplay/Control" unique_id=33074932]
 unique_name_in_owner = true
@@ -263,27 +263,27 @@ stretch_mode = 3
 
 [node name="Foreground" type="TextureRect" parent="NoiseSignalInputDisplay" unique_id=2036544987]
 offset_left = 48.0
-offset_top = 784.0
+offset_top = 976.0
 offset_right = 515.0
-offset_bottom = 831.0
+offset_bottom = 1023.0
 texture = ExtResource("14_vbb54")
 
 [node name="TextSignalInputDisplay" type="Node" parent="." unique_id=963730664]
 
 [node name="Background" type="TextureRect" parent="TextSignalInputDisplay" unique_id=13743039]
 offset_left = 168.0
-offset_top = 144.0
+offset_top = 344.0
 offset_right = 405.0
-offset_bottom = 185.0
+offset_bottom = 385.0
 texture = ExtResource("15_3pln7")
 
 [node name="Control" type="Control" parent="TextSignalInputDisplay" unique_id=198267733]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 176.0
-offset_top = 152.0
+offset_top = 352.0
 offset_right = 400.0
-offset_bottom = 176.0
+offset_bottom = 376.0
 
 [node name="TextSignalInputDisplayRed" type="NinePatchRect" parent="TextSignalInputDisplay/Control" unique_id=887247111]
 unique_name_in_owner = true
@@ -320,9 +320,9 @@ region_rect = Rect2(0, 0, 224, 8)
 
 [node name="Foreground" type="TextureRect" parent="TextSignalInputDisplay" unique_id=1207224956]
 offset_left = 168.0
-offset_top = 144.0
+offset_top = 344.0
 offset_right = 405.0
-offset_bottom = 185.0
+offset_bottom = 385.0
 texture = ExtResource("16_0gx32")
 
 [connection signal="pressed" from="SignalTypeButtons/TextModeButton" to="." method="_on_text_pressed"]

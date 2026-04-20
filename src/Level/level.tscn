@@ -26,7 +26,7 @@ height = 1080
 noise = SubResource("FastNoiseLite_nuskc")
 color_ramp = SubResource("Gradient_05e80")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_djut7"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_v3q8p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_djut7"]
 font = ExtResource("7_mqshx")
@@ -123,10 +123,10 @@ _ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
 _ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
 
 [node name="Display" parent="UI/Monitor" index="0" unique_id=2086475445]
-offset_left = -400.0
-offset_top = -468.0
-offset_right = 400.0
-offset_bottom = 132.0
+offset_left = -368.0
+offset_top = -188.0
+offset_right = 432.0
+offset_bottom = 412.0
 
 [node name="CommandPanel" parent="UI" unique_id=1884603933 instance=ExtResource("4_grxid")]
 anchors_preset = 0
@@ -145,19 +145,19 @@ correct_value_threshold = 0.1
 correct_value_threshold = 0.1
 
 [node name="TextModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="0" unique_id=1443325002]
-button_group = SubResource("ButtonGroup_djut7")
+button_group = SubResource("ButtonGroup_v3q8p")
 
 [node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
-button_group = SubResource("ButtonGroup_djut7")
+button_group = SubResource("ButtonGroup_v3q8p")
 
 [node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
-button_group = SubResource("ButtonGroup_djut7")
+button_group = SubResource("ButtonGroup_v3q8p")
 
 [node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
-offset_left = 887.0
-offset_top = 852.0
-offset_right = 887.0
-offset_bottom = 852.0
+offset_left = 648.0
+offset_top = -48.0
+offset_right = 648.0
+offset_bottom = -48.0
 mouse_filter = 1
 
 [node name="ImageFilters" parent="UI/SteganoTools" index="1" unique_id=824484933 node_paths=PackedStringArray("_sub_viewport_display", "_rendered_image")]
@@ -229,13 +229,13 @@ space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSig
 shuffle_rows_input = NodePath("../../UI/CommandPanel/ImageInputs/ShuffleRowsSignalInput")
 v_desync_input = NodePath("../../UI/CommandPanel/ImageInputs/VsyncSignalInput")
 
-[node name="CipheredAudio" parent="CipheredSignals" index="2" unique_id=1586566932 node_paths=PackedStringArray("speed_input", "noise_input", "track_1_mixer", "track_2_mixer", "track_3_mixer", "frequency_shape", "track_1_reverse_button", "track_2_reverse_button", "track_3_reverse_button")]
+[node name="CipheredAudio" parent="CipheredSignals" index="2" unique_id=1586566932 node_paths=PackedStringArray("frequency_shape", "speed_input", "noise_input", "track_1_mixer", "track_2_mixer", "track_3_mixer", "track_1_reverse_button", "track_2_reverse_button", "track_3_reverse_button")]
+frequency_shape = NodePath("../../UI/CommandPanel/AudioSignalVisualFrequency/AudioSignalVisualFrequencyInput")
 speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 noise_input = NodePath("../../UI/CommandPanel/AudioInputs/NoiseSignalInput")
 track_1_mixer = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack1VolumeInput")
 track_2_mixer = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack2VolumeInput")
 track_3_mixer = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack3VolumeInput")
-frequency_shape = NodePath("../../UI/CommandPanel/AudioSignalVisualFrequency/AudioSignalVisualFrequencyInput")
 track_1_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack1ReverseInput")
 track_2_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack2ReverseInput")
 track_3_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack3ReverseInput")
@@ -264,6 +264,7 @@ position = Vector2(960, 540)
 color = Color(0.9608597, 0.581163, 0.36786333, 1)
 energy = 2.0
 texture = ExtResource("12_mqshx")
+metadata/_edit_lock_ = true
 
 [connection signal="deciphering_started_stopped" from="." to="UI/Monitor" method="_on_level_deciphering_started_stopped"]
 [connection signal="deciphering_started_stopped" from="." to="UI/CommandPanel" method="_on_level_deciphering_started_stopped"]
