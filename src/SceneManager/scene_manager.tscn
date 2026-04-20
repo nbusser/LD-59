@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ecnmvxdff3" path="res://assets/sprites/ciphers/tank_man/tank_man.png" id="5_7qhxv"]
 [ext_resource type="Texture2D" uid="uid://csb52q0lubd25" path="res://assets/sprites/ciphers/tank_man/tank_man_red.png" id="6_6vsvc"]
 [ext_resource type="Texture2D" uid="uid://virk1a5lc7t0" path="res://assets/sprites/ciphers/tank_man/tank_man_green.png" id="7_4d07j"]
-[ext_resource type="Script" uid="uid://bokrkyxmuteu5" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
+[ext_resource type="Script" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
 [ext_resource type="AudioStream" uid="uid://cp8lj1cfpvpbo" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1_reversed.ogg" id="7_nb34f"]
 [ext_resource type="AudioStream" uid="uid://dasru4dewv4kg" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1.ogg" id="7_tlrc4"]
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
@@ -41,19 +41,16 @@ metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 script = ExtResource("7_6vsvc")
 stream = ExtResource("7_tlrc4")
 reverse_stream = ExtResource("7_nb34f")
-metadata/_custom_type_script = "uid://bokrkyxmuteu5"
 
 [sub_resource type="Resource" id="Resource_cou3s"]
 script = ExtResource("7_6vsvc")
 stream = ExtResource("8_4ishk")
 reverse_stream = ExtResource("10_cou3s")
-metadata/_custom_type_script = "uid://bokrkyxmuteu5"
 
 [sub_resource type="Resource" id="Resource_cxc1x"]
 script = ExtResource("7_6vsvc")
 stream = ExtResource("9_88lsx")
 reverse_stream = ExtResource("12_cxc1x")
-metadata/_custom_type_script = "uid://bokrkyxmuteu5"
 
 [sub_resource type="Resource" id="Resource_lcxac"]
 script = ExtResource("3_38vrh")
@@ -61,6 +58,7 @@ cipher_type = 2
 audio_stream_1 = SubResource("Resource_nb34f")
 audio_stream_2 = SubResource("Resource_cou3s")
 audio_stream_3 = SubResource("Resource_cxc1x")
+secret_shape = 2
 is_disco = true
 success_message = "T tro for"
 fail_message = "T nul mdr"

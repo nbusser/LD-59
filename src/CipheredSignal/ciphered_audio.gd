@@ -111,7 +111,7 @@ func _reset() -> void:
 
 @export var frequency_shape: SignalInput
 
-const FREQUENCY_SHAPE_PEAK_HALF_WIDTH = 0.04
+const FREQUENCY_SHAPE_PEAK_HALF_WIDTH = 0.06
 
 var _frequency_shape_peak = 0.0
 var _frequency_shape_value = 0.0

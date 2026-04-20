@@ -11,6 +11,42 @@ const MIN_DB = 60
 
 const SAMPLE_COUNT = 100
 
+const BALL = [
+	Vector2(0.2500, 0.0000),
+	Vector2(0.2310, 0.0957),
+	Vector2(0.1768, 0.1768),
+	Vector2(0.0957, 0.2310),
+	Vector2(0.0000, 0.2500),
+	Vector2(-0.0957, 0.2310),
+	Vector2(-0.1768, 0.1768),
+	Vector2(-0.2310, 0.0957),
+	Vector2(-0.2500, 0.0000),
+	Vector2(-0.2310, -0.0957),
+	Vector2(-0.1768, -0.1768),
+	Vector2(-0.0957, -0.2310),
+	Vector2(0.0000, -0.2500),
+	Vector2(0.0957, -0.2310),
+	Vector2(0.1768, -0.1768),
+	Vector2(0.2310, -0.0957),
+	Vector2(0.2500, 0.0000),
+]
+
+const HAIRCUT = [
+	Vector2(0.0000, -0.2800),
+	Vector2(0.1200, -0.2200),
+	Vector2(0.2000, -0.0800),
+	Vector2(0.2000, 0.0800),
+	Vector2(0.1800, 0.2000),
+	Vector2(0.1000, 0.3000),
+	Vector2(-0.0500, 0.3200),
+	Vector2(-0.1800, 0.2800),
+	Vector2(-0.2200, 0.1600),
+	Vector2(-0.2000, 0.0000),
+	Vector2(-0.2000, -0.1000),
+	Vector2(-0.1200, -0.2200),
+	Vector2(0.0000, -0.2800),
+]
+
 const SHADES = [
 	Vector2(-0.0683, -0.0231),
 	Vector2(-0.1550, 0.0268),
@@ -43,6 +79,7 @@ const SHADES = [
 var _spectrum_points = PackedVector2Array()
 var _shape_points = PackedVector2Array()
 var _frequency_shape = 0.0
+var _active_shape: CipherData.CipheredAudioShape = CipherData.CipheredAudioShape.NOTHING
 
 @onready var _spectrum: AudioEffectSpectrumAnalyzerInstance = AudioServer.get_bus_effect_instance(
 	AudioServer.get_bus_index("Cipher"), 0
@@ -52,10 +89,32 @@ var _frequency_shape = 0.0
 func _ready():
 	_spectrum_points.resize(SAMPLE_COUNT)
 	_spectrum_points.fill(Vector2.ZERO)
+	_rebuild_shape_points()
 
-	_shape_points.resize(SHADES.size())
-	for i in range(SHADES.size()):
-		_shape_points.set(i, SHADES[i] * WIDTH / 1. * Vector2(1., -1.))
+
+func _get_shape_const() -> Array:
+	match _active_shape:
+		CipherData.CipheredAudioShape.SHADES:
+			return SHADES
+		CipherData.CipheredAudioShape.BALL:
+			return BALL
+		CipherData.CipheredAudioShape.HAIRCUT:
+			return HAIRCUT
+		_:
+			return SHADES
+
+
+func _rebuild_shape_points() -> void:
+	var pts = _get_shape_const()
+	_shape_points.resize(pts.size())
+	for i in range(pts.size()):
+		_shape_points.set(i, pts[i] * WIDTH * Vector2(1., -1.))
+
+
+func set_shape(shape: CipherData.CipheredAudioShape) -> void:
+	_active_shape = shape
+	if shape != CipherData.CipheredAudioShape.NOTHING:
+		_rebuild_shape_points()
 
 
 func _process(_delta: float) -> void:
@@ -69,8 +128,8 @@ func _draw():
 
 	# Merge
 	# TODO faire mieux comme interpolation, préservation des basses fréquences
-	# var v = 0.0
 	var v = _frequency_shape
+	var v_lerp = v if _active_shape != CipherData.CipheredAudioShape.NOTHING else 0.0
 	var p = PackedVector2Array()
 	var t = Time.get_ticks_msec()
 	p.resize(SAMPLE_COUNT)
@@ -94,7 +153,7 @@ func _draw():
 		var freq = b.x * FREQ_MAX / WIDTH
 		b.y += .015 * WIDTH * sin(t * freq / 1000.0 * 1.) * sin(t * freq / 1000.0 * .2)
 
-		p.set(i, a.lerp(b, v))
+		p.set(i, a.lerp(b, v_lerp))
 		# p.set(i, a.lerp(b, 0))
 
 	draw_polyline(p, Color.GREEN, 2.0, true)

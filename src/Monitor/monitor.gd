@@ -25,12 +25,14 @@ func enable_display():
 	_signal.visible = true
 	_no_signal.visible = false
 	_current_selection = CipherData.CipherType.TEXT
+	_rendered_audio.set_shape(Globals.current_level.level_state.current_cipher.secret_shape)
 
 
 func disable_display():
 	_signal.visible = false
 	_no_signal.visible = true
 	_current_selection = CipherData.CipherType.TEXT
+	_rendered_audio.set_shape(CipherData.CipheredAudioShape.NOTHING)
 
 
 func _ready() -> void:
