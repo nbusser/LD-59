@@ -26,7 +26,8 @@ func _ready():
 
 
 func _on_level_phase_changed(_phase: LevelState.Phase) -> void:
-	pass
+	_text_tools.init.call_deferred()
+	_image_tools.init.call_deferred()
 
 
 func _on_command_panel_cipher_type_selected(_cipher_type: CipherData.CipherType) -> void:
