@@ -46,12 +46,18 @@
 [ext_resource type="Texture2D" uid="uid://c8mqifrdqb0dk" path="res://assets/sprites/ciphers/aristochats/aristochats_green.webp" id="51_has0b"]
 [ext_resource type="AudioStream" uid="uid://7o8tfihykcol" path="res://assets/sounds/ciphers/speech/speech_track_1.ogg" id="51_p4f20"]
 [ext_resource type="AudioStream" uid="uid://bakxn6o0074vc" path="res://assets/sounds/ciphers/speech/speech_track_2_reversed.ogg" id="52_4n71b"]
+[ext_resource type="AudioStream" uid="uid://b1dipsgryg03o" path="res://assets/sounds/ciphers/freak/freak_track_1_reversed.ogg" id="52_tuqtv"]
 [ext_resource type="Texture2D" uid="uid://dr0mulg05dbc0" path="res://assets/sprites/ciphers/traffic/traffic.webp" id="53_4n71b"]
+[ext_resource type="AudioStream" uid="uid://c7tkr72b6opj" path="res://assets/sounds/ciphers/freak/freak_track_1.ogg" id="53_adk8q"]
 [ext_resource type="AudioStream" uid="uid://d4besxmh4724g" path="res://assets/sounds/ciphers/speech/speech_track_2.ogg" id="53_has0b"]
 [ext_resource type="AudioStream" uid="uid://b5wa4kbr3eitl" path="res://assets/sounds/ciphers/speech/speech_track_3_reversed.ogg" id="54_4n71b"]
 [ext_resource type="Texture2D" uid="uid://dd5mrpx2hx366" path="res://assets/sprites/ciphers/traffic/traffic_green.webp" id="54_has0b"]
+[ext_resource type="AudioStream" uid="uid://v5jbf3b5bwxj" path="res://assets/sounds/ciphers/freak/freak_track_2_reversed.ogg" id="54_uki67"]
+[ext_resource type="AudioStream" uid="uid://cuunqv43klblc" path="res://assets/sounds/ciphers/freak/freak_track_2.ogg" id="55_chmse"]
 [ext_resource type="AudioStream" uid="uid://c711tmy6b34sm" path="res://assets/sounds/ciphers/speech/speech_track_3.ogg" id="55_has0b"]
 [ext_resource type="Texture2D" uid="uid://dd6f5hke1g8ol" path="res://assets/sprites/ciphers/traffic/traffic_red.webp" id="55_tuqtv"]
+[ext_resource type="AudioStream" uid="uid://clcg80phak3ca" path="res://assets/sounds/ciphers/freak/freak_track_3_reversed.ogg" id="56_8pygd"]
+[ext_resource type="AudioStream" uid="uid://cuejpijpvd7wy" path="res://assets/sounds/ciphers/freak/freak_track_3.ogg" id="57_0ejsf"]
 
 [sub_resource type="Resource" id="Resource_qc8yu"]
 script = ExtResource("3_38vrh")
@@ -287,12 +293,41 @@ success_message = "Nice one"
 fail_message = "Pikmin is not disco"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_2tle6"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("53_adk8q")
+reverse_stream = ExtResource("52_tuqtv")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_5dl8b"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("55_chmse")
+reverse_stream = ExtResource("54_uki67")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_qcxhw"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("57_0ejsf")
+reverse_stream = ExtResource("56_8pygd")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_hq85x"]
+script = ExtResource("3_38vrh")
+cipher_type = 2
+audio_stream_1 = SubResource("Resource_2tle6")
+audio_stream_2 = SubResource("Resource_5dl8b")
+audio_stream_3 = SubResource("Resource_qcxhw")
+is_disco = true
+success_message = "Le freak c'est chic"
+fail_message = "Do not trust appearances. "
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
