@@ -10,6 +10,7 @@ class_name SteganoImageTools extends Control
 @onready var _start_position_red: Vector2 = _red_filter.position
 
 @onready var _magnifier = $MagnifyingGlass
+# @onready var _magnifier_hover = %MgHover
 @onready var _start_position_magnifier: Vector2 = _magnifier.position
 
 # TODO: this is an ugly duplicate of ciphered_image.gd's fake_texture, but no time

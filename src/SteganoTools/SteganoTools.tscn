@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://kkxk8ft1f6fs" path="res://assets/ui/holey_sheets/19.png" id="7_bwi1n"]
 [ext_resource type="Texture2D" uid="uid://cj2hxlcudbrq0" path="res://assets/ui/glasses/Text-disco_glasses_survol.png" id="12_e8hoa"]
 [ext_resource type="Texture2D" uid="uid://b5rd4ivlqp3y0" path="res://assets/ui/glasses/Text-disco_glasses.png" id="13_mrsy4"]
+[ext_resource type="Texture2D" uid="uid://d0mli43yn5fbb" path="res://assets/ui/magnifying_glass/loupe_suvol.png" id="14_caa2n"]
+[ext_resource type="Texture2D" uid="uid://betfsfga2e0pl" path="res://assets/ui/magnifying_glass/loupe_manche.png" id="15_vod54"]
+[ext_resource type="Texture2D" uid="uid://c4q7du4bnju07" path="res://assets/ui/magnifying_glass/loupe-verre.png" id="16_l42u2"]
 
 [sub_resource type="Resource" id="Resource_kfgd5"]
 script = ExtResource("4_bwi1n")
@@ -122,22 +125,73 @@ texture = SubResource("GradientTexture2D_n0i3x")
 [node name="Draggable" parent="ImageFilters/FilterGreen" unique_id=1011977757 instance=ExtResource("2_4q2fo")]
 disable_animation = true
 
-[node name="MagnifyingGlass" type="TextureRect" parent="ImageFilters" unique_id=1122334455]
-material = SubResource("ShaderMaterial_magnify")
-layout_mode = 0
-offset_left = 240.0
-offset_top = 10.0
-offset_right = 320.0
-offset_bottom = 90.0
-texture = SubResource("GradientTexture2D_magnify")
+[node name="MagnifyingGlass" type="Control" parent="ImageFilters" unique_id=16760351]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1088.0
+offset_top = -128.0
+offset_right = 1344.0
+offset_bottom = 128.0
 
 [node name="Draggable" parent="ImageFilters/MagnifyingGlass" unique_id=1122334456 instance=ExtResource("2_4q2fo")]
 disable_animation = true
 
+[node name="MgHover" type="TextureRect" parent="ImageFilters/MagnifyingGlass" unique_id=896441870]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -336.0
+offset_top = -267.0
+offset_right = 824.0
+offset_bottom = 949.0
+mouse_filter = 2
+texture = ExtResource("14_caa2n")
+expand_mode = 1
+
+[node name="MgFilter" type="TextureRect" parent="ImageFilters/MagnifyingGlass" unique_id=1122334455]
+material = SubResource("ShaderMaterial_magnify")
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = SubResource("GradientTexture2D_magnify")
+
+[node name="MgNormal" type="TextureRect" parent="ImageFilters/MagnifyingGlass" unique_id=1658356882]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 400.0
+offset_bottom = 622.0
+mouse_filter = 2
+texture = ExtResource("15_vod54")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ImageFilters/MagnifyingGlass/MgNormal" unique_id=626981103]
+self_modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_l42u2")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Handle" type="TextureRect" parent="ImageFilters/MagnifyingGlass" unique_id=1393110990]
+layout_mode = 0
+offset_left = 153.66086
+offset_top = 259.49866
+offset_right = 224.08481
+offset_bottom = 694.37415
+rotation = -0.5043094
+
 [node name="GlassesButton" type="TextureButton" parent="." unique_id=1493206345]
 layout_mode = 0
-offset_right = 280.0
-offset_bottom = 304.0
+offset_left = 728.0
+offset_top = -64.0
+offset_right = 1008.0
+offset_bottom = 240.0
 
 [node name="GlassesPlaceholder" type="TextureRect" parent="GlassesButton" unique_id=2108212437]
 unique_name_in_owner = true
