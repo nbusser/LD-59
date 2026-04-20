@@ -30,6 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://ckn1vt0n225ea" path="res://assets/sprites/ciphers/reagan/regan.png" id="26_xmlw0"]
 [ext_resource type="Texture2D" uid="uid://clnhi413gbj6q" path="res://assets/sprites/ciphers/reagan/reagan_green.png" id="27_xsy7x"]
 [ext_resource type="Texture2D" uid="uid://d24rly3k588b5" path="res://assets/sprites/ciphers/reagan/reagan_red.png" id="28_ykp3m"]
+[ext_resource type="Texture2D" uid="uid://dr02s8te222iv" path="res://assets/sprites/ciphers/bush/bush.jpg" id="29_eb0a5"]
+[ext_resource type="Texture2D" uid="uid://bwjsgfg6yuham" path="res://assets/sprites/ciphers/bush/bush_green.jpg" id="30_jd8f8"]
+[ext_resource type="Texture2D" uid="uid://bwk1ltmvagdab" path="res://assets/sprites/ciphers/bush/bush_red.jpg" id="31_y3blw"]
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -132,12 +135,23 @@ success_message = "Nice sense of priorities!"
 fail_message = "U.F.O? Pfff, check your priorities!"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_gaf84"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("29_eb0a5")
+image_texture_filter_green = ExtResource("30_jd8f8")
+image_texture_filter_red = ExtResource("31_y3blw")
+is_disco = true
+success_message = "Blasphemy!"
+fail_message = "How could you miss that?"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_r4gm4"]
 script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_yqhvp"), SubResource("Resource_lcxac"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
