@@ -76,6 +76,7 @@ const SHADES = [
 	Vector2(0.0683, -0.0231),
 ]
 
+var noise_volume: float = 1.0
 var _spectrum_points = PackedVector2Array()
 var _shape_points = PackedVector2Array()
 var _frequency_shape = 0.0
@@ -180,7 +181,8 @@ func _update_audio_data() -> void:
 			var shimmer = 0.5 + 0.5 * sin(t * (3.0 + j * 0.4) + j * 1.3)
 
 			var shape = (
-				(falloff * 0.6 + peak1 * 0.9 + peak2 * 0.5) * breath * (0.75 + 0.25 * shimmer)
+				((falloff * 0.6 + peak1 * 0.9 + peak2 * 0.5) * breath * (0.75 + 0.25 * shimmer))
+				* (1 + noise_volume)
 			)
 			data.append(clampf(shape, 0.0, 1.0))
 	else:

@@ -99,6 +99,7 @@ func _on_image_render() -> void:
 
 func _process(_delta):
 	_rendered_audio.set_frequency_shape(_ciphered_audio._frequency_shape_value)
+	_rendered_audio.noise_volume = _ciphered_audio._noise_player.volume_linear
 
 
 func _on_audio_render() -> void:
