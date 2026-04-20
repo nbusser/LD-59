@@ -50,6 +50,31 @@
 [ext_resource type="AudioStream" uid="uid://cepoposur7qli" path="res://assets/sounds/ciphers/anthem/anthem_track 2.ogg" id="47_l8al7"]
 [ext_resource type="AudioStream" uid="uid://b0otah7nwiioi" path="res://assets/sounds/ciphers/anthem/anthem_track 3_reversed.ogg" id="48_p4f20"]
 [ext_resource type="AudioStream" uid="uid://cjfte3gbtgfyy" path="res://assets/sounds/ciphers/anthem/anthem_track 3.ogg" id="49_4n71b"]
+[ext_resource type="AudioStream" uid="uid://cvt6nl1gi4jh5" path="res://assets/sounds/ciphers/speech/speech_track_1_reversed.ogg" id="50_l8al7"]
+[ext_resource type="AudioStream" uid="uid://7o8tfihykcol" path="res://assets/sounds/ciphers/speech/speech_track_1.ogg" id="51_p4f20"]
+[ext_resource type="AudioStream" uid="uid://bakxn6o0074vc" path="res://assets/sounds/ciphers/speech/speech_track_2_reversed.ogg" id="52_4n71b"]
+[ext_resource type="AudioStream" uid="uid://d4besxmh4724g" path="res://assets/sounds/ciphers/speech/speech_track_2.ogg" id="53_has0b"]
+[ext_resource type="AudioStream" uid="uid://b5wa4kbr3eitl" path="res://assets/sounds/ciphers/speech/speech_track_3_reversed.ogg" id="54_4n71b"]
+[ext_resource type="AudioStream" uid="uid://c711tmy6b34sm" path="res://assets/sounds/ciphers/speech/speech_track_3.ogg" id="55_has0b"]
+
+[sub_resource type="Resource" id="Resource_4n71b"]
+script = ExtResource("3_38vrh")
+text_content = "The Brothers of Groove
+will rule the world!"
+is_disco = true
+success_message = "They did not even try"
+fail_message = "How could you miss that?"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_5dl8b"]
+script = ExtResource("3_38vrh")
+text_content = "Dear mom,
+I'm having so much fun in Florida!
+Kiss the dog for me
+Pat"
+success_message = "Awww"
+fail_message = "What's wrong with that?"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_wcrco"]
 script = ExtResource("3_38vrh")
@@ -223,6 +248,36 @@ success_message = "I was sure he was one of them!"
 fail_message = "Watch carefully!"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_chmse"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("51_p4f20")
+reverse_stream = ExtResource("50_l8al7")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_8pygd"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("53_has0b")
+reverse_stream = ExtResource("52_4n71b")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_2tle6"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("55_has0b")
+reverse_stream = ExtResource("54_4n71b")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_0ejsf"]
+script = ExtResource("3_38vrh")
+cipher_type = 2
+audio_stream_1 = SubResource("Resource_chmse")
+audio_stream_2 = SubResource("Resource_8pygd")
+audio_stream_3 = SubResource("Resource_2tle6")
+secret_shape = 3
+is_disco = true
+success_message = "No more propaganda speech"
+fail_message = "Listen carefully"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_th76n"]
 script = ExtResource("3_38vrh")
 cipher_type = 1
@@ -249,7 +304,7 @@ script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_lcxac"), SubResource("Resource_bb0s7"), SubResource("Resource_uki67"), SubResource("Resource_kfgd5"), SubResource("Resource_38vrh"), SubResource("Resource_yqhvp"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro"), SubResource("Resource_1jhsk"), SubResource("Resource_th76n"), SubResource("Resource_h8n8s")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_4n71b"), SubResource("Resource_5dl8b"), SubResource("Resource_wcrco"), SubResource("Resource_dgn88"), SubResource("Resource_lcxac"), SubResource("Resource_bb0s7"), SubResource("Resource_uki67"), SubResource("Resource_kfgd5"), SubResource("Resource_38vrh"), SubResource("Resource_yqhvp"), SubResource("Resource_xmlw0"), SubResource("Resource_eb0a5"), SubResource("Resource_gaf84"), SubResource("Resource_qynro"), SubResource("Resource_1jhsk"), SubResource("Resource_0ejsf"), SubResource("Resource_th76n"), SubResource("Resource_h8n8s")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
