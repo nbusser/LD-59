@@ -94,6 +94,7 @@ offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_4q2fo")
 
 [node name="Draggable" parent="ImageFilters/FilterRed" unique_id=292395700 instance=ExtResource("2_4q2fo")]
+disable_animation = true
 
 [node name="FilterGreen" type="TextureRect" parent="ImageFilters" unique_id=866931896]
 material = SubResource("ShaderMaterial_n0i3x")
@@ -104,6 +105,7 @@ offset_bottom = 100.0
 texture = SubResource("GradientTexture2D_n0i3x")
 
 [node name="Draggable" parent="ImageFilters/FilterGreen" unique_id=1011977757 instance=ExtResource("2_4q2fo")]
+disable_animation = true
 
 [node name="MagnifyingGlass" type="TextureRect" parent="ImageFilters" unique_id=1122334455]
 material = SubResource("ShaderMaterial_magnify")
@@ -115,3 +117,4 @@ offset_bottom = 90.0
 texture = SubResource("GradientTexture2D_magnify")
 
 [node name="Draggable" parent="ImageFilters/MagnifyingGlass" unique_id=1122334456 instance=ExtResource("2_4q2fo")]
+disable_animation = true

@@ -14,34 +14,38 @@ var controllable := true:
 var _dragging := false
 var _hovered := false
 
+@export var disable_animation := false
+
 @onready var parent: Control = get_parent()
 
 
 func _release():
 	Globals.dragged_object = null
 	_dragging = false
-	var tween = get_tree().create_tween()
-	tween.parallel().tween_property(
-		parent, "scale", Vector2.ONE * SCALE_DROPPED, ANIMATION_DURATION
-	)
-	tween.parallel().tween_property(
-		parent,
-		"global_position",
-		parent.global_position + parent.get_size() * SCALE_DROPPED / 4,
-		ANIMATION_DURATION
-	)
-	tween.parallel().tween_property(
-		parent, "rotation_degrees", randf_range(-1, 1) * 10, ANIMATION_DURATION
-	)
+	if !disable_animation:
+		var tween = get_tree().create_tween()
+		tween.parallel().tween_property(
+			parent, "scale", Vector2.ONE * SCALE_DROPPED, ANIMATION_DURATION
+		)
+		tween.parallel().tween_property(
+			parent,
+			"global_position",
+			parent.global_position + parent.get_size() * SCALE_DROPPED / 4,
+			ANIMATION_DURATION
+		)
+		tween.parallel().tween_property(
+			parent, "rotation_degrees", randf_range(-1, 1) * 10, ANIMATION_DURATION
+		)
 	parent.z_index = 0
 
 
 func _catch():
 	Globals.dragged_object = parent
 	_dragging = true
-	var tween = get_tree().create_tween()
-	tween.parallel().tween_property(parent, "scale", Vector2.ONE, ANIMATION_DURATION)
-	tween.parallel().tween_property(parent, "rotation_degrees", 0, ANIMATION_DURATION)
+	if !disable_animation:
+		var tween = get_tree().create_tween()
+		tween.parallel().tween_property(parent, "scale", Vector2.ONE, ANIMATION_DURATION)
+		tween.parallel().tween_property(parent, "rotation_degrees", 0, ANIMATION_DURATION)
 	parent.z_index = 100
 
 
