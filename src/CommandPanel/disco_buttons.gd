@@ -2,6 +2,9 @@ extends Control
 
 signal disco_button_pressed(is_disco: bool)
 
+@onready var positive_button: BigButton = %PositiveButton
+@onready var negative_button: BigButton = %NegativeButton
+
 
 func _on_positive_button_pressed() -> void:
 	disco_button_pressed.emit(true)

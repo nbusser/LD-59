@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bh7i38i00h4ue"]
+
+[ext_resource type="Script" uid="uid://dmmkl0v80s858" path="res://src/CommandPanel/big_button.gd" id="1_sp4oj"]
+[ext_resource type="Texture2D" uid="uid://dxsis3jopdhj0" path="res://assets/ui/progress_bar_filled.png" id="2_3it2l"]
+[ext_resource type="Texture2D" uid="uid://51pr2epmlqdm" path="res://assets/sprites/icon.png" id="2_yuqky"]
+
+[node name="BigButton" type="Control" unique_id=449348408]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1728.0
+offset_bottom = -888.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sp4oj")
+
+[node name="RealButton" type="TextureButton" parent="." unique_id=111751293]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+texture_normal = ExtResource("2_3it2l")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CoverButton" type="TextureButton" parent="." unique_id=1910048147]
+unique_name_in_owner = true
+modulate = Color(0.51, 0.51, 0.51, 1)
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+texture_normal = ExtResource("2_yuqky")
+stretch_mode = 0
+
+[node name="CoverUp" type="TextureRect" parent="." unique_id=1890907578]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = -64.0
+offset_right = 192.0
+texture = ExtResource("2_yuqky")
+
+[connection signal="button_down" from="RealButton" to="." method="_on_real_button_button_down"]
+[connection signal="mouse_exited" from="RealButton" to="." method="_on_real_button_mouse_exited"]
+[connection signal="button_down" from="CoverButton" to="." method="_on_cover_button_button_down"]

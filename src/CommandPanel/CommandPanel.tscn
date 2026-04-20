@@ -148,15 +148,10 @@ texture_pressed = ExtResource("6_2tjow")
 
 [node name="DiscoButtons" parent="." unique_id=163675673 instance=ExtResource("3_hbc2p")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 1408.0
-offset_top = 544.0
+offset_top = 576.0
 offset_right = 1856.0
 offset_bottom = 768.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="SignalIndicator" parent="." unique_id=39410655 instance=ExtResource("5_x1r3g")]
 layout_mode = 0
