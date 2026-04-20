@@ -166,12 +166,15 @@ space_shuffle_input = NodePath("../../UI/CommandPanel/TextInputs/SpaceShuffleSig
 shuffle_rows_input = NodePath("../../UI/CommandPanel/ImageInputs/ShuffleRowsSignalInput")
 v_desync_input = NodePath("../../UI/CommandPanel/ImageInputs/VsyncSignalInput")
 
-[node name="CipheredAudio" parent="CipheredSignals" index="2" unique_id=1586566932 node_paths=PackedStringArray("speed_input", "noise_input", "track_1_mixer", "track_2_mixer", "track_3_mixer")]
+[node name="CipheredAudio" parent="CipheredSignals" index="2" unique_id=1586566932 node_paths=PackedStringArray("speed_input", "noise_input", "track_1_mixer", "track_2_mixer", "track_3_mixer", "track_1_reverse_button", "track_2_reverse_button", "track_3_reverse_button")]
 speed_input = NodePath("../../UI/CommandPanel/AudioInputs/SpeedSignalInput")
 noise_input = NodePath("../../UI/CommandPanel/AudioInputs/NoiseSignalInput")
 track_1_mixer = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack1VolumeInput")
 track_2_mixer = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack2VolumeInput")
 track_3_mixer = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack3VolumeInput")
+track_1_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack1ReverseInput")
+track_2_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack2ReverseInput")
+track_3_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/AudioTrack3ReverseInput")
 
 [node name="Audio" type="Node" parent="." unique_id=823239827]
 

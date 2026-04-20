@@ -5,8 +5,14 @@ class_name CipheredAudio extends CipheredSignal
 @onready var _noise_sound_fake_source: AudioStream = preload("res://assets/sounds/noise.ogg")
 
 
-func _get_fake_source() -> Array[AudioStream]:
-	return [_noise_sound_fake_source, _noise_sound_fake_source, _noise_sound_fake_source]
+func _get_fake_source() -> Array[AudioTrack]:
+	var fake_tracks: Array[AudioTrack] = []
+	for i in range(_cipher_players.size()):
+		var track: AudioTrack = AudioTrack.new()
+		track.stream = _noise_sound_fake_source
+		track.reverse_stream = _noise_sound_fake_source
+		fake_tracks.append(track)
+	return fake_tracks
 
 
 var is_wrong_cipher_type: bool:
@@ -19,21 +25,21 @@ var is_wrong_cipher_type: bool:
 # Ciphered audio
 # Assign [] if the current cipher is NOT an audio cipher.
 # In that case, it will use a fake audio stream instead.
-var source: Array[AudioStream]:
+var source: Array[AudioTrack]:
 	set(new_source):
 		if is_wrong_cipher_type:
 			# Expect level.gd to give a [] audio stream
 			assert(new_source.size() == 0)
 			new_source = _get_fake_source()
 
-		assert(new_source.size() == _cipher_tracks.size())
+		assert(new_source.size() == _cipher_players.size())
 		for stream in source:
 			assert(stream != null)
 
 		source = new_source
 		_reset()
 
-@onready var _cipher_tracks: Array[AudioStreamPlayer] = [
+@onready var _cipher_players: Array[AudioStreamPlayer] = [
 	$CipherTracks/Track1, $CipherTracks/Track2, $CipherTracks/Track3
 ]
 @onready var _noise_player: AudioStreamPlayer = $NoisePlayer
@@ -42,8 +48,7 @@ var _transformed_audio: AudioStream
 
 
 func _reset() -> void:
-	print(source)
-	assert(source.size() == _cipher_tracks.size())
+	assert(source.size() == _cipher_players.size())
 
 	var prng = RandomNumberGenerator.new()
 	prng.seed = source[0].resource_path.hash()
@@ -69,16 +74,17 @@ func _reset() -> void:
 	_noise_input_changed(noise_input.amount)
 
 	for i in range(source.size()):
-		var stream = source[i]
-		if stream is AudioStreamMP3:
-			stream.loop = true
-		elif stream is AudioStreamOggVorbis:
-			stream.loop = true
-		elif stream is AudioStreamWAV:
-			stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-		else:
-			push_error("Unsupported audio stream type: %s" % stream)
-		_cipher_tracks[i].stream = stream
+		var track := source[i]
+		for stream in [track.stream, track.reverse_stream]:
+			if stream is AudioStreamMP3:
+				stream.loop = true
+			elif stream is AudioStreamOggVorbis:
+				stream.loop = true
+			elif stream is AudioStreamWAV:
+				stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			else:
+				push_error("Unsupported audio stream type: %s" % stream)
+		_cipher_players[i].stream = track.stream
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -96,7 +102,7 @@ var _pitch_scale_upper_bound = PITCH_SCALE_ABSOLUTE_UPPER_BOUND
 
 func _speed_input_changed(value: float) -> void:
 	# Note: cannot use pitch effect on the whole bus because it doesn't affect the tempo
-	for track in _cipher_tracks:
+	for track in _cipher_players:
 		track.pitch_scale = lerp(_pitch_scale_upper_bound, _pitch_scale_lower_bound, 1.0 - value)
 
 
@@ -150,11 +156,52 @@ var _tracks_mixer_upper_bounds: Array[float] = [
 
 
 func _track_mixer_input_changed(index: int, value: float) -> void:
-	_cipher_tracks[index].volume_linear = lerp(
+	_cipher_players[index].volume_linear = lerp(
 		_tracks_mixer_lower_bounds[index],
 		_tracks_mixer_upper_bounds[index],
 		1.0 - Utils.map_triangle(value, 0.0)  # TODO: randomize offset
 	)
+
+
+# ----------------------------------------------------------------------------------------------------
+# MARK: Reverse
+
+@export var track_1_reverse_button: BinarySignalInput
+@export var track_2_reverse_button: BinarySignalInput
+@export var track_3_reverse_button: BinarySignalInput
+
+@onready var _reverse_buttons: Array[BinarySignalInput] = [
+	track_1_reverse_button, track_2_reverse_button, track_3_reverse_button
+]
+
+
+func _reverse_button_input_changed(index: int, value: bool) -> void:
+	var player := _cipher_players[index]
+
+	var was_playing := player.playing
+	var cursor := player.get_playback_position()
+	var stream_length := player.stream.get_length()
+
+	if value:
+		player.stream = source[index].reverse_stream
+	else:
+		player.stream = source[index].stream
+
+	if was_playing:
+		var absolute_pos := cursor if not value else stream_length - cursor
+		var new_timestamp := stream_length - absolute_pos if value else absolute_pos
+		player.play(new_timestamp)
+
+		# Try to resync everything, but seems unnecessary
+		# for i in range(_cipher_players.size()):
+		# 	var player_2 := _cipher_players[i]
+		# 	var is_reverse := _reverse_buttons[i].value
+		#   var new_timestamp := stream_length - absolute_pos if is_reverse else absolute_pos
+
+		# 	if player_2 == player:
+		# 		player.play(new_timestamp)
+		# 	else:
+		# 		player_2.seek(new_timestamp)
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -168,16 +215,26 @@ func _ready() -> void:
 	noise_input.signal_input_changed.connect(_noise_input_changed)
 	noise_input.trigger_update.call_deferred()
 
-	assert(_track_mixers.size() == _cipher_tracks.size())
+	assert(_track_mixers.size() == _cipher_players.size())
 	for i in range(_track_mixers.size()):
+		var mixer = _track_mixers[i]
+		assert(mixer != null)
 		var mixer_callback = func(value: float): _track_mixer_input_changed(i, value)
-		_track_mixers[i].signal_input_changed.connect(mixer_callback)
-		_track_mixers[i].trigger_update.call_deferred()
+		mixer.signal_input_changed.connect(mixer_callback)
+		mixer.trigger_update.call_deferred()
+
+	assert(_reverse_buttons.size() == _cipher_players.size())
+	for i in range(_reverse_buttons.size()):
+		var button = _reverse_buttons[i]
+		assert(button != null)
+		var reverse_callback = func(value: bool): _reverse_button_input_changed(i, value)
+		button.signal_input_changed.connect(reverse_callback)
+		button.trigger_update.call_deferred()
 
 
 func _render() -> void:
 	# TODO: blend
-	_transformed_audio = source[0]
+	_transformed_audio = source[0].stream
 	super()
 
 
@@ -190,13 +247,13 @@ func set_focused(focused: bool) -> void:
 		return
 
 	if focused:
-		for track in _cipher_tracks:
-			if !track.playing:
-				track.play()
+		for player in _cipher_players:
+			if !player.playing:
+				player.play()
 		if !_noise_player.playing:
 			_noise_player.play()
 	else:
-		for track in _cipher_tracks:
-			track.stop()
+		for player in _cipher_players:
+			player.stop()
 		_noise_player.stop()
 	super(focused)

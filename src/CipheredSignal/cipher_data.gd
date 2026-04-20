@@ -31,9 +31,9 @@ enum CipherType {
 @export var image_texture_filter_green: Texture2D = null
 @export var image_texture_filter_red: Texture2D = null
 
-@export var audio_stream_1: AudioStream = null
-@export var audio_stream_2: AudioStream = null
-@export var audio_stream_3: AudioStream = null
+@export var audio_stream_1: AudioTrack = null
+@export var audio_stream_2: AudioTrack = null
+@export var audio_stream_3: AudioTrack = null
 
 @export var is_disco: bool = false
 

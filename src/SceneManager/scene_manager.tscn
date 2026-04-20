@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://b3ecnmvxdff3" path="res://assets/sprites/ciphers/tank_man/tank_man.png" id="5_7qhxv"]
 [ext_resource type="Texture2D" uid="uid://csb52q0lubd25" path="res://assets/sprites/ciphers/tank_man/tank_man_red.png" id="6_6vsvc"]
 [ext_resource type="Texture2D" uid="uid://virk1a5lc7t0" path="res://assets/sprites/ciphers/tank_man/tank_man_green.png" id="7_4d07j"]
+[ext_resource type="Script" uid="uid://bokrkyxmuteu5" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
+[ext_resource type="AudioStream" uid="uid://cp8lj1cfpvpbo" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1_reversed.ogg" id="7_nb34f"]
 [ext_resource type="AudioStream" uid="uid://dasru4dewv4kg" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1.ogg" id="7_tlrc4"]
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
 [ext_resource type="AudioStream" uid="uid://ckytpj7elkch2" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_3.ogg" id="9_88lsx"]
+[ext_resource type="AudioStream" uid="uid://b5upf2yoep5e3" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2_reversed.ogg" id="10_cou3s"]
+[ext_resource type="AudioStream" uid="uid://u1sowju7ysql" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_3_reversed.ogg" id="12_cxc1x"]
 
 [sub_resource type="Resource" id="Resource_38vrh"]
 script = ExtResource("3_38vrh")
@@ -29,18 +33,31 @@ image_texture_filter_green = ExtResource("7_4d07j")
 image_texture_filter_red = ExtResource("6_6vsvc")
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_nb34f"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("7_tlrc4")
+reverse_stream = ExtResource("7_nb34f")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_cou3s"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("8_4ishk")
+reverse_stream = ExtResource("10_cou3s")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
+[sub_resource type="Resource" id="Resource_cxc1x"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("9_88lsx")
+reverse_stream = ExtResource("12_cxc1x")
+metadata/_custom_type_script = "uid://bokrkyxmuteu5"
+
 [sub_resource type="Resource" id="Resource_lcxac"]
 script = ExtResource("3_38vrh")
 cipher_type = 2
-audio_stream_1 = ExtResource("7_tlrc4")
-audio_stream_2 = ExtResource("8_4ishk")
-audio_stream_3 = ExtResource("9_88lsx")
+audio_stream_1 = SubResource("Resource_nb34f")
+audio_stream_2 = SubResource("Resource_cou3s")
+audio_stream_3 = SubResource("Resource_cxc1x")
 is_disco = true
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_7qhxv"]
-script = ExtResource("3_38vrh")
-cipher_type = 2
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_r4gm4"]
@@ -48,7 +65,7 @@ script = ExtResource("2_38vrh")
 name = "J'aime pu ma mère !"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_lcxac"), SubResource("Resource_7qhxv")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_38vrh"), SubResource("Resource_bb0s7"), SubResource("Resource_lcxac")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
