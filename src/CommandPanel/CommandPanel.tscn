@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c48ptf7c1thws" path="res://assets/ui/Mediabutton-on.png" id="6_2tjow"]
 [ext_resource type="Texture2D" uid="uid://bcvflerlqb2r1" path="res://assets/ui/Mediabutton-image.png" id="7_3sw21"]
 [ext_resource type="Texture2D" uid="uid://clpq0rjd7bplo" path="res://assets/ui/Mediabutton-audio.png" id="8_2ye66"]
+[ext_resource type="AudioStream" uid="uid://ct3m2hi0vn8b4" path="res://assets/sounds/button.ogg" id="11_2tjow"]
 
 [node name="CommandPanel" type="Control" unique_id=1884603933]
 layout_mode = 3
@@ -159,6 +160,12 @@ offset_left = 1408.0
 offset_top = 216.0
 offset_right = 1856.0
 offset_bottom = 256.0
+
+[node name="SFX" type="Node" parent="." unique_id=1623730975]
+
+[node name="ButtonPush" type="AudioStreamPlayer" parent="SFX" unique_id=1766829333]
+stream = ExtResource("11_2tjow")
+volume_db = 2.0
 
 [connection signal="pressed" from="SignalTypeButtons/TextModeButton" to="." method="_on_text_pressed"]
 [connection signal="pressed" from="SignalTypeButtons/ImageModeButton" to="." method="_on_image_pressed"]
