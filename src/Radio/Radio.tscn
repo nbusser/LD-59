@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cq5x7oam2p4ry"]
+
+[ext_resource type="Script" uid="uid://dvb8n3m6q2xw5" path="res://src/Radio/radio.gd" id="1_radio"]
+[ext_resource type="Texture2D" uid="uid://rmu86kdsskc4" path="res://assets/sprites/radio/radiov2.png" id="2_radio"]
+[ext_resource type="Texture2D" uid="uid://bnnrx2d8f3mxj" path="res://assets/sprites/radio/radio_mute_knob.png" id="4_radio"]
+[ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="5_radio"]
+
+[node name="Radio" type="Control" unique_id=1001001001]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 256.0
+script = ExtResource("1_radio")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1001001002]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("2_radio")
+stretch_mode = 5
+
+[node name="SfxSlider" type="HSlider" parent="Background" unique_id=1001001003]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 249.99998
+offset_top = 587.99994
+offset_right = 412.48163
+offset_bottom = 638.99994
+rotation = -2.019346
+theme = ExtResource("5_radio")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="Background" unique_id=1001001004]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 366.99997
+offset_top = 531.99994
+offset_right = 523.20807
+offset_bottom = 582.99994
+rotation = -2.019346
+theme = ExtResource("5_radio")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MuteButton" type="TextureButton" parent="Background" unique_id=1001001005]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 103.0
+offset_top = 294.0
+offset_right = 219.0
+offset_bottom = 399.0
+toggle_mode = true
+texture_normal = ExtResource("4_radio")
+stretch_mode = 3
+
+[connection signal="value_changed" from="Background/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Background/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="Background/MuteButton" to="." method="_on_mute_button_toggled"]

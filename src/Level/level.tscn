@@ -17,6 +17,7 @@
 [ext_resource type="Environment" uid="uid://dtq8sggtgo7jd" path="res://default_env.tres" id="11_4bydg"]
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
 [ext_resource type="AudioStream" uid="uid://blxwbx5u3ga1e" path="res://assets/sounds/searching.ogg" id="15_u72di"]
+[ext_resource type="PackedScene" uid="uid://cq5x7oam2p4ry" path="res://src/Radio/Radio.tscn" id="16_radio"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_6s7yf"]
 
@@ -331,6 +332,12 @@ offset_top = 363.0
 offset_right = 429.0
 offset_bottom = 404.0
 
+[node name="Radio" parent="UI" unique_id=1001001010 instance=ExtResource("16_radio")]
+offset_left = 1483.0
+offset_top = 169.0
+offset_right = 1739.0
+offset_bottom = 425.0
+
 [node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
 offset_left = 648.0
 offset_top = -48.0
@@ -459,10 +466,12 @@ track_3_reverse_button = NodePath("../../UI/CommandPanel/AudioTracksInputs/Audio
 [node name="Success" type="AudioStreamPlayer" parent="Audio" unique_id=1767482725]
 stream = ExtResource("8_iw8kk")
 volume_db = 4.0
+bus = &"SFX"
 
 [node name="Failure" type="AudioStreamPlayer" parent="Audio" unique_id=67732024]
 stream = ExtResource("9_iw8kk")
 volume_db = 4.0
+bus = &"SFX"
 
 [node name="SearchingSignal" type="AudioStreamPlayer" parent="Audio" unique_id=289986880]
 bus = &"SFX"
