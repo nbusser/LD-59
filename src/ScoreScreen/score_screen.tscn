@@ -65,5 +65,16 @@ offset_right = 1233.0
 offset_bottom = 991.0
 text = "Credits"
 
+[node name="Score" type="PanelContainer" parent="." unique_id=1609509181]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 804.0
+offset_right = 1080.0
+offset_bottom = 852.0
+
+[node name="Label" type="Label" parent="Score" unique_id=1801343411]
+layout_mode = 2
+text = "Your score: /"
+
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]

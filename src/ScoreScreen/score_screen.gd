@@ -10,6 +10,8 @@ var total: int = -1
 
 
 func _display_ending():
+	$Score/Label.text = "Your score: " + str(self.nb_successes) + "/" + str(self.total)
+
 	good_ending.visible = false
 	bad_ending.visible = false
 

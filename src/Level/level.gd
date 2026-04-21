@@ -149,7 +149,7 @@ func _play_cipher_decoded_animation(success: bool):
 		$Audio/Failure.play()
 		carton_text.text = level_state.current_cipher.fail_message
 		carton.size = Vector2.ZERO
-		await get_tree().create_timer(2.5).timeout
+		await get_tree().create_timer(5.0).timeout
 
 	carton.visible = false
 
