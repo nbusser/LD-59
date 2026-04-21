@@ -65,6 +65,7 @@
 [ext_resource type="AudioStream" uid="uid://dopks4brhx2fv" path="res://assets/sounds/ciphers/staying_alive/staying_alive_track_1.ogg" id="62_8peto"]
 [ext_resource type="AudioStream" uid="uid://cyttgypsu4uh6" path="res://assets/sounds/ciphers/staying_alive/staying_alive_track_2_reversed.ogg" id="63_nweoa"]
 [ext_resource type="AudioStream" uid="uid://bedrydevw47ah" path="res://assets/sounds/ciphers/staying_alive/staying_alive_track_2.ogg" id="64_ixkii"]
+[ext_resource type="Texture2D" uid="uid://bfwq4ivvyi02e" path="res://assets/sprites/ciphers/aristochats/aristochats_red.webp" id="64_jt0jt"]
 [ext_resource type="AudioStream" uid="uid://blmewy7sm530j" path="res://assets/sounds/ciphers/staying_alive/stayin_alive_track_3_reversed.ogg" id="65_hegg6"]
 [ext_resource type="AudioStream" uid="uid://c7b5piqmjg3ve" path="res://assets/sounds/ciphers/staying_alive/stayin_alive_track_3.ogg" id="66_0sind"]
 [ext_resource type="Texture2D" uid="uid://dbwit1n5w6i62" path="res://assets/sprites/ciphers/acdc/acdc.webp" id="67_ixkii"]
@@ -140,6 +141,19 @@ image_texture_filter_red = ExtResource("5_has0b")
 is_disco = true
 success_message = "One more proof of them being in the dark side"
 fail_message = "Passing over the image with a [b]Filter Card[/b] (found on top of your console) can reveal hidden disco imagery. Far out!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_dannn"]
+script = ExtResource("3_38vrh")
+text_content = "The three elements are
+playing tonight... Bring
+the ceremonial powder."
+alternative_content = "[color=gold]Earth, Wind and Fire[/color] are
+playing tonight... Bring
+the ceremonial [color=gold]drug[/color]."
+is_disco = true
+success_message = "Good job!"
+fail_message = "Sounds kinda fishy..."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_bb0s7"]
@@ -292,6 +306,16 @@ success_message = "I knew it from the start!"
 fail_message = "Passing over the image with a [b]Filter Card[/b] (found on top of your console) can reveal hidden disco imagery. Far out!"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_pjynx"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("17_adk8q")
+image_texture_filter_green = ExtResource("18_uki67")
+image_texture_filter_red = ExtResource("19_chmse")
+success_message = "U.F.O, still not disco!"
+fail_message = "Even when it's era-appropriate, not all hidden imagery is disco-related."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_y7ryt"]
 script = ExtResource("3_38vrh")
 text_content = "Dear neighbor. Your kid was
@@ -303,16 +327,6 @@ alternative_content = "Dear neighbor. Your kid was
 BOOGIE // DOES NOT COMPUTE.[/color]
 Make him stop."
 fail_message = "Can't you read?"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_pjynx"]
-script = ExtResource("3_38vrh")
-cipher_type = 1
-image_texture = ExtResource("17_adk8q")
-image_texture_filter_green = ExtResource("18_uki67")
-image_texture_filter_red = ExtResource("19_chmse")
-success_message = "U.F.O, still not disco!"
-fail_message = "Even when it's era-appropriate, not all hidden imagery is disco-related."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_i6aiw"]
@@ -356,33 +370,10 @@ script = ExtResource("3_38vrh")
 cipher_type = 1
 image_texture = ExtResource("50_4n71b")
 image_texture_filter_green = ExtResource("51_has0b")
-image_texture_filter_red = ExtResource("51_has0b")
+image_texture_filter_red = ExtResource("64_jt0jt")
 is_disco = true
 success_message = "Well found!"
 fail_message = "Passing over the image with a [b]Filter Card[/b] or a [b]Magnifying Glass[/b] (found on top of your console) can reveal hidden disco imagery. Far out!"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_dannn"]
-script = ExtResource("3_38vrh")
-text_content = "The three elements are
-playing tonight... Bring
-the ceremonial powder."
-alternative_content = "[color=gold]Earth, Wind and Fire[/color] are
-playing tonight... Bring
-the ceremonial [color=gold]drug[/color]."
-is_disco = true
-success_message = "Good job!"
-fail_message = "Sounds kinda fishy..."
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_a0n6e"]
-script = ExtResource("3_38vrh")
-cipher_type = 1
-image_texture = ExtResource("53_4n71b")
-image_texture_filter_green = ExtResource("54_has0b")
-image_texture_filter_red = ExtResource("55_tuqtv")
-success_message = "Nice one"
-fail_message = "Not all hidden imagery is disco-related. Feel free to research what you don't recognize."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_mynhh"]
@@ -397,6 +388,16 @@ us. Time to raise the
 [color=gold]skates.[/color]"
 is_disco = true
 fail_message = "Use your glasses!"
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
+[sub_resource type="Resource" id="Resource_a0n6e"]
+script = ExtResource("3_38vrh")
+cipher_type = 1
+image_texture = ExtResource("53_4n71b")
+image_texture_filter_green = ExtResource("54_has0b")
+image_texture_filter_red = ExtResource("55_tuqtv")
+success_message = "Nice one"
+fail_message = "Not all hidden imagery is disco-related. Feel free to research what you don't recognize."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_2tle6"]
@@ -442,7 +443,7 @@ script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_tr5p8"), SubResource("Resource_kaq6d"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_8peto"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_y7ryt"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_dannn"), SubResource("Resource_a0n6e"), SubResource("Resource_mynhh"), SubResource("Resource_hq85x"), SubResource("Resource_exy84")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_tr5p8"), SubResource("Resource_kaq6d"), SubResource("Resource_knii6"), SubResource("Resource_dannn"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_8peto"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_pjynx"), SubResource("Resource_y7ryt"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_mynhh"), SubResource("Resource_a0n6e"), SubResource("Resource_hq85x"), SubResource("Resource_exy84")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
