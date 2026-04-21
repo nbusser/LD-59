@@ -18,7 +18,7 @@ config/name="DISCO"
 config/description="Ludum Dare 59"
 run/main_scene="res://src/SceneManager/scene_manager.tscn"
 config/features=PackedStringArray("4.6")
-config/icon="res://assets/sprites/player.png"
+config/icon="uid://d0vv7tk6j7mq5"
 
 [audio]
 
