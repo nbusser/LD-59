@@ -81,15 +81,10 @@ func _reset() -> void:
 
 	for i in range(source.size()):
 		_tracks_mixer_lower_bounds[i] = TRACK_MIXERS_LOWER_BOUND
-		_tracks_mixer_upper_bounds[i] = prng.randf_range(
-			max(0.0, _tracks_mixer_lower_bounds[i] + TRACK_MIXERS_MIN_AMPLITUDE),
-			TRACK_MIXERS_UPPER_BOUND
-		)
-		_track_mixers[i].correct_value = inverse_lerp(
-			_tracks_mixer_lower_bounds[i], _tracks_mixer_upper_bounds[i], 1.0
-		)
-		_track_mixers[i].correct_value = prng.randf_range(
-			SignalInput.MIN_VALUE, SignalInput.MAX_VALUE
+		_tracks_mixer_upper_bounds[i] = TRACK_MIXERS_UPPER_BOUND
+		_track_mixers[i].correct_value = TRACK_MIXERS_UPPER_BOUND
+		_track_mixers[i].amount = prng.randf_range(
+			lerp(SignalInput.MIN_VALUE, SignalInput.MAX_VALUE, 0.5), SignalInput.MAX_VALUE
 		)
 		_track_mixer_input_changed(i, _track_mixers[i].amount)
 
@@ -196,7 +191,7 @@ func _track_mixer_input_changed(index: int, value: float) -> void:
 	_cipher_players[index].volume_linear = lerp(
 		_tracks_mixer_lower_bounds[index],
 		_tracks_mixer_upper_bounds[index],
-		1.0 - Utils.map_triangle(value, _track_mixers[index].correct_value)
+		Utils.map_triangle(value, _track_mixers[index].correct_value)
 	)
 
 
