@@ -14,7 +14,7 @@ stream = ExtResource("2")
 bus = &"Intercept"
 
 [node name="MessagePlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 8.0
+volume_db = 4.0
 bus = &"Intercept"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

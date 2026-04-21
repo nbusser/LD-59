@@ -34,4 +34,5 @@ func _on_mute_button_toggled(toggled: bool) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), sfx_db)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Others"), sfx_db)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Cipher"), sfx_db)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Intercept"), sfx_db)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music_db)
