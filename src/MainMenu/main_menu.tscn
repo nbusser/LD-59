@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvgh060edrp7j"]
 
 [ext_resource type="Script" uid="uid://btvd0b0skhsfa" path="res://src/MainMenu/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cs8axcisiplw1" path="res://assets/ui/ending_good.jpg" id="2_3m7hb"]
 [ext_resource type="Texture2D" uid="uid://qd8peu4s525a" path="res://assets/menu/menu.png" id="2_r1g53"]
 
 [node name="MainMenu" type="Control" unique_id=1665686318]
@@ -12,14 +13,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
-[node name="SolidColor" type="ColorRect" parent="." unique_id=1211931084]
+[node name="Background" type="TextureRect" parent="." unique_id=1746483784]
+modulate = Color(0.75062037, 0.7506205, 0.75062037, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1353.0
+offset_right = 2405.3335
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_3m7hb")
 
 [node name="BgBack" type="TextureRect" parent="." unique_id=840800667]
 layout_mode = 1
@@ -28,6 +32,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="BgFront" type="TextureRect" parent="." unique_id=-2072745074]
 layout_mode = 1

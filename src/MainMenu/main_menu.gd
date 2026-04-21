@@ -28,8 +28,10 @@ func _run_slideshow() -> void:
 		await get_tree().create_timer(DISPLAY_DURATION).timeout
 		_index = (_index + 1) % IMAGES.size()
 		_bg_back.texture = IMAGES[_index]
+		_bg_back.modulate.a = 0.0
 		var tween := create_tween()
 		tween.tween_property(_bg_front, "modulate:a", 0.0, FADE_DURATION)
+		tween.parallel().tween_property(_bg_back, "modulate:a", 1.0, FADE_DURATION)
 		await tween.finished
 		_bg_front.texture = IMAGES[_index]
 		_bg_front.modulate.a = 1.0
