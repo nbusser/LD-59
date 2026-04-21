@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bu4jtdiphyhtc"]
 
 [ext_resource type="Script" uid="uid://gwhglqs53hv7" path="res://src/ScoreScreen/score_screen.gd" id="1_vfk7o"]
-[ext_resource type="Texture2D" uid="uid://c8jifam8y0b30" path="res://assets/sprites/endings/cia.png" id="2_5rnvm"]
-[ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="3_uaht4"]
+[ext_resource type="Texture2D" uid="uid://qd8peu4s525a" path="res://assets/menu/menu.png" id="2_5rnvm"]
+[ext_resource type="Theme" uid="uid://b1vdlfq568pab" path="res://assets/base_theme.tres" id="3_d6hht"]
 
 [node name="ScoreScreen" type="Control" unique_id=1869309750]
 layout_mode = 3
@@ -11,7 +11,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_d6hht")
 script = ExtResource("1_vfk7o")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1428141659]
+layout_mode = 0
+offset_left = -4247.0
+offset_top = -1873.0
+offset_right = 2038.0
+offset_bottom = 1530.0
+texture = ExtResource("2_5rnvm")
 
 [node name="GoodEnding" type="Control" parent="." unique_id=1523667562]
 layout_mode = 1
@@ -20,21 +29,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="GoodEnding" unique_id=1277291948]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -480.0
-offset_right = 480.0
-offset_bottom = 480.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_5rnvm")
 
 [node name="PanelContainer" type="PanelContainer" parent="GoodEnding" unique_id=721952430]
 layout_mode = 1
@@ -52,10 +46,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="GoodEnding/PanelContainer" unique_id=2056007934]
 layout_mode = 2
-theme = ExtResource("3_uaht4")
 text = "Thanks to your efforts, the Brothers of Groove have been dismanteled.
 
-Congrats"
+Congrats, you win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -66,21 +59,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="MixedEnding" unique_id=230117483]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -480.0
-offset_right = 480.0
-offset_bottom = 480.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_5rnvm")
 
 [node name="PanelContainer" type="PanelContainer" parent="MixedEnding" unique_id=259821900]
 layout_mode = 1
@@ -98,7 +76,6 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="MixedEnding/PanelContainer" unique_id=306258401]
 layout_mode = 2
-theme = ExtResource("3_uaht4")
 text = "Your contribution helped to reduce the Brothers of Groove influence,
 but you failed to dismantle the organisation.
 They will ultimately regroup and grow again..."
@@ -112,21 +89,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="BadEnding" unique_id=1627432452]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -480.0
-offset_right = 480.0
-offset_bottom = 480.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_5rnvm")
 
 [node name="PanelContainer" type="PanelContainer" parent="BadEnding" unique_id=1512400815]
 layout_mode = 1
@@ -144,10 +106,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="BadEnding/PanelContainer" unique_id=563029852]
 layout_mode = 2
-theme = ExtResource("3_uaht4")
 text = "The world fell into the domination of the Brother of Groove
 
-T'as perdu gros naze"
+You lost!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -157,7 +118,6 @@ offset_left = 706.0
 offset_top = 895.0
 offset_right = 926.0
 offset_bottom = 993.0
-theme = ExtResource("3_uaht4")
 text = "Retry"
 
 [node name="Credits" type="Button" parent="." unique_id=102899995]
@@ -166,7 +126,6 @@ offset_left = 1013.0
 offset_top = 893.0
 offset_right = 1233.0
 offset_bottom = 991.0
-theme = ExtResource("3_uaht4")
 text = "Credits"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

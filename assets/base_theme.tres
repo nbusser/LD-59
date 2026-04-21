@@ -1,0 +1,20 @@
+[gd_resource type="Theme" format=3 uid="uid://b1vdlfq568pab"]
+
+[ext_resource type="FontFile" uid="uid://d3nnas21r1h2v" path="res://assets/fonts/Unageo-Regular.ttf" id="1_jvko6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvko6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n61c"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+default_base_scale = 2.0
+default_font = ExtResource("1_jvko6")
+default_font_size = 40
+Button/styles/normal = SubResource("StyleBoxFlat_jvko6")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_7n61c")
