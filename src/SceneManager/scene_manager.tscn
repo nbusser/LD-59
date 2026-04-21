@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://f7td7q60njuv" path="res://assets/sprites/ciphers/star_wars/star_wars.webp" id="4_4n71b"]
 [ext_resource type="Texture2D" uid="uid://1agsjm5hi7h8" path="res://assets/sprites/ciphers/star_wars/star_wars_red.webp" id="5_has0b"]
 [ext_resource type="Texture2D" uid="uid://d3c1imjxlmvpi" path="res://assets/sprites/ciphers/star_wars/star_wars_green.webp" id="6_tuqtv"]
-[ext_resource type="Script" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
+[ext_resource type="Script" uid="uid://bokrkyxmuteu5" path="res://src/CipheredSignal/audio_track.gd" id="7_6vsvc"]
 [ext_resource type="AudioStream" uid="uid://cp8lj1cfpvpbo" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1_reversed.ogg" id="7_nb34f"]
 [ext_resource type="AudioStream" uid="uid://dasru4dewv4kg" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_1.ogg" id="7_tlrc4"]
 [ext_resource type="AudioStream" uid="uid://cv1cr40mxf015" path="res://assets/sounds/ciphers/toutouyoutou/toutouyoutou_2.ogg" id="8_4ishk"]
@@ -181,7 +181,7 @@ audio_stream_2 = SubResource("Resource_hyeaj")
 audio_stream_3 = SubResource("Resource_l4fgv")
 is_disco = true
 success_message = "Funky town, uh?"
-fail_message = "YOu should try reversing the tracks"
+fail_message = "You should try reversing the tracks"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_wcrco"]
@@ -199,7 +199,8 @@ metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 script = ExtResource("3_38vrh")
 text_content = "Discontinued for insufficient
 funds. Every future payment
-will be rejected."
+will be rejected.
+This is the rule, sorry."
 hidden_text_content = "Disco will rule"
 is_disco = true
 success_message = "Sneaky!"
