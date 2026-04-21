@@ -101,10 +101,10 @@ offset_left = 1246.0
 offset_top = 375.0
 offset_right = 1633.0
 offset_bottom = 822.0
-text = "Matthieu Baty
+text = "Nao Argouse
+Matthieu Baty
 Antoine Brûlé
 Nicolas Busser
-Nao
 Louis Mouhat
 Félix West"
 label_settings = SubResource("LabelSettings_kuhxs")
