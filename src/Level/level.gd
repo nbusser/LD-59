@@ -119,7 +119,23 @@ func _play_cipher_decoded_animation(success: bool):
 	$UI/Carton.visible = true
 	if success:
 		$Audio/Success.play()
-		$UI/Carton/Label.text = level_state.current_cipher.success_message
+		var text = level_state.current_cipher.success_message
+		if !text or text.length() < 1:
+			text = (
+				[
+					"No doubt!",
+					"Blasphemy!",
+					"Obvious.",
+					"Sneaky!",
+					"Keen eye!",
+					"Well found!",
+					"Nice one",
+					"Got 'em!",
+					"Good job!",
+				]
+				. pick_random()
+			)
+		$UI/Carton/Label.text = text
 		await get_tree().create_timer(1.5).timeout
 	else:
 		$Audio/Failure.play()
