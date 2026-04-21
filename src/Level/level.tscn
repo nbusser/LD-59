@@ -398,10 +398,10 @@ offset_right = 228.0
 offset_bottom = 373.0
 
 [node name="MagnifyingGlass" parent="UI/SteganoTools/ImageFilters" index="2" unique_id=16760351]
-offset_left = 655.0
-offset_top = -6.0
-offset_right = 911.0
-offset_bottom = 250.0
+offset_left = 648.0
+offset_top = -32.0
+offset_right = 904.0
+offset_bottom = 224.0
 
 [node name="Draggable" parent="UI/SteganoTools/ImageFilters/MagnifyingGlass" index="0" unique_id=1122334456]
 disable_animation = false
