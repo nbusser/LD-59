@@ -49,7 +49,7 @@ func _quit_game() -> void:
 
 func _run_main_menu() -> void:
 	var scene: MainMenu = main_menu.instantiate()
-	change_music_track(music_players[0])
+	change_music_track(music_players[1])
 	self.current_scene = scene
 
 
@@ -65,7 +65,7 @@ func _run_level() -> void:
 	# Provies its settings to the level
 	scene.init(levels[GameState.current_level_number])
 	# Play level music
-	change_music_track(music_players[GameState.current_level_number % len(music_players)])
+	change_music_track(music_players[0])
 	self.current_scene = scene
 
 

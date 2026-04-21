@@ -73,6 +73,7 @@
 [ext_resource type="Texture2D" uid="uid://fepyt0tgrh7q" path="res://assets/sprites/ciphers/diva/diva.webp" id="70_i08jk"]
 [ext_resource type="Texture2D" uid="uid://41a6budmtonj" path="res://assets/sprites/ciphers/diva/diva_green.webp" id="71_6qfrd"]
 [ext_resource type="Texture2D" uid="uid://bjowkl2hpmcm1" path="res://assets/sprites/ciphers/diva/diva_red.webp" id="72_jt0jt"]
+[ext_resource type="AudioStream" uid="uid://co5o44x0b2nim" path="res://assets/musics/disco_rehearsal.ogg" id="74_6qfrd"]
 
 [sub_resource type="Resource" id="Resource_38vrh"]
 script = ExtResource("3_38vrh")
@@ -433,4 +434,9 @@ render_target_update_mode = 4
 [node name="Music1" type="AudioStreamPlayer" parent="Musics" unique_id=1789580716]
 stream = ExtResource("44_kkfqw")
 volume_db = 8.0
+bus = &"Music"
+
+[node name="Music2" type="AudioStreamPlayer" parent="Musics" unique_id=593805805]
+stream = ExtResource("74_6qfrd")
+volume_db = 2.0
 bus = &"Music"
