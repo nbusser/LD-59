@@ -14,17 +14,18 @@ script = ExtResource("1_radio")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1001001002]
 layout_mode = 0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -25.0
+offset_right = 383.0
+offset_bottom = 732.0
 texture = ExtResource("2_radio")
 stretch_mode = 5
 
 [node name="SfxSlider" type="HSlider" parent="Background" unique_id=1001001003]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 249.99998
+offset_left = 221.99998
 offset_top = 587.99994
-offset_right = 412.48163
+offset_right = 384.48163
 offset_bottom = 638.99994
 rotation = -2.019346
 theme = ExtResource("5_radio")
@@ -35,9 +36,9 @@ value = 1.0
 [node name="MusicSlider" type="HSlider" parent="Background" unique_id=1001001004]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 366.99997
+offset_left = 338.99997
 offset_top = 531.99994
-offset_right = 523.20807
+offset_right = 495.20807
 offset_bottom = 582.99994
 rotation = -2.019346
 theme = ExtResource("5_radio")
@@ -48,9 +49,9 @@ value = 1.0
 [node name="MuteButton" type="TextureButton" parent="Background" unique_id=1001001005]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 103.0
+offset_left = 75.0
 offset_top = 294.0
-offset_right = 219.0
+offset_right = 191.0
 offset_bottom = 399.0
 toggle_mode = true
 texture_normal = ExtResource("4_radio")

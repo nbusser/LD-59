@@ -1,13 +1,13 @@
 class_name Radio
 extends Control
 
-@onready var sfx_slider: HSlider = %SfxSlider
-@onready var music_slider: HSlider = %MusicSlider
-@onready var mute_button: TextureButton = %MuteButton
-
 var _muted := false
 var _sfx_volume := 1.0
 var _music_volume := 1.0
+
+@onready var sfx_slider: HSlider = %SfxSlider
+@onready var music_slider: HSlider = %MusicSlider
+@onready var mute_button: TextureButton = %MuteButton
 
 
 func _ready() -> void:
