@@ -77,12 +77,12 @@ func _reset() -> void:
 	prng.seed = source.resource_path.hash()
 
 	# init shuffle rows bounds
-	_shuffle_rows_offset = prng.randf()
+	_shuffle_rows_offset = prng.randf_range(0.1, 0.9)
 	shuffle_rows_input.correct_value = _shuffle_rows_offset
 	_shuffle_rows_input_changed(shuffle_rows_input.amount)
 
 	# init v-desync bounds
-	_v_desync_offset = prng.randf()
+	_v_desync_offset = prng.randf_range(0.1, 0.9)
 	v_desync_input.correct_value = _v_desync_offset
 	_v_desync_input_changed(v_desync_input.amount)
 
