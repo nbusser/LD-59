@@ -1,7 +1,17 @@
 class_name SteganoTools extends Control
 
+const _ENHANCE_SOUNDS = [
+	preload("res://assets/sounds/enhance/enhance 1.ogg"),
+	preload("res://assets/sounds/enhance/enhance 2.ogg"),
+	preload("res://assets/sounds/enhance/enhance 3.ogg"),
+	preload("res://assets/sounds/enhance/enhance 4.ogg"),
+	preload("res://assets/sounds/enhance/enhance 5.ogg"),
+	preload("res://assets/sounds/enhance/enhance 6.ogg"),
+]
+
 @onready var _text_tools = $TextFilters
 @onready var _image_tools = $ImageFilters
+@onready var _enhance_player: AudioStreamPlayer = $EnhancePlayer
 
 @onready var _glasses: TextureRect = %Glasses
 @onready var _glasses_hover: TextureRect = %GlassesHover
@@ -72,3 +82,6 @@ func _on_glasses_button_mouse_entered() -> void:
 
 func _on_mg_draggable_dragging_state_changed(dragging: bool) -> void:
 	Globals.mg_active = dragging
+	if dragging:
+		_enhance_player.stream = _ENHANCE_SOUNDS[randi() % _ENHANCE_SOUNDS.size()]
+		_enhance_player.play()

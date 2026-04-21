@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ba3gq0st1u8oe"
+path="res://.godot/imported/enhance 4.ogg-f438be22566d5927a9e79d3c0c679f7e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/enhance/enhance 4.ogg"
+dest_files=["res://.godot/imported/enhance 4.ogg-f438be22566d5927a9e79d3c0c679f7e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

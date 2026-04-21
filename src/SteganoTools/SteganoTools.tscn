@@ -245,6 +245,9 @@ mouse_filter = 2
 texture = ExtResource("13_mrsy4")
 metadata/_edit_lock_ = true
 
+[node name="EnhancePlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="dragging_state_changed" from="ImageFilters/MagnifyingGlass/Draggable" to="." method="_on_mg_draggable_dragging_state_changed"]
 [connection signal="button_down" from="GlassesButton" to="." method="_on_glasses_button_button_down"]
 [connection signal="mouse_entered" from="GlassesButton" to="." method="_on_glasses_button_mouse_entered"]
