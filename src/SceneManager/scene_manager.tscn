@@ -105,6 +105,32 @@ success_message = "No doubt!"
 fail_message = "Can't you recognized a disco diva?"
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
+[sub_resource type="Resource" id="Resource_i08jk"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("62_8peto")
+reverse_stream = ExtResource("61_hq85x")
+
+[sub_resource type="Resource" id="Resource_6qfrd"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("64_ixkii")
+reverse_stream = ExtResource("63_nweoa")
+
+[sub_resource type="Resource" id="Resource_jt0jt"]
+script = ExtResource("7_6vsvc")
+stream = ExtResource("66_0sind")
+reverse_stream = ExtResource("65_hegg6")
+
+[sub_resource type="Resource" id="Resource_kaq6d"]
+script = ExtResource("3_38vrh")
+cipher_type = 2
+audio_stream_1 = SubResource("Resource_i08jk")
+audio_stream_2 = SubResource("Resource_6qfrd")
+audio_stream_3 = SubResource("Resource_jt0jt")
+is_disco = true
+success_message = "Obvious."
+fail_message = "Come on..."
+metadata/_custom_type_script = "uid://bnvpmcg0m835h"
+
 [sub_resource type="Resource" id="Resource_knii6"]
 script = ExtResource("3_38vrh")
 cipher_type = 1
@@ -161,32 +187,6 @@ image_texture_filter_red = ExtResource("37_tuqtv")
 is_disco = true
 success_message = "Blasphemy!"
 fail_message = "Passing over the image with a [b]Filter Card[/b] (found on top of your console) can reveal hidden disco imagery. Far out!"
-metadata/_custom_type_script = "uid://bnvpmcg0m835h"
-
-[sub_resource type="Resource" id="Resource_i08jk"]
-script = ExtResource("7_6vsvc")
-stream = ExtResource("62_8peto")
-reverse_stream = ExtResource("61_hq85x")
-
-[sub_resource type="Resource" id="Resource_6qfrd"]
-script = ExtResource("7_6vsvc")
-stream = ExtResource("64_ixkii")
-reverse_stream = ExtResource("63_nweoa")
-
-[sub_resource type="Resource" id="Resource_jt0jt"]
-script = ExtResource("7_6vsvc")
-stream = ExtResource("66_0sind")
-reverse_stream = ExtResource("65_hegg6")
-
-[sub_resource type="Resource" id="Resource_kaq6d"]
-script = ExtResource("3_38vrh")
-cipher_type = 2
-audio_stream_1 = SubResource("Resource_i08jk")
-audio_stream_2 = SubResource("Resource_6qfrd")
-audio_stream_3 = SubResource("Resource_jt0jt")
-is_disco = true
-success_message = "Obvious."
-fail_message = "Come on..."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
 
 [sub_resource type="Resource" id="Resource_iqc3l"]
@@ -442,7 +442,7 @@ script = ExtResource("2_38vrh")
 name = "Disco panic"
 timer_duration = 0
 type = 1
-ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_tr5p8"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_kaq6d"), SubResource("Resource_iqc3l"), SubResource("Resource_8peto"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_y7ryt"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_dannn"), SubResource("Resource_a0n6e"), SubResource("Resource_mynhh"), SubResource("Resource_hq85x"), SubResource("Resource_exy84")])
+ciphers = Array[ExtResource("3_38vrh")]([SubResource("Resource_qc8yu"), SubResource("Resource_38vrh"), SubResource("Resource_tr5p8"), SubResource("Resource_kaq6d"), SubResource("Resource_knii6"), SubResource("Resource_bb0s7"), SubResource("Resource_okykg"), SubResource("Resource_wcrco"), SubResource("Resource_iqc3l"), SubResource("Resource_8peto"), SubResource("Resource_agyg0"), SubResource("Resource_ykp3m"), SubResource("Resource_eb0a5"), SubResource("Resource_ilhjc"), SubResource("Resource_jd8f8"), SubResource("Resource_y3blw"), SubResource("Resource_y7ryt"), SubResource("Resource_pjynx"), SubResource("Resource_i6aiw"), SubResource("Resource_qikrv"), SubResource("Resource_wo1q6"), SubResource("Resource_dannn"), SubResource("Resource_a0n6e"), SubResource("Resource_mynhh"), SubResource("Resource_hq85x"), SubResource("Resource_exy84")])
 
 [node name="SceneManager" type="Control" unique_id=1136371991]
 layout_mode = 3
