@@ -9,8 +9,8 @@
 [ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="6_4bydg"]
 [ext_resource type="PackedScene" uid="uid://b3bgc575mmka7" path="res://src/SteganoTools/SteganoTools.tscn" id="6_mqshx"]
 [ext_resource type="PackedScene" uid="uid://im4hyd35kt80" path="res://src/CipheredSignal/CipheredSignals.tscn" id="7_gp2up"]
-[ext_resource type="FontFile" uid="uid://ov4pgbpxisrm" path="res://assets/fonts/vhs-vcr-osd.ttf" id="7_mqshx"]
 [ext_resource type="AudioStream" uid="uid://12obimgms4h7" path="res://assets/sounds/success.ogg" id="8_iw8kk"]
+[ext_resource type="FontFile" uid="uid://d3nnas21r1h2v" path="res://assets/fonts/Unageo-Regular.ttf" id="8_u72di"]
 [ext_resource type="Texture2D" uid="uid://bfug2fui4w7oy" path="res://assets/ui/glasses/lunettes.png" id="9_hivg7"]
 [ext_resource type="AudioStream" uid="uid://bsprajauo3eex" path="res://assets/sounds/failure.ogg" id="9_iw8kk"]
 [ext_resource type="Texture2D" uid="uid://d22l3h2xe512c" path="res://assets/ui/glasses/filtre-lunettes.png" id="10_u72di"]
@@ -18,11 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
 [ext_resource type="AudioStream" uid="uid://blxwbx5u3ga1e" path="res://assets/sounds/searching.ogg" id="15_u72di"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_u72di"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6s7yf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_djut7"]
-font = ExtResource("7_mqshx")
+font = ExtResource("8_u72di")
 font_size = 64
+font_color = Color(0.105882354, 0.023529412, 0.007843138, 1)
 
 [sub_resource type="Animation" id="Animation_mqshx"]
 length = 0.001
@@ -258,21 +259,21 @@ offset_left = 629.0
 offset_top = 904.0
 offset_right = 834.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_u72di")
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
 offset_left = 841.0
 offset_top = 904.0
 offset_right = 1046.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_u72di")
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
 offset_left = 1052.0
 offset_top = 904.0
 offset_right = 1257.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_u72di")
+button_group = SubResource("ButtonGroup_6s7yf")
 
 [node name="DiscoButtons" parent="UI/CommandPanel" index="6" unique_id=163675673]
 offset_left = 1354.0
@@ -375,15 +376,16 @@ offset_bottom = 392.0
 
 [node name="Carton" type="PanelContainer" parent="UI" unique_id=1076396280]
 visible = false
+z_index = 300
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = -45.0
-offset_right = 77.0
-offset_bottom = 45.0
+offset_left = -109.5
+offset_top = -526.0
+offset_right = 109.5
+offset_bottom = -429.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_4bydg")

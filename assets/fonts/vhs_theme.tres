@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://clxra8p5ou1mu" path="res://assets/ui/slider_knob_disabled.png" id="2_eem5w"]
 [ext_resource type="Texture2D" uid="uid://ciw4o3caqmh5i" path="res://assets/ui/slider_knob_highlighted.png" id="3_s2xby"]
 [ext_resource type="Texture2D" uid="uid://436o4mulm50" path="res://assets/ui/slider-bar.png" id="4_rn6od"]
+[ext_resource type="Texture2D" uid="uid://dgmod0mgmirfm" path="res://assets/ui/Audio_freq_-_background.png" id="5_eem5w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv503"]
 content_margin_left = 4.0
@@ -35,6 +36,17 @@ texture = ExtResource("4_rn6od")
 expand_margin_top = 8.0
 expand_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2xby"]
+texture = ExtResource("5_eem5w")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+
 [sub_resource type="FontVariation" id="FontVariation_nv503"]
 base_font = ExtResource("1_rm434")
 spacing_glyph = 2
@@ -52,3 +64,4 @@ HSlider/icons/tick = ExtResource("4_rn6od")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_nv503")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_eem5w")
 HSlider/styles/slider = SubResource("StyleBoxTexture_nv503")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_s2xby")
