@@ -16,6 +16,7 @@ var level_state: LevelState
 @onready var ciphered_audio: CipheredAudio = $CipheredSignals/CipheredAudio
 
 @onready var glasses_overlay: Control = %GlassesOverlay
+@onready var intercept_player: InterceptPlayer = $InterceptPlayer
 
 
 func _ready():
@@ -76,6 +77,8 @@ func _load_next_cipher():
 	await _play_searching_signal_animation()
 
 	deciphering_started_stopped.emit(true)
+	if level_state.current_cipher.cipher_type != CipherData.CipherType.AUDIO:
+		intercept_player.trigger()
 
 	switch_phase(LevelState.Phase.STEGANO)
 
@@ -94,6 +97,7 @@ func _on_Timer_timeout():
 
 
 func _on_disco_buttons_disco_button_pressed(is_disco: bool) -> void:
+	intercept_player.reset()
 	deciphering_started_stopped.emit(false)
 
 	if level_state.current_cipher.is_disco != is_disco:

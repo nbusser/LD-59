@@ -18,8 +18,24 @@
 [ext_resource type="Texture2D" uid="uid://csa48kpnc8f5f" path="res://assets/ui/lumiere_orange.png" id="12_mqshx"]
 [ext_resource type="AudioStream" uid="uid://blxwbx5u3ga1e" path="res://assets/sounds/searching.ogg" id="15_u72di"]
 [ext_resource type="PackedScene" uid="uid://cq5x7oam2p4ry" path="res://src/Radio/Radio.tscn" id="16_radio"]
+[ext_resource type="PackedScene" uid="uid://c7int3rcpt5cn" path="res://src/InterceptPlayer/InterceptPlayer.tscn" id="17_intrc"]
+[ext_resource type="AudioStream" uid="uid://d4lbm6lk8y57h" path="res://assets/sounds/intercepts/1.ogg" id="17_niqmq"]
+[ext_resource type="AudioStream" uid="uid://ci8apyeho4bnk" path="res://assets/sounds/intercepts/2.ogg" id="18_5myaq"]
+[ext_resource type="AudioStream" uid="uid://c4nc0axe5342t" path="res://assets/sounds/intercepts/3.ogg" id="19_3ga2w"]
+[ext_resource type="AudioStream" uid="uid://da44l1hnpa1fb" path="res://assets/sounds/intercepts/4.ogg" id="20_6hygl"]
+[ext_resource type="AudioStream" uid="uid://pruga6iu7i55" path="res://assets/sounds/intercepts/5.ogg" id="21_4k527"]
+[ext_resource type="AudioStream" uid="uid://clf3g03r5isfs" path="res://assets/sounds/intercepts/6.ogg" id="22_3bl62"]
+[ext_resource type="AudioStream" uid="uid://bagxadqyywt5k" path="res://assets/sounds/intercepts/7.ogg" id="23_8ql05"]
+[ext_resource type="AudioStream" uid="uid://bc63dgpq3bklw" path="res://assets/sounds/intercepts/8.ogg" id="24_l8a1c"]
+[ext_resource type="AudioStream" uid="uid://bmmluj6ubg53f" path="res://assets/sounds/intercepts/9.ogg" id="25_8h2vf"]
+[ext_resource type="AudioStream" uid="uid://d0e5gqebnjbl0" path="res://assets/sounds/intercepts/10.ogg" id="26_kxdvk"]
+[ext_resource type="AudioStream" uid="uid://cfx0j5x5p6j4c" path="res://assets/sounds/intercepts/11.ogg" id="27_wq7gm"]
+[ext_resource type="AudioStream" uid="uid://br14c443kc5rm" path="res://assets/sounds/intercepts/12.ogg" id="28_3sadl"]
+[ext_resource type="AudioStream" uid="uid://e1hw6ruka7lb" path="res://assets/sounds/intercepts/13.ogg" id="29_kn7qm"]
+[ext_resource type="AudioStream" uid="uid://3mloi1dkey2v" path="res://assets/sounds/intercepts/14.ogg" id="30_xlrrb"]
+[ext_resource type="AudioStream" uid="uid://hwttv3oo13du" path="res://assets/sounds/intercepts/15.ogg" id="31_2mugv"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6s7yf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_niqmq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_djut7"]
 font = ExtResource("8_u72di")
@@ -260,21 +276,21 @@ offset_left = 629.0
 offset_top = 904.0
 offset_right = 834.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_6s7yf")
+button_group = SubResource("ButtonGroup_niqmq")
 
 [node name="ImageModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="1" unique_id=490992217]
 offset_left = 841.0
 offset_top = 904.0
 offset_right = 1046.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_6s7yf")
+button_group = SubResource("ButtonGroup_niqmq")
 
 [node name="AudioModeButton" parent="UI/CommandPanel/SignalTypeButtons" parent_id_path=PackedInt32Array(1884603933, 1008339797) index="2" unique_id=994936219]
 offset_left = 1052.0
 offset_top = 904.0
 offset_right = 1257.0
 offset_bottom = 974.0
-button_group = SubResource("ButtonGroup_6s7yf")
+button_group = SubResource("ButtonGroup_niqmq")
 
 [node name="DiscoButtons" parent="UI/CommandPanel" index="6" unique_id=163675673]
 offset_left = 1354.0
@@ -333,10 +349,10 @@ offset_right = 429.0
 offset_bottom = 404.0
 
 [node name="Radio" parent="UI" unique_id=1001001010 instance=ExtResource("16_radio")]
-offset_left = 1483.0
-offset_top = 169.0
-offset_right = 1739.0
-offset_bottom = 425.0
+offset_left = 1570.0
+offset_top = 180.0
+offset_right = 2019.0
+offset_bottom = 436.0
 
 [node name="SteganoTools" parent="UI" unique_id=1033651520 instance=ExtResource("6_mqshx")]
 offset_left = 648.0
@@ -475,6 +491,9 @@ bus = &"SFX"
 
 [node name="SearchingSignal" type="AudioStreamPlayer" parent="Audio" unique_id=289986880]
 bus = &"SFX"
+
+[node name="InterceptPlayer" parent="." unique_id=1234567890 instance=ExtResource("17_intrc")]
+sound_pool = Array[AudioStream]([ExtResource("17_niqmq"), ExtResource("18_5myaq"), ExtResource("19_3ga2w"), ExtResource("20_6hygl"), ExtResource("21_4k527"), ExtResource("22_3bl62"), ExtResource("23_8ql05"), ExtResource("24_l8a1c"), ExtResource("25_8h2vf"), ExtResource("26_kxdvk"), ExtResource("27_wq7gm"), ExtResource("28_3sadl"), ExtResource("29_kn7qm"), ExtResource("30_xlrrb"), ExtResource("31_2mugv")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=748152437]
 libraries/ = SubResource("AnimationLibrary_v3q8p")
