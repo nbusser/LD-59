@@ -18,7 +18,11 @@ func _ready() -> void:
 func _on_sfx_slider_value_changed(value: float) -> void:
 	_sfx_volume = value
 	if not _muted:
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
+		var val = linear_to_db(value)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), val)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Others"), val)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Cipher"), val)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Intercept"), val)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
