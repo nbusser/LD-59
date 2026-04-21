@@ -291,6 +291,7 @@ They know we may chillax
 But if I stoke the vibes
 They’ll fight the man."
 hidden_text_content = "That's the way I like it"
+is_disco = true
 success_message = "Keen eye!"
 fail_message = "Once your text is properly descrambled, a [b]Text Card[/b] may be applied to reveal the most important letters. Feel free to research what you don't recognize."
 metadata/_custom_type_script = "uid://bnvpmcg0m835h"
