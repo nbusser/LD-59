@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvgh060edrp7j"]
 
 [ext_resource type="Script" uid="uid://btvd0b0skhsfa" path="res://src/MainMenu/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://qd8peu4s525a" path="res://assets/menu/menu.png" id="2_r1g53"]
 
 [node name="MainMenu" type="Control" unique_id=1665686318]
 layout_mode = 3
@@ -11,7 +12,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
-[node name="BgBack" type="TextureRect" parent="." unique_id=1111111111]
+[node name="SolidColor" type="ColorRect" parent="." unique_id=1211931084]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BgBack" type="TextureRect" parent="." unique_id=840800667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgFront" type="TextureRect" parent="." unique_id=-2072745074]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,50 +39,48 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="BgFront" type="TextureRect" parent="." unique_id=2222222222]
+[node name="BgFront2" type="TextureRect" parent="." unique_id=1964036717]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_r1g53")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1122335913]
+[node name="Start" type="TextureButton" parent="." unique_id=1697666364]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = 1338.0
+offset_top = 381.0
+offset_right = 1614.0
+offset_bottom = 616.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2122185244]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1093624711]
-layout_mode = 2
-text = "LD-Base"
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1866292513]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="Start" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1910235593]
-layout_mode = 2
-text = "Start"
-
-[node name="SelectLevel" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1565563132]
-layout_mode = 2
+[node name="SelectLevel" type="Button" parent="." unique_id=1565563132]
+visible = false
+layout_mode = 0
+offset_left = 928.0
+offset_top = 555.0
+offset_right = 1023.0
+offset_bottom = 586.0
 text = "Select level"
 
-[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1250612222]
-layout_mode = 2
-text = "Credits"
+[node name="Credits" type="TextureButton" parent="." unique_id=857087725]
+layout_mode = 0
+offset_left = 1616.0
+offset_top = 456.0
+offset_right = 1907.0
+offset_bottom = 650.0
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=218164583]
-layout_mode = 2
-text = "Quit"
+[node name="Quit" type="TextureButton" parent="." unique_id=1620308548]
+layout_mode = 0
+offset_left = 1751.0
+offset_top = 16.0
+offset_right = 1920.0
+offset_bottom = 156.0
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SelectLevel" to="." method="_on_select_level_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
