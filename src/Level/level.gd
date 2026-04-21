@@ -18,6 +18,9 @@ var level_state: LevelState
 @onready var glasses_overlay: Control = %GlassesOverlay
 @onready var intercept_player: InterceptPlayer = $InterceptPlayer
 
+@onready var carton: Control = %Carton
+@onready var carton_text: Control = %CartonText
+
 
 func _ready():
 	assert(level_state, "init must be called before creating Level scene")
@@ -120,7 +123,7 @@ func _play_signal_found_animation():
 
 
 func _play_cipher_decoded_animation(success: bool):
-	$UI/Carton.visible = true
+	carton.visible = true
 	if success:
 		$Audio/Success.play()
 		var text = level_state.current_cipher.success_message
@@ -139,14 +142,16 @@ func _play_cipher_decoded_animation(success: bool):
 				]
 				. pick_random()
 			)
-		$UI/Carton/Label.text = text
+		carton_text.text = text
+		carton.size = Vector2.ZERO
 		await get_tree().create_timer(1.5).timeout
 	else:
 		$Audio/Failure.play()
-		$UI/Carton/Label.text = level_state.current_cipher.fail_message
+		carton_text.text = level_state.current_cipher.fail_message
+		carton.size = Vector2.ZERO
 		await get_tree().create_timer(2.5).timeout
 
-	$UI/Carton.visible = false
+	carton.visible = false
 
 	await _play_signal_found_animation()
 	await get_tree().create_timer(0.8).timeout
