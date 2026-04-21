@@ -6,19 +6,15 @@ var nb_successes: int = -1
 var total: int = -1
 
 @onready var good_ending: Control = $GoodEnding
-@onready var mixed_ending: Control = $MixedEnding
 @onready var bad_ending: Control = $BadEnding
 
 
 func _display_ending():
 	good_ending.visible = false
-	mixed_ending.visible = false
 	bad_ending.visible = false
 
-	if nb_successes == total:
+	if nb_successes >= total * 0.8:
 		good_ending.visible = true
-	elif nb_successes > int(total / 2.0):
-		mixed_ending.visible = true
 	else:
 		bad_ending.visible = true
 

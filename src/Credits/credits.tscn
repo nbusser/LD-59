@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://j5a7okn8a6xv"]
 
 [ext_resource type="Script" uid="uid://c5irxtmrghoys" path="res://src/Credits/credits.gd" id="1"]
+[ext_resource type="Theme" uid="uid://b1vdlfq568pab" path="res://assets/base_theme.tres" id="1_iyom0"]
+[ext_resource type="Texture2D" uid="uid://bjtjj4217fdyo" path="res://assets/ui/credits.png" id="3_kuhxs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0h7ko"]
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kuhxs"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
 
 [node name="Credits" type="Control" unique_id=981450169]
 layout_mode = 3
@@ -9,56 +19,105 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_iyom0")
 script = ExtResource("1")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=165939660]
-layout_mode = 0
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=154689792]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -150.00006
+offset_top = -666.0
+offset_right = 446.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.29798892
+scale = Vector2(0.8511577, 0.8511577)
+texture = ExtResource("3_kuhxs")
+stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=287316243]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="." unique_id=847673732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2002.0
+offset_top = 2982.0
+offset_right = 2598.0
+offset_bottom = 3669.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.2239816
+texture = ExtResource("3_kuhxs")
+stretch_mode = 6
 
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=1682140338]
-layout_mode = 2
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=2069682301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -898.0
+offset_top = -31.0
+offset_right = -302.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.29798892
+scale = Vector2(0.8511577, 0.8511577)
+texture = ExtResource("3_kuhxs")
+stretch_mode = 6
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer" unique_id=1979363139]
-layout_mode = 2
+[node name="Control" type="Control" parent="." unique_id=155791797]
+anchors_preset = 0
+offset_left = -82.000046
+offset_top = -262.9999
+offset_right = -42.000046
+offset_bottom = -222.99991
+rotation = 0.19973473
+
+[node name="Label" type="Label" parent="Control" unique_id=1979363139]
+layout_mode = 0
+offset_left = 1268.0
+offset_top = 17.0
+offset_right = 1586.0
+offset_bottom = 137.0
 text = "Credits"
+label_settings = SubResource("LabelSettings_0h7ko")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1213471315]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=897601907]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2" unique_id=1145074317]
-layout_mode = 2
+[node name="Label2" type="Label" parent="Control" unique_id=1145074317]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 181.0
+offset_right = 1865.0
+offset_bottom = 253.0
 text = "A game by Ludum Darons team"
+label_settings = SubResource("LabelSettings_kuhxs")
 
-[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=759017328]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer3" unique_id=841117806]
-layout_mode = 2
+[node name="Label3" type="Label" parent="Control" unique_id=841117806]
+layout_mode = 0
+offset_left = 1246.0
+offset_top = 375.0
+offset_right = 1633.0
+offset_bottom = 822.0
 text = "Matthieu Baty
 Antoine Brûlé
 Nicolas Busser
 Nao
 Louis Mouhat
 Félix West"
+label_settings = SubResource("LabelSettings_kuhxs")
 
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=231006714]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="CenterContainer4" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=1208559502]
-layout_mode = 2
-
-[node name="Back" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer4" unique_id=337975781]
-layout_mode = 2
+[node name="Back" type="Button" parent="Control" unique_id=337975781]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 100)
+layout_mode = 0
+offset_left = 1322.0
+offset_top = 924.0
+offset_right = 1502.0
+offset_bottom = 1024.0
 size_flags_horizontal = 0
 text = "Back"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer4/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Control/Back" to="." method="_on_Back_pressed"]
