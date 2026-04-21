@@ -184,5 +184,5 @@ void fragment() {
 	// Color grading last
 	col = apply_color_controls(col);
 
-	COLOR = vec4(col, in_bounds * corner_mask) * 2.0;
+	COLOR = vec4(col, in_bounds * corner_mask) * 1.7;
 }
