@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvb8n3m6q2xw5" path="res://src/Radio/radio.gd" id="1_radio"]
 [ext_resource type="Texture2D" uid="uid://rmu86kdsskc4" path="res://assets/sprites/radio/radiov2.png" id="2_radio"]
 [ext_resource type="Texture2D" uid="uid://bnnrx2d8f3mxj" path="res://assets/sprites/radio/radio_mute_knob.png" id="4_radio"]
+[ext_resource type="PackedScene" uid="uid://jp3kwycpstcx" path="res://src/CommandPanel/red_led.tscn" id="5_faevk"]
 [ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="5_radio"]
 
 [node name="Radio" type="Control" unique_id=1001001001]
@@ -55,6 +56,15 @@ offset_bottom = 399.0
 toggle_mode = true
 texture_normal = ExtResource("4_radio")
 stretch_mode = 3
+
+[node name="RedLed" parent="." unique_id=1347280444 instance=ExtResource("5_faevk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 80.0
+offset_top = 326.0
+offset_right = 144.0
+offset_bottom = 390.0
+scale = Vector2(0.5, 0.5)
 
 [connection signal="value_changed" from="Background/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="Background/MusicSlider" to="." method="_on_music_slider_value_changed"]

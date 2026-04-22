@@ -1,3 +1,4 @@
+class_name Led
 extends Control
 
 @export var enabled = true:
