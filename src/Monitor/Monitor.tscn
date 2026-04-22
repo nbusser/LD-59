@@ -11,7 +11,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
 shader_parameter/texture_sampler = ExtResource("3_2jalq")
-shader_parameter/brightness = 1.02
+shader_parameter/brightness = 0.800000038
 shader_parameter/contrast = 1.08
 shader_parameter/saturation = 1.1
 shader_parameter/gamma = 1.05
@@ -19,7 +19,7 @@ shader_parameter/curvature = 0.0650000030875
 shader_parameter/corner_soften = 0.0
 shader_parameter/vignette = 0.0
 shader_parameter/scanline_strength = 0.2000000095
-shader_parameter/scanline_density = 1.9540000690650001
+shader_parameter/scanline_density = 1.954000069065
 shader_parameter/interlace_strength = 0.2
 shader_parameter/mask_strength = 0.22
 shader_parameter/mask_scale = 1.0
