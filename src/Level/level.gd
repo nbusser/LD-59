@@ -144,7 +144,7 @@ func _play_cipher_decoded_animation(success: bool):
 			)
 		carton_text.text = text
 		carton.size = Vector2.ZERO
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(4.5).timeout
 	else:
 		$Audio/Failure.play()
 		carton_text.text = level_state.current_cipher.fail_message
@@ -154,7 +154,6 @@ func _play_cipher_decoded_animation(success: bool):
 	carton.visible = false
 
 	await _play_signal_found_animation()
-	await get_tree().create_timer(0.8).timeout
 
 
 func _on_glasses_state_changed(active: bool):

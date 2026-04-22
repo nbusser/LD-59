@@ -562,7 +562,6 @@ sound_pool = Array[AudioStream]([ExtResource("17_niqmq"), ExtResource("18_5myaq"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=748152437]
 libraries/ = SubResource("AnimationLibrary_v3q8p")
-speed_scale = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1275737084]
 environment = ExtResource("11_4bydg")
