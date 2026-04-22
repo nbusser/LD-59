@@ -27,6 +27,9 @@ func reset() -> void:
 
 
 func _on_timer_timeout() -> void:
+	if _index >= sound_pool.size():
+		return
+
 	_message.stream = sound_pool[_index % sound_pool.size()]
 	_index += 1
 
