@@ -147,12 +147,17 @@ script = ExtResource("4_1sxi0")
 
 [node name="NoSignal" type="Label" parent="SubViewport" unique_id=886678415]
 unique_name_in_owner = true
-modulate = Color(0, 1, 0, 1)
-offset_right = 40.0
-offset_bottom = 40.0
+modulate = Color(1, 0.6326547, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_lpyn7")
 text = "NO SIGNAL"
 label_settings = SubResource("LabelSettings_061ay")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Filter" type="ColorRect" parent="SubViewport" unique_id=1894552632]
 anchors_preset = 15
