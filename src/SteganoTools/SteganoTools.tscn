@@ -60,6 +60,47 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_niwiv")
 
+[node name="GlassesButton" type="TextureButton" parent="." unique_id=1493206345]
+layout_mode = 0
+offset_left = 728.0
+offset_top = -64.0
+offset_right = 1008.0
+offset_bottom = 240.0
+
+[node name="GlassesPlaceholder" type="TextureRect" parent="GlassesButton" unique_id=2108212437]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.1)
+layout_mode = 0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 529.0
+offset_bottom = 523.0
+mouse_filter = 2
+texture = ExtResource("13_mrsy4")
+metadata/_edit_lock_ = true
+
+[node name="GlassesHover" type="TextureRect" parent="GlassesButton" unique_id=459233681]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 529.0
+offset_bottom = 523.0
+mouse_filter = 2
+texture = ExtResource("12_e8hoa")
+metadata/_edit_lock_ = true
+
+[node name="Glasses" type="TextureRect" parent="GlassesButton" unique_id=957318997]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 529.0
+offset_bottom = 523.0
+mouse_filter = 2
+texture = ExtResource("13_mrsy4")
+metadata/_edit_lock_ = true
+
 [node name="TextFilters" type="Control" parent="." unique_id=917854939]
 anchors_preset = 0
 offset_right = 40.0
@@ -204,51 +245,10 @@ offset_right = 224.08481
 offset_bottom = 694.37415
 rotation = -0.5043094
 
-[node name="GlassesButton" type="TextureButton" parent="." unique_id=1493206345]
-layout_mode = 0
-offset_left = 728.0
-offset_top = -64.0
-offset_right = 1008.0
-offset_bottom = 240.0
-
-[node name="GlassesPlaceholder" type="TextureRect" parent="GlassesButton" unique_id=2108212437]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.1)
-layout_mode = 0
-offset_left = -240.0
-offset_top = -152.0
-offset_right = 529.0
-offset_bottom = 523.0
-mouse_filter = 2
-texture = ExtResource("13_mrsy4")
-metadata/_edit_lock_ = true
-
-[node name="GlassesHover" type="TextureRect" parent="GlassesButton" unique_id=459233681]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = -240.0
-offset_top = -152.0
-offset_right = 529.0
-offset_bottom = 523.0
-mouse_filter = 2
-texture = ExtResource("12_e8hoa")
-metadata/_edit_lock_ = true
-
-[node name="Glasses" type="TextureRect" parent="GlassesButton" unique_id=957318997]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = -240.0
-offset_top = -152.0
-offset_right = 529.0
-offset_bottom = 523.0
-mouse_filter = 2
-texture = ExtResource("13_mrsy4")
-metadata/_edit_lock_ = true
-
-[node name="EnhancePlayer" type="AudioStreamPlayer" parent="."]
+[node name="EnhancePlayer" type="AudioStreamPlayer" parent="." unique_id=18864222]
 bus = &"SFX"
 
-[connection signal="dragging_state_changed" from="ImageFilters/MagnifyingGlass/Draggable" to="." method="_on_mg_draggable_dragging_state_changed"]
 [connection signal="button_down" from="GlassesButton" to="." method="_on_glasses_button_button_down"]
 [connection signal="mouse_entered" from="GlassesButton" to="." method="_on_glasses_button_mouse_entered"]
 [connection signal="mouse_exited" from="GlassesButton" to="." method="_on_glasses_button_mouse_exited"]
+[connection signal="dragging_state_changed" from="ImageFilters/MagnifyingGlass/Draggable" to="." method="_on_mg_draggable_dragging_state_changed"]
