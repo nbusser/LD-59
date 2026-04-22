@@ -32,7 +32,7 @@ content_margin_bottom = 0.0
 [node name="HoleySheet" type="Control" unique_id=1915730032]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 680.0
+offset_right = 704.0
 offset_bottom = 456.0
 script = ExtResource("1_0yg7k")
 cipher_data = SubResource("Resource_38vrh")
@@ -42,7 +42,7 @@ material = SubResource("ShaderMaterial_0yg7k")
 layout_mode = 0
 offset_left = -24.0
 offset_top = -16.0
-offset_right = 704.0
+offset_right = 736.0
 offset_bottom = 472.0
 mouse_filter = 2
 texture = ExtResource("4_0yg7k")
@@ -61,15 +61,12 @@ grow_vertical = 2
 theme = ExtResource("3_0yg7k")
 theme_override_colors/default_color = Color(0, 1, 0, 1)
 theme_override_constants/line_separation = 10
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 18
 theme_override_font_sizes/bold_font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxEmpty_dp07s")
 bbcode_enabled = true
-text = "██        ███  
-███     █     ██   ██   
-    █       ██      █   
-█                     "
+text = "0 0 0 0 0"
 autowrap_mode = 1
 autowrap_trim_flags = 0
 shortcut_keys_enabled = false

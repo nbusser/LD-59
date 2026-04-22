@@ -43,6 +43,6 @@ func _update_holes() -> void:
 			text += "0"
 		else:
 			# text += cipher_data.text_content[i]
-			text += String.chr(0xA0)  # nbsp
+			text += "[color=transparent]" + cipher_data.text_content[i] + "[/color]"
 
 	rendered_text.text = text
