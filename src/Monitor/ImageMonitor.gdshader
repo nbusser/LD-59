@@ -1,6 +1,11 @@
 shader_type canvas_item;
 render_mode blend_mix;
 
+// --- Holey Sheets ---
+const int N_CARDS = 4;
+uniform vec2 card_positions[N_CARDS];
+uniform vec2 card_sizes[N_CARDS];
+
 uniform sampler2D texture_sampler;
 
 // --- Color controls ---
@@ -91,6 +96,19 @@ vec3 sample_screen(vec2 uv) {
 	return textureLod(texture_sampler, uv, 0.0).rgb;
 }
 
+bool is_in_card(vec2 coords) {
+  for (int i = 0; i < N_CARDS; i++) {
+    vec2 top_left_corner = card_positions[i] + card_sizes[i] * 0.1;
+    vec2 bottom_right_corner = card_positions[i] + card_sizes[i] * 0.9;
+    if (
+    all(greaterThan(coords, top_left_corner))
+	&& all(lessThan(coords, bottom_right_corner))
+    ) return true;
+
+  }
+  return false;
+}
+
 void fragment() {
 	vec2 px   = SCREEN_PIXEL_SIZE;
 	vec2 res  = 1.0 / px;
@@ -108,7 +126,12 @@ void fragment() {
 	uv.x += sin(uv.y * 8.0 + t * 1.2) * (wobble_px * px.x);
 
 	// CRT curve
-	vec2 cuv = crt_curve(uv, curvature);
+	float curve = curvature;
+	if (is_in_card(uv) && inside01(crt_curve(uv, curve)) > 0.5) {
+  	curve = 0.0;
+	}
+	vec2 cuv = crt_curve(uv, curve);
+	vec2 og_cuv = crt_curve(uv, curvature);
 	float in_bounds = inside01(cuv);
 
 	// Rounded corners (soft clip)
@@ -133,7 +156,7 @@ void fragment() {
 	col = mix(col, (col + s1 + s2) / 3.0, 0.35);
 
 	// --- Scanlines ---
-	float scan = sin((cuv.y * res.y) * 3.14159 * scanline_density);
+	float scan = sin((og_cuv.y * res.y) * 3.14159 * scanline_density);
 	float scan_mul = 1.0 - scanline_strength * (0.5 - 0.5 * scan); // darker troughs
 	col *= scan_mul;
 

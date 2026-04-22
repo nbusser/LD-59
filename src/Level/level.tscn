@@ -133,7 +133,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Monitor" parent="UI" unique_id=534154928 node_paths=PackedStringArray("_ciphered_text", "_ciphered_image", "_ciphered_audio") instance=ExtResource("5_grxid")]
+[node name="Monitor" parent="UI" unique_id=534154928 node_paths=PackedStringArray("_ciphered_text", "_ciphered_image", "_ciphered_audio", "_holey_sheets") instance=ExtResource("5_grxid")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -147,6 +147,7 @@ mouse_filter = 1
 _ciphered_text = NodePath("../../CipheredSignals/CipheredText")
 _ciphered_image = NodePath("../../CipheredSignals/CipheredImage")
 _ciphered_audio = NodePath("../../CipheredSignals/CipheredAudio")
+_holey_sheets = [NodePath("../SteganoTools/TextFilters/HoleySheet"), NodePath("../SteganoTools/TextFilters/HoleySheet2"), NodePath("../SteganoTools/TextFilters/HoleySheet3"), NodePath("../SteganoTools/TextFilters/HoleySheet4")]
 
 [node name="Display" parent="UI/Monitor" index="0" unique_id=2086475445]
 offset_left = 567.0

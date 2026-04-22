@@ -10,6 +10,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
+shader_parameter/card_positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/card_sizes = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/texture_sampler = ExtResource("3_2jalq")
 shader_parameter/brightness = 0.800000038
 shader_parameter/contrast = 1.08

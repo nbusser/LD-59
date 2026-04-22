@@ -3,6 +3,7 @@ class_name Monitor extends Control
 @export var _ciphered_text: CipheredText
 @export var _ciphered_image: CipheredImage
 @export var _ciphered_audio: CipheredAudio
+@export var _holey_sheets: Array[HoleySheet]
 
 var spectrum: AudioEffectSpectrumAnalyzerInstance
 
@@ -100,6 +101,17 @@ func _on_image_render() -> void:
 func _process(_delta):
 	_rendered_audio.set_frequency_shape(_ciphered_audio._frequency_shape_value)
 	_rendered_audio.noise_volume = _ciphered_audio._noise_player.volume_linear
+
+	var card_positions = _holey_sheets.map(
+		func(hs: HoleySheet):
+			return (hs.global_position - _display.global_position) / _display.get_global_rect().size
+	)
+	var card_sizes = _holey_sheets.map(
+		func(hs: HoleySheet): return hs.get_global_rect().size / _display.get_global_rect().size
+	)
+
+	_display.material.set_shader_parameter("card_positions", card_positions)
+	_display.material.set_shader_parameter("card_sizes", card_sizes)
 
 
 func _on_audio_render() -> void:
