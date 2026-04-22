@@ -1,11 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://br6cw0ql61cg8"]
 
 [ext_resource type="Texture2D" uid="uid://6fidtms3ibo1" path="res://assets/ui/slider_knob.png" id="1_nv503"]
-[ext_resource type="FontFile" uid="uid://ov4pgbpxisrm" path="res://assets/fonts/vhs-vcr-osd.ttf" id="1_rm434"]
 [ext_resource type="Texture2D" uid="uid://clxra8p5ou1mu" path="res://assets/ui/slider_knob_disabled.png" id="2_eem5w"]
 [ext_resource type="Texture2D" uid="uid://ciw4o3caqmh5i" path="res://assets/ui/slider_knob_highlighted.png" id="3_s2xby"]
 [ext_resource type="Texture2D" uid="uid://436o4mulm50" path="res://assets/ui/slider-bar.png" id="4_rn6od"]
 [ext_resource type="Texture2D" uid="uid://dgmod0mgmirfm" path="res://assets/ui/Audio_freq_-_background.png" id="5_eem5w"]
+[ext_resource type="FontVariation" uid="uid://d0ocilrpe8bfd" path="res://assets/fonts/vhs-vcr-osd-dynamic.tres" id="6_eem5w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv503"]
 content_margin_left = 4.0
@@ -48,7 +48,7 @@ expand_margin_right = 32.0
 expand_margin_bottom = 32.0
 
 [resource]
-default_font = ExtResource("1_rm434")
+default_font = ExtResource("6_eem5w")
 default_font_size = 32
 HSlider/constants/center_grabber = 0
 HSlider/constants/grabber_offset = 0

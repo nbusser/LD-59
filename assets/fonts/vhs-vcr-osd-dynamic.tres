@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" format=3 uid="uid://d0ocilrpe8bfd"]
+
+[ext_resource type="FontFile" uid="uid://ov4pgbpxisrm" path="res://assets/fonts/vhs-vcr-osd.ttf" id="1_bvv7x"]
+
+[resource]
+base_font = ExtResource("1_bvv7x")
+spacing_glyph = 2
