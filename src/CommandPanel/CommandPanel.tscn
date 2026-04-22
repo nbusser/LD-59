@@ -234,6 +234,7 @@ offset_bottom = 320.0
 [node name="ButtonPush" type="AudioStreamPlayer" parent="SFX" unique_id=1766829333]
 stream = ExtResource("11_2tjow")
 volume_db = 2.0
+bus = &"SFX"
 
 [node name="NoiseSignalInputDisplay" type="Node" parent="." unique_id=880532572]
 
