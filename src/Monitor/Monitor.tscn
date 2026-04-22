@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7fb7c5fgkm23" path="res://src/Monitor/monitor.gd" id="1_ufvya"]
 [ext_resource type="Shader" uid="uid://cmq2qmn5v5swi" path="res://src/Monitor/ImageMonitor.gdshader" id="2_to57f"]
+[ext_resource type="Texture2D" uid="uid://bfwq4ivvyi02e" path="res://assets/sprites/ciphers/aristochats/aristochats_red.webp" id="3_2jalq"]
 [ext_resource type="Script" uid="uid://uvsk1teh2r7f" path="res://src/Monitor/rendered_audio.gd" id="4_1sxi0"]
 [ext_resource type="Shader" uid="uid://dbg0beqcwoalc" path="res://src/Monitor/RenderedImage.gdshader" id="4_061ay"]
 [ext_resource type="Theme" uid="uid://br6cw0ql61cg8" path="res://assets/fonts/vhs_theme.tres" id="4_lpyn7"]
@@ -9,6 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to57f"]
 shader = ExtResource("2_to57f")
+shader_parameter/texture_sampler = ExtResource("3_2jalq")
 shader_parameter/brightness = 1.02
 shader_parameter/contrast = 1.08
 shader_parameter/saturation = 1.1
@@ -16,8 +18,8 @@ shader_parameter/gamma = 1.05
 shader_parameter/curvature = 0.0650000030875
 shader_parameter/corner_soften = 0.0
 shader_parameter/vignette = 0.0
-shader_parameter/scanline_strength = 0.37600001786
-shader_parameter/scanline_density = 0.9010000190475
+shader_parameter/scanline_strength = 0.2000000095
+shader_parameter/scanline_density = 1.9540000690650001
 shader_parameter/interlace_strength = 0.2
 shader_parameter/mask_strength = 0.22
 shader_parameter/mask_scale = 1.0

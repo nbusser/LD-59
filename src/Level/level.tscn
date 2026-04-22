@@ -476,7 +476,7 @@ duration = 0.7
 metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI" unique_id=1593123046]
-color = Color(0.7708398, 0.7708394, 0.77083945, 1)
+color = Color(0.70048386, 0.7004839, 0.7004838, 1)
 
 [node name="GlassesOverlay" type="TextureRect" parent="UI" unique_id=1645887035]
 unique_name_in_owner = true
