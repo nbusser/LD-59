@@ -113,24 +113,28 @@ cipher_data = SubResource("Resource_kfgd5")
 overlay_texture = ExtResource("4_ewdv1")
 
 [node name="Draggable" parent="TextFilters/HoleySheet" unique_id=1010119147 instance=ExtResource("2_4q2fo")]
+disable_animation = true
 
 [node name="HoleySheet2" parent="TextFilters" unique_id=1915730032 instance=ExtResource("5_ewdv1")]
 layout_mode = 0
 overlay_texture = ExtResource("6_tvenm")
 
 [node name="Draggable" parent="TextFilters/HoleySheet2" unique_id=721624145 instance=ExtResource("2_4q2fo")]
+disable_animation = true
 
 [node name="HoleySheet3" parent="TextFilters" unique_id=1662907682 instance=ExtResource("5_ewdv1")]
 layout_mode = 0
 overlay_texture = ExtResource("7_bwi1n")
 
 [node name="Draggable" parent="TextFilters/HoleySheet3" unique_id=1699836832 instance=ExtResource("2_4q2fo")]
+disable_animation = true
 
 [node name="HoleySheet4" parent="TextFilters" unique_id=423867034 instance=ExtResource("5_ewdv1")]
 layout_mode = 0
 overlay_texture = ExtResource("9_vod54")
 
 [node name="Draggable" parent="TextFilters/HoleySheet4" unique_id=952626156 instance=ExtResource("2_4q2fo")]
+disable_animation = true
 
 [node name="ImageFilters" type="Control" parent="." unique_id=824484933]
 anchors_preset = 0
